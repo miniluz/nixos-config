@@ -5,6 +5,7 @@ in
 {
   imports = [
     "${homeManagerModules}/git.nix"
+    "${homeManagerModules}/gitui.nix"
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -77,7 +78,6 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  programs.gitui.enable = true;
   programs.zsh.enable = true;
   programs.vscode.enable = true;
 }

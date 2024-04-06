@@ -8,13 +8,22 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # TODO: remove
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
+
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, vscode-server, ... }@inputs: {
     nixosConfigurations = {
       moonlight = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = { inherit inputs; };
         modules = [
+          # TODO: remove
+          vscode-server.nixosModules.default
+          ({ config, pkgs, ... }: {
+            services.vscode-server.enable = true;
+          })
           ./hosts/moonlight/configuration.nix
         ];
       };

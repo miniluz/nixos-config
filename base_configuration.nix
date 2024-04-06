@@ -5,7 +5,7 @@ let
 in
 {
   # Enable flakes
-  nix.settings.experimental-features = mkDefault ["nix-command" "flakes"];
+  nix.settings.experimental-features = mkDefault [ "nix-command" "flakes" ];
 
   # Set timezone
   time.timeZone = mkDefault "Europe/Madrid";

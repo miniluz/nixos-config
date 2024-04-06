@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       "${inputs.self}/base_configuration.nix"
       inputs.home-manager.nixosModules.default
@@ -60,7 +61,7 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-	    "miniluz" = import ./home.nix;
+      "miniluz" = import ./home.nix;
     };
     useGlobalPkgs = true;
   };
@@ -68,8 +69,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     neovim
-     file
+    neovim
+    file
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -83,7 +84,8 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  # TODO: remove
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
