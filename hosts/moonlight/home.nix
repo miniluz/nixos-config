@@ -1,6 +1,11 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, inputs, ... }:
+let
+  homeManagerModules = "${inputs.self}/modules/home-manager";
+in
 {
+  imports = [
+    "${homeManagerModules}/git.nix"
+  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "miniluz";
@@ -72,11 +77,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  programs.git = {
-    enable = true;
-    userName = "miniluz";
-    userEmail = "javiermelon4fu@gmail.com";
-  };
   programs.gitui.enable = true;
   programs.zsh.enable = true;
   programs.vscode.enable = true;
