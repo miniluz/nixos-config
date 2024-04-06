@@ -7,10 +7,17 @@ in
     "${homeManagerModules}/git.nix"
     "${homeManagerModules}/gitui.nix"
     "${homeManagerModules}/zsh.nix"
+    "${homeManagerModules}/starship.nix"
+    "${homeManagerModules}/firacode.nix"
+    "${homeManagerModules}/vscode-server.nix"
   ];
 
+  miniluz.git.enable = true;
   miniluz.gitui.enable = true;
   miniluz.zsh.enable = true;
+  miniluz.starship.enable = true;
+  miniluz.firacode.enable = true;
+  miniluz.vscode-server.enable = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.

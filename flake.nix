@@ -10,20 +10,20 @@
     };
 
     # TODO: remove
-    vscode-server.url = "github:nix-community/nixos-vscode-server";
+    # vscode-server.url = "github:nix-community/nixos-vscode-server";
 
   };
 
-  outputs = { self, nixpkgs, vscode-server, ... }@inputs: {
+  outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations = {
       moonlight = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
           # TODO: remove
-          vscode-server.nixosModules.default
-          ({ config, pkgs, ... }: {
-            services.vscode-server.enable = true;
-          })
+          # inputs.vscode-server.nixosModules.default
+          # ({ config, pkgs, ... }: {
+          #   services.vscode-server.enable = true;
+          # })
           ./hosts/moonlight/configuration.nix
         ];
       };
