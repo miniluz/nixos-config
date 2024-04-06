@@ -11,6 +11,25 @@ in
     "${homeManagerModules}/firacode.nix"
     "${homeManagerModules}/vscode-server.nix"
     "${homeManagerModules}/vscode.nix"
+    /*
+      TODO:
+      * kitty
+      * tdrop
+      * eza
+      * du-dust
+      * bat
+      * ripgrep
+      * fzf
+      * zellij
+      * tldr
+      * atuin
+      * vesktop
+      * btop
+      * eclipse
+      * lutris
+      * steam
+      * virt-manager
+    */
   ];
 
   miniluz.git.enable = true;
