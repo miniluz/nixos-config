@@ -10,6 +10,7 @@ in
     "${homeManagerModules}/starship.nix"
     "${homeManagerModules}/firacode.nix"
     "${homeManagerModules}/vscode-server.nix"
+    "${homeManagerModules}/vscode.nix"
   ];
 
   miniluz.git.enable = true;
@@ -18,6 +19,7 @@ in
   miniluz.starship.enable = true;
   miniluz.firacode.enable = true;
   miniluz.vscode-server.enable = true;
+  miniluz.vscode.enable = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -90,5 +92,4 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  programs.vscode.enable = true;
 }
