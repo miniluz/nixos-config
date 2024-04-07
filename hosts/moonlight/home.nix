@@ -29,6 +29,7 @@ in
       * lutris
       * steam
       * virt-manager
+      * z
     */
   ];
 
