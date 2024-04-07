@@ -3,7 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, inputs, ... }:
-
+let
+  nixosModules = "${inputs.self}/modules/nixos";
+in
 {
   imports =
     [
@@ -11,7 +13,10 @@
       ./hardware-configuration.nix
       "${inputs.self}/base_configuration.nix"
       inputs.home-manager.nixosModules.default
+      "${nixosModules}/gnome.nix"
     ];
+
+  miniluz.gnome.enable = true;
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -27,13 +32,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
