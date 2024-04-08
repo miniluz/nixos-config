@@ -11,6 +11,8 @@ in
     "${homeManagerModules}/firacode.nix"
     "${homeManagerModules}/vscode-server.nix"
     "${homeManagerModules}/vscode.nix"
+    "${homeManagerModules}/atuin.nix"
+    "${homeManagerModules}/zoxide.nix"
     /*
       TODO:
       * kitty
@@ -22,14 +24,11 @@ in
       * fzf
       * zellij
       * tldr
-      * atuin
-      * vesktop
       * btop
       * eclipse
       * lutris
       * steam
       * virt-manager
-      * z
     */
   ];
 
@@ -40,6 +39,10 @@ in
   miniluz.firacode.enable = true;
   miniluz.vscode-server.enable = true;
   miniluz.vscode.enable = true;
+  miniluz.atuin.enable = true;
+  miniluz.zoxide.enable = true;
+
+  programs.firefox.enable = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -58,6 +61,8 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    pkgs.gnome.gnome-tweaks
+    pkgs.vesktop
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
