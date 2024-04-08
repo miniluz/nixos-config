@@ -6,10 +6,11 @@ in
   imports = [
     "${homeManagerModules}/git.nix"
     "${homeManagerModules}/firacode.nix"
-    "${homeManagerModules}/vscode-server.nix"
+    # "${homeManagerModules}/vscode-server.nix"
     "${homeManagerModules}/vscode.nix"
     "${homeManagerModules}/vesktop.nix"
-    "${homeManagerModules}/gnome.nix"
+
+    "${homeManagerModules}/gnome/gnome.nix"
 
     "${homeManagerModules}/shell/atuin.nix"
     "${homeManagerModules}/shell/gitui.nix"
@@ -41,13 +42,14 @@ in
   miniluz.zsh.enable = true;
   miniluz.starship.enable = true;
   miniluz.firacode.enable = true;
-  miniluz.vscode-server.enable = true;
   miniluz.vscode.enable = true;
   miniluz.atuin.enable = true;
   miniluz.zoxide.enable = true;
   miniluz.vesktop.enable = true;
-  miniluz.gnome.enable = true;
   miniluz.tldr.enable = true;
+
+  miniluz.gnome.enable = true;
+  miniluz.gnome.catppuccin.enable = true;
 
   programs.firefox.enable = true;
 
