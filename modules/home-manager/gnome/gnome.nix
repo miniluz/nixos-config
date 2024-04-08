@@ -13,10 +13,6 @@ in
       pkgs.dconf2nix
     ];
 
-    dconf.settings."org/gnome/desktop/screensaver" = {
-      picture-uri = "file:///home/gvolpe/Pictures/nixos.png";
-    };
-
     dconf.settings = {
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";

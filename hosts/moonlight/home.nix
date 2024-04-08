@@ -131,7 +131,6 @@ in
   #
   home.sessionVariables = {
     EDITOR = "nvim";
-    SHELL = "zsh";
   };
 
   # Let Home Manager install and manage itself.

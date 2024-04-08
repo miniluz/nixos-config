@@ -7,6 +7,6 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.eza.enable = true;
-    programs.zsh.initExtra = "alias exal=eza --long --header --icons --git";
+    programs.zsh.initExtra = "alias exal=\"eza --long --header --icons --git\"";
   };
 }

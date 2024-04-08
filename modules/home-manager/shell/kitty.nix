@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 let
   cfg = config.miniluz.kitty;
-  catpuccin-kitty = pkgs.fetchFromGitHub {
+  catppuccin-kitty = pkgs.fetchFromGitHub {
     name = "kitty";
     owner = "catppuccin";
     repo = "kitty";
@@ -28,6 +28,6 @@ in
       map ctrl+shift+b previous_window
     '';
 
-    xdg.configFile."kitty/theme.conf".source = lib.mkForce "${catpuccin-kitty}/themes/${cfg.theme}.conf";
+    xdg.configFile."kitty/theme.conf".source = lib.mkForce "${catppuccin-kitty}/themes/${cfg.theme}.conf";
   };
 }
