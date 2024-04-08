@@ -23,16 +23,12 @@ in
     "${homeManagerModules}/shell/zsh.nix"
     /*
       TODO:
-      * kitty
       * tdrop
-      * eza
       * du-dust
       * bat
       * ripgrep
       * fzf
       * zellij
-      * tldr
-      * btop
       * eclipse
       * lutris
       * steam
