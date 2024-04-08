@@ -5,14 +5,18 @@ in
 {
   imports = [
     "${homeManagerModules}/git.nix"
-    "${homeManagerModules}/gitui.nix"
-    "${homeManagerModules}/zsh.nix"
-    "${homeManagerModules}/starship.nix"
     "${homeManagerModules}/firacode.nix"
     "${homeManagerModules}/vscode-server.nix"
     "${homeManagerModules}/vscode.nix"
-    "${homeManagerModules}/atuin.nix"
-    "${homeManagerModules}/zoxide.nix"
+    "${homeManagerModules}/vesktop.nix"
+    "${homeManagerModules}/gnome.nix"
+
+    "${homeManagerModules}/shell/atuin.nix"
+    "${homeManagerModules}/shell/gitui.nix"
+    "${homeManagerModules}/shell/starship.nix"
+    "${homeManagerModules}/shell/tldr.nix"
+    "${homeManagerModules}/shell/zoxide.nix"
+    "${homeManagerModules}/shell/zsh.nix"
     /*
       TODO:
       * kitty
@@ -41,6 +45,9 @@ in
   miniluz.vscode.enable = true;
   miniluz.atuin.enable = true;
   miniluz.zoxide.enable = true;
+  miniluz.vesktop.enable = true;
+  miniluz.gnome.enable = true;
+  miniluz.tldr.enable = true;
 
   programs.firefox.enable = true;
 
@@ -61,8 +68,6 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    pkgs.gnome.gnome-tweaks
-    pkgs.vesktop
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -113,6 +118,7 @@ in
   #
   home.sessionVariables = {
     EDITOR = "nvim";
+    SHELL = "zsh";
   };
 
   # Let Home Manager install and manage itself.
