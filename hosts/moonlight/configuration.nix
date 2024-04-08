@@ -20,6 +20,11 @@ in
   miniluz.gnome.enable = true;
   miniluz.podman.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    neovim
+    podman-compose
+  ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -68,9 +73,7 @@ in
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    neovim
-  ];
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
