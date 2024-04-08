@@ -36,9 +36,12 @@ in
     isNormalUser = true;
     description = "miniluz";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
     ];
   };
+
+  programs.zsh.enable = true;
 
   environment.systemPackages = [
     pkgs.file

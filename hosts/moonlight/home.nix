@@ -16,6 +16,7 @@ in
     "${homeManagerModules}/shell/btop.nix"
     "${homeManagerModules}/shell/eza.nix"
     "${homeManagerModules}/shell/gitui.nix"
+    "${homeManagerModules}/shell/kitty.nix"
     "${homeManagerModules}/shell/starship.nix"
     "${homeManagerModules}/shell/tldr.nix"
     "${homeManagerModules}/shell/zoxide.nix"
@@ -40,17 +41,21 @@ in
   ];
 
   miniluz.git.enable = true;
-  miniluz.gitui.enable = true;
-  miniluz.zsh.enable = true;
-  miniluz.eza.enable = true;
-  miniluz.starship.enable = true;
+
   miniluz.firacode.enable = true;
-  miniluz.vscode.enable = true;
+
   miniluz.atuin.enable = true;
-  miniluz.zoxide.enable = true;
-  miniluz.vesktop.enable = true;
-  miniluz.tldr.enable = true;
   miniluz.btop.enable = true;
+  miniluz.eza.enable = true;
+  miniluz.gitui.enable = true;
+  miniluz.kitty.enable = true;
+  miniluz.starship.enable = true;
+  miniluz.tldr.enable = true;
+  miniluz.zoxide.enable = true;
+  miniluz.zsh.enable = true;
+
+  miniluz.vscode.enable = true;
+  miniluz.vesktop.enable = true;
 
   miniluz.gnome.enable = true;
   miniluz.gnome.catppuccin.enable = true;
