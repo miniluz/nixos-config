@@ -14,6 +14,7 @@ in
 
     "${homeManagerModules}/shell/atuin.nix"
     "${homeManagerModules}/shell/btop.nix"
+    "${homeManagerModules}/shell/eza.nix"
     "${homeManagerModules}/shell/gitui.nix"
     "${homeManagerModules}/shell/starship.nix"
     "${homeManagerModules}/shell/tldr.nix"
@@ -41,6 +42,7 @@ in
   miniluz.git.enable = true;
   miniluz.gitui.enable = true;
   miniluz.zsh.enable = true;
+  miniluz.eza.enable = true;
   miniluz.starship.enable = true;
   miniluz.firacode.enable = true;
   miniluz.vscode.enable = true;
