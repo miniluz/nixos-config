@@ -13,6 +13,7 @@ in
     "${homeManagerModules}/gnome/gnome.nix"
 
     "${homeManagerModules}/shell/atuin.nix"
+    "${homeManagerModules}/shell/btop.nix"
     "${homeManagerModules}/shell/gitui.nix"
     "${homeManagerModules}/shell/starship.nix"
     "${homeManagerModules}/shell/tldr.nix"
@@ -47,6 +48,7 @@ in
   miniluz.zoxide.enable = true;
   miniluz.vesktop.enable = true;
   miniluz.tldr.enable = true;
+  miniluz.btop.enable = true;
 
   miniluz.gnome.enable = true;
   miniluz.gnome.catppuccin.enable = true;
