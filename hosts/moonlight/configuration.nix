@@ -14,9 +14,11 @@ in
       "${inputs.self}/base_configuration.nix"
       inputs.home-manager.nixosModules.default
       "${nixosModules}/gnome.nix"
+      "${nixosModules}/podman.nix"
     ];
 
   miniluz.gnome.enable = true;
+  miniluz.podman.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
