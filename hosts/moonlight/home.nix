@@ -50,6 +50,8 @@ in
 
   miniluz.gnome.enable = true;
   miniluz.gnome.catppuccin.enable = true;
+  miniluz.gnome.background.enable = true;
+  miniluz.gnome.background.path = "persona_3_blue_down.png";
 
   programs.firefox.enable = true;
 

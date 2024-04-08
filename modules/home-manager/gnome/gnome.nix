@@ -3,7 +3,7 @@ let
   cfg = config.miniluz.gnome;
 in
 {
-  imports = [ ./catppuccin.nix ];
+  imports = [ ./catppuccin.nix ./backgrounds.nix ];
 
   options.miniluz.gnome.enable = lib.mkEnableOption "Enable GNOME config.";
 
