@@ -15,10 +15,12 @@ in
       inputs.home-manager.nixosModules.default
       "${nixosModules}/gnome.nix"
       "${nixosModules}/podman.nix"
+      "${nixosModules}/steam.nix"
     ];
 
   miniluz.gnome.enable = true;
   miniluz.podman.enable = true;
+  miniluz.steam.enable = true;
 
   environment.systemPackages = with pkgs; [
     neovim
