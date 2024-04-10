@@ -19,6 +19,13 @@
           ./hosts/moonlight/configuration.nix
         ];
       };
+
+      sunlight = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/sunlight/configuration.nix
+        ];
+      };
     };
   };
 }
