@@ -5,6 +5,7 @@ in
 {
   imports = [
     "${homeManagerModules}/git.nix"
+    "${homeManagerModules}/obs.nix"
     "${homeManagerModules}/firacode.nix"
     # "${homeManagerModules}/vscode-server.nix"
     "${homeManagerModules}/vscode.nix"
@@ -35,6 +36,7 @@ in
       * virt-manager
     */
   ];
+  miniluz.obs-studio.enable = true;
 
   miniluz.git.enable = true;
 
