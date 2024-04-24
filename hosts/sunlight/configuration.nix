@@ -15,7 +15,6 @@ in
       inputs.home-manager.nixosModules.default
       "${nixosModules}/gnome.nix"
       "${nixosModules}/amdgpu.nix"
-      "${nixosModules}/ksp.nix"
       "${nixosModules}/podman.nix"
       "${nixosModules}/steam.nix"
     ];
@@ -23,7 +22,6 @@ in
   miniluz.gnome.enable = true;
   miniluz.amdgpu.enable = true;
 
-  miniluz.ksp.enable = true;
   miniluz.podman.enable = true;
   miniluz.steam.enable = true;
 

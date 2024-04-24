@@ -6,14 +6,12 @@ in
   options.miniluz.ksp.enable = lib.mkEnableOption "Enable KSP dependencies.";
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [
+    fonts.fontconfig.enable = true;
+
+    home.packages = [
       pkgs.bottles
       pkgs.ckan
-    ];
-
-    fonts.packages = [
       pkgs.corefonts
-      pkgs.vistafonts
     ];
   };
 }
