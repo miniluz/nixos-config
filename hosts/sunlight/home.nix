@@ -79,6 +79,7 @@ in
   home.packages = [
     pkgs.vlc
     pkgs.qbittorrent
+    pkgs.reaper
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
