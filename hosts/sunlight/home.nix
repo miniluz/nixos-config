@@ -5,7 +5,6 @@ in
 {
   imports = [
     "${homeManagerModules}/git.nix"
-    "${homeManagerModules}/obs.nix"
     "${homeManagerModules}/ksp.nix"
     "${homeManagerModules}/firacode.nix"
     # "${homeManagerModules}/vscode-server.nix"
@@ -41,8 +40,6 @@ in
   miniluz.git.enable = true;
 
   miniluz.firacode.enable = true;
-
-  miniluz.obs-studio.enable = true;
 
   miniluz.ksp.enable = true;
 

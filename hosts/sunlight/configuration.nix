@@ -14,6 +14,7 @@ in
       "${inputs.self}/base_configuration.nix"
       inputs.home-manager.nixosModules.default
       "${nixosModules}/gnome.nix"
+      "${nixosModules}/obs.nix"
       "${nixosModules}/amdgpu.nix"
       "${nixosModules}/podman.nix"
       "${nixosModules}/steam.nix"
@@ -21,6 +22,7 @@ in
 
   miniluz.gnome.enable = true;
   miniluz.amdgpu.enable = true;
+  miniluz.obs-studio.enable = true;
 
   miniluz.podman.enable = true;
   miniluz.steam.enable = true;
