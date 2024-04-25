@@ -10,6 +10,9 @@ in
       enable = true;
       userName = "miniluz";
       userEmail = "javiermelon4fu@gmail.com";
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
     };
   };
 }
