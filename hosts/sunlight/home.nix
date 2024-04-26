@@ -6,6 +6,7 @@ in
   imports = [
     "${homeManagerModules}/git.nix"
     "${homeManagerModules}/ksp.nix"
+    "${homeManagerModules}/davinci-resolve.nix"
     "${homeManagerModules}/firacode.nix"
     # "${homeManagerModules}/vscode-server.nix"
     "${homeManagerModules}/vscode.nix"
@@ -39,6 +40,7 @@ in
 
   miniluz.git.enable = true;
 
+  miniluz.davinci-resolve.enable = true;
   miniluz.firacode.enable = true;
 
   miniluz.ksp.enable = true;

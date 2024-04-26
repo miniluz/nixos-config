@@ -15,13 +15,13 @@ in
       inputs.home-manager.nixosModules.default
       "${nixosModules}/gnome.nix"
       "${nixosModules}/obs.nix"
-      "${nixosModules}/amdgpu.nix"
+      # "${nixosModules}/amdgpu.nix"
       "${nixosModules}/podman.nix"
       "${nixosModules}/steam.nix"
     ];
 
   miniluz.gnome.enable = true;
-  miniluz.amdgpu.enable = true;
+  # miniluz.amdgpu.enable = true;
   miniluz.obs-studio.enable = true;
 
   miniluz.podman.enable = true;
