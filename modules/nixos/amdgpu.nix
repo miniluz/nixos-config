@@ -8,10 +8,12 @@ in
   config = lib.mkIf cfg.enable {
     # AMD. Source: <https://nixos.wiki/wiki/AMD_GPU>
     services.xserver.videoDrivers = lib.mkIf config.services.xserver.enable [ "amdgpu" ];
+
     systemd.tmpfiles.rules = [
       "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
     ];
     hardware.opengl.extraPackages = with pkgs; [
+      rocmPackages.clr.icd
       amdvlk
     ];
     # For 32 bit applications 
