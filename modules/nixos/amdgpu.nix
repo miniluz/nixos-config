@@ -14,11 +14,11 @@ in
     ];
     hardware.opengl.extraPackages = with pkgs; [
       rocmPackages.clr.icd
-      amdvlk
+      # amdvlk
     ];
     # For 32 bit applications 
-    hardware.opengl.extraPackages32 = with pkgs; [
-      driversi686Linux.amdvlk
-    ];
+    # hardware.opengl.extraPackages32 = with pkgs; [
+    #   driversi686Linux.amdvlk
+    # ];
   };
 }
