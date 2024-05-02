@@ -13,6 +13,7 @@ in
       ./hardware-configuration.nix
       "${inputs.self}/base_configuration.nix"
       inputs.home-manager.nixosModules.default
+      inputs.musnix.nixosModules.musnix
       "${nixosModules}/gnome.nix"
       "${nixosModules}/obs.nix"
       "${nixosModules}/amdgpu.nix"
@@ -66,8 +67,21 @@ in
     #media-session.enable = true;
   };
 
+  # <https://wiki.nixos.org/wiki/PipeWire#Low-latency_setup>
+  services.pipewire.extraConfig.pipewire."92-low-latency" = {
+    context.properties = {
+      default.clock.rate = 48000;
+      default.clock.quantum = 32;
+      default.clock.min-quantum = 32;
+      default.clock.max-quantum = 32;
+    };
+  };
+
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+
+  musnix.enable = true;
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };

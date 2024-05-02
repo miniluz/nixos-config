@@ -9,6 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    musnix = { url = "github:musnix/musnix"; };
+
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {

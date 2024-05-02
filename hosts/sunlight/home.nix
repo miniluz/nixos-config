@@ -14,6 +14,8 @@ in
 
     "${homeManagerModules}/gnome/gnome.nix"
 
+    "${homeManagerModules}/music/music.nix"
+
     "${homeManagerModules}/shell/atuin.nix"
     "${homeManagerModules}/shell/btop.nix"
     "${homeManagerModules}/shell/eza.nix"
@@ -44,6 +46,8 @@ in
   miniluz.firacode.enable = true;
 
   miniluz.ksp.enable = true;
+
+  miniluz.music.enable = true;
 
   miniluz.atuin.enable = true;
   miniluz.btop.enable = true;
@@ -84,7 +88,6 @@ in
   home.packages = [
     pkgs.vlc
     pkgs.qbittorrent
-    pkgs.reaper
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
