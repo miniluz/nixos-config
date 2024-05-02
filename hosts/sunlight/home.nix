@@ -8,6 +8,7 @@ in
     "${homeManagerModules}/ksp.nix"
     "${homeManagerModules}/blender.nix"
     "${homeManagerModules}/firacode.nix"
+    "${homeManagerModules}/obsidian.nix"
     # "${homeManagerModules}/vscode-server.nix"
     "${homeManagerModules}/vscode.nix"
     "${homeManagerModules}/vesktop.nix"
@@ -44,6 +45,7 @@ in
 
   miniluz.blender.enable = true;
   miniluz.firacode.enable = true;
+  miniluz.obsidian.enable = true;
 
   miniluz.ksp.enable = true;
 
