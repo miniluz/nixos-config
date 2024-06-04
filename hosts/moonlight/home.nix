@@ -60,6 +60,7 @@ in
 
   programs.firefox.enable = true;
 
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "miniluz";
@@ -77,6 +78,9 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    pkgs.libreoffice
+    pkgs.qbittorrent
+    pkgs.bottles
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
