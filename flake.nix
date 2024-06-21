@@ -28,6 +28,13 @@
           ./hosts/sunlight/configuration.nix
         ];
       };
+
+      droplight = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/droplight/configuration.nix
+        ];
+      };
     };
   };
 }
