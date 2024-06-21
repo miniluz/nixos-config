@@ -81,6 +81,7 @@ in
     pkgs.libreoffice
     pkgs.qbittorrent
     pkgs.bottles
+    pkgs.mangohud
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
