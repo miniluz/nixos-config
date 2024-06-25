@@ -29,10 +29,10 @@
         ];
       };
 
-      droplight = nixpkgs.lib.nixosSystem {
+      starlight = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/droplight/configuration.nix
+          ./hosts/starlight/configuration.nix
         ];
       };
     };
