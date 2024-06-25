@@ -45,7 +45,6 @@ in
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -95,6 +94,10 @@ in
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  boot.extraModprobeConfig = ''
+    options iwlwifi power_save=1 11n_disable=1
+  '';
+
   environment.pathsToLink = [ "/share/zsh" ];
 
   # This value determines the NixOS release from which the default
@@ -103,6 +106,6 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }

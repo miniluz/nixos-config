@@ -29,8 +29,6 @@ in
       * fzf
       * zellij
       * eclipse
-      * lutris
-      * steam
       * virt-manager
     */
   ];
@@ -76,6 +74,8 @@ in
   # environment.
   home.packages = [
     pkgs.libreoffice
+    pkgs.slack
+    pkgs.thunderbird
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
