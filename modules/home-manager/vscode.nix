@@ -13,6 +13,10 @@ in
     programs.direnv.enable = true;
     programs.vscode.enable = true;
 
+    programs.vscode.enableExtensionUpdateCheck = false;
+    programs.vscode.enableUpdateCheck = false;
+    programs.vscode.mutableExtensionsDir = false;
+
     programs.vscode.extensions = [
       pkgs.vscode-extensions.catppuccin.catppuccin-vsc
       pkgs.vscode-extensions.catppuccin.catppuccin-vsc-icons
@@ -25,6 +29,8 @@ in
       pkgs.vscode-extensions.rust-lang.rust-analyzer
       pkgs.vscode-extensions.tamasfe.even-better-toml
       pkgs.vscode-extensions.vscodevim.vim
+      pkgs.vscode-extensions.dbaeumer.vscode-eslint
+      pkgs.vscode-extensions.esbenp.prettier-vscode
     ];
 
     programs.vscode.userSettings = {
