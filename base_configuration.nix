@@ -35,7 +35,7 @@ in
   users.users.miniluz = mkDefault {
     isNormalUser = true;
     description = "miniluz";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
     ];
