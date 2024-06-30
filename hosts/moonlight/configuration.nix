@@ -100,7 +100,7 @@ in
     options iwlwifi power_save=1 11n_disable=1
   '';
 
-  # boot.extraModulePackages = [ config.boot.kernelPackages.rtl8821ce ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.rtl8821ce ];
 
   environment.pathsToLink = [ "/share/zsh" ];
 
