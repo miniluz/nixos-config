@@ -114,6 +114,10 @@ in
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  boot.extraModprobeConfig = ''
+    options iwlwifi power_save=1 11n_disable=1
+  '';
+
   environment.pathsToLink = [ "/share/zsh" ];
 
   # This value determines the NixOS release from which the default
