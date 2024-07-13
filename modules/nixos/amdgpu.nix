@@ -6,7 +6,7 @@ in
   options.miniluz.amdgpu.enable = lib.mkEnableOption "Enable GNOME and GDE";
 
   config = lib.mkIf cfg.enable {
-    # AMD. Source: <https://nixos.wiki/wiki/AMD_GPU>
+    # AMD. Source: <https://wiki.nixos.org/wiki/AMD_GPU>
     services.xserver.videoDrivers = lib.mkIf config.services.xserver.enable [ "amdgpu" ];
 
     systemd.tmpfiles.rules = [
