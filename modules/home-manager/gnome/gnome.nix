@@ -9,7 +9,7 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = [
-      pkgs.gnome.gnome-tweaks
+      pkgs.gnome-tweaks
       pkgs.dconf2nix
     ];
 
