@@ -7,8 +7,8 @@ in
 
   config = lib.mkIf cfg.enable {
     # Sources:
-    # * <https://nixos.wiki/wiki/Libvirt>
-    # * <https://nixos.wiki/wiki/Virt-manager>
+    # * <https://wiki.nixos.org/wiki/Libvirt>
+    # * <https://wiki.nixos.org/wiki/Virt-manager>
 
     virtualisation.libvirtd = {
       enable = true;

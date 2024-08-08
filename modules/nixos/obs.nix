@@ -12,7 +12,7 @@ in
     ];
 
     # Sources: 
-    # * <https://nixos.wiki/wiki/PipeWire#Advanced_Configuration>
+    # * <https://wiki.nixos.org/wiki/PipeWire#Advanced_Configuration>
     # * <https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/Virtual-devices#virtual-devices>
     services.pipewire.extraConfig.pipewire."91-null-sinks" = {
       "context.objects" = [
