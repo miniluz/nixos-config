@@ -16,11 +16,13 @@ in
       "${nixosModules}/gnome.nix"
       "${nixosModules}/podman.nix"
       "${nixosModules}/steam.nix"
+      "${nixosModules}/skyrim.nix"
     ];
 
   miniluz.gnome.enable = true;
   miniluz.podman.enable = true;
   miniluz.steam.enable = true;
+  miniluz.skyrim.enable = true;
 
   environment.systemPackages = with pkgs; [
     neovim
