@@ -31,6 +31,7 @@ in
       pkgs.vscode-extensions.vscodevim.vim
       pkgs.vscode-extensions.dbaeumer.vscode-eslint
       pkgs.vscode-extensions.esbenp.prettier-vscode
+      pkgs.vscode-extensions.sonarsource.sonarlint-vscode
     ];
 
     programs.vscode.userSettings = {
