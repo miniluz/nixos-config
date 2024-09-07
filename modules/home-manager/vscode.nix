@@ -32,6 +32,7 @@ in
       pkgs.vscode-extensions.dbaeumer.vscode-eslint
       pkgs.vscode-extensions.esbenp.prettier-vscode
       pkgs.vscode-extensions.sonarsource.sonarlint-vscode
+      pkgs.vscode-extensions.ms-vsliveshare.vsliveshare
     ];
 
     programs.vscode.userSettings = {
