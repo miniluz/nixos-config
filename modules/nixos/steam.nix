@@ -6,6 +6,12 @@ in
   options.miniluz.steam.enable = lib.mkEnableOption "Enable Steam.";
 
   config = lib.mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      mangohud
+      gamemode
+      gnomeExtensions.gamemode-indicator-in-system-settings
+    ];
+
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = true;
