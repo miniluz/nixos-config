@@ -7,6 +7,7 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
+      protontricks
       mangohud
       gamemode
       gnomeExtensions.gamemode-indicator-in-system-settings
@@ -22,10 +23,6 @@ in
       ];
       gamescopeSession.enable = true;
     };
-
-    environment.systemPackages = with pkgs; [
-      protontricks
-    ];
 
     # environment.systemPackages = with pkgs; [
     #   (steam.override {
