@@ -83,6 +83,9 @@ in
       "[css]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
+      "[json]" = {
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      };
     };
   };
 }
