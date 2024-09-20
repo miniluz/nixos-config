@@ -3,7 +3,7 @@ let
   cfg = config.miniluz.amdgpu;
 in
 {
-  options.miniluz.amdgpu.enable = lib.mkEnableOption "Enable GNOME and GDE";
+  options.miniluz.amdgpu.enable = lib.mkEnableOption "Enable AMDGPU";
 
   config = lib.mkIf cfg.enable {
     # AMD. Source: <https://nixos.wiki/wiki/AMD_GPU>
