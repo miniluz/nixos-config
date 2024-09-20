@@ -3,22 +3,27 @@ let
   cfg = config.miniluz.amdgpu;
 in
 {
-  options.miniluz.amdgpu.enable = lib.mkEnableOption "Enable AMDGPU";
+  options.miniluz.amdgpu.enable = lib.mkEnableOption "Enable AMDGPU support";
 
   config = lib.mkIf cfg.enable {
-    # AMD. Source: <https://nixos.wiki/wiki/AMD_GPU>
-    services.xserver.videoDrivers = lib.mkIf config.services.xserver.enable [ "amdgpu" ];
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
 
-    systemd.tmpfiles.rules = [
-      "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-    ];
-    hardware.opengl.extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-      # amdvlk
-    ];
-    # For 32 bit applications 
-    # hardware.opengl.extraPackages32 = with pkgs; [
-    #   driversi686Linux.amdvlk
-    # ];
+    systemd.tmpfiles.rules =
+      let
+        rocmEnv = pkgs.symlinkJoin {
+          name = "rocm-combined";
+          paths = with pkgs.rocmPackages; [
+            rocblas
+            hipblas
+            clr
+          ];
+        };
+      in
+      [
+        "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
+      ];
   };
 }
