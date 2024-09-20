@@ -5,7 +5,6 @@ in
 {
   imports = [
     "${homeManagerModules}/git.nix"
-    "${homeManagerModules}/ksp.nix"
     "${homeManagerModules}/blender.nix"
     "${homeManagerModules}/firacode.nix"
     "${homeManagerModules}/libreoffice.nix"
@@ -49,8 +48,6 @@ in
 
   miniluz.libreoffice.enable = true;
   miniluz.obsidian.enable = true;
-
-  miniluz.ksp.enable = true;
 
   miniluz.music.enable = true;
 
