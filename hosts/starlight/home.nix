@@ -9,6 +9,8 @@ in
     # "${homeManagerModules}/vscode-server.nix"
     "${homeManagerModules}/vscode.nix"
 
+    "${homeManagerModules}/vesktop.nix"
+
     "${homeManagerModules}/gnome/gnome.nix"
 
     "${homeManagerModules}/shell/atuin.nix"
@@ -48,6 +50,7 @@ in
   miniluz.zsh.enable = true;
 
   miniluz.vscode.enable = true;
+  miniluz.vesktop.enable = true;
 
   miniluz.gnome.enable = true;
   miniluz.gnome.catppuccin.enable = true;
