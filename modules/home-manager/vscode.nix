@@ -33,6 +33,14 @@ in
       pkgs.vscode-extensions.esbenp.prettier-vscode
       pkgs.vscode-extensions.sonarsource.sonarlint-vscode
       pkgs.vscode-extensions.ms-vsliveshare.vsliveshare
+
+      pkgs.vscode-extensions.vscjava.vscode-java-pack
+      pkgs.vscode-extensions.visualstudioexptteam.vscodeintellicode
+      pkgs.vscode-extensions.redhat.java
+      pkgs.vscode-extensions.vscjava.vscode-java-debug
+      pkgs.vscode-extensions.vscjava.vscode-maven
+      pkgs.vscode-extensions.vscjava.vscode-java-test
+      pkgs.vscode-extensions.vscjava.vscode-java-dependency
     ];
 
     programs.vscode.userSettings = {
@@ -81,6 +89,9 @@ in
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
       "[css]" = {
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      };
+      "[json]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
     };
