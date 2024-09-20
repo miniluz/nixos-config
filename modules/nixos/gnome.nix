@@ -19,7 +19,6 @@ in
       gnome-photos
       gnome-tour
       gedit # text editor
-    ]) ++ (with pkgs.gnome; [
       gnome-music
       gnome-characters
       tali # poker game
