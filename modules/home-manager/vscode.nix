@@ -45,7 +45,6 @@ in
       vscjava.vscode-maven
       vscjava.vscode-java-test
       vscjava.vscode-java-dependency
-      eamodio.gitlens
     ];
 
     programs.vscode.userSettings = {
