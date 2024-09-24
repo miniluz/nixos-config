@@ -1,6 +1,7 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, inputs, config, lib, ... }:
 let
   cfg = config.miniluz.vscode;
+  nix-vscode-extensions = inputs.nix-vscode-extensions.extensions."x86_64-linux";
 in
 {
   imports = [
@@ -17,41 +18,48 @@ in
     programs.vscode.enableUpdateCheck = false;
     programs.vscode.mutableExtensionsDir = false;
 
-    programs.vscode.extensions = [
-      pkgs.vscode-extensions.catppuccin.catppuccin-vsc
-      pkgs.vscode-extensions.catppuccin.catppuccin-vsc-icons
-      pkgs.vscode-extensions.gruntfuggly.todo-tree
-      pkgs.vscode-extensions.jnoortheen.nix-ide
-      pkgs.vscode-extensions.mkhl.direnv
-      pkgs.vscode-extensions.ms-kubernetes-tools.vscode-kubernetes-tools
-      pkgs.vscode-extensions.ms-vscode-remote.remote-ssh
-      pkgs.vscode-extensions.redhat.vscode-yaml
-      pkgs.vscode-extensions.rust-lang.rust-analyzer
-      pkgs.vscode-extensions.tamasfe.even-better-toml
-      pkgs.vscode-extensions.vscodevim.vim
-      pkgs.vscode-extensions.dbaeumer.vscode-eslint
-      pkgs.vscode-extensions.esbenp.prettier-vscode
-      pkgs.vscode-extensions.sonarsource.sonarlint-vscode
-      pkgs.vscode-extensions.ms-vsliveshare.vsliveshare
+    programs.vscode.extensions = with nix-vscode-extensions.vscode-marketplace; [
+      catppuccin.catppuccin-vsc
+      catppuccin.catppuccin-vsc-icons
 
-      pkgs.vscode-extensions.vscjava.vscode-java-pack
-      pkgs.vscode-extensions.visualstudioexptteam.vscodeintellicode
-      pkgs.vscode-extensions.redhat.java
-      pkgs.vscode-extensions.vscjava.vscode-java-debug
-      pkgs.vscode-extensions.vscjava.vscode-maven
-      pkgs.vscode-extensions.vscjava.vscode-java-test
-      pkgs.vscode-extensions.vscjava.vscode-java-dependency
+      vscodevim.vim
+      gruntfuggly.todo-tree
+      jnoortheen.nix-ide
+      mkhl.direnv
+      vivaxy.vscode-conventional-commits
+      ms-vsliveshare.vsliveshare
+
+      ms-kubernetes-tools.vscode-kubernetes-tools
+      ms-vscode-remote.remote-ssh
+      redhat.vscode-yaml
+      rust-lang.rust-analyzer
+      tamasfe.even-better-toml
+
+      dbaeumer.vscode-eslint
+      esbenp.prettier-vscode
+
+      vscjava.vscode-java-pack
+      visualstudioexptteam.vscodeintellicode
+      redhat.java
+      vscjava.vscode-java-debug
+      vscjava.vscode-maven
+      vscjava.vscode-java-test
+      vscjava.vscode-java-dependency
     ];
 
     programs.vscode.userSettings = {
+      "git.autofetch" = "all";
+
       "editor.fontFamily" = "FiraCode Nerd Font, 'Droid Sans Mono', 'monospace', monospace";
       "editor.fontLigatures" = true;
       "editor.formatOnSave" = true;
+
       "terminal.integrated.defaultProfile.linux" = "zsh";
+      "terminal.integrated.scrollback" = 10000;
       "workbench.sideBar.location" = "right";
+
       "vim.useCtrlKeys" = false;
       "vim.foldfix" = true;
-      "terminal.integrated.scrollback" = 10000;
       "vim.camelCaseMotion.enable" = true;
       "vim.highlightedyank.enable" = true;
       "vim.highlightedyank.color" = "rgba(100, 100, 130, 0.5)";
@@ -66,10 +74,12 @@ in
           ];
         }
       ];
+
       "workbench.colorTheme" = "Catppuccin Mocha";
       "workbench.iconTheme" = "catppuccin-mocha";
       "catppuccin.italicComments" = false;
       "catppuccin.italicKeywords" = false;
+
       "[javascriptreact]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
