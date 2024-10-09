@@ -50,6 +50,8 @@ in
     programs.vscode.userSettings = {
       "git.autofetch" = "all";
       "git.allowNoVerifyCommit" = true;
+      "conventionalCommits.promptFooter" = false;
+      "conventionalCommits.promptBody" = false;
 
       "editor.fontFamily" = "FiraCode Nerd Font, 'Droid Sans Mono', 'monospace', monospace";
       "editor.fontLigatures" = true;
