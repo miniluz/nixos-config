@@ -20,13 +20,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur = {
+      url = github:nix-community/NUR;
+    };
+
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, nur, ... }@inputs: {
     nixosConfigurations = {
       moonlight = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          nur.nixosModules.nur
           ./hosts/moonlight/configuration.nix
         ];
       };
@@ -34,6 +39,7 @@
       sunlight = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          nur.nixosModules.nur
           ./hosts/sunlight/configuration.nix
         ];
       };
@@ -41,6 +47,7 @@
       starlight = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          nur.nixosModules.nur
           ./hosts/starlight/configuration.nix
         ];
       };

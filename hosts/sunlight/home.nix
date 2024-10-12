@@ -7,6 +7,7 @@ in
     "${homeManagerModules}/git.nix"
     "${homeManagerModules}/blender.nix"
     "${homeManagerModules}/firacode.nix"
+    "${homeManagerModules}/firefox.nix"
     "${homeManagerModules}/libreoffice.nix"
     "${homeManagerModules}/obsidian.nix"
     # "${homeManagerModules}/vscode-server.nix"
@@ -45,6 +46,7 @@ in
 
   miniluz.blender.enable = true;
   miniluz.firacode.enable = true;
+  miniluz.firefox.enable = true;
 
   miniluz.libreoffice.enable = true;
   miniluz.obsidian.enable = true;
