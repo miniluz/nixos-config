@@ -13,6 +13,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.direnv.enable = true;
     programs.vscode.enable = true;
+    programs.vscode.package = pkgs.vscode-fhs;
 
     programs.vscode.enableExtensionUpdateCheck = false;
     programs.vscode.enableUpdateCheck = false;
