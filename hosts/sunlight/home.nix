@@ -64,6 +64,7 @@ in
   miniluz.zsh.enable = true;
 
   miniluz.vscode.enable = true;
+  miniluz.vscode.java = true;
   miniluz.vesktop.enable = true;
 
   miniluz.gnome.enable = true;
