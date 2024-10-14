@@ -32,7 +32,7 @@ in
   console.keyMap = mkDefault "es";
 
   # My user
-  users.users.miniluz = mkDefault {
+  users.users.miniluz = {
     isNormalUser = true;
     description = "miniluz";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
