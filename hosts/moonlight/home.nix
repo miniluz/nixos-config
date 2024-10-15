@@ -55,6 +55,7 @@ in
     java = true;
     js = true;
     vim = true;
+    catppuccin = true;
   };
 
   miniluz.vesktop.enable = true;

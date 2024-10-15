@@ -9,6 +9,7 @@ in
     ./vscode-java.nix
     ./vscode-js.nix
     ./vscode-vim.nix
+    ./vscode-catppuccin.nix
   ];
 
   options.miniluz.vscode.enable = lib.mkEnableOption "Enable VSCode.";
@@ -23,9 +24,6 @@ in
     programs.vscode.mutableExtensionsDir = false;
 
     programs.vscode.extensions = with nix-vscode-extensions.vscode-marketplace; [
-      catppuccin.catppuccin-vsc
-      catppuccin.catppuccin-vsc-icons
-
       gruntfuggly.todo-tree
       jnoortheen.nix-ide
       mkhl.direnv
@@ -53,15 +51,6 @@ in
       "terminal.integrated.defaultProfile.linux" = "zsh";
       "terminal.integrated.scrollback" = 10000;
       "workbench.sideBar.location" = "right";
-
-
-
-      "workbench.colorTheme" = "Catppuccin Mocha";
-      "workbench.iconTheme" = "catppuccin-mocha";
-      "catppuccin.italicComments" = false;
-      "catppuccin.italicKeywords" = false;
-
-
     };
   };
 }
