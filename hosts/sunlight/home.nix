@@ -11,7 +11,7 @@ in
     "${homeManagerModules}/libreoffice.nix"
     "${homeManagerModules}/obsidian.nix"
     # "${homeManagerModules}/vscode-server.nix"
-    "${homeManagerModules}/vscode.nix"
+    "${homeManagerModules}/vscode/vscode.nix"
     "${homeManagerModules}/vesktop.nix"
 
     "${homeManagerModules}/gnome/gnome.nix"

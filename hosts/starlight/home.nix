@@ -6,8 +6,8 @@ in
   imports = [
     "${homeManagerModules}/git.nix"
     "${homeManagerModules}/firacode.nix"
-    # "${homeManagerModules}/vscode-server.nix"
-    "${homeManagerModules}/vscode.nix"
+    # "${homeManagerModules}/vscode/vscode-server.nix"
+    "${homeManagerModules}/vscode/vscode.nix"
 
     "${homeManagerModules}/vesktop.nix"
 
