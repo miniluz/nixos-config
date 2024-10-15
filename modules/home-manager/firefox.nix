@@ -37,7 +37,6 @@ in
           bitwarden
           search-by-image
           youtube-shorts-block
-          tree-style-tabs
         ];
       };
     };
