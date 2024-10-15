@@ -9,6 +9,7 @@ in
     ./vscode-firacode.nix
     ./vscode-java.nix
     ./vscode-js.nix
+    ./vscode-rust.nix
     ./vscode-vim.nix
   ];
 
@@ -19,8 +20,8 @@ in
 
     programs.vscode.enable = true;
 
-    programs.vscode.enableExtensionUpdateCheck = false;
     programs.vscode.enableUpdateCheck = false;
+    programs.vscode.enableExtensionUpdateCheck = false;
     programs.vscode.mutableExtensionsDir = false;
 
     programs.vscode.extensions = with nix-vscode-extensions.vscode-marketplace; [
@@ -36,8 +37,6 @@ in
       ms-vsliveshare.vsliveshare
       ms-kubernetes-tools.vscode-kubernetes-tools
       ms-vscode-remote.remote-ssh
-
-      rust-lang.rust-analyzer
     ];
 
     programs.vscode.userSettings = {

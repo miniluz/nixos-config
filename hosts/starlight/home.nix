@@ -51,11 +51,12 @@ in
 
   miniluz.vscode = {
     enable = true;
-    java = true;
-    js = true;
-    vim = true;
     catppuccin = true;
     firacode = true;
+    java = true;
+    js = true;
+    rust = true;
+    vim = true;
   };
 
   miniluz.vesktop.enable = true;
