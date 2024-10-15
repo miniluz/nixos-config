@@ -24,16 +24,18 @@ in
     programs.vscode.mutableExtensionsDir = false;
 
     programs.vscode.extensions = with nix-vscode-extensions.vscode-marketplace; [
-      gruntfuggly.todo-tree
-      jnoortheen.nix-ide
       mkhl.direnv
-      vivaxy.vscode-conventional-commits
-      ms-vsliveshare.vsliveshare
+      jnoortheen.nix-ide
 
-      ms-kubernetes-tools.vscode-kubernetes-tools
-      ms-vscode-remote.remote-ssh
+      gruntfuggly.todo-tree
+      vivaxy.vscode-conventional-commits
+
       redhat.vscode-yaml
       tamasfe.even-better-toml
+
+      ms-vsliveshare.vsliveshare
+      ms-kubernetes-tools.vscode-kubernetes-tools
+      ms-vscode-remote.remote-ssh
 
       rust-lang.rust-analyzer
     ];
@@ -41,8 +43,9 @@ in
     programs.vscode.userSettings = {
       "git.autofetch" = "all";
       "git.allowNoVerifyCommit" = true;
-      "conventionalCommits.promptFooter" = false;
+      "conventionalCommits.promptScopes" = false;
       "conventionalCommits.promptBody" = false;
+      "conventionalCommits.promptFooter" = false;
 
       "editor.fontFamily" = "FiraCode Nerd Font, 'Droid Sans Mono', 'monospace', monospace";
       "editor.fontLigatures" = true;
