@@ -5,11 +5,11 @@ let
 in
 {
   imports = [
-    ../firacode.nix
+    ./vscode-catppuccin.nix
+    ./vscode-firacode.nix
     ./vscode-java.nix
     ./vscode-js.nix
     ./vscode-vim.nix
-    ./vscode-catppuccin.nix
   ];
 
   options.miniluz.vscode.enable = lib.mkEnableOption "Enable VSCode.";
@@ -47,8 +47,6 @@ in
       "conventionalCommits.promptBody" = false;
       "conventionalCommits.promptFooter" = false;
 
-      "editor.fontFamily" = "FiraCode Nerd Font, 'Droid Sans Mono', 'monospace', monospace";
-      "editor.fontLigatures" = true;
       "editor.formatOnSave" = true;
 
       "terminal.integrated.defaultProfile.linux" = "zsh";

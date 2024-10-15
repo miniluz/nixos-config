@@ -56,6 +56,7 @@ in
     js = true;
     vim = true;
     catppuccin = true;
+    firacode = true;
   };
 
   miniluz.vesktop.enable = true;
