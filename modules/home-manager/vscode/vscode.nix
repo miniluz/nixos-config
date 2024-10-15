@@ -8,6 +8,7 @@ in
     ../firacode.nix
     ./vscode-java.nix
     ./vscode-js.nix
+    ./vscode-vim.nix
   ];
 
   options.miniluz.vscode.enable = lib.mkEnableOption "Enable VSCode.";
@@ -25,7 +26,6 @@ in
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons
 
-      vscodevim.vim
       gruntfuggly.todo-tree
       jnoortheen.nix-ide
       mkhl.direnv
@@ -54,22 +54,7 @@ in
       "terminal.integrated.scrollback" = 10000;
       "workbench.sideBar.location" = "right";
 
-      "vim.useCtrlKeys" = false;
-      "vim.foldfix" = true;
-      "vim.camelCaseMotion.enable" = true;
-      "vim.highlightedyank.enable" = true;
-      "vim.highlightedyank.color" = "rgba(100, 100, 130, 0.5)";
-      "vim.sneak" = true;
-      "vim.normalModeKeyBindings" = [
-        {
-          "before" = [
-            "u"
-          ];
-          "commands" = [
-            "undo"
-          ];
-        }
-      ];
+
 
       "workbench.colorTheme" = "Catppuccin Mocha";
       "workbench.iconTheme" = "catppuccin-mocha";

@@ -49,9 +49,12 @@ in
   miniluz.zoxide.enable = true;
   miniluz.zsh.enable = true;
 
-  miniluz.vscode.enable = true;
-  miniluz.vscode.java = true;
-  miniluz.vscode.js = true;
+  miniluz.vscode = {
+    enable = true;
+    java = true;
+    js = true;
+    vim = true;
+  };
 
   miniluz.vesktop.enable = true;
 
