@@ -51,6 +51,8 @@ in
 
   miniluz.vscode.enable = true;
   miniluz.vscode.java = true;
+  miniluz.vscode.js = true;
+
   miniluz.vesktop.enable = true;
 
   miniluz.gnome.enable = true;

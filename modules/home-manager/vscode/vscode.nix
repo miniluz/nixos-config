@@ -7,6 +7,7 @@ in
   imports = [
     ../firacode.nix
     ./vscode-java.nix
+    ./vscode-js.nix
   ];
 
   options.miniluz.vscode.enable = lib.mkEnableOption "Enable VSCode.";
@@ -35,9 +36,6 @@ in
       ms-vscode-remote.remote-ssh
       redhat.vscode-yaml
       tamasfe.even-better-toml
-
-      dbaeumer.vscode-eslint
-      esbenp.prettier-vscode
 
       rust-lang.rust-analyzer
     ];
@@ -78,30 +76,7 @@ in
       "catppuccin.italicComments" = false;
       "catppuccin.italicKeywords" = false;
 
-      "[javascriptreact]" = {
-        "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      };
-      "[typescriptreact]" = {
-        "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      };
-      "[typescript]" = {
-        "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      };
-      "[scss]" = {
-        "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      };
-      "[javascript]" = {
-        "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      };
-      "[html]" = {
-        "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      };
-      "[css]" = {
-        "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      };
-      "[json]" = {
-        "editor.defaultFormatter" = "esbenp.prettier-vscode";
-      };
+
     };
   };
 }
