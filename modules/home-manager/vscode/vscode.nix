@@ -5,6 +5,7 @@ let
 in
 {
   imports = [
+    ../direnv.nix
     ./vscode-catppuccin.nix
     ./vscode-firacode.nix
     ./vscode-java.nix
@@ -16,7 +17,7 @@ in
   options.miniluz.vscode.enable = lib.mkEnableOption "Enable VSCode.";
 
   config = lib.mkIf cfg.enable {
-    programs.direnv.enable = true;
+    miniluz.direnv.enable = true;
 
     programs.vscode.enable = true;
 
