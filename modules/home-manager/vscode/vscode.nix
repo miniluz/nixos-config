@@ -33,6 +33,7 @@ in
       gruntfuggly.todo-tree
       vivaxy.vscode-conventional-commits
 
+      fill-labs.dependi
       redhat.vscode-yaml
       tamasfe.even-better-toml
 
