@@ -29,6 +29,7 @@ in
       mkhl.direnv
       jnoortheen.nix-ide
 
+      usernamehw.errorlens
       gruntfuggly.todo-tree
       vivaxy.vscode-conventional-commits
 
