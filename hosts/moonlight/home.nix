@@ -12,9 +12,9 @@ in
 
     "${homeManagerModules}/gnome/gnome.nix"
 
-    "${homeManagerModules}/shell/atuin.nix"
     "${homeManagerModules}/shell/btop.nix"
     "${homeManagerModules}/shell/eza.nix"
+    "${homeManagerModules}/shell/fzf.nix"
     "${homeManagerModules}/shell/gitui.nix"
     "${homeManagerModules}/shell/kitty.nix"
     "${homeManagerModules}/shell/starship.nix"
@@ -40,9 +40,9 @@ in
 
   miniluz.firacode.enable = true;
 
-  miniluz.atuin.enable = true;
   miniluz.btop.enable = true;
   miniluz.eza.enable = true;
+  miniluz.fzf.enable = true;
   miniluz.gitui.enable = true;
   miniluz.kitty.enable = true;
   miniluz.starship.enable = true;
