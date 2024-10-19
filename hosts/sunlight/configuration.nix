@@ -81,6 +81,7 @@ in
   # services.xserver.libinput.enable = true;
 
   musnix.enable = true;
+  users.users.miniluz.extraGroups = [ "audio" ];
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
