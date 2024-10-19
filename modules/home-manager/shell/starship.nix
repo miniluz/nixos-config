@@ -8,32 +8,28 @@ in
   config = lib.mkIf cfg.enable {
     programs.starship.enable = true;
     programs.starship.settings = {
-      format = "$character[$directory](cyan bold)$git_branch$git_status ";
-      add_newline = false;
-      username = {
-        "format" = "$user";
-        "show_always" = true;
-      };
+      format = "$directory$nix_shell$git_branch$git_status\n$character";
+      # add_newline = false;
       directory = {
-        format = "  $path";
-        truncation_length = 1;
+        style = "bold blue";
+        read_only_style = "bold blue";
+        fish_style_pwd_dir_length = 1;
+        truncation_length = 5;
       };
       git_branch = {
-        symbol = " ";
-        format = " [$symbol git:\\(](blue bold)[$branch](red bold)[\\)](blue bold)";
+        format = "[$branch](dimmed bold white) ";
       };
       git_status = {
-        format = "[$all_status$ahead_behind](red bold)";
+        stashed = "";
+        format = "[$ahead_behind](dimmed bold white) ";
       };
-      time = {
-        disabled = false;
-        time_format = "%R";
-        format = "$time";
+      nix_shell = {
+        format = "[❄️](bold blue) ";
       };
       character = {
-        format = "$symbol ";
-        success_symbol = "[](red)[](bright-green)[](yellow)";
-        error_symbol = "[](red)";
+        format = "$symbol";
+        success_symbol = "[](bold purple) ";
+        error_symbol = "[](bold red) ";
       };
     };
 
