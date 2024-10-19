@@ -6,8 +6,11 @@ in
   imports = [
     "${homeManagerModules}/git.nix"
     "${homeManagerModules}/firacode.nix"
+
     # "${homeManagerModules}/vscode/vscode-server.nix"
     "${homeManagerModules}/vscode/vscode.nix"
+
+    "${homeManagerModules}/helix/helix.nix"
 
     "${homeManagerModules}/vesktop.nix"
 
@@ -58,6 +61,8 @@ in
     rust = true;
     vim = true;
   };
+
+  miniluz.helix.enable = true;
 
   miniluz.vesktop.enable = true;
 

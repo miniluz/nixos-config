@@ -10,8 +10,12 @@ in
     "${homeManagerModules}/firefox.nix"
     "${homeManagerModules}/libreoffice.nix"
     "${homeManagerModules}/obsidian.nix"
+
     # "${homeManagerModules}/vscode-server.nix"
     "${homeManagerModules}/vscode/vscode.nix"
+
+    "${homeManagerModules}/helix/helix.nix"
+
     "${homeManagerModules}/vesktop.nix"
 
     "${homeManagerModules}/gnome/gnome.nix"
@@ -72,6 +76,8 @@ in
     rust = true;
     vim = true;
   };
+
+  miniluz.helix.enable = true;
 
   miniluz.vesktop.enable = true;
 
