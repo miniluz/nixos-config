@@ -36,5 +36,11 @@ in
         error_symbol = "[](red)";
       };
     };
+
+    programs.zsh.oh-my-zsh =
+      if config.miniluz.starship.enable then {
+        enable = true;
+        plugins = [ "starship" ];
+      } else { };
   };
 }

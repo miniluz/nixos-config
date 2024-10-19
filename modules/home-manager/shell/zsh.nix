@@ -17,7 +17,7 @@ let
 in
 {
   options.miniluz.zsh = {
-    enable = lib.mkEnableOption "Enable miniluz's zsh with Starship.";
+    enable = lib.mkEnableOption "Enable miniluz's zsh.";
   };
 
   config = lib.mkIf cfg.enable {
@@ -26,8 +26,6 @@ in
     programs.zsh.enableCompletion = true;
     programs.zsh.oh-my-zsh = {
       enable = true;
-      # TODO: fix me!
-      plugins = if config.miniluz.starship.enable then [ "starship" ] else [];
     };
   };
 }
