@@ -24,6 +24,11 @@
       url = github:nix-community/NUR;
     };
 
+    programsdb = {
+      url = "github:wamserma/flake-programs-sqlite";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs = { self, nixpkgs, nur, ... }@inputs: {

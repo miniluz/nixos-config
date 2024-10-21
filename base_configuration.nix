@@ -1,5 +1,5 @@
 # Configuration common to all computers
-{ pkgs, lib, ... }:
+{ inputs, pkgs, lib, ... }:
 let
   mkDefault = lib.mkDefault;
 in
@@ -36,17 +36,16 @@ in
     isNormalUser = true;
     description = "miniluz";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
-    shell = pkgs.zsh;
     packages = with pkgs; [
     ];
   };
-
-  programs.zsh.enable = true;
 
   environment.systemPackages = [
     pkgs.file
     pkgs.nixpkgs-fmt
   ];
+
+  programs.command-not-found.dbPath = inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = lib.mkDefault true;

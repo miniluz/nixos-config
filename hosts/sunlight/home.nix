@@ -22,15 +22,10 @@ in
 
     "${homeManagerModules}/music/music.nix"
 
-    "${homeManagerModules}/shell/btop.nix"
-    "${homeManagerModules}/shell/eza.nix"
-    "${homeManagerModules}/shell/fzf.nix"
+    "${homeManagerModules}/shell/utils/shell-utils.nix"
     "${homeManagerModules}/shell/gitui.nix"
     "${homeManagerModules}/shell/kitty.nix"
-    "${homeManagerModules}/shell/starship.nix"
-    "${homeManagerModules}/shell/tldr.nix"
-    "${homeManagerModules}/shell/zoxide.nix"
-    "${homeManagerModules}/shell/zsh.nix"
+    "${homeManagerModules}/shell/fish.nix"
     /*
       TODO:
       * tdrop
@@ -57,15 +52,11 @@ in
 
   miniluz.music.enable = true;
 
-  miniluz.btop.enable = true;
-  miniluz.eza.enable = true;
-  miniluz.fzf.enable = true;
+  miniluz.fish.enable = true;
+  miniluz.shell-utils.enable = true;
+
   miniluz.gitui.enable = true;
   miniluz.kitty.enable = true;
-  miniluz.starship.enable = true;
-  miniluz.tldr.enable = true;
-  miniluz.zoxide.enable = true;
-  miniluz.zsh.enable = true;
 
   miniluz.vscode = {
     enable = true;
