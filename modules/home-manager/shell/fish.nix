@@ -11,8 +11,22 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    # Get with tide configure
+    home.activation.configure-tide = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      ${pkgs.fish}/bin/fish -c "tide configure --auto --style=Lean --prompt_colors='True color' --show_time=No --lean_prompt_height='Two lines' --prompt_connection=Disconnected --prompt_spacing=Sparse --icons='Few icons' --transient=Yes"
+    '';
+
     programs.fish = {
       enable = true;
+      interactiveShellInit = ''
+        set fish_greeting # Disable greeting
+      '';
+      plugins = [
+        { name = "tide"; src = pkgs.fishPlugins.tide.src; }
+        { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
+        { name = "autopair"; src = pkgs.fishPlugins.autopair.src; }
+        { name = "puffer"; src = pkgs.fishPlugins.puffer.src; }
+      ];
     };
 
     programs.bash = {
