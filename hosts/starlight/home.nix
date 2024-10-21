@@ -23,13 +23,6 @@ in
     /*
       TODO:
       * tdrop
-      * du-dust
-      * bat
-      * ripgrep
-      * fzf
-      * zellij
-      * eclipse
-      * virt-manager
     */
   ];
 

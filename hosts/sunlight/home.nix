@@ -29,15 +29,6 @@ in
     /*
       TODO:
       * tdrop
-      * du-dust
-      * bat
-      * ripgrep
-      * fzf
-      * zellij
-      * eclipse
-      * lutris
-      * steam
-      * virt-manager
     */
   ];
 

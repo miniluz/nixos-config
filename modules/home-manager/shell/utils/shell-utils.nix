@@ -19,5 +19,13 @@ in
     miniluz.eza.enable = lib.mkDefault true;
     miniluz.tldr.enable = lib.mkDefault true;
     miniluz.zoxide.enable = lib.mkDefault true;
+
+    programs.bat.enable = lib.mkDefault true;
+    programs.zellij.enable = lib.mkDefault true;
+
+    home.packages = with pkgs; [
+      dust
+      ripgrep
+    ];
   };
 }

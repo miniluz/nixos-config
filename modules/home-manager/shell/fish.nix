@@ -4,6 +4,17 @@
 { pkgs, lib, config, ... }:
 let
   cfg = config.miniluz.fish;
+  # Source: https://github.com/catppuccin/fzf, https://vitormv.github.io/fzf-themes/
+  fzf-config = ''
+    set FZF_DEFAULT_OPTS '
+    --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8
+    --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
+    --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8
+    --color=selected-bg:#45475a
+    --multi
+    --border="rounded" --border-label="" --preview-window="border-rounded" --prompt="> "
+    --marker=">" --pointer="◆" --separator="─" --scrollbar="│"'
+  '';
 in
 {
   options.miniluz.fish = {
@@ -11,16 +22,15 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # Get with tide configure
-    home.activation.configure-tide = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      ${pkgs.fish}/bin/fish -c "tide configure --auto --style=Lean --prompt_colors='True color' --show_time=No --lean_prompt_height='Two lines' --prompt_connection=Disconnected --prompt_spacing=Sparse --icons='Few icons' --transient=Yes"
-    '';
+
 
     programs.fish = {
       enable = true;
+
       interactiveShellInit = ''
         set fish_greeting # Disable greeting
-      '';
+      '' + fzf-config;
+
       plugins = [
         { name = "tide"; src = pkgs.fishPlugins.tide.src; }
         { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
@@ -40,6 +50,16 @@ in
       '';
     };
 
+    # Get with tide configure
+    home.activation.configure-tide = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      ${pkgs.fish}/bin/fish -c "tide configure --auto --style=Lean --prompt_colors='True color' --show_time=No --lean_prompt_height='Two lines' --prompt_connection=Disconnected --prompt_spacing=Sparse --icons='Few icons' --transient=Yes"
+    '';
+
     programs.command-not-found.enable = true;
+
+    programs.fzf.enable = true;
+    programs.fd.enable = true;
+    programs.bat.enable = true;
+
   };
 }
