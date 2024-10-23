@@ -14,7 +14,7 @@ in
 
   config = lib.mkIf cfg.enable {
     miniluz.reaper.enable = true;
-    miniluz.helm.enable = true;
+    # miniluz.helm.enable = true;
     miniluz.yabridge.enable = true;
   };
 }
