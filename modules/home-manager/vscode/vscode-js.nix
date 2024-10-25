@@ -10,6 +10,8 @@ in
     programs.vscode.extensions = with nix-vscode-extensions.vscode-marketplace; [
       dbaeumer.vscode-eslint
       esbenp.prettier-vscode
+      bradlc.vscode-tailwindcss
+      stivo.tailwind-fold
     ];
 
     programs.vscode.userSettings =
