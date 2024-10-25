@@ -6,8 +6,8 @@ let
     name = "gitui";
     owner = "catppuccin";
     repo = "gitui";
-    rev = "39978362b2c88b636cacd55b65d2f05c45a47eb9";
-    hash = "sha256-kWaHQ1+uoasT8zXxOxkur+QgZu1wLsOOrP/TL+6cfII=";
+    rev = "c7661f043cb6773a1fc96c336738c6399de3e617";
+    hash = "sha256-CRxpEDShQcCEYtSXwLV5zFB8u0HVcudNcMruPyrnSEk=";
   };
   cfg = config.miniluz.gitui;
 in
@@ -23,8 +23,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.gitui.enable = true;
-
-    xdg.configFile."gitui/theme.ron".source = lib.mkForce "${catpuccin-gitui}/theme/${cfg.theme}.ron";
+    programs.gitui = {
+      enable = true;
+      theme = lib.readFile "${catpuccin-gitui}/themes/catppuccin-${cfg.theme}.ron";
+    };
   };
 }
