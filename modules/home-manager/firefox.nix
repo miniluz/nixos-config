@@ -24,15 +24,9 @@ in
           "extensions.pocket.enabled" = false;
 
           "browser.toolbars.bookmarks.visibility" = "never";
-          "browser.warnOnQuit" = true; # ask for confirmation when closing a window
-          "browser.tabs.warnOnClose" = true; # ask for confirmation when closing a window with multiple tabs
           "browser.tabs.closeWindowWithLastTab" = false; # don't close the window when closing the last tab
 
           "signon.rememberSignons" = false;
-          "sidebar.main.tools" = "";
-          "sidebar.position_start" = true;
-          "sidebar.revamp" = true;
-          "sidebar.verticalTabs" = true;
 
           # ArcWTF
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
