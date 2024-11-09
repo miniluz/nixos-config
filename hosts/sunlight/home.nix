@@ -34,7 +34,7 @@ in
 
   miniluz.git.enable = true;
 
-  miniluz.blender.enable = true;
+  miniluz.blender.enable = false;
   miniluz.firacode.enable = true;
   miniluz.firefox.enable = true;
 
