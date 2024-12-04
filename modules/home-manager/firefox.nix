@@ -5,9 +5,8 @@ let
   arcwtf = pkgs.fetchFromGitHub {
     owner = "KiKaraage";
     repo = "ArcWTF";
-    # rev = "v1.2-firefox"; # This tag can't be used, since the URL bar has still issues
-    rev = "bb6f2b7ef7e3d201e23d86bf8636e5d0ea4bd68b";
-    hash = "sha256-gyJiIVnyZOYVX6G3m4SSbsb7K9g4zKZWlrHphEIQwsY=";
+    rev = "73ccc7bd3c8dd130d67746c413ca5cf6a57a9f72";
+    hash = "sha256-JzZs0qFaFYaY24o5incgl8u4DGkKASan+b55N+9Jwag=";
   };
 in
 {
@@ -33,6 +32,7 @@ in
           "svg.context-properties.content.enabled" = true;
           "uc.tweak.popup-search" = true;
           "uc.tweak.hide-sidebar-header" = true;
+          "uc.tweak.longer-sidebar" = true;
         };
 
         extensions = with osConfig.nur.repos.rycee.firefox-addons; [

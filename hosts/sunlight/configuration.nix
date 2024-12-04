@@ -19,6 +19,7 @@ in
       "${nixosModules}/amdgpu.nix"
       "${nixosModules}/podman.nix"
       "${nixosModules}/steam.nix"
+      "${nixosModules}/s3fs.nix"
     ];
 
   miniluz.gnome.enable = true;
@@ -27,6 +28,8 @@ in
 
   miniluz.podman.enable = true;
   miniluz.steam.enable = true;
+
+  miniluz.s3fs.enable = true;
 
   environment.systemPackages = with pkgs; [
     neovim
