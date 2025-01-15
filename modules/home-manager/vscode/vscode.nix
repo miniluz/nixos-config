@@ -10,6 +10,7 @@ in
     ./vscode-firacode.nix
     ./vscode-java.nix
     ./vscode-js.nix
+    ./vscode-python.nix
     ./vscode-rust.nix
     ./vscode-vim.nix
   ];

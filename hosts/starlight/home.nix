@@ -42,6 +42,7 @@ in
     firacode = true;
     java = true;
     js = true;
+    python = true;
     rust = true;
     vim = true;
   };
