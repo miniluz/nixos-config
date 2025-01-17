@@ -7,7 +7,7 @@ in
   options.miniluz.vscode.python = lib.mkEnableOption "Enable Python support.";
 
   config = lib.mkIf cfg.python {
-    programs.vscode.extensions = with nix-vscode-extensions.vscode-marketplace; [
+    programs.vscode.extensions = with (nix-vscode-extensions.forVSCodeVersion "1.96.2").vscode-marketplace; [
       ms-python.python
       ms-python.debugpy
 

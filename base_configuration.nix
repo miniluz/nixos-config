@@ -47,6 +47,8 @@ in
 
   programs.command-not-found.dbPath = inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
 
+  programs.ssh.startAgent = lib.mkDefault true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = lib.mkDefault true;
 }
