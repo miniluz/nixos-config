@@ -16,7 +16,7 @@ in
       geary # email reader
       evince # document viewer
       totem # video player
-      gnome-photos
+      # gnome-photos
       gnome-tour
       gedit # text editor
       gnome-music
