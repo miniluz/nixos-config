@@ -1,4 +1,4 @@
-{ config, pkgs, lib, osConfig, ... }:
+{ config, pkgs, lib, ... }:
 let
   cfg = config.miniluz.firefox;
   profile = "miniluz";
@@ -35,7 +35,7 @@ in
           "uc.tweak.longer-sidebar" = true;
         };
 
-        extensions = with osConfig.nur.repos.rycee.firefox-addons; [
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
           bitwarden
           search-by-image
