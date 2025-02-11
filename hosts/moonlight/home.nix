@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   homeManagerModules = "${inputs.self}/modules/home-manager";
 in
@@ -8,7 +13,7 @@ in
     "${homeManagerModules}/firacode.nix"
     # "${homeManagerModules}/vscode/vscode-server.nix"
     "${homeManagerModules}/vscode/vscode.nix"
-    "${homeManagerModules}/vesktop.nix"
+    "${homeManagerModules}/discord.nix"
 
     "${homeManagerModules}/gnome/gnome.nix"
 
@@ -42,7 +47,7 @@ in
     vim = true;
   };
 
-  miniluz.vesktop.enable = true;
+  miniluz.discord.enable = true;
 
   miniluz.gnome.enable = true;
   miniluz.gnome.catppuccin.enable = true;
@@ -50,7 +55,6 @@ in
   miniluz.gnome.background.path = "persona_3_blue_down.png";
 
   programs.firefox.enable = true;
-
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.

@@ -42,7 +42,7 @@ in
 
   environment.systemPackages = [
     pkgs.file
-    pkgs.nixpkgs-fmt
+    pkgs.nixfmt-rfc-style
   ];
 
   programs.command-not-found.dbPath = inputs.programsdb.packages.${pkgs.system}.programs-sqlite;

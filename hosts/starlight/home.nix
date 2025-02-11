@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   homeManagerModules = "${inputs.self}/modules/home-manager";
 in
@@ -12,7 +17,7 @@ in
 
     "${homeManagerModules}/helix/helix.nix"
 
-    "${homeManagerModules}/vesktop.nix"
+    "${homeManagerModules}/discord.nix"
 
     "${homeManagerModules}/gnome/gnome.nix"
 
@@ -49,7 +54,7 @@ in
 
   miniluz.helix.enable = true;
 
-  miniluz.vesktop.enable = true;
+  miniluz.discord.enable = true;
 
   miniluz.gnome.enable = true;
   miniluz.gnome.catppuccin.enable = true;
