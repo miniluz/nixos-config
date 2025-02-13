@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.miniluz.gnome;
 in
@@ -10,21 +15,24 @@ in
     services.xserver.displayManager.gdm.enable = true;
     services.xserver.desktopManager.gnome.enable = true;
 
-    environment.gnome.excludePackages = (with pkgs; [
-      cheese # webcam tool
-      epiphany # web browser
-      geary # email reader
-      evince # document viewer
-      totem # video player
-      # gnome-photos
-      gnome-tour
-      gedit # text editor
-      gnome-music
-      gnome-characters
-      tali # poker game
-      iagno # go game
-      hitori # sudoku game
-      atomix # puzzle game
-    ]);
+    environment.gnome.excludePackages = (
+      with pkgs;
+      [
+        cheese # webcam tool
+        epiphany # web browser
+        geary # email reader
+        evince # document viewer
+        totem # video player
+        # gnome-photos
+        gnome-tour
+        gedit # text editor
+        gnome-music
+        gnome-characters
+        tali # poker game
+        iagno # go game
+        hitori # sudoku game
+        atomix # puzzle game
+      ]
+    );
   };
 }

@@ -1,11 +1,19 @@
 # Configuration common to all computers
-{ inputs, pkgs, lib, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 let
   mkDefault = lib.mkDefault;
 in
 {
   # Enable flakes
-  nix.settings.experimental-features = mkDefault [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = mkDefault [
+    "nix-command"
+    "flakes"
+  ];
 
   # Set timezone
   time.timeZone = mkDefault "Europe/Madrid";
@@ -35,7 +43,11 @@ in
   users.users.miniluz = {
     isNormalUser = true;
     description = "miniluz";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "libvirtd"
+    ];
     packages = with pkgs; [
     ];
   };

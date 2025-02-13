@@ -1,6 +1,11 @@
 # shamelessly stolen from
 # https://github.com/NixOS/nixpkgs/blob/0ef7eac2171048c8a4853a195cc1f9123b4906d6/pkgs/data/themes/catppuccin/default.nix
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   catpuccin-gitui = pkgs.fetchFromGitHub {
     name = "gitui";
@@ -15,7 +20,12 @@ in
   options.miniluz.gitui = {
     enable = lib.mkEnableOption "Enable miniluz's gitui.";
     theme = lib.mkOption {
-      type = lib.types.enum [ "frappe" "latte" "macchiato" "mocha" ];
+      type = lib.types.enum [
+        "frappe"
+        "latte"
+        "macchiato"
+        "mocha"
+      ];
       default = "mocha";
       example = "frappe";
       description = "Which of the Catppuccin themes to use";

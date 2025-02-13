@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.miniluz.discord;
 in
@@ -12,5 +17,5 @@ in
         withVencord = true;
       })
     ];
- };
+  };
 }

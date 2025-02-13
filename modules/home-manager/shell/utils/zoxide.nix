@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.miniluz.zoxide;
 in
@@ -10,8 +15,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.zoxide = {
       enable = true;
-    }
-    // (if config.miniluz.fish.enable then { enableFishIntegration = true; } else { });
+    } // (if config.miniluz.fish.enable then { enableFishIntegration = true; } else { });
 
     programs.zsh.envExtra = ''alias cd="z"'';
 

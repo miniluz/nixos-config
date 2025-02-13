@@ -1,7 +1,12 @@
 # Don't forget to add
 # environment.pathsToLink = [ "/share/zsh" ];
 # to the system configuration.
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   cfg = config.miniluz.fish;
   # Source: https://github.com/catppuccin/fzf, https://vitormv.github.io/fzf-themes/
@@ -23,19 +28,32 @@ in
 
   config = lib.mkIf cfg.enable {
 
-
     programs.fish = {
       enable = true;
 
-      interactiveShellInit = ''
-        set fish_greeting # Disable greeting
-      '' + fzf-config;
+      interactiveShellInit =
+        ''
+          set fish_greeting # Disable greeting
+        ''
+        + fzf-config;
 
       plugins = [
-        { name = "tide"; src = pkgs.fishPlugins.tide.src; }
-        { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
-        { name = "autopair"; src = pkgs.fishPlugins.autopair.src; }
-        { name = "puffer"; src = pkgs.fishPlugins.puffer.src; }
+        {
+          name = "tide";
+          src = pkgs.fishPlugins.tide.src;
+        }
+        {
+          name = "fzf-fish";
+          src = pkgs.fishPlugins.fzf-fish.src;
+        }
+        {
+          name = "autopair";
+          src = pkgs.fishPlugins.autopair.src;
+        }
+        {
+          name = "puffer";
+          src = pkgs.fishPlugins.puffer.src;
+        }
       ];
     };
 

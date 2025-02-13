@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.miniluz.obs-studio;
 in
@@ -11,7 +16,7 @@ in
       obs-studio
     ];
 
-    # Sources: 
+    # Sources:
     # * <https://nixos.wiki/wiki/PipeWire#Advanced_Configuration>
     # * <https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/Virtual-devices#virtual-devices>
     services.pipewire.extraConfig.pipewire."91-null-sinks" = {

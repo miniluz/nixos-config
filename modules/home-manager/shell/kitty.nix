@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   cfg = config.miniluz.kitty;
   catppuccin-kitty = pkgs.fetchFromGitHub {
@@ -12,7 +17,12 @@ in
 {
   options.miniluz.kitty.enable = lib.mkEnableOption "Enable Kitty.";
   options.miniluz.kitty.theme = lib.mkOption {
-    type = lib.types.enum [ "frappe" "latte" "macchiato" "mocha" ];
+    type = lib.types.enum [
+      "frappe"
+      "latte"
+      "macchiato"
+      "mocha"
+    ];
     default = "mocha";
     example = "frappe";
     description = "Which of the Catppuccin themes to use";
@@ -28,6 +38,7 @@ in
       map ctrl+shift+b previous_window
     '';
 
-    xdg.configFile."kitty/theme.conf".source = lib.mkForce "${catppuccin-kitty}/themes/${cfg.theme}.conf";
+    xdg.configFile."kitty/theme.conf".source =
+      lib.mkForce "${catppuccin-kitty}/themes/${cfg.theme}.conf";
   };
 }

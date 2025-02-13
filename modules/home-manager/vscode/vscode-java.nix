@@ -1,4 +1,10 @@
-{ pkgs, inputs, config, lib, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  lib,
+  ...
+}:
 let
   cfg = config.miniluz.vscode;
   nix-vscode-extensions = inputs.nix-vscode-extensions.extensions."x86_64-linux";
@@ -17,7 +23,6 @@ in
       vscjava.vscode-java-dependency
       redhat.java
     ];
-
 
     programs.vscode.userSettings = {
       "java.jdt.ls.java.home" = "${pkgs.jdk17}";

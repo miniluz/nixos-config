@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   catpuccin-btop = pkgs.fetchFromGitHub {
     name = "btop";
@@ -13,7 +18,12 @@ in
   options.miniluz.btop = {
     enable = lib.mkEnableOption "Enable miniluz's btop.";
     theme = lib.mkOption {
-      type = lib.types.enum [ "frappe" "latte" "macchiato" "mocha" ];
+      type = lib.types.enum [
+        "frappe"
+        "latte"
+        "macchiato"
+        "mocha"
+      ];
       default = "mocha";
       example = "frappe";
       description = "Which of the Catppuccin themes to use";
@@ -28,6 +38,7 @@ in
       programs.btop.enable = true;
       programs.btop.settings.color_theme = theme;
 
-      xdg.configFile."btop/theme/${theme}.theme".source = lib.mkForce "${catpuccin-btop}/theme/${theme}.theme";
+      xdg.configFile."btop/theme/${theme}.theme".source =
+        lib.mkForce "${catpuccin-btop}/theme/${theme}.theme";
     };
 }

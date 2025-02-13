@@ -1,4 +1,10 @@
-{ pkgs, inputs, config, lib, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  lib,
+  ...
+}:
 let
   cfg = config.miniluz.vscode;
   nix-vscode-extensions = inputs.nix-vscode-extensions.extensions."x86_64-linux";
@@ -12,7 +18,6 @@ in
       rust-lang.rust-analyzer
       vadimcn.vscode-lldb
     ];
-
 
     programs.vscode.userSettings = {
       "todo-tree.regex.regex" = "(//|#|<!--|;|/\\*|^|^[ \\t]*(-|\\d+.))\\s*($TAGS)|todo!";

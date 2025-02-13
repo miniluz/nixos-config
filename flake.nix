@@ -21,7 +21,7 @@
     };
 
     nur = {
-      url = github:nix-community/NUR;
+      url = "github:nix-community/NUR";
     };
 
     programsdb = {
@@ -31,31 +31,38 @@
 
   };
 
-  outputs = { self, nixpkgs, nur, ... }@inputs: {
-    nixosConfigurations = {
-      moonlight = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          nur.modules.nixos.default
-          ./hosts/moonlight/configuration.nix
-        ];
-      };
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nur,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations = {
+        moonlight = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            nur.modules.nixos.default
+            ./hosts/moonlight/configuration.nix
+          ];
+        };
 
-      sunlight = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          nur.modules.nixos.default
-          ./hosts/sunlight/configuration.nix
-        ];
-      };
+        sunlight = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            nur.modules.nixos.default
+            ./hosts/sunlight/configuration.nix
+          ];
+        };
 
-      starlight = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          nur.modules.nixos.default
-          ./hosts/starlight/configuration.nix
-        ];
+        starlight = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            nur.modules.nixos.default
+            ./hosts/starlight/configuration.nix
+          ];
+        };
       };
     };
-  };
 }

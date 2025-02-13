@@ -1,4 +1,10 @@
-{ pkgs, inputs, config, lib, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  lib,
+  ...
+}:
 let
   cfg = config.miniluz.vscode;
   nix-vscode-extensions = inputs.nix-vscode-extensions.extensions."x86_64-linux";
@@ -12,7 +18,6 @@ in
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons
     ];
-
 
     programs.vscode.userSettings = {
       "workbench.colorTheme" = "Catppuccin Mocha";

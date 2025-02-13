@@ -2,21 +2,25 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   nixosModules = "${inputs.self}/modules/nixos";
 in
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      "${inputs.self}/base_configuration.nix"
-      inputs.home-manager.nixosModules.default
-      "${nixosModules}/gnome.nix"
-      "${nixosModules}/podman.nix"
-      "${nixosModules}/virt.nix"
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    "${inputs.self}/base_configuration.nix"
+    inputs.home-manager.nixosModules.default
+    "${nixosModules}/gnome.nix"
+    "${nixosModules}/podman.nix"
+    "${nixosModules}/virt.nix"
+  ];
 
   miniluz.gnome.enable = true;
   miniluz.podman.enable = true;
@@ -30,7 +34,6 @@ in
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
 
   networking.hostName = "starlight"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -74,7 +77,6 @@ in
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

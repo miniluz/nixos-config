@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
   backgrounds-git = pkgs.fetchFromGitHub {
     name = "miniluz-backgrounds";
@@ -20,8 +25,11 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    dconf.settings."org/gnome/desktop/background".picture-uri = lib.mkForce "file://${backgrounds-git}/${cfg.path}";
-    dconf.settings."org/gnome/desktop/background".picture-uri-dark = lib.mkForce "file://${backgrounds-git}/${cfg.path}";
-    dconf.settings."org/gnome/desktop/screensaver".picture-uri = lib.mkForce "file://${backgrounds-git}/${cfg.path}";
+    dconf.settings."org/gnome/desktop/background".picture-uri =
+      lib.mkForce "file://${backgrounds-git}/${cfg.path}";
+    dconf.settings."org/gnome/desktop/background".picture-uri-dark =
+      lib.mkForce "file://${backgrounds-git}/${cfg.path}";
+    dconf.settings."org/gnome/desktop/screensaver".picture-uri =
+      lib.mkForce "file://${backgrounds-git}/${cfg.path}";
   };
 }

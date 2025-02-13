@@ -1,4 +1,10 @@
-{ pkgs, inputs, config, lib, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  lib,
+  ...
+}:
 let
   cfg = config.miniluz.vscode;
   nix-vscode-extensions = inputs.nix-vscode-extensions.extensions."x86_64-linux";

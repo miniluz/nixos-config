@@ -1,4 +1,10 @@
-{ pkgs, inputs, config, lib, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  lib,
+  ...
+}:
 let
   cfg = config.miniluz.vscode;
   nix-vscode-extensions = inputs.nix-vscode-extensions.extensions."x86_64-linux";
@@ -11,7 +17,6 @@ in
     programs.vscode.extensions = with nix-vscode-extensions.vscode-marketplace; [
       vscodevim.vim
     ];
-
 
     programs.vscode.userSettings = {
       "vim.useCtrlKeys" = false;
