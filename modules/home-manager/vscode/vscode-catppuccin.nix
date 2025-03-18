@@ -24,6 +24,13 @@ in
       "workbench.iconTheme" = "catppuccin-mocha";
       "catppuccin.italicComments" = false;
       "catppuccin.italicKeywords" = false;
+      "catppuccin-icons.associations.extensions" = {
+        "module.ts" = "nest";
+        "entity.ts" = "nest-middleware";
+        "provider.ts" = "nest-middleware";
+        "controller.ts" = "nest-controller";
+        "service.ts" = "nest-service";
+      };
     };
   };
 }
