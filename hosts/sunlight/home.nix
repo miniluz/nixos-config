@@ -25,8 +25,6 @@ in
 
     "${homeManagerModules}/gnome/gnome.nix"
 
-    "${homeManagerModules}/music/music.nix"
-
     "${homeManagerModules}/shell/utils/shell-utils.nix"
     "${homeManagerModules}/shell/gitui.nix"
     "${homeManagerModules}/shell/kitty.nix"
@@ -45,8 +43,6 @@ in
 
   miniluz.libreoffice.enable = true;
   miniluz.obsidian.enable = true;
-
-  miniluz.music.enable = true;
 
   miniluz.fish.enable = true;
   miniluz.shell-utils.enable = true;

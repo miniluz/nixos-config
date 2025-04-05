@@ -7,14 +7,13 @@
 }:
 let
   cfg = config.miniluz.vscode;
-  nix-vscode-extensions = inputs.nix-vscode-extensions.extensions."x86_64-linux";
 in
 {
   options.miniluz.vscode.vim = lib.mkEnableOption "Enable Vim emulation.";
 
   config = lib.mkIf cfg.vim {
 
-    programs.vscode.extensions = with nix-vscode-extensions.vscode-marketplace; [
+    programs.vscode.extensions = with pkgs.vscode-marketplace; [
       vscodevim.vim
     ];
 

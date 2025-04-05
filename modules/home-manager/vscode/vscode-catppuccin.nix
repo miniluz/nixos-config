@@ -7,14 +7,13 @@
 }:
 let
   cfg = config.miniluz.vscode;
-  nix-vscode-extensions = inputs.nix-vscode-extensions.extensions."x86_64-linux";
 in
 {
   options.miniluz.vscode.catppuccin = lib.mkEnableOption "Enable Catppuccin theme.";
 
   config = lib.mkIf cfg.catppuccin {
 
-    programs.vscode.extensions = with nix-vscode-extensions.vscode-marketplace; [
+    programs.vscode.extensions = with pkgs.vscode-marketplace; [
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons
     ];

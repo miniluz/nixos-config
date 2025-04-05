@@ -7,14 +7,13 @@
 }:
 let
   cfg = config.miniluz.vscode;
-  nix-vscode-extensions = inputs.nix-vscode-extensions.extensions."x86_64-linux";
 in
 {
   options.miniluz.vscode.java = lib.mkEnableOption "Enable Java support.";
 
   config = lib.mkIf cfg.java {
 
-    programs.vscode.extensions = with nix-vscode-extensions.vscode-marketplace; [
+    programs.vscode.extensions = with pkgs.vscode-marketplace; [
       vscjava.vscode-java-pack
       visualstudioexptteam.vscodeintellicode
       vscjava.vscode-java-debug

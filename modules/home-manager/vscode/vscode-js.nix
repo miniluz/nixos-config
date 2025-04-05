@@ -7,13 +7,12 @@
 }:
 let
   cfg = config.miniluz.vscode;
-  nix-vscode-extensions = inputs.nix-vscode-extensions.extensions."x86_64-linux";
 in
 {
   options.miniluz.vscode.js = lib.mkEnableOption "Enable JS support.";
 
   config = lib.mkIf cfg.js {
-    programs.vscode.extensions = with nix-vscode-extensions.vscode-marketplace; [
+    programs.vscode.extensions = with pkgs.vscode-marketplace; [
       dbaeumer.vscode-eslint
       esbenp.prettier-vscode
       bradlc.vscode-tailwindcss

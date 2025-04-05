@@ -59,8 +59,11 @@ in
 
   programs.command-not-found.dbPath = inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
 
-  programs.ssh.startAgent = lib.mkDefault true;
+  programs.ssh.startAgent = mkDefault true;
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = lib.mkDefault true;
+  nixpkgs.config.allowUnfree = mkDefault true;
+  nixpkgs.overlays = [
+    inputs.nix-vscode-extensions.overlays.default
+  ];
 }

@@ -22,7 +22,7 @@ in
       enable = true;
       profiles.${profile} = {
         name = profile;
-        search.default = "DuckDuckGo";
+        search.default = "ddg";
 
         settings = {
           "extensions.pocket.enabled" = false;
@@ -40,7 +40,7 @@ in
           "uc.tweak.longer-sidebar" = true;
         };
 
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
           bitwarden
           search-by-image

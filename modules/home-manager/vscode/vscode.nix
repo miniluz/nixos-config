@@ -7,7 +7,6 @@
 }:
 let
   cfg = config.miniluz.vscode;
-  nix-vscode-extensions = inputs.nix-vscode-extensions.extensions."x86_64-linux";
 in
 {
   imports = [
@@ -32,7 +31,7 @@ in
     programs.vscode.enableExtensionUpdateCheck = false;
     programs.vscode.mutableExtensionsDir = false;
 
-    programs.vscode.extensions = with nix-vscode-extensions.vscode-marketplace; [
+    programs.vscode.extensions = with pkgs.vscode-marketplace; [
       mkhl.direnv
       jnoortheen.nix-ide
 
@@ -40,7 +39,6 @@ in
       gruntfuggly.todo-tree
       vivaxy.vscode-conventional-commits
 
-      fill-labs.dependi
       redhat.vscode-yaml
       tamasfe.even-better-toml
 
