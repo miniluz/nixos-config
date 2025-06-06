@@ -55,7 +55,14 @@ in
   environment.systemPackages = [
     pkgs.file
     pkgs.nixfmt-rfc-style
+    pkgs.libnotify
+    pkgs.evil-helix
+    (import ./derivations/rebuild.nix { inherit pkgs; })
   ];
+
+  environment.variables = {
+    EDITOR = "hx";
+  };
 
   programs.command-not-found.dbPath = inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
 
@@ -66,4 +73,5 @@ in
   nixpkgs.overlays = [
     inputs.nix-vscode-extensions.overlays.default
   ];
+
 }
