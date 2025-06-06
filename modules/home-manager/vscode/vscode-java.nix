@@ -13,7 +13,7 @@ in
 
   config = lib.mkIf cfg.java {
 
-    programs.vscode.extensions = with pkgs.vscode-marketplace; [
+    programs.vscode.profiles.default.extensions = with pkgs.vscode-marketplace; [
       vscjava.vscode-java-pack
       visualstudioexptteam.vscodeintellicode
       vscjava.vscode-java-debug
@@ -23,7 +23,7 @@ in
       redhat.java
     ];
 
-    programs.vscode.userSettings = {
+    programs.vscode.profiles.default.userSettings = {
       "java.jdt.ls.java.home" = "${pkgs.jdk17}";
     };
   };

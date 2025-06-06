@@ -13,12 +13,17 @@ in
 
   config = lib.mkIf cfg.rust {
 
-    programs.vscode.extensions = with pkgs.vscode-marketplace; [
+    home.packages = with pkgs; [
+      pkgs.ffmpeg_7
+      lldb
+    ];
+
+    programs.vscode.profiles.default.extensions = with pkgs.vscode-marketplace; [
       rust-lang.rust-analyzer
       vadimcn.vscode-lldb
     ];
 
-    programs.vscode.userSettings = {
+    programs.vscode.profiles.default.userSettings = {
       "todo-tree.regex.regex" = "(//|#|<!--|;|/\\*|^|^[ \\t]*(-|\\d+.))\\s*($TAGS)|todo!";
     };
   };

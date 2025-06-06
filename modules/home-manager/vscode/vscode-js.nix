@@ -12,14 +12,14 @@ in
   options.miniluz.vscode.js = lib.mkEnableOption "Enable JS support.";
 
   config = lib.mkIf cfg.js {
-    programs.vscode.extensions = with pkgs.vscode-marketplace; [
+    programs.vscode.profiles.default.extensions = with pkgs.vscode-marketplace; [
       dbaeumer.vscode-eslint
       esbenp.prettier-vscode
       bradlc.vscode-tailwindcss
       stivo.tailwind-fold
     ];
 
-    programs.vscode.userSettings =
+    programs.vscode.profiles.default.userSettings =
       let
         prettier-default = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";

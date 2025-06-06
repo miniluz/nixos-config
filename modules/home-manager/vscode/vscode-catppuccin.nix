@@ -13,12 +13,12 @@ in
 
   config = lib.mkIf cfg.catppuccin {
 
-    programs.vscode.extensions = with pkgs.vscode-marketplace; [
+    programs.vscode.profiles.default.extensions = with pkgs.vscode-marketplace; [
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons
     ];
 
-    programs.vscode.userSettings = {
+    programs.vscode.profiles.default.userSettings = {
       "workbench.colorTheme" = "Catppuccin Mocha";
       "workbench.iconTheme" = "catppuccin-mocha";
       "catppuccin.italicComments" = false;

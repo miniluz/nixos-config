@@ -18,13 +18,11 @@ in
     "${inputs.self}/base_configuration.nix"
     inputs.home-manager.nixosModules.default
     "${nixosModules}/gnome.nix"
-    # "${nixosModules}/podman.nix"
-    # "${nixosModules}/virt.nix"
+    "${nixosModules}/steam.nix"
   ];
 
   miniluz.gnome.enable = true;
-  # miniluz.podman.enable = true;
-  # miniluz.virtualisation.enable = true;
+  miniluz.steam.enable = true;
 
   environment.systemPackages = with pkgs; [
     neovim
@@ -57,12 +55,15 @@ in
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+
+  musnix.enable = true;
+  users.users.miniluz.extraGroups = [ "audio" ];
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;

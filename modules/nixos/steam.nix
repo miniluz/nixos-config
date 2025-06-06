@@ -15,7 +15,6 @@ in
       protontricks
       mangohud
       gamemode
-      gnomeExtensions.gamemode-indicator-in-system-settings
     ];
 
     programs.steam = {
@@ -29,17 +28,5 @@ in
       gamescopeSession.enable = true;
     };
 
-    # environment.systemPackages = with pkgs; [
-    #   (steam.override {
-    #     extraPkgs = pkgs: [ mono gtk3 gtk3-x11 libgdiplus zlib ];
-    #     nativeOnly = true;
-    #   }).run
-    #   (steam.override {
-    #     withPrimus = true;
-    #     extraPkgs = pkgs: [ bumblebee glxinfo ];
-    #     nativeOnly = true;
-    #   }).run
-    #   (steam.override { withJava = true; })
-    # ];
   };
 }

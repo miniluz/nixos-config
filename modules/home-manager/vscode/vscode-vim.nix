@@ -13,11 +13,11 @@ in
 
   config = lib.mkIf cfg.vim {
 
-    programs.vscode.extensions = with pkgs.vscode-marketplace; [
+    programs.vscode.profiles.default.extensions = with pkgs.vscode-marketplace; [
       vscodevim.vim
     ];
 
-    programs.vscode.userSettings = {
+    programs.vscode.profiles.default.userSettings = {
       "vim.useCtrlKeys" = false;
       "vim.foldfix" = true;
       "vim.camelCaseMotion.enable" = true;

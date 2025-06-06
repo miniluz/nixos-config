@@ -27,11 +27,11 @@ in
 
     programs.vscode.enable = true;
 
-    programs.vscode.enableUpdateCheck = false;
-    programs.vscode.enableExtensionUpdateCheck = false;
+    programs.vscode.profiles.default.enableUpdateCheck = false;
+    programs.vscode.profiles.default.enableExtensionUpdateCheck = false;
     programs.vscode.mutableExtensionsDir = false;
 
-    programs.vscode.extensions = with pkgs.vscode-marketplace; [
+    programs.vscode.profiles.default.extensions = with pkgs.vscode-marketplace; [
       mkhl.direnv
       jnoortheen.nix-ide
 
@@ -47,7 +47,7 @@ in
       ms-vscode-remote.remote-ssh
     ];
 
-    programs.vscode.userSettings = {
+    programs.vscode.profiles.default.userSettings = {
       "git.autofetch" = "all";
       "git.allowNoVerifyCommit" = true;
       "conventionalCommits.promptScopes" = false;

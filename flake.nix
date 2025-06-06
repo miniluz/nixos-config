@@ -36,6 +36,7 @@
       self,
       nixpkgs,
       nur,
+      musnix,
       ...
     }@inputs:
     {
@@ -64,11 +65,12 @@
           ];
         };
 
-	"pc_casa" = nixpkgs.lib.nixosSystem {
+        pcCasa = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
+            musnix.nixosModules.musnix
             nur.modules.nixos.default
-            ./hosts/pc_casa/configuration.nix
+            ./hosts/pcCasa/configuration.nix
           ];
         };
       };

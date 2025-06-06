@@ -11,6 +11,7 @@ in
   imports = [
     "${homeManagerModules}/git.nix"
     "${homeManagerModules}/firacode.nix"
+    "${homeManagerModules}/music/music.nix"
 
     # "${homeManagerModules}/vscode/vscode-server.nix"
     "${homeManagerModules}/vscode/vscode.nix"
@@ -55,6 +56,8 @@ in
   miniluz.helix.enable = true;
 
   miniluz.discord.enable = true;
+
+  miniluz.music.enable = true;
 
   miniluz.gnome.enable = true;
   miniluz.gnome.catppuccin.enable = true;

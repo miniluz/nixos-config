@@ -16,7 +16,7 @@ in
   config = lib.mkIf cfg.firacode {
     miniluz.firacode.enable = true;
 
-    programs.vscode.userSettings = {
+    programs.vscode.profiles.default.userSettings = {
       "editor.fontFamily" = "FiraCode Nerd Font, 'Droid Sans Mono', 'monospace', monospace";
       "editor.fontLigatures" = true;
     };

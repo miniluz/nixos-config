@@ -12,7 +12,7 @@ in
   options.miniluz.vscode.python = lib.mkEnableOption "Enable Python support.";
 
   config = lib.mkIf cfg.python {
-    programs.vscode.extensions = with pkgs.vscode-marketplace; [
+    programs.vscode.profiles.default.extensions = with pkgs.vscode-marketplace; [
       ms-python.python
       ms-python.debugpy
 
