@@ -63,6 +63,14 @@
             ./hosts/starlight/configuration.nix
           ];
         };
+
+	"pc_casa" = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            nur.modules.nixos.default
+            ./hosts/pc_casa/configuration.nix
+          ];
+        };
       };
     };
 }
