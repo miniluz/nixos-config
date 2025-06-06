@@ -65,7 +65,7 @@
           ];
         };
 
-        pcCasa = nixpkgs.lib.nixosSystem {
+        pccasa = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
             musnix.nixosModules.musnix

@@ -57,11 +57,13 @@ in
     pkgs.nixfmt-rfc-style
     pkgs.libnotify
     pkgs.evil-helix
+    pkgs.nh
     (import ./derivations/rebuild.nix { inherit pkgs; })
   ];
 
   environment.variables = {
     EDITOR = "hx";
+    NH_FLAKE = "/home/miniluz/nixos-config";
   };
 
   programs.command-not-found.dbPath = inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
