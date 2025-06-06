@@ -14,7 +14,7 @@ in
     environment.systemPackages = with pkgs; [
       protontricks
       mangohud
-      gamemode
+
     ];
 
     programs.steam = {
@@ -27,6 +27,8 @@ in
       ];
       gamescopeSession.enable = true;
     };
+
+    programs.gamemode.enable = true;
 
   };
 }
