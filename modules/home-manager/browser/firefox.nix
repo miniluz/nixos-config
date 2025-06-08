@@ -50,6 +50,6 @@ in
       ".mozilla/firefox/${profile}/sidebery-data.json".source = ./sidebery-data.json;
     };
 
-    home.file.".mozilla/firefox/miniluz/search.json.mozlz4".force = true;
+    home.file.".mozilla/firefox/miniluz/search.json.mozlz4".force = lib.mkForce true;
   };
 }
