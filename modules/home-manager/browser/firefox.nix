@@ -37,6 +37,8 @@ in
             (extension "search_by_image" "{2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c}")
             (extension "youtube-shorts-block" "{34daeb50-c2d2-4f14-886a-7160b24d66a4}")
             (extension "sidebery" "{3c078156-979c-498b-8990-85f7987dd929}")
+            (extension "vimium-ff" "{d7742d87-e61d-4b78-b8a1-b469842139fa}")
+            (extension "catppuccin-web-file-icons" "{bbb880ce-43c9-47ae-b746-c3e0096c5b76}")
           ]
           // {
             "*".installation_mode = "blocked";
@@ -122,6 +124,9 @@ in
         };
 
         settings = {
+          # Autoload extensions
+          "extensions.autoDisableScopes" = 0;
+
           "extensions.pocket.enabled" = false;
 
           "browser.toolbars.bookmarks.visibility" = "never";
