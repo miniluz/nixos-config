@@ -9,6 +9,7 @@ let
 in
 {
   imports = [
+    "${homeManagerModules}/base_configuration.nix"
     "${homeManagerModules}/git.nix"
     "${homeManagerModules}/blender.nix"
     "${homeManagerModules}/firacode.nix"
