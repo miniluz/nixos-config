@@ -10,10 +10,10 @@
 set -e
 
 # Edit your config
-"${NIX_CONFIG_EDITOR:-${EDITOR:-vi}}" ~/nixos-config
+"${NIX_CONFIG_EDITOR:-${EDITOR:-vi}}" "$NH_FLAKE"
 
 # cd to your config dir
-pushd ~/nixos-config
+pushd "$NH_FLAKE"
 
 # Early return if no changes were detected (thanks @singiamtel!)
 if git diff --quiet; then
