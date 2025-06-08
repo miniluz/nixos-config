@@ -6,12 +6,12 @@
   ...
 }:
 let
-  cfg = config.miniluz.vscode.windsurf;
+  cfg = config.miniluz.vscode;
 in
 {
-  options.miniluz.vscode.windsurf.enable = lib.mkEnableOption "Enable Windsurf.";
+  options.miniluz.vscode.windsurf = lib.mkEnableOption "Enable Windsurf.";
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.windsurf {
     programs.vscode = {
       package = pkgs.windsurf;
 
