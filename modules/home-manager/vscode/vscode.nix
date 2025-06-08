@@ -66,7 +66,8 @@ in
     };
 
     home.sessionVariables = {
-      NIX_CONFIG_EDITOR = "code-nw"; # Or "vim", "nano", etc.
+      "NIX_CONFIG_EDITOR" = "code-nw";
+      "FOO" = "BAR";
     };
 
     home.packages = [
