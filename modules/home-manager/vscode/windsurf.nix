@@ -6,7 +6,7 @@
   ...
 }:
 let
-  cfg = config.miniluz.vscode;
+  cfg = config.miniluz.vscode.windsurf;
 in
 {
   options.miniluz.vscode.windsurf.enable = lib.mkEnableOption "Enable Windsurf.";
