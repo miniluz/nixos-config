@@ -49,5 +49,7 @@ in
       ".mozilla/firefox/${profile}/chrome/userChrome.css".source = ./userChrome.css;
       ".mozilla/firefox/${profile}/sidebery-data.json".source = ./sidebery-data.json;
     };
+
+    home.file.".mozilla/firefox/miniluz/search.json.mozlz4".force = true;
   };
 }
