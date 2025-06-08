@@ -47,8 +47,6 @@ in
 
           ms-vsliveshare.vsliveshare
           ms-vscode-remote.remote-ssh
-
-          codeium.codeium
         ];
 
         userSettings = {
