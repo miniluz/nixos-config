@@ -27,8 +27,8 @@ in
 
     programs.vscode = {
       enable = true;
-      mutableExtensionsDir = false;
-      # package = pkgs.windsurf;
+      mutableExtensionsDir = true;
+      package = pkgs.windsurf;
 
       profiles.default = {
         enableUpdateCheck = false;
@@ -74,7 +74,7 @@ in
 
     home.packages = [
       (import "${inputs.self}/derivations/code-nw.nix" { inherit pkgs; })
-      # (import "${inputs.self}/derivations/code-windsurf.nix" { inherit pkgs; })
+      (import "${inputs.self}/derivations/code-windsurf.nix" { inherit pkgs; })
     ];
 
   };
