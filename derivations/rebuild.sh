@@ -40,7 +40,7 @@ sudo nh os switch --bypass-root-check 2>&1 | tee "$NH_FLAKE/nixos-switch.log"
 current=$(nixos-rebuild list-generations | grep current)
 
 # Commit all changes witih the generation metadata
-git commit -am "$current"
+git commit -m "$current"
 
 # Back to where you were
 popd
