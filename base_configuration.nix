@@ -9,6 +9,8 @@ let
   mkDefault = lib.mkDefault;
 in
 {
+  home-manager.backupFileExtension = "backup";
+
   # Enable flakes
   nix.settings.experimental-features = mkDefault [
     "nix-command"

@@ -7,12 +7,6 @@
 let
   cfg = config.miniluz.firefox;
   profile = "miniluz";
-  arcwtf = pkgs.fetchFromGitHub {
-    owner = "KiKaraage";
-    repo = "ArcWTF";
-    rev = "73ccc7bd3c8dd130d67746c413ca5cf6a57a9f72";
-    hash = "sha256-JzZs0qFaFYaY24o5incgl8u4DGkKASan+b55N+9Jwag=";
-  };
 in
 {
   options.miniluz.firefox.enable = lib.mkEnableOption "Enable Firefox.";
@@ -29,15 +23,16 @@ in
 
           "browser.toolbars.bookmarks.visibility" = "never";
           "browser.tabs.closeWindowWithLastTab" = false; # don't close the window when closing the last tab
+          "sidebar.visibility" = "hide-sidebar";
 
           "signon.rememberSignons" = false;
 
           # ArcWTF
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-          "svg.context-properties.content.enabled" = true;
-          "uc.tweak.popup-search" = true;
-          "uc.tweak.hide-sidebar-header" = true;
-          "uc.tweak.longer-sidebar" = true;
+          # "svg.context-properties.content.enabled" = true;
+          # "uc.tweak.popup-search" = true;
+          # "uc.tweak.hide-sidebar-header" = true;
+          # "uc.tweak.longer-sidebar" = true;
         };
 
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -51,12 +46,9 @@ in
       };
     };
 
-    # https://github.com/KiKaraage/ArcWTF/issues/69
     home.file = {
-      ".mozilla/firefox/${profile}/chrome" = {
-        source = arcwtf;
-        recursive = true;
-      };
+      ".mozilla/firefox/${profile}/chrome/userChrome.css".source = ./userChrome.css;
+      ".mozilla/firefox/${profile}/sidebery-data.json".source = ./sidebery-data.json;
     };
   };
 }

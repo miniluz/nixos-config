@@ -12,7 +12,7 @@ in
     "${homeManagerModules}/git.nix"
     "${homeManagerModules}/blender.nix"
     "${homeManagerModules}/firacode.nix"
-    "${homeManagerModules}/firefox.nix"
+    "${homeManagerModules}/browser/firefox.nix"
     "${homeManagerModules}/libreoffice.nix"
     "${homeManagerModules}/obsidian.nix"
 

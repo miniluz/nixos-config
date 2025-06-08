@@ -12,6 +12,7 @@ in
     "${homeManagerModules}/git.nix"
     "${homeManagerModules}/firacode.nix"
     "${homeManagerModules}/music/music.nix"
+    "${homeManagerModules}/browser/firefox.nix"
 
     # "${homeManagerModules}/vscode/vscode-server.nix"
     "${homeManagerModules}/vscode/vscode.nix"
@@ -64,7 +65,7 @@ in
   miniluz.gnome.background.enable = true;
   miniluz.gnome.background.path = "persona_3_blue_down.png";
 
-  programs.firefox.enable = true;
+  miniluz.firefox.enable = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
