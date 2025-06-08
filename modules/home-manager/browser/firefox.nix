@@ -45,7 +45,81 @@ in
 
       profiles.${profile} = {
         name = profile;
-        search.default = "ddg";
+
+        search = {
+          force = true;
+          default = "ddg";
+          privateDefault = "ddg";
+
+          engines = {
+            # Custom search engine for Nix packages
+            nix-packages = {
+              name = "Nix Packages";
+              urls = [
+                {
+                  template = "https://search.nixos.org/packages";
+                  params = [
+                    {
+                      name = "type";
+                      value = "packages";
+                    }
+                    {
+                      name = "query";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@np" ];
+            };
+
+            nix-options = {
+              name = "Nix Options";
+              urls = [
+                {
+                  template = "https://search.nixos.org/options";
+                  params = [
+                    {
+                      name = "type";
+                      value = "options";
+                    }
+                    {
+                      name = "query";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@no" ];
+            };
+
+            # Custom search engine for NixOS Wiki
+            nixos-wiki = {
+              name = "NixOS Wiki";
+              urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
+              iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
+              definedAliases = [ "@nw" ];
+            };
+            home-manager-options = {
+              name = "Home Manager Options";
+              urls = [
+                {
+                  template = "https://home-manager-options.extranix.com/";
+                  params = [
+                    {
+                      name = "query";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+              icon = "https://home-manager-options.extranix.com/favicon.ico";
+              definedAliases = [ "@hm" ];
+            };
+          };
+        };
 
         settings = {
           "extensions.pocket.enabled" = false;
@@ -69,8 +143,7 @@ in
     home.file = {
       ".mozilla/firefox/${profile}/chrome/userChrome.css".source = ./userChrome.css;
       ".mozilla/firefox/${profile}/sidebery-data.json".source = ./sidebery-data.json;
+      ".mozilla/firefox/miniluz/search.json.mozlz4".force = lib.mkForce true;
     };
-
-    home.file.".mozilla/firefox/miniluz/search.json.mozlz4".force = lib.mkForce true;
   };
 }
