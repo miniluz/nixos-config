@@ -21,7 +21,7 @@ in
           {
             "*".installation_mode = "blocked";
           }
-          ++ (
+          // (
             with builtins;
             let
               extension = shortId: guid: {
