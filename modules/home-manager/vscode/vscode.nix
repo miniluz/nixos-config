@@ -28,7 +28,7 @@ in
     programs.vscode = {
       enable = true;
       mutableExtensionsDir = false;
-      package = pkgs.windsurf;
+      # package = pkgs.windsurf;
 
       profiles.default = {
         enableUpdateCheck = false;
@@ -47,6 +47,8 @@ in
 
           ms-vsliveshare.vsliveshare
           ms-vscode-remote.remote-ssh
+
+          codeium.codeium
         ];
 
         userSettings = {
@@ -72,7 +74,7 @@ in
 
     home.packages = [
       (import "${inputs.self}/derivations/code-nw.nix" { inherit pkgs; })
-      (import "${inputs.self}/derivations/code-windsurf.nix" { inherit pkgs; })
+      # (import "${inputs.self}/derivations/code-windsurf.nix" { inherit pkgs; })
     ];
 
   };
