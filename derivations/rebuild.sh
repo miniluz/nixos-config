@@ -16,7 +16,7 @@ set -e
 pushd ~/nixos-config
 
 # Early return if no changes were detected (thanks @singiamtel!)
-if git diff --quiet '*.nix'; then
+if git diff --quiet; then
     echo "No changes detected, exiting."
     popd
     exit 0
@@ -27,14 +27,14 @@ nixfmt . &>/dev/null \
 || ( nixfmt . ; echo "formatting failed!" && exit 1)
 
 # Shows your changes
-git diff -U0 '*.nix'
+git diff -U0
 
 git add .
 
 echo "NixOS Rebuilding..."
 
 # Rebuild, output simplified errors, log trackebacks
-sudo nh os switch 2>&1 | tee "$NH_FLAKE/nixos-switch.log"
+sudo nh os switch --bypass-root-check 2>&1 | tee "$NH_FLAKE/nixos-switch.log"
 
 # Get current generation metadata
 current=$(nixos-rebuild list-generations | grep current)

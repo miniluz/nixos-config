@@ -44,7 +44,6 @@ in
       tamasfe.even-better-toml
 
       ms-vsliveshare.vsliveshare
-      ms-kubernetes-tools.vscode-kubernetes-tools
       ms-vscode-remote.remote-ssh
 
       github.copilot
