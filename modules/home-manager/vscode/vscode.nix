@@ -28,6 +28,7 @@ in
     programs.vscode.enable = true;
 
     programs.vscode.profiles.default.enableUpdateCheck = false;
+
     programs.vscode.profiles.default.enableExtensionUpdateCheck = false;
     programs.vscode.mutableExtensionsDir = false;
 
@@ -65,8 +66,12 @@ in
     };
 
     home.sessionVariables = {
-      NIX_CONFIG_EDITOR = "code -nw"; # Or "vim", "nano", etc.
+      NIX_CONFIG_EDITOR = "code-nw"; # Or "vim", "nano", etc.
     };
+
+    home.packages = [
+      (import "${inputs.self}/derivations/code-nw.nix" { inherit pkgs; })
+    ];
 
   };
 }

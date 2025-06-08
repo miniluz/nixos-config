@@ -5,7 +5,6 @@
 #    3. My new favourite way: as @clot27 says, you can provide nixos-rebuild with a path to the config, allowing it to be entirely inside your dotfies, with zero bootstrapping of files required.
 #       `nixos-rebuild switch -I nixos-config=path/to/configuration.nix`
 #    4. If you uses a flake as your primary config, you can specify a path to `configuration.nix` in it and then `nixos-rebuild switch —flake` path/to/directory
-# As I hope was clear from the video, I am new to nixos, and there may be other, better, options, in which case I'd love to know them! (I'll update the gist if so)
 
 # A rebuild script that commits on a successful build
 set -e
@@ -35,7 +34,7 @@ git add .
 echo "NixOS Rebuilding..."
 
 # Rebuild, output simplified errors, log trackebacks
-nh os switch >nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)
+sudo nh os switch 2>&1 | tee "$NH_FLAKE/nixos-switch.log"
 
 # Get current generation metadata
 current=$(nixos-rebuild list-generations | grep current)
