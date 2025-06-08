@@ -20,10 +20,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nur = {
-      url = "github:nix-community/NUR";
-    };
-
     programsdb = {
       url = "github:wamserma/flake-programs-sqlite";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,7 +40,6 @@
         moonlight = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
-            nur.modules.nixos.default
             ./hosts/moonlight/configuration.nix
           ];
         };
@@ -52,7 +47,6 @@
         sunlight = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
-            nur.modules.nixos.default
             ./hosts/sunlight/configuration.nix
           ];
         };
@@ -60,7 +54,6 @@
         starlight = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
-            nur.modules.nixos.default
             ./hosts/starlight/configuration.nix
           ];
         };
@@ -69,7 +62,6 @@
           specialArgs = { inherit inputs; };
           modules = [
             musnix.nixosModules.musnix
-            nur.modules.nixos.default
             ./hosts/pcCasa/configuration.nix
           ];
         };

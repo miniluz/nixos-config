@@ -14,6 +14,37 @@ in
   config = lib.mkIf cfg.enable {
     programs.firefox = {
       enable = true;
+
+      policies = {
+        DisableTelemetry = true;
+        ExtensionSettings =
+          {
+            "*".installation_mode = "blocked";
+          }
+          ++ (
+            with builtins;
+            let
+              extension = shortId: guid: {
+                name = guid;
+                value = {
+                  install_url = "https://addons.mozilla.org/en-US/firefox/downloads/latest/${shortId}/latest.xpi";
+                  installation_mode = "normal_installed";
+                };
+              };
+            in
+            listToAttrs [
+              # To add additional extensions, find it on addons.mozilla.org, find
+              # the short ID in the url (like https://addons.mozilla.org/en-US/firefox/addon/!SHORT_ID!/)
+              # Then go to https://addons.mozilla.org/api/v5/addons/addon/!SHORT_ID!/ to get the guid
+              (extension "ublock-origin" "uBlock0@raymondhill.net")
+              (extension "bitwarden" "{446900e4-71c2-419f-a6a7-df9c091e268b}")
+              (extension "search_by_image" "{2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c}")
+              (extension "youtube-shorts-block" "{34daeb50-c2d2-4f14-886a-7160b24d66a4}")
+              (extension "sidebery" "{3c078156-979c-498b-8990-85f7987dd929}")
+            ]
+          );
+      };
+
       profiles.${profile} = {
         name = profile;
         search.default = "ddg";
@@ -34,14 +65,6 @@ in
           # "uc.tweak.hide-sidebar-header" = true;
           # "uc.tweak.longer-sidebar" = true;
         };
-
-        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-          ublock-origin
-          bitwarden
-          search-by-image
-          youtube-shorts-block
-          sidebery
-        ];
       };
     };
 
