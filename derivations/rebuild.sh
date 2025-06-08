@@ -33,8 +33,20 @@ git add .
 
 echo "NixOS Rebuilding..."
 
+# Ask for sudo before anything happens
+sudo -v
+
+while true; do
+  sudo -v
+  sleep 60
+done &
+KEEP_SUDO_PID=$!
+
 # Rebuild, output simplified errors, log trackebacks
-sudo nh os switch --bypass-root-check 2>&1 | tee "$NH_FLAKE/nixos-switch.log"
+nh os switch 2>&1 | tee "$NH_FLAKE/nixos-switch.log"
+
+# Kill sudo loop
+kill $KEEP_SUDO_PID
 
 # Get current generation metadata
 current=$(nixos-rebuild list-generations | grep current)
