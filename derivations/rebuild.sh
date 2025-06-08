@@ -11,7 +11,7 @@
 set -e
 
 # Edit your config
-$EDITOR ~/nixos-config
+"${NIX_CONFIG_EDITOR:-${EDITOR:-vi}}" ~/nixos-config
 
 # cd to your config dir
 pushd ~/nixos-config

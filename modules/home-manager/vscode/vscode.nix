@@ -45,6 +45,8 @@ in
       ms-vsliveshare.vsliveshare
       ms-kubernetes-tools.vscode-kubernetes-tools
       ms-vscode-remote.remote-ssh
+
+      github.copilot
     ];
 
     programs.vscode.profiles.default.userSettings = {
@@ -55,10 +57,16 @@ in
       "conventionalCommits.promptFooter" = false;
 
       "editor.formatOnSave" = true;
+      "editor.tabCompletion" = "on";
 
-      "terminal.integrated.defaultProfile.linux" = "zsh";
+      "terminal.integrated.defaultProfile.linux" = "fish";
       "terminal.integrated.scrollback" = 10000;
       "workbench.sideBar.location" = "right";
     };
+
+    home.sessionVariables = {
+      NIX_CONFIG_EDITOR = "code -nw"; # Or "vim", "nano", etc.
+    };
+
   };
 }

@@ -41,7 +41,6 @@ in
           search-by-image
           youtube-shorts-block
           sidebery
-          userchrome-toggle
         ];
       };
     };
