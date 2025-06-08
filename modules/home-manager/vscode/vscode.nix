@@ -47,6 +47,7 @@ in
       ms-vscode-remote.remote-ssh
 
       github.copilot
+      github.copilot-chat
     ];
 
     programs.vscode.profiles.default.userSettings = {
