@@ -33,7 +33,7 @@ in
             # the short ID in the url (like https://addons.mozilla.org/en-US/firefox/addon/!SHORT_ID!/)
             # Then go to https://addons.mozilla.org/api/v5/addons/addon/!SHORT_ID!/ to get the guid
             (extension "ublock-origin" "uBlock0@raymondhill.net")
-            (extension "bitwarden" "{446900e4-71c2-419f-a6a7-df9c091e268b}")
+            (extension "bitwarden-password-manager" "{446900e4-71c2-419f-a6a7-df9c091e268b}")
             (extension "search_by_image" "{2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c}")
             (extension "youtube-shorts-block" "{34daeb50-c2d2-4f14-886a-7160b24d66a4}")
             (extension "sidebery" "{3c078156-979c-498b-8990-85f7987dd929}")
