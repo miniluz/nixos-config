@@ -25,53 +25,54 @@ in
   config = lib.mkIf cfg.enable {
     miniluz.direnv.enable = true;
 
-    programs.vscode.enable = true;
+    programs.vscode = {
+      enable = true;
+      mutableExtensionsDir = false;
+      package = pkgs.windsurf;
 
-    programs.vscode.profiles.default.enableUpdateCheck = false;
+      profiles.default = {
+        enableUpdateCheck = false;
+        enableExtensionUpdateCheck = false;
 
-    programs.vscode.profiles.default.enableExtensionUpdateCheck = false;
-    programs.vscode.mutableExtensionsDir = false;
+        extensions = with pkgs.vscode-marketplace; [
+          mkhl.direnv
+          jnoortheen.nix-ide
 
-    programs.vscode.profiles.default.extensions = with pkgs.vscode-marketplace; [
-      mkhl.direnv
-      jnoortheen.nix-ide
+          usernamehw.errorlens
+          gruntfuggly.todo-tree
+          vivaxy.vscode-conventional-commits
 
-      usernamehw.errorlens
-      gruntfuggly.todo-tree
-      vivaxy.vscode-conventional-commits
+          redhat.vscode-yaml
+          tamasfe.even-better-toml
 
-      redhat.vscode-yaml
-      tamasfe.even-better-toml
+          ms-vsliveshare.vsliveshare
+          ms-vscode-remote.remote-ssh
+        ];
 
-      ms-vsliveshare.vsliveshare
-      ms-vscode-remote.remote-ssh
+        userSettings = {
+          "git.autofetch" = "all";
+          "git.allowNoVerifyCommit" = true;
+          "conventionalCommits.promptScopes" = false;
+          "conventionalCommits.promptBody" = false;
+          "conventionalCommits.promptFooter" = false;
 
-      github.copilot
-      github.copilot-chat
-    ];
+          "editor.formatOnSave" = true;
+          "editor.tabCompletion" = "on";
 
-    programs.vscode.profiles.default.userSettings = {
-      "git.autofetch" = "all";
-      "git.allowNoVerifyCommit" = true;
-      "conventionalCommits.promptScopes" = false;
-      "conventionalCommits.promptBody" = false;
-      "conventionalCommits.promptFooter" = false;
-
-      "editor.formatOnSave" = true;
-      "editor.tabCompletion" = "on";
-
-      "terminal.integrated.defaultProfile.linux" = "fish";
-      "terminal.integrated.scrollback" = 10000;
-      "workbench.sideBar.location" = "right";
+          "terminal.integrated.defaultProfile.linux" = "fish";
+          "terminal.integrated.scrollback" = 10000;
+          "workbench.sideBar.location" = "right";
+        };
+      };
     };
 
     home.sessionVariables = {
       "NIX_CONFIG_EDITOR" = "code-nw";
-      "FOO" = "BAR";
     };
 
     home.packages = [
       (import "${inputs.self}/derivations/code-nw.nix" { inherit pkgs; })
+      (import "${inputs.self}/derivations/code-windsurf.nix" { inherit pkgs; })
     ];
 
   };
