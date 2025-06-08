@@ -18,6 +18,7 @@ in
     ./vscode-python.nix
     ./vscode-rust.nix
     ./vscode-vim.nix
+    ./windsurf.nix
   ];
 
   options.miniluz.vscode.enable = lib.mkEnableOption "Enable VSCode.";
@@ -28,7 +29,6 @@ in
     programs.vscode = {
       enable = true;
       mutableExtensionsDir = true;
-      package = pkgs.windsurf;
 
       profiles.default = {
         enableUpdateCheck = false;
@@ -62,9 +62,6 @@ in
           "terminal.integrated.defaultProfile.linux" = "fish";
           "terminal.integrated.scrollback" = 10000;
           "workbench.sideBar.location" = "right";
-          "windsurf.marketplaceExtensionGalleryServiceURL" =
-            "https://marketplace.visualstudio.com/_apis/public/gallery";
-          "windsurf.marketplaceGalleryItemURL" = "https://marketplace.visualstudio.com/items";
         };
       };
     };
@@ -75,7 +72,6 @@ in
 
     home.packages = [
       (import "${inputs.self}/derivations/code-nw.nix" { inherit pkgs; })
-      (import "${inputs.self}/derivations/code-windsurf.nix" { inherit pkgs; })
     ];
 
   };

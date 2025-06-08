@@ -45,6 +45,7 @@ in
 
   miniluz.vscode = {
     enable = true;
+    windsurf = true;
     catppuccin = true;
     firacode = true;
     # java = true;
