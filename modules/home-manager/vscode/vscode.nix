@@ -62,6 +62,9 @@ in
           "terminal.integrated.defaultProfile.linux" = "fish";
           "terminal.integrated.scrollback" = 10000;
           "workbench.sideBar.location" = "right";
+          "windsurf.marketplaceExtensionGalleryServiceURL" =
+            "https://marketplace.visualstudio.com/_apis/public/gallery";
+          "windsurf.marketplaceGalleryItemURL" = "https://marketplace.visualstudio.com/items";
         };
       };
     };
