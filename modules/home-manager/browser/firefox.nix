@@ -135,12 +135,10 @@ in
 
           "signon.rememberSignons" = false;
 
-          # ArcWTF
+          # Theming
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-          # "svg.context-properties.content.enabled" = true;
-          # "uc.tweak.popup-search" = true;
-          # "uc.tweak.hide-sidebar-header" = true;
-          # "uc.tweak.longer-sidebar" = true;
+          "browser.theme.dark-private-windows" = true;
+          "extensions.activeThemeID" = "firefox-dark@mozilla.org";
         };
       };
     };
