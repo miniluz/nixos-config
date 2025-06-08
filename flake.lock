@@ -46,17 +46,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1749358668,
-        "narHash": "sha256-V91nN4Q9ZwX0N+Gzu+F8SnvzMcdURYnMcIvpfLQzD5M=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "06451df423dd5e555f39857438ffc16c5b765862",
-        "type": "github"
+        "lastModified": 1749393841,
+        "narHash": "sha256-0m00KWoLG2ykcJMER/icl1vG9XXOhAeh7iljsbrhLnU=",
+        "path": "/home/miniluz/home-manager-windsurf-fix",
+        "type": "path"
       },
       "original": {
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "type": "github"
+        "path": "/home/miniluz/home-manager-windsurf-fix",
+        "type": "path"
       }
     },
     "musnix": {
@@ -139,11 +136,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1749388083,
-        "narHash": "sha256-WVbICtwfjwr/dPeWjvJkPpI6kaE2Aeg+nDM6faRKZME=",
+        "lastModified": 1749393271,
+        "narHash": "sha256-weZh3KRGWDCkYLsuL9M/NdxmNuPMLTX+QacXidS6kjE=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "7502ee791dfee0ed3f32382eaabb4d73451f472b",
+        "rev": "c8b06567e3bb39bdedc1bbe01a12e89b5e71b580",
         "type": "github"
       },
       "original": {

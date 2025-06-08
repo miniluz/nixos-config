@@ -6,7 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "/home/miniluz/home-manager-windsurf-fix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
