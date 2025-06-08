@@ -1,7 +1,4 @@
 <<< /run/current-system
->>> /tmp/nh-oslZKTSC/result
-Added packages:
-[A.]  #1  vscode-extension-github-copilot  1.330.0
-Removed packages:
-[R.]  #1  userchrome-toggle  1.2
-Closure size: 2305 -> 2305 (32 paths added, 32 paths removed, delta +0, disk usage +60.1MiB).
+>>> /tmp/nh-osMBQyNp/result
+No version or selection state changes.
+Closure size: 2305 -> 2305 (3 paths added, 3 paths removed, delta +0, disk usage +72B).

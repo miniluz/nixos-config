@@ -63,7 +63,7 @@ in
     (import ./derivations/rebuild.nix { inherit pkgs; })
   ];
 
-  environment.variables = {
+  environment.sessionVariables = {
     EDITOR = "hx";
     NH_FLAKE = "/home/miniluz/nixos-config";
   };
