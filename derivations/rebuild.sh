@@ -44,8 +44,11 @@ KEEP_SUDO_PID=$!
 
 # Rebuild, output simplified errors, log trackebacks
 set -o pipefail
-nh os switch 2>&1 | tee "$NH_FLAKE/nixos-switch.log" \
-|| ( echo "NixOS Rebuild failed!" && exit 1)
+if ! (nh os switch 2>&1 | tee "$NH_FLAKE/nixos-switch.log") then
+  echo "NixOS Rebuild failed!"
+  notify-send -e "NixOS Rebuilt Failed!" --icon=computer-fail-symbolic
+  exit 1
+fi
 
 # Kill sudo loop
 kill $KEEP_SUDO_PID
