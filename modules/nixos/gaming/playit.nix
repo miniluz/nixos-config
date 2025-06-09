@@ -27,5 +27,7 @@ in
       group = "playit";
       secretPath = config.age.secrets.playit.path;
     };
+
+    systemd.services.playit.wantedBy = lib.mkForce [ ];
   };
 }
