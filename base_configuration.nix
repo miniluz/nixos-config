@@ -54,12 +54,12 @@ in
     ];
   };
 
-  environment.systemPackages = [
-    pkgs.file
-    pkgs.nixfmt-rfc-style
-    pkgs.libnotify
-    pkgs.evil-helix
-    pkgs.nh
+  environment.systemPackages = with pkgs; [
+    file
+    nixfmt-rfc-style
+    evil-helix
+    nh
+    nil
     (import ./derivations/rebuild.nix { inherit pkgs; })
   ];
 
