@@ -16,7 +16,10 @@ in
   options.miniluz.playit.enable = lib.mkEnableOption "Enable PlayIt.";
 
   config = lib.mkIf cfg.enable {
-    age.secrets.playit.file = "${paths.secrets}/playit.age";
+    age.secrets.playit = {
+      file = "${paths.secrets}/playit.age";
+      owner = "playit";
+    };
 
     services.playit = {
       enable = true;
