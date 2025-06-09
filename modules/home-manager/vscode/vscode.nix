@@ -62,6 +62,8 @@ in
           "terminal.integrated.defaultProfile.linux" = "fish";
           "terminal.integrated.scrollback" = 10000;
           "workbench.sideBar.location" = "right";
+
+          "nix.enableLanguageServer" = true;
         };
       };
     };

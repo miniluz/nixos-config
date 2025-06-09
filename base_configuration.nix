@@ -57,6 +57,7 @@ in
   environment.systemPackages = with pkgs; [
     file
     nixfmt-rfc-style
+    libnotify
     evil-helix
     nh
     nil
