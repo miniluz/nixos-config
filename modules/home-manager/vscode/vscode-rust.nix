@@ -14,7 +14,7 @@ in
   config = lib.mkIf cfg.rust {
 
     home.packages = with pkgs; [
-      pkgs.ffmpeg_7
+      ffmpeg_7
       lldb
     ];
 
