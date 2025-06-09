@@ -1,35 +1,31 @@
 {
   config,
   pkgs,
-  inputs,
+  paths,
   ...
 }:
-let
-  homeManagerModules = "${inputs.self}/modules/home-manager";
-in
 {
   imports = [
-    "${homeManagerModules}/base_configuration.nix"
-    "${homeManagerModules}/git.nix"
-    "${homeManagerModules}/blender.nix"
-    "${homeManagerModules}/firacode.nix"
-    "${homeManagerModules}/browser/firefox.nix"
-    "${homeManagerModules}/libreoffice.nix"
-    "${homeManagerModules}/obsidian.nix"
+    "${paths.homeManager}/base_configuration.nix"
+    "${paths.homeManager}/git.nix"
+    "${paths.homeManager}/blender.nix"
+    "${paths.homeManager}/firacode.nix"
+    "${paths.homeManager}/browser/firefox.nix"
+    "${paths.homeManager}/libreoffice.nix"
+    "${paths.homeManager}/obsidian.nix"
 
-    # "${homeManagerModules}/vscode-server.nix"
-    "${homeManagerModules}/vscode/vscode.nix"
+    "${paths.homeManager}/vscode/vscode.nix"
 
-    "${homeManagerModules}/helix/helix.nix"
+    "${paths.homeManager}/helix/helix.nix"
 
-    "${homeManagerModules}/discord.nix"
+    "${paths.homeManager}/discord.nix"
 
-    "${homeManagerModules}/gnome/gnome.nix"
+    "${paths.homeManager}/gnome/gnome.nix"
 
-    "${homeManagerModules}/shell/utils/shell-utils.nix"
-    "${homeManagerModules}/shell/gitui.nix"
-    "${homeManagerModules}/shell/kitty.nix"
-    "${homeManagerModules}/shell/fish.nix"
+    "${paths.homeManager}/shell/utils/shell-utils.nix"
+    "${paths.homeManager}/shell/gitui.nix"
+    "${paths.homeManager}/shell/kitty.nix"
+    "${paths.homeManager}/shell/fish.nix"
     /*
       TODO:
       * tdrop

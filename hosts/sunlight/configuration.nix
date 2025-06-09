@@ -87,7 +87,7 @@
   users.users.miniluz.extraGroups = [ "audio" ];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs paths; };
     users = {
       "miniluz" = import ./home.nix;
     };
