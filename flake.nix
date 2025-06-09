@@ -41,31 +41,59 @@
       agenix,
       ...
     }@inputs:
+    let
+      paths = {
+        root = "${self}";
+        secrets = "${self}/secrets";
+        nixos = "${self}/modules/nixos";
+        homeManager = "${self}/modules/home-manager";
+      };
+    in
     {
       nixosConfigurations = {
         moonlight = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit
+              inputs
+              paths
+              ;
+          };
           modules = [
             ./hosts/moonlight/configuration.nix
           ];
         };
 
         sunlight = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit
+              inputs
+              paths
+              ;
+          };
           modules = [
             ./hosts/sunlight/configuration.nix
           ];
         };
 
         starlight = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit
+              inputs
+              paths
+              ;
+          };
           modules = [
             ./hosts/starlight/configuration.nix
           ];
         };
 
         pccasa = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit
+              inputs
+              paths
+              ;
+          };
           modules = [
             musnix.nixosModules.musnix
             agenix.nixosModules.default
