@@ -3,6 +3,7 @@
   inputs,
   pkgs,
   lib,
+  paths,
   ...
 }:
 let
@@ -61,7 +62,7 @@ in
     evil-helix
     nh
     nil
-    (import ./derivations/rebuild.nix { inherit pkgs; })
+    (import "${paths.root}/derivations/rebuild.nix" { inherit pkgs; })
   ];
 
   environment.sessionVariables = {

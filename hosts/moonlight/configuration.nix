@@ -6,20 +6,18 @@
   config,
   pkgs,
   inputs,
+  paths,
   ...
 }:
-let
-  nixosModules = "${inputs.self}/modules/nixos";
-in
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    "${inputs.self}/base_configuration.nix"
+    "${paths.nixos}/base_configuration.nix"
     inputs.home-manager.nixosModules.default
-    "${nixosModules}/gnome.nix"
-    "${nixosModules}/podman.nix"
-    "${nixosModules}/steam.nix"
+    "${paths.nixos}/gnome.nix"
+    "${paths.nixos}/podman.nix"
+    "${paths.nixos}/steam.nix"
   ];
 
   miniluz.gnome.enable = true;
