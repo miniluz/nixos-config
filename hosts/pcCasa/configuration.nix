@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
-  config,
   pkgs,
   inputs,
   paths,
@@ -16,11 +15,13 @@
     "${paths.nixos}/base_configuration.nix"
     inputs.home-manager.nixosModules.default
     "${paths.nixos}/gnome.nix"
+    "${paths.nixos}/gaming/playit.nix"
     "${paths.nixos}/steam.nix"
   ];
 
   miniluz.gnome.enable = true;
   miniluz.steam.enable = true;
+  miniluz.playit.enable = true;
 
   environment.systemPackages = with pkgs; [
     neovim

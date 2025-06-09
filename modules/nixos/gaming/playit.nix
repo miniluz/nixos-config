@@ -1,7 +1,7 @@
 {
   config,
-  pkgs,
   lib,
+  inputs,
   paths,
   ...
 }:
@@ -9,7 +9,11 @@ let
   cfg = config.miniluz.playit;
 in
 {
-  options.miniluz.gaming.enable = lib.mkEnableOption "Enable PlayIt.";
+  imports = [
+    inputs.playit-nixos-module.nixosModules.default
+  ];
+
+  options.miniluz.playit.enable = lib.mkEnableOption "Enable PlayIt.";
 
   config = lib.mkIf cfg.enable {
     age.secrets.playit.file = "${paths.secrets}/playit.age";

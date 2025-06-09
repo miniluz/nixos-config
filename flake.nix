@@ -1,6 +1,13 @@
 {
   description = "NixOS config flake file";
 
+  nixConfig = {
+    extra-substituters = [ "https://playit-nixos-module.cachix.org" ];
+    extra-trusted-public-keys = [
+      "playit-nixos-module.cachix.org-1:22hBXWXBbd/7o1cOnh+p0hpFUVk9lPdRLX3p5YSfRz4="
+    ];
+  };
+
   inputs = {
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -30,6 +37,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    playit-nixos-module = {
+      url = "github:pedorich-n/playit-nixos-module";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -39,6 +51,7 @@
       nur,
       musnix,
       agenix,
+      playit-nixos-module,
       ...
     }@inputs:
     let
@@ -96,7 +109,6 @@
           };
           modules = [
             musnix.nixosModules.musnix
-            agenix.nixosModules.default
             ./hosts/pcCasa/configuration.nix
           ];
         };

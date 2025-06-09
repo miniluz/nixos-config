@@ -10,6 +10,12 @@ let
   mkDefault = lib.mkDefault;
 in
 {
+  imports = [
+    inputs.agenix.nixosModules.default
+  ];
+
+  age.identityPaths = [ "/home/miniluz/.ssh/id_ed25519" ];
+
   home-manager.backupFileExtension = "backup";
 
   # Enable flakes
