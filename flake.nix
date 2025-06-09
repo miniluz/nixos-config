@@ -68,6 +68,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             musnix.nixosModules.musnix
+            agenix.nixosModules.default
             ./hosts/pcCasa/configuration.nix
           ];
         };
