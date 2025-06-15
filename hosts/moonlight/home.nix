@@ -41,11 +41,12 @@ in
   miniluz.vscode = {
     enable = true;
     catppuccin = true;
-    firacode = true;
-    java = true;
-    js = true;
-    rust = true;
+    # firacode = true;
+    # java = true;
+    # js = true;
+    # rust = true;
     vim = true;
+    windsurf = true;
   };
 
   miniluz.discord.enable = true;
@@ -77,7 +78,6 @@ in
     pkgs.libreoffice
     pkgs.qbittorrent
     pkgs.bottles
-    pkgs.mangohud
     pkgs.vlc
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
