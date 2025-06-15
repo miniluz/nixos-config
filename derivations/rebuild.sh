@@ -15,6 +15,12 @@ set -e
 # cd to your config dir
 pushd "$NH_FLAKE"
 
+if git pull --rebase --quiet; then
+    echo "Couldn't git pull, exiting."
+    popd
+    exit 0
+fi
+
 # Early return if no changes were detected (thanks @singiamtel!)
 if git diff --quiet; then
     echo "No changes detected, exiting."
@@ -58,6 +64,8 @@ current=$(nixos-rebuild list-generations | grep current)
 
 # Commit all changes witih the generation metadata
 git commit -am "$current"
+
+git push
 
 # Back to where you were
 popd
