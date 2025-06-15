@@ -28,6 +28,8 @@ in
 
   config = lib.mkIf cfg.enable {
 
+    programs.zellij.enable = true;
+
     programs.fish = {
       enable = true;
 
