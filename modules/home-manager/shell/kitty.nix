@@ -15,6 +15,8 @@ let
   };
 in
 {
+  imports = [ ../firacode.nix ];
+
   options.miniluz.kitty.enable = lib.mkEnableOption "Enable Kitty.";
   options.miniluz.kitty.theme = lib.mkOption {
     type = lib.types.enum [
@@ -29,6 +31,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    miniluz.firacode.enable = true;
+
     programs.kitty.enable = true;
     programs.kitty.extraConfig = ''
       include ./theme.conf

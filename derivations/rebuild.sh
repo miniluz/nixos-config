@@ -15,6 +15,12 @@ set -e
 # cd to your config dir
 pushd "$NH_FLAKE"
 
+if ! git log --oneline HEAD..origin/$(git rev-parse --abbrev-ref HEAD) --quiet; then
+    echo "Unpulled commits detected, exiting."
+    popd
+    exit 0
+fi
+
 # Early return if no changes were detected (thanks @singiamtel!)
 if git diff --quiet; then
     echo "No changes detected, exiting."
@@ -46,6 +52,7 @@ KEEP_SUDO_PID=$!
 set -o pipefail
 if ! (nh os switch 2>&1 | tee "$NH_FLAKE/nixos-switch.log") then
   echo "NixOS Rebuild failed!"
+  git reset .
   notify-send -e "NixOS Rebuilt Failed!" --icon=computer-fail-symbolic
   exit 1
 fi
@@ -58,6 +65,8 @@ current=$(nixos-rebuild list-generations | grep current)
 
 # Commit all changes witih the generation metadata
 git commit -am "$current"
+
+git push
 
 # Back to where you were
 popd

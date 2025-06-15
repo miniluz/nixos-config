@@ -8,6 +8,7 @@
   imports = [
     "${paths.homeManager}/base_configuration.nix"
     "${paths.homeManager}/git.nix"
+    "${paths.homeManager}/browser/firefox.nix"
     "${paths.homeManager}/firacode.nix"
     # "${homeManagerModules}/vscode/vscode-server.nix"
     "${paths.homeManager}/vscode/vscode.nix"
@@ -28,6 +29,7 @@
   miniluz.git.enable = true;
 
   miniluz.firacode.enable = true;
+  miniluz.firefox.enable = true;
 
   miniluz.fish.enable = true;
   miniluz.shell-utils.enable = true;
@@ -38,11 +40,12 @@
   miniluz.vscode = {
     enable = true;
     catppuccin = true;
-    firacode = true;
-    java = true;
-    js = true;
-    rust = true;
+    # firacode = true;
+    # java = true;
+    # js = true;
+    # rust = true;
     vim = true;
+    windsurf = true;
   };
 
   miniluz.discord.enable = true;
@@ -74,7 +77,6 @@
     pkgs.libreoffice
     pkgs.qbittorrent
     pkgs.bottles
-    pkgs.mangohud
     pkgs.vlc
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.

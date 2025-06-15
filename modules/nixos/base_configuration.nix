@@ -68,7 +68,8 @@ in
     evil-helix
     nh
     nil
-    (import "${paths.root}/derivations/rebuild.nix" { inherit pkgs; })
+    (import "${paths.derivations}/rebuild.nix" { inherit pkgs; })
+    (import "${paths.derivations}/font-cache-update.nix" { inherit pkgs; })
   ];
 
   environment.sessionVariables = {

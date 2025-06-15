@@ -10,6 +10,7 @@ let
 in
 {
   imports = [
+    ../firacode.nix
     ../direnv.nix
     ./vscode-catppuccin.nix
     ./vscode-firacode.nix
@@ -25,6 +26,7 @@ in
 
   config = lib.mkIf cfg.enable {
     miniluz.direnv.enable = true;
+    miniluz.firacode.enable = true;
 
     programs.vscode = {
       enable = true;
