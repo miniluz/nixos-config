@@ -62,6 +62,7 @@ in
     nh
     nil
     (import ./derivations/rebuild.nix { inherit pkgs; })
+    (import ./derivations/font-cache-update.nix { inherit pkgs; })
   ];
 
   environment.sessionVariables = {
