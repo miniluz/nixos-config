@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Check if .direnv exists
-if [ -f ".direnv" ]; then
-  echo "Error: .direnv file already exists"
+if [ -f ".envrc" ]; then
+  echo "Error: .envrc file already exists"
   exit 1
 fi
 
@@ -13,7 +13,7 @@ if [ -f "nix/flake.nix" ]; then
 fi
 
 # Create .direnv file
-cat > .direnv << 'EOF'
+cat > .envrc << 'EOF'
 if ! has nix_direnv_version || ! nix_direnv_version 3.1.0; then
   source_url "https://raw.githubusercontent.com/nix-community/nix-direnv/3.1.0/direnvrc" "sha256-yMJ2OVMzrFaDPn7q8nCBZFRYpL/f0RcHzhmw/i6btJM="
 fi
