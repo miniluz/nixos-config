@@ -69,7 +69,7 @@ in
   # services.xserver.libinput.enable = true;
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs paths; };
     users = {
       "miniluz" = import ./home.nix;
     };

@@ -1,5 +1,7 @@
 {
+  pkgs,
   inputs,
+  paths,
   ...
 }:
 {
@@ -9,6 +11,7 @@
 
     home.packages = [
       inputs.agenix.packages."x86_64-linux".default
+      (import "${paths.derivations}/nix-shell-setup.nix" { inherit pkgs; })
     ];
   };
 }

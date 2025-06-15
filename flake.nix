@@ -44,6 +44,7 @@
     let
       paths = {
         root = "${self}";
+        derivations = "${self}/derivations";
         secrets = "${self}/secrets";
         nixos = "${self}/modules/nixos";
         homeManager = "${self}/modules/home-manager";
