@@ -15,8 +15,8 @@ set -e
 # cd to your config dir
 pushd "$NH_FLAKE"
 
-if git pull --rebase --quiet; then
-    echo "Couldn't git pull, exiting."
+if ! git log --oneline HEAD..origin/$(git rev-parse --abbrev-ref HEAD) --quiet; then
+    echo "Unpulled commits detected, exiting."
     popd
     exit 0
 fi
