@@ -11,6 +11,7 @@ in
   imports = [
     "${homeManagerModules}/base_configuration.nix"
     "${homeManagerModules}/git.nix"
+    "${homeManagerModules}/browser/firefox.nix"
     "${homeManagerModules}/firacode.nix"
     # "${homeManagerModules}/vscode/vscode-server.nix"
     "${homeManagerModules}/vscode/vscode.nix"
@@ -31,6 +32,7 @@ in
   miniluz.git.enable = true;
 
   miniluz.firacode.enable = true;
+  miniluz.firefox.enable = true;
 
   miniluz.fish.enable = true;
   miniluz.shell-utils.enable = true;
