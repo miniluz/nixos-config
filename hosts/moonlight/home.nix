@@ -40,9 +40,9 @@
   miniluz.vscode = {
     enable = true;
     catppuccin = true;
-    # firacode = true;
+    firacode = true;
     # java = true;
-    # js = true;
+    js = true;
     # rust = true;
     vim = true;
     windsurf = true;
