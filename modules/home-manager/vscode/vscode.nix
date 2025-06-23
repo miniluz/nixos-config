@@ -66,7 +66,7 @@ in
           "workbench.sideBar.location" = "right";
 
           "nix.enableLanguageServer" = true;
-          "nix.serverPath" = lib.getExe pkgs.nil;
+          "nix.serverPath" = lib.getExe pkgs.nixd;
           "nix.serverSettings" = {
             "nil" = {
               "formatting" = {

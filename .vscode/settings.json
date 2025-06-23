@@ -1,0 +1,17 @@
+{
+    "nix.serverSettings": {
+        "nixd": {
+            "options": {
+                // By default, this entry will be read from `import <nixpkgs> { }`.
+                // You can write arbitrary Nix expressions here, to produce valid "options" declaration result.
+                // Tip: for flake-based configuration, utilize `builtins.getFlake`
+                "nixos": {
+                    "expr": "(builtins.getFlake \"${workspaceFolder}/flake.nix\").nixosConfigurations.<name>.options"
+                },
+                "home-manager": {
+                    "expr": "(builtins.getFlake \"${workspaceFolder}/flake.nix\").nixosConfigurations.<name>.options.home-manager.users.type.getSubOptions []"
+                },
+            }
+        }
+    }
+}
