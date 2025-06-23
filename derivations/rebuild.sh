@@ -15,7 +15,9 @@ set -e
 # cd to your config dir
 pushd "$NH_FLAKE"
 
-if ! git log --oneline HEAD..origin/$(git rev-parse --abbrev-ref HEAD) --quiet; then
+git fetch
+
+if ! git diff --quiet HEAD..origin/$(git rev-parse --abbrev-ref HEAD); then
     echo "Unpulled commits detected, exiting."
     popd
     exit 0
