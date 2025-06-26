@@ -17,6 +17,7 @@ in
       esbenp.prettier-vscode
       bradlc.vscode-tailwindcss
       stivo.tailwind-fold
+      lokalise.i18n-ally
     ];
 
     programs.vscode.profiles.default.userSettings =
