@@ -34,5 +34,9 @@ in
         atomix # puzzle game
       ]
     );
+
+    environment.systemPackages = with pkgs; [
+      xwayland-run
+    ];
   };
 }

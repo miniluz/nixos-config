@@ -9,19 +9,19 @@
 # A rebuild script that commits on a successful build
 set -e
 
-# Edit your config
-"${NIX_CONFIG_EDITOR:-${EDITOR:-vi}}" "$NH_FLAKE"
-
 # cd to your config dir
 pushd "$NH_FLAKE"
 
+# Exit if there are unpulled commits
 git fetch
-
 if ! git diff --quiet HEAD..origin/$(git rev-parse --abbrev-ref HEAD); then
     echo "Unpulled commits detected, exiting."
     popd
     exit 0
 fi
+
+# Edit your config
+"${NIX_CONFIG_EDITOR:-${EDITOR:-vi}}" "$NH_FLAKE"
 
 # Early return if no changes were detected (thanks @singiamtel!)
 if git diff --quiet; then
