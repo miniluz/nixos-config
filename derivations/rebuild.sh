@@ -17,7 +17,7 @@ git fetch
 if ! git diff --quiet HEAD..origin/$(git rev-parse --abbrev-ref HEAD); then
     echo "Unpulled commits detected, exiting."
     popd
-    exit 0
+    exit 1
 fi
 
 # Edit your config
@@ -27,7 +27,7 @@ fi
 if git diff --quiet; then
     echo "No changes detected, exiting."
     popd
-    exit 0
+    exit 1
 fi
 
 # Autoformat your nix files
@@ -56,6 +56,7 @@ if ! (nh os switch 2>&1 | tee "$NH_FLAKE/nixos-switch.log") then
   echo "NixOS Rebuild failed!"
   git reset .
   notify-send -e "NixOS Rebuilt Failed!" --icon=computer-fail-symbolic
+  kill $KEEP_SUDO_PID
   exit 1
 fi
 
