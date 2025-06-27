@@ -12,6 +12,7 @@ in
       userEmail = "javiermelon4fu@gmail.com";
       extraConfig = {
         init.defaultBranch = "main";
+        push.autoSetupRemote = true;
       };
     };
   };
