@@ -104,6 +104,7 @@ in
               iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
               definedAliases = [ "@nw" ];
             };
+
             home-manager-options = {
               name = "Home Manager Options";
               urls = [
@@ -119,6 +120,29 @@ in
               ];
               icon = "https://home-manager-options.extranix.com/favicon.ico";
               definedAliases = [ "@hm" ];
+            };
+
+            npm-packages = {
+              name = "npm-packages";
+              urls = [
+                {
+                  template = "https://www.npmjs.com/search?q={searchTerms}";
+                }
+              ];
+              icon = "https://www.npmjs.com/favicon.ico";
+              definedAliases = [ "@npm" ];
+            };
+
+            # With lib.rs
+            cargo-packages = {
+              name = "cargo-packages";
+              urls = [
+                {
+                  template = "https://lib.rs/search?q={searchTerms}";
+                }
+              ];
+              icon = "https://lib.rs/favicon.ico";
+              definedAliases = [ "@rs" ];
             };
           };
         };

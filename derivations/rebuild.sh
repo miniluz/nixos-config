@@ -12,10 +12,9 @@ set -e
 # cd to your config dir
 pushd "$NH_FLAKE"
 
-# Exit if there are unpulled commits
-git fetch
-if ! git diff --quiet HEAD..origin/$(git rev-parse --abbrev-ref HEAD); then
-    echo "Unpulled commits detected, exiting."
+# Pull latest changes and fail if pull fails
+if ! git pull; then
+    echo "Failed to pull latest changes, exiting."
     popd
     exit 1
 fi
