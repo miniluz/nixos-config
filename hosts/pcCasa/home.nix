@@ -8,6 +8,7 @@
     # "${paths.homeManager}/base_configuration.nix"
     "${paths.homeManager}/git.nix"
     "${paths.homeManager}/firacode.nix"
+    "${paths.homeManager}/obsidian.nix"
     "${paths.homeManager}/music/music.nix"
     "${paths.homeManager}/browser/firefox.nix"
 
@@ -31,8 +32,9 @@
   ];
 
   miniluz.git.enable = true;
-
   miniluz.firacode.enable = true;
+
+  miniluz.obsidian.enable = true;
 
   miniluz.fish.enable = true;
   miniluz.shell-utils.enable = true;
@@ -82,9 +84,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    pkgs.libreoffice
-    pkgs.slack
-    pkgs.thunderbird
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
