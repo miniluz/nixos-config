@@ -8,6 +8,7 @@
   imports = [
     "${paths.homeManager}/base_configuration.nix"
     "${paths.homeManager}/git.nix"
+    "${paths.homeManager}/obsidian.nix"
     "${paths.homeManager}/browser/firefox.nix"
     "${paths.homeManager}/firacode.nix"
     # "${homeManagerModules}/vscode/vscode-server.nix"
@@ -27,6 +28,8 @@
   ];
 
   miniluz.git.enable = true;
+
+  miniluz.obsidian.enable = true;
 
   miniluz.firacode.enable = true;
   miniluz.firefox.enable = true;
