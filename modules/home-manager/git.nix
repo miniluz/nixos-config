@@ -1,4 +1,10 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  inputs,
+  pkgs,
+  ...
+}:
 let
   cfg = config.miniluz.git;
 in
@@ -15,5 +21,9 @@ in
         push.autoSetupRemote = true;
       };
     };
+
+    home.packages = [
+      (import "${inputs.self}/derivations/git-clean-branches.nix" { inherit pkgs; })
+    ];
   };
 }
