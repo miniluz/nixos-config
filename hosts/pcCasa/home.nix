@@ -29,6 +29,8 @@
       TODO:
       * tdrop
     */
+
+    "${paths.homeManager}/games/minecraft.nix"
   ];
 
   miniluz.git.enable = true;
@@ -66,6 +68,8 @@
   miniluz.gnome.background.path = "persona_3_blue_down.png";
 
   miniluz.firefox.enable = true;
+
+  miniluz.games.minecraft.enable = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
