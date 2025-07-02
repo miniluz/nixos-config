@@ -21,6 +21,7 @@ in
       userSettings = {
         "vim.useCtrlKeys" = false;
         "vim.foldfix" = true;
+        "vim.leader" = "<space>";
         "vim.camelCaseMotion.enable" = true;
         "vim.highlightedyank.enable" = true;
         "vim.highlightedyank.color" = "rgba(100, 100, 130, 0.5)";
