@@ -12,7 +12,7 @@
 
   config = {
 
-    miniluz.rebuild = true;
+    miniluz.rebuild = false;
 
     home.packages = with pkgs; [
       inputs.agenix.packages."x86_64-linux".default
