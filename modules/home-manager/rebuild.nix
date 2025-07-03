@@ -11,7 +11,7 @@ in
 
   config = lib.mkIf cfg.enable {
     xdg.desktopEntries = {
-      rebuild = {
+      "Rebuild" = {
         name = "Rebuild";
         genericName = "Rebuild NixOS";
         exec = "rebuild ; echo \"Press enter to close this window...\" ; read ans";
