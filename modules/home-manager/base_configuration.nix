@@ -7,12 +7,9 @@
 {
   imports = [
     inputs.agenix.homeManagerModules.default
-    ./rebuild.nix
   ];
 
   config = {
-
-    miniluz.rebuild = false;
 
     home.packages = with pkgs; [
       inputs.agenix.packages."x86_64-linux".default
@@ -24,5 +21,13 @@
 
     age.identityPaths = [ "~/.ssh/id_ed25519" ];
 
+    xdg.desktopEntries = {
+      "Rebuild" = {
+        name = "Rebuild";
+        genericName = "Rebuild NixOS";
+        exec = "rebuild ; echo \"Press enter to close this window...\" ; read ans";
+        terminal = true;
+      };
+    };
   };
 }
