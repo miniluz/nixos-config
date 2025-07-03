@@ -14,7 +14,7 @@ in
   config = lib.mkIf cfg.vim {
 
     programs.vscode.profiles.default = {
-      extensions = with pkgs.vscode-marketplace; [
+      extensions = with pkgs.vscode-extensions; [
         vscodevim.vim
       ];
 

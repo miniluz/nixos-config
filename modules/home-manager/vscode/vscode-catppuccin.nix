@@ -14,7 +14,7 @@ in
   config = lib.mkIf cfg.catppuccin {
 
     programs.vscode.profiles.default = {
-      extensions = with pkgs.vscode-marketplace; [
+      extensions = with pkgs.vscode-extensions; [
         catppuccin.catppuccin-vsc
         catppuccin.catppuccin-vsc-icons
       ];

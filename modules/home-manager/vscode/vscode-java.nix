@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   config,
   lib,
   ...
@@ -13,7 +12,7 @@ in
 
   config = lib.mkIf cfg.java {
 
-    programs.vscode.profiles.default.extensions = with pkgs.vscode-marketplace; [
+    programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
       vscjava.vscode-java-pack
       visualstudioexptteam.vscodeintellicode
       vscjava.vscode-java-debug

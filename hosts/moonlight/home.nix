@@ -46,7 +46,7 @@
     firacode = true;
     # java = true;
     js = true;
-    # rust = true;
+    rust = true;
     vim = true;
     windsurf = true;
   };

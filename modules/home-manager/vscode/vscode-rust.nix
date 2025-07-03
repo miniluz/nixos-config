@@ -13,11 +13,11 @@ in
   config = lib.mkIf cfg.rust {
 
     home.packages = with pkgs; [
-      ffmpeg_7
+      # ffmpeg_7
       lldb
     ];
 
-    programs.vscode.profiles.default.extensions = with pkgs.vscode-marketplace; [
+    programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
       rust-lang.rust-analyzer
       vadimcn.vscode-lldb
     ];
