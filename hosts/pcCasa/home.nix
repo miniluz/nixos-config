@@ -5,7 +5,7 @@
 }:
 {
   imports = [
-    # "${paths.homeManager}/base_configuration.nix"
+    "${paths.homeManager}/base_configuration.nix"
     "${paths.homeManager}/git.nix"
     "${paths.homeManager}/firacode.nix"
     "${paths.homeManager}/obsidian.nix"
