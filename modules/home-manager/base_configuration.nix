@@ -5,9 +5,14 @@
   ...
 }:
 {
-  imports = [ inputs.agenix.homeManagerModules.default ];
+  imports = [
+    inputs.agenix.homeManagerModules.default
+    ./rebuild.nix
+  ];
 
   config = {
+
+    miniluz.rebuild = true;
 
     home.packages = with pkgs; [
       inputs.agenix.packages."x86_64-linux".default
