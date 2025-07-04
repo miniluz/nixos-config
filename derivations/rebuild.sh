@@ -53,7 +53,6 @@ KEEP_SUDO_PID=$!
 set -o pipefail
 if ! (nh os switch 2>&1 | tee "$NH_FLAKE/nixos-switch.log") then
   echo "NixOS Rebuild failed!"
-  git reset .
   notify-send -e "NixOS Rebuilt Failed!" --icon=computer-fail-symbolic
   kill $KEEP_SUDO_PID
   exit 1
