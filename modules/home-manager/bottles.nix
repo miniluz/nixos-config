@@ -18,7 +18,7 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      wineWowPackages.stable
+      wine
       winetricks
       bottles
       yq
