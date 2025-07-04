@@ -32,5 +32,7 @@ in
     xdg.configFile."environment.d/wineloader.conf" = {
       source = "${yabridge-bottles-wineloader}/wineloader.conf";
     };
+
+    home.sessionVariables."W_NO_WIN64_WARNINGS" = "1";
   };
 }
