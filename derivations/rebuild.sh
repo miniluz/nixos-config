@@ -23,7 +23,7 @@ fi
 "${NIX_CONFIG_EDITOR:-${EDITOR:-vi}}" "$NH_FLAKE"
 
 # Early return if no changes were detected (thanks @singiamtel!)
-if [ -n "$(git status --porcelain)" ]; then
+if [ -z "$(git status --porcelain)" ]; then
     echo "No changes detected, exiting."
     popd
     exit 1
