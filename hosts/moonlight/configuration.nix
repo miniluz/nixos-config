@@ -18,11 +18,14 @@
     "${paths.nixos}/gnome.nix"
     "${paths.nixos}/podman.nix"
     "${paths.nixos}/steam.nix"
+    "${paths.nixos}/probe-rs-rules.nix"
   ];
 
   miniluz.gnome.enable = true;
   miniluz.podman.enable = true;
   miniluz.steam.enable = true;
+
+  miniluz.probe-rs-rules.enable = true;
 
   environment.systemPackages = with pkgs; [
     neovim
