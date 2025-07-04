@@ -11,8 +11,9 @@ in
   options.miniluz.reaper.enable = lib.mkEnableOption "Enable Reaper.";
 
   config = lib.mkIf cfg.enable {
-    home.packages = [
-      pkgs.reaper
+    home.packages = with pkgs; [
+      reaper
+      reaper-reapack-extension
     ];
   };
 }
