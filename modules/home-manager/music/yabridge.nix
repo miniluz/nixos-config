@@ -9,18 +9,16 @@ let
   cfg = config.miniluz.yabridge;
 in
 {
-  imports = [
-    "${paths.homeManager}/bottles.nix"
-  ];
-
   options.miniluz.yabridge.enable = lib.mkEnableOption "Enable yabridge.";
 
   config = lib.mkIf cfg.enable {
-    miniluz.bottles.enable = true;
 
     home.packages = with pkgs; [
-      yabridge
+      wineWowPackages.yabridge
       yabridgectl
+      winetricks
     ];
+
+    home.sessionVariables."W_NO_WIN64_WARNINGS" = "1";
   };
 }
