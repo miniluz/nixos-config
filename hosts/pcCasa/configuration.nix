@@ -64,6 +64,15 @@
   musnix.enable = true;
   users.users.miniluz.extraGroups = [ "audio" ];
 
+  services.pipewire.extraConfig.pipewire."92-low-latency" = {
+    context.properties = {
+      default.clock.rate = 48000;
+      default.clock.quantum = 64;
+      default.clock.min-quantum = 64;
+      default.clock.max-quantum = 64;
+    };
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
