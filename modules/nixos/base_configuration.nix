@@ -77,8 +77,7 @@ in
     NH_FLAKE = "/home/miniluz/nixos-config";
   };
 
-  programs.command-not-found.dbPath = inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
-
+  programs.command-not-found.enable = mkDefault false;
   programs.ssh.startAgent = mkDefault true;
 
   # Allow unfree packages
