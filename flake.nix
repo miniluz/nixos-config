@@ -48,10 +48,7 @@
     {
       self,
       nixpkgs,
-      nur,
       musnix,
-      agenix,
-      playit-nixos-module,
       ...
     }@inputs:
     let

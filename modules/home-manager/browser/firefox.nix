@@ -14,6 +14,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.firefox = {
       enable = true;
+      package = pkgs.firefox-esr-128;
 
       policies = {
         DisableTelemetry = true;
