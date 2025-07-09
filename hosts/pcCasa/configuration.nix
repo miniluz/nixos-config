@@ -49,54 +49,56 @@
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire =
-    let
-      buffer-size = 32;
-      sample-rate = 48000;
-    in
-    let
-      buffer-size-str = builtins.toString buffer-size;
-      sample-rate-str = builtins.toString sample-rate;
-    in
     {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
       jack.enable = true;
-
-      extraConfig.pipewire."92-low-latency" = {
-        "context.properties" = {
-          default.clock.rate = sample-rate;
-          default.clock.quantum = buffer-size;
-          default.clock.min-quantum = buffer-size;
-          default.clock.max-quantum = buffer-size;
+    }
+    // (
+      let
+        buffer-size = 64;
+        sample-rate = 48000;
+      in
+      let
+        buffer-sample-str = "${builtins.toString buffer-size}/${builtins.toString sample-rate}";
+      in
+      {
+        extraConfig.pipewire."92-low-latency" = {
+          "context.properties" = {
+            default.clock.rate = sample-rate;
+            default.clock.quantum = buffer-size;
+            default.clock.min-quantum = buffer-size;
+            default.clock.max-quantum = buffer-size;
+          };
         };
-      };
 
-      extraConfig.pipewire-pulse."92-low-latency" = {
-        "context.properties" = [
-          {
-            name = "libpipewire-module-protocol-pulse";
-            args = { };
-          }
-        ];
-        "pulse.properties" = {
-          "pulse.min.req" = "${buffer-size-str}/${sample-rate-str}";
-          "pulse.default.req" = "${buffer-size-str}/${sample-rate-str}";
-          "pulse.max.req" = "${buffer-size-str}/${sample-rate-str}";
-          "pulse.min.quantum" = "${buffer-size-str}/${sample-rate-str}";
-          "pulse.max.quantum" = "${buffer-size-str}/${sample-rate-str}";
+        extraConfig.pipewire-pulse."92-low-latency" = {
+          "context.properties" = [
+            {
+              name = "libpipewire-module-protocol-pulse";
+              args = { };
+            }
+          ];
+          "pulse.properties" = {
+            "pulse.min.req" = buffer-sample-str;
+            "pulse.default.req" = buffer-sample-str;
+            "pulse.max.req" = buffer-sample-str;
+            "pulse.min.quantum" = buffer-sample-str;
+            "pulse.max.quantum" = buffer-sample-str;
+          };
+          "stream.properties" = {
+            "node.latency" = buffer-sample-str;
+            "resample.quality" = 1;
+          };
         };
-        "stream.properties" = {
-          "node.latency" = "${buffer-size-str}/${sample-rate-str}";
-          "resample.quality" = 1;
-        };
-      };
 
-      # use the example session manager (no others are packaged yet so this is enabled by default,
-      # no need to redefine it in your config for now)
-      #media-session.enable = true;
-    };
+        # use the example session manager (no others are packaged yet so this is enabled by default,
+        # no need to redefine it in your config for now)
+        #media-session.enable = true;
+      }
+    );
 
   musnix.enable = true;
   users.users.miniluz.extraGroups = [ "audio" ];
