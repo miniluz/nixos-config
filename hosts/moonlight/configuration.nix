@@ -17,6 +17,7 @@
     inputs.home-manager.nixosModules.default
     "${paths.nixos}/gnome.nix"
     "${paths.nixos}/podman.nix"
+    "${paths.nixos}/virt.nix"
     "${paths.nixos}/steam.nix"
     "${paths.nixos}/probe-rs-rules.nix"
   ];
@@ -24,6 +25,7 @@
   miniluz.gnome.enable = true;
   miniluz.podman.enable = true;
   miniluz.steam.enable = true;
+  miniluz.virt.enable = true;
 
   miniluz.probe-rs-rules.enable = true;
 

@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.miniluz.virtualisation;
+  cfg = config.miniluz.virt;
 in
 {
-  options.miniluz.virtualisation.enable = lib.mkEnableOption "Enable virtualisation";
+  options.miniluz.virt.enable = lib.mkEnableOption "Enable virtualisation";
 
   config = lib.mkIf cfg.enable {
     # Sources:
@@ -21,15 +21,15 @@ in
         package = pkgs.qemu_kvm;
         runAsRoot = true;
         swtpm.enable = true;
-        ovmf = {
-          enable = true;
-          packages = [
-            (pkgs.OVMF.override {
-              secureBoot = true;
-              tpmSupport = true;
-            }).fd
-          ];
-        };
+        # ovmf = {
+        #   enable = true;
+        #   # packages = [
+        #   #   (pkgs.OVMF.override {
+        #   #     secureBoot = true;
+        #   #     tpmSupport = true;
+        #   #   }).fd
+        #   # ];
+        # };
       };
     };
 
