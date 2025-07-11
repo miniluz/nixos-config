@@ -41,7 +41,7 @@ in
 
         statusline.lualine.enable = true;
         telescope.enable = true;
-        autocomplete.nvim-cmp.enable = true;
+        autocomplete.blink-cmp.enable = true;
         binds.whichKey.enable = true;
         filetree.neo-tree.enable = true;
       };
