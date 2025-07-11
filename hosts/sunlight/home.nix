@@ -57,8 +57,6 @@
     vim = true;
   };
 
-  miniluz.helix.enable = true;
-
   miniluz.discord.enable = true;
 
   miniluz.gnome.enable = true;
