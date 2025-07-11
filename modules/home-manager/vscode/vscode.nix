@@ -47,11 +47,14 @@ in
             tamasfe.even-better-toml
 
             ms-vsliveshare.vsliveshare
-            ms-vscode-remote.remote-ssh
+            # ms-vscode-remote.remote-ssh
           ])
           ++ (with pkgs.vscode-marketplace; [
             gruntfuggly.todo-tree
             vivaxy.vscode-conventional-commits
+          ])
+          ++ (with pkgs.open-vsx; [
+            jeanp413.open-remote-ssh
           ]);
 
         userSettings = {
