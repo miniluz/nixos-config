@@ -34,7 +34,7 @@ nixfmt . &>/dev/null \
 || ( nixfmt . ; echo "formatting failed!" && exit 1)
 
 # Shows your changes
-git diff -U0
+git diff HEAD
 
 git add .
 

@@ -24,6 +24,12 @@ in
     programs.nvf = {
       enable = true;
       settings.vim = {
+        theme = {
+          name = "catppuccin";
+          style = "macchiato";
+          transparent = true;
+        };
+
         viAlias = false;
         vimAlias = true;
 
@@ -37,6 +43,7 @@ in
         telescope.enable = true;
         autocomplete.nvim-cmp.enable = true;
         binds.whichKey.enable = true;
+        filetree.neo-tree.enable = true;
       };
     };
 
