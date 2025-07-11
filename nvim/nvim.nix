@@ -1,4 +1,8 @@
 {
+  pkgs,
+  ...
+}:
+{
   config.vim = {
     theme = {
       name = "catppuccin";
@@ -13,7 +17,17 @@
       enable = true;
     };
 
-    languages.nix.enable = true;
+    languages = {
+      enableTreesitter = true;
+      enableFormat = true;
+      enableDAP = true;
+    };
+
+    languages.nix = {
+      enable = true;
+      lsp.server = "nixd";
+      format.package = pkgs.nixfmt-rfc-style;
+    };
 
     statusline.lualine.enable = true;
     autocomplete.blink-cmp.enable = true;
@@ -49,6 +63,15 @@
         ];
         silent = true;
         action = "<cmd>Neotree toggle right<cr>";
+      }
+      {
+        key = "<C-S-t>";
+        mode = [
+          "n"
+          "v"
+        ];
+        silent = true;
+        action = "<cmd>Neotree float git_status<cr>";
       }
       {
         key = "<C-S-c>";
