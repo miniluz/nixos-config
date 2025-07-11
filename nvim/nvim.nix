@@ -16,9 +16,40 @@
     languages.nix.enable = true;
 
     statusline.lualine.enable = true;
-    telescope.enable = true;
     autocomplete.blink-cmp.enable = true;
     binds.whichKey.enable = true;
     filetree.neo-tree.enable = true;
+
+    telescope.enable = true;
+
+    keymaps = [
+      {
+        key = "<C-p>";
+        mode = [
+          "n"
+          "v"
+        ];
+        silent = true;
+        action = "<cmd>Telescope find_files<cr>";
+      }
+      {
+        key = "<C-S-p>";
+        mode = [
+          "n"
+          "v"
+        ];
+        silent = true;
+        action = "<cmd>Telescope commands<cr>";
+      }
+      {
+        key = "<C-t>";
+        mode = [
+          "n"
+          "v"
+        ];
+        silent = true;
+        action = "<cmd>Neotree<cr>";
+      }
+    ];
   };
 }
