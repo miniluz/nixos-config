@@ -50,6 +50,22 @@
         silent = true;
         action = "<cmd>Neotree toggle right<cr>";
       }
+      {
+        key = "<C-S-c>";
+        mode = [
+          "v"
+        ];
+        silent = true;
+        action = "\"*y";
+      }
+      {
+        key = "<C-S-p>";
+        mode = [
+          "v"
+        ];
+        silent = true;
+        action = "\"*p";
+      }
     ];
   };
 }
