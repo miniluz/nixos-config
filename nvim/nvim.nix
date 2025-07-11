@@ -61,7 +61,9 @@
       {
         key = "<C-S-p>";
         mode = [
+          "n"
           "v"
+          "i"
         ];
         silent = true;
         action = "\"*p";
