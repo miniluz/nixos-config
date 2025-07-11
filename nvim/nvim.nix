@@ -3,6 +3,10 @@
   ...
 }:
 {
+  imports = [
+    ./nvim-neotree.nix
+  ];
+
   config.vim = {
     theme = {
       name = "catppuccin";
@@ -32,7 +36,6 @@
     statusline.lualine.enable = true;
     autocomplete.blink-cmp.enable = true;
     binds.whichKey.enable = true;
-    filetree.neo-tree.enable = true;
 
     telescope.enable = true;
 
@@ -55,24 +58,7 @@
         silent = true;
         action = "<cmd>Telescope commands<cr>";
       }
-      {
-        key = "<C-t>";
-        mode = [
-          "n"
-          "v"
-        ];
-        silent = true;
-        action = "<cmd>Neotree toggle right<cr>";
-      }
-      {
-        key = "<C-S-t>";
-        mode = [
-          "n"
-          "v"
-        ];
-        silent = true;
-        action = "<cmd>Neotree float git_status<cr>";
-      }
+
       {
         key = "<C-S-c>";
         mode = [
