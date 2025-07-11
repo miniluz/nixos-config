@@ -6,7 +6,7 @@
   ...
 }:
 let
-  cfg = config.miniluz.nvim;
+  cfg = config.miniluz.nvim-nvf;
 in
 {
   imports = [
@@ -15,7 +15,7 @@ in
     ../direnv.nix
   ];
 
-  options.miniluz.nvim.enable = lib.mkEnableOption "Enable Neovim.";
+  options.miniluz.nvim-nvf.enable = lib.mkEnableOption "Enable Neovim.";
 
   config = lib.mkIf cfg.enable {
     miniluz.direnv.enable = true;
@@ -51,5 +51,9 @@ in
       nixd
       nixfmt-rfc-style
     ];
+
+    programs.neovide = {
+      enable = true;
+    };
   };
 }
