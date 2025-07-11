@@ -49,9 +49,12 @@
       self,
       nixpkgs,
       musnix,
+      nvf,
       ...
-    }@inputs:
+    }@old-inputs:
     let
+      system = "x86_64-linux";
+
       paths = {
         root = "${self}";
         derivations = "${self}/derivations";
@@ -59,14 +62,26 @@
         nixos = "${self}/modules/nixos";
         homeManager = "${self}/modules/home-manager";
       };
+
+      miniluz-nvim = nvf.lib.neovimConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [ ./nvim/nvim.nix ];
+      };
+
+      inputs = old-inputs // {
+        inherit miniluz-nvim;
+      };
     in
     {
+      packages.${system}.miniluz-nvim = miniluz-nvim.neovim;
+
       nixosConfigurations = {
         moonlight = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit
               inputs
               paths
+              miniluz-nvim
               ;
           };
           modules = [
@@ -79,6 +94,7 @@
             inherit
               inputs
               paths
+              miniluz-nvim
               ;
           };
           modules = [
@@ -91,6 +107,7 @@
             inherit
               inputs
               paths
+              miniluz-nvim
               ;
           };
           modules = [
@@ -103,6 +120,7 @@
             inherit
               inputs
               paths
+              miniluz-nvim
               ;
           };
           modules = [
@@ -116,6 +134,7 @@
             inherit
               inputs
               paths
+              miniluz-nvim
               ;
           };
           modules = [
