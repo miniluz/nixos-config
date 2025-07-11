@@ -105,6 +105,18 @@
             ./hosts/pcCasa/configuration.nix
           ];
         };
+
+        home-server = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit
+              inputs
+              paths
+              ;
+          };
+          modules = [
+            ./hosts/home-server/configuration.nix
+          ];
+        };
       };
     };
 }

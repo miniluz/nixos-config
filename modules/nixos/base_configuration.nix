@@ -79,6 +79,7 @@ in
 
   programs.command-not-found.enable = mkDefault false;
   programs.ssh.startAgent = mkDefault true;
+  programs.nix-ld.enable = mkDefault true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = mkDefault true;
