@@ -25,6 +25,8 @@ in
       inputs.miniluz-nvim.neovim
       nixd
       nixfmt-rfc-style
+      wl-clipboard
+      wl-clipboard-x11
     ];
 
     programs.neovide = {
