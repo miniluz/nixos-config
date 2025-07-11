@@ -59,7 +59,7 @@
         action = "\"*y";
       }
       {
-        key = "<C-S-p>";
+        key = "<C-S-v>";
         mode = [
           "n"
           "v"
