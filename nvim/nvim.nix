@@ -48,7 +48,7 @@
           "v"
         ];
         silent = true;
-        action = "<cmd>Neotree<cr>";
+        action = "<cmd>Neotree toggle right<cr>";
       }
     ];
   };
