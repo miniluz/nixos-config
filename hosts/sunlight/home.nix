@@ -16,8 +16,6 @@
 
     "${paths.homeManager}/vscode/vscode.nix"
 
-    "${paths.homeManager}/helix/helix.nix"
-
     "${paths.homeManager}/discord.nix"
 
     "${paths.homeManager}/gnome/gnome.nix"

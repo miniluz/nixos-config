@@ -15,9 +15,6 @@
     # "${paths.homeManager}/vscode/vscode-server.nix"
     "${paths.homeManager}/vscode/vscode.nix"
 
-    "${paths.homeManager}/helix/helix.nix"
-    "${paths.homeManager}/nvim/nvim.nix"
-
     "${paths.homeManager}/discord.nix"
 
     "${paths.homeManager}/gnome/gnome.nix"
@@ -56,7 +53,6 @@
     # rust = true;
     vim = true;
   };
-  miniluz.nvim.enable = true;
 
   miniluz.discord.enable = true;
 

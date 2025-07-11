@@ -13,6 +13,7 @@
     "${paths.homeManager}/firacode.nix"
     # "${homeManagerModules}/vscode/vscode-server.nix"
     "${paths.homeManager}/vscode/vscode.nix"
+    "${paths.homeManager}/nvim/nvim.nix"
     "${paths.homeManager}/discord.nix"
 
     "${paths.homeManager}/gnome/gnome.nix"
@@ -49,6 +50,9 @@
     rust = true;
     vim = true;
     windsurf = true;
+  };
+  miniluz.nvim = {
+    enable = true;
   };
 
   miniluz.discord.enable = true;
