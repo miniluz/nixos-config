@@ -4,6 +4,7 @@
 }:
 {
   imports = [
+    ./nvim-extra-languages.nix
     ./nvim-guess-indent.nix
     ./nvim-legendary.nix
     ./nvim-neotree.nix
