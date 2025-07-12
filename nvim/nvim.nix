@@ -13,11 +13,11 @@
   ];
 
   config.vim = {
-    theme = {
-      name = "catppuccin";
-      style = "macchiato";
-      transparent = true;
-    };
+    # theme = {
+    # name = "catppuccin";
+    #  style = "macchiato";
+    #  transparent = true;
+    # };
 
     viAlias = false;
     vimAlias = true;
@@ -29,12 +29,6 @@
       enableTreesitter = true;
       enableFormat = true;
       enableDAP = true;
-    };
-
-    languages.nix = {
-      enable = true;
-      lsp.server = "nixd";
-      format.package = pkgs.nixfmt-rfc-style;
     };
 
     statusline.lualine.enable = true;
