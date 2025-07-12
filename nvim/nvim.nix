@@ -4,7 +4,6 @@
 }:
 {
   imports = [
-    ./nvim-neotree.nix
     ./nvim-telescope.nix
     ./nvim-legendary.nix
     ./nvim-snacks.nix

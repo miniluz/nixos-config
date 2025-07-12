@@ -1,5 +1,7 @@
 {
   config.vim = {
+    telescope.enable = true;
+
     utility.snacks-nvim = {
       enable = true;
       setupOpts = {
@@ -11,6 +13,8 @@
         };
         explorer = {
           enabled = true;
+          auto_close = true;
+          toggles = true;
         };
         indent = {
           enabled = true;

@@ -1,6 +1,5 @@
 {
   config.vim = {
-    telescope.enable = true;
 
     keymaps = [
       {
