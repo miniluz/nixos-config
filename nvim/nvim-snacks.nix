@@ -43,6 +43,8 @@
       };
     };
 
+    luaConfigPost = "vim.ui.select = Snacks.picker.select;";
+
     keymaps = [
       # top pickers and explorer
       {
