@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   config.vim = {
     languages.nix = {
@@ -14,7 +13,7 @@
           };
         };
       };
-      format.package = pkgs.nixfmt-rfc-style;
+      format.type = "nixfmt";
     };
   };
 }
