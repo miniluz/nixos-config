@@ -5,45 +5,14 @@
     utility.snacks-nvim = {
       enable = true;
       setupOpts = {
-        bigfile = {
-          enabled = true;
-        };
-        dashboard = {
-          enabled = true;
-        };
         explorer = {
           enabled = true;
           auto_close = true;
           toggles = true;
         };
-        indent = {
-          enabled = true;
-        };
-        input = {
-          enabled = true;
-        };
-        notifier = {
-          enabled = true;
-          timeout = 3000;
-        };
-        picker = {
-          enabled = true;
-        };
-        quickfile = {
-          enabled = true;
-        };
-        scope = {
-          enabled = true;
-        };
-        scroll = {
-          enabled = true;
-        };
-        statuscolumn = {
-          enabled = true;
-        };
-        words = {
-          enabled = true;
-        };
+        picker.enabled = true;
+        quickfile.enabled = true;
+        words.enabled = true;
       };
     };
 
@@ -469,103 +438,12 @@
       }
       # Other
       {
-        key = "<leader>z";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.zen() end'';
-        desc = "Toggle Zen Mode";
-      }
-      {
-        key = "<leader>Z";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.zen.zoom() end'';
-        desc = "Toggle Zoom";
-      }
-      {
-        key = "<leader>.";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.scratch() end'';
-        desc = "Toggle Scratch Buffer";
-      }
-      {
-        key = "<leader>S";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.scratch.select() end'';
-        desc = "Select Scratch Buffer";
-      }
-      {
-        key = "<leader>n";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.notifier.show_history() end'';
-        desc = "Notification History";
-      }
-      {
-        key = "<leader>bd";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.bufdelete() end'';
-        desc = "Delete Buffer";
-      }
-      {
-        key = "<leader>cR";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.rename.rename_file() end'';
-        desc = "Rename File";
-      }
-      {
-        key = "<leader>gB";
-        mode = [
-          "n"
-          "v"
-        ];
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.gitbrowse() end'';
-        desc = "Git Browse";
-      }
-      {
-        key = "<leader>gg";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.lazygit() end'';
-        desc = "Lazygit";
-      }
-      {
-        key = "<leader>un";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.notifier.hide() end'';
-        desc = "Dismiss All Notifications";
-      }
-      {
         key = "<c-/>";
         mode = "n";
         silent = true;
         lua = true;
         action = ''function() Snacks.terminal() end'';
         desc = "Toggle Terminal";
-      }
-      {
-        key = "<c-_>";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.terminal() end'';
-        desc = "which_key_ignore";
       }
       {
         key = "]]";
