@@ -8,7 +8,6 @@
         explorer = {
           enabled = true;
           auto_close = true;
-          toggles = true;
         };
         picker.enabled = true;
         quickfile.enabled = true;
