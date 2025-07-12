@@ -8,7 +8,7 @@
           event = "file_opened";
           handler = lib.generators.mkLuaInline ''
             function(file_path)
-              require("neo-tree.command").execute({ action = "close" })
+              vimc.cmd("Neotree close");
             end
           '';
         };
