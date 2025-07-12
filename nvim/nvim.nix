@@ -4,9 +4,10 @@
 }:
 {
   imports = [
-    ./nvim-legendary.nix
-    ./nvim-snacks.nix
     ./nvim-guess-indent.nix
+    ./nvim-legendary.nix
+    ./nvim-neotree.nix
+    ./nvim-snacks.nix
     ./nvim-toggleterm.nix
   ];
 
