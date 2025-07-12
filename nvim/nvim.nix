@@ -4,7 +4,7 @@
 }:
 {
   imports = [
-    ./nvim-telescope.nix
+    # ./nvim-telescope.nix
     ./nvim-legendary.nix
     ./nvim-snacks.nix
   ];
