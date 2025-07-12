@@ -7,6 +7,12 @@
 let
   cfg = config.miniluz.firefox;
   profile = "miniluz";
+  firefox-sidebar = pkgs.fetchFromGitHub {
+    owner = "macleod-ee";
+    repo = "FirefoxSidebar";
+    rev = "a3f9ce26321645ef8f03c6c7a1358dd4abec3e3a";
+    hash = "sha256-6C+ltXuVSH4dZszkI7Bx7FT6P5voiBDbnLrGQINwpf8=";
+  };
 in
 {
   options.miniluz.firefox.enable = lib.mkEnableOption "Enable Firefox.";
@@ -164,12 +170,13 @@ in
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "browser.theme.dark-private-windows" = true;
           "extensions.activeThemeID" = "firefox-dark@mozilla.org";
+          "sidebar.verticalTabs" = true;
         };
       };
     };
 
     home.file = {
-      # ".mozilla/firefox/${profile}/chrome/userChrome.css".source = ./userChrome.css;
+      ".mozilla/firefox/${profile}/chrome.css".source = firefox-sidebar;
       ".mozilla/firefox/${profile}/sidebery-data.json".source = ./sidebery-data.json;
       ".mozilla/firefox/miniluz/search.json.mozlz4".force = lib.mkForce true;
     };
