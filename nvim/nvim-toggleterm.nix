@@ -4,7 +4,7 @@
     terminal.toggleterm = {
       enable = true;
 
-      mappings.open = "";
+      mappings.open = "<C-\\>";
 
       setupOpts = {
         direction = "float";
