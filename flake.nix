@@ -81,7 +81,6 @@
             inherit
               inputs
               paths
-              miniluz-nvim
               ;
           };
           modules = [
@@ -94,7 +93,6 @@
             inherit
               inputs
               paths
-              miniluz-nvim
               ;
           };
           modules = [
@@ -107,7 +105,6 @@
             inherit
               inputs
               paths
-              miniluz-nvim
               ;
           };
           modules = [
@@ -120,7 +117,6 @@
             inherit
               inputs
               paths
-              miniluz-nvim
               ;
           };
           modules = [
@@ -134,7 +130,6 @@
             inherit
               inputs
               paths
-              miniluz-nvim
               ;
           };
           modules = [

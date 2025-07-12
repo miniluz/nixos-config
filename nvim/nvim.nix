@@ -5,6 +5,8 @@
 {
   imports = [
     ./nvim-neotree.nix
+    ./nvim-telescope.nix
+    ./nvim-legendary.nix
   ];
 
   config.vim = {
@@ -37,28 +39,7 @@
     autocomplete.blink-cmp.enable = true;
     binds.whichKey.enable = true;
 
-    telescope.enable = true;
-
     keymaps = [
-      {
-        key = "<C-p>";
-        mode = [
-          "n"
-          "v"
-        ];
-        silent = true;
-        action = "<cmd>Telescope find_files<cr>";
-      }
-      {
-        key = "<C-S-p>";
-        mode = [
-          "n"
-          "v"
-        ];
-        silent = true;
-        action = "<cmd>Telescope commands<cr>";
-      }
-
       {
         key = "<C-S-c>";
         mode = [
