@@ -21,9 +21,8 @@
     viAlias = false;
     vimAlias = true;
 
-    lsp = {
-      enable = true;
-    };
+    treesitter.enable = true;
+    lsp.enable = true;
 
     languages = {
       enableTreesitter = true;
