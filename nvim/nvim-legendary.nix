@@ -1,32 +1,33 @@
 { pkgs, ... }:
 {
   config.vim = {
-    extraPlugins = {
-      legendary = {
-        # ^^^^^^^^^ this name should match the package.pname or package.name
+    lazy.plugins = {
+      "legendary.nvim" = {
         package = pkgs.vimPlugins.legendary-nvim;
+        setupModule = "legendary";
 
-        setup = "require('legendary').setup({ extensions = {
-          which_key = {
-            auto_register = false,
-          },
-        }});";
+        setupOpts = {
+          extensions = {
+            which_key = {
+              auto_register = false;
+            };
+          };
+        };
 
-        # before = [ "which-key" ];
+        keys = [
+          {
+            key = "<C-S-p>";
+            mode = [
+              "n"
+              "v"
+            ];
+            silent = true;
+            action = "<cmd>Legendary<cr>";
+          }
+        ];
       };
     };
 
-    keymaps = [
-      {
-        key = "<C-S-p>";
-        mode = [
-          "n"
-          "v"
-        ];
-        silent = true;
-        action = "<cmd>Legendary<cr>";
-      }
-    ];
   };
 
 }

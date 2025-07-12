@@ -38,6 +38,7 @@
     statusline.lualine.enable = true;
     autocomplete.blink-cmp.enable = true;
     binds.whichKey.enable = true;
+    tabline.nvimBufferline.enable = true;
 
     keymaps = [
       {
