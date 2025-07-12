@@ -176,7 +176,7 @@ in
     };
 
     home.file = {
-      ".mozilla/firefox/${profile}/chrome.css".source = firefox-sidebar;
+      ".mozilla/firefox/${profile}/chrome".source = firefox-sidebar;
       ".mozilla/firefox/${profile}/sidebery-data.json".source = ./sidebery-data.json;
       ".mozilla/firefox/miniluz/search.json.mozlz4".force = lib.mkForce true;
     };
