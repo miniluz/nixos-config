@@ -5,10 +5,6 @@
     utility.snacks-nvim = {
       enable = true;
       setupOpts = {
-        explorer = {
-          enabled = true;
-          auto_close = true;
-        };
         picker.enabled = true;
         quickfile.enabled = true;
         words.enabled = true;
