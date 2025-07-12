@@ -4,9 +4,10 @@
 }:
 {
   imports = [
-    # ./nvim-telescope.nix
     ./nvim-legendary.nix
     ./nvim-snacks.nix
+    ./nvim-guess-indent.nix
+    ./nvim-toggleterm.nix
   ];
 
   config.vim = {
