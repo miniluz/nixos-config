@@ -59,14 +59,14 @@
         action = ''function() Snacks.picker.notifications() end'';
         desc = "Notification History";
       }
-      {
-        key = "<leader>e";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.explorer() end'';
-        desc = "File Explorer";
-      }
+      # {
+      #   key = "<leader>e";
+      #   mode = "n";
+      #   silent = true;
+      #   lua = true;
+      #   action = ''function() Snacks.explorer() end'';
+      #   desc = "File Explorer";
+      # }
       # find
       {
         key = "<leader>fb";
