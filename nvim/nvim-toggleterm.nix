@@ -23,7 +23,7 @@
         key = "<C-+>";
         mode = "n";
         silent = true;
-        action = '':1TermExec cmd="gitui"<cr>'';
+        action = ''<cmd>1TermExec cmd="gitui"<cr>'';
         desc = "Toggle GitUI terminal.";
       }
       {
@@ -37,7 +37,7 @@
         key = "<C-`>";
         mode = "n";
         silent = true;
-        action = ''2TermExec cmd="zellij"<cr>'';
+        action = ''<cmd>2TermExec cmd="zellij"<cr>'';
         desc = "Exit terminal mode.";
       }
       {
