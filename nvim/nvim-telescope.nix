@@ -1,7 +1,6 @@
 {
   config.vim = {
     telescope.enable = true;
-    utility.snacks-nvim.enable = true;
 
     keymaps = [
       {
@@ -12,6 +11,7 @@
         ];
         silent = true;
         action = "<cmd>Telescope find_files<cr>";
+        desc = "Find Files";
       }
       # {
       #   key = "<C-S-p>";

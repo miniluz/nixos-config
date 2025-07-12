@@ -7,6 +7,7 @@
     ./nvim-neotree.nix
     ./nvim-telescope.nix
     ./nvim-legendary.nix
+    ./nvim-snacks.nix
   ];
 
   config.vim = {
@@ -46,7 +47,7 @@
           "v"
         ];
         silent = true;
-        action = "\"*y";
+        action = "\"+y";
       }
       {
         key = "<C-S-v>";
@@ -56,7 +57,7 @@
           "i"
         ];
         silent = true;
-        action = "\"*p";
+        action = "\"+p";
       }
     ];
   };
