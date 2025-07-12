@@ -1,6 +1,7 @@
 {
   config.vim = {
     telescope.enable = true;
+    utility.snacks-nvim.enable = true;
 
     keymaps = [
       {
