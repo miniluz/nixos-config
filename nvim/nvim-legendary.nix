@@ -6,12 +6,11 @@
         # ^^^^^^^^^ this name should match the package.pname or package.name
         package = pkgs.vimPlugins.legendary-nvim;
 
-        setup = "require('legendary').setup({
-        extensions = {
+        setup = "require('legendary').setup({ extensions = {
           which_key = {
             auto_register = false,
           },
-        })";
+        }});";
 
         # before = [ "which-key" ];
       };
