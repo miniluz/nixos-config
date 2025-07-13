@@ -25,6 +25,7 @@
 
     treesitter.enable = true;
     lsp.enable = true;
+    lsp.trouble.enable = true;
 
     languages = {
       enableTreesitter = true;
@@ -55,6 +56,15 @@
         ];
         silent = true;
         action = "\"+p";
+      }
+      {
+        key = "<leader>w";
+        mode = [
+          "n"
+          "v"
+        ];
+        silent = true;
+        action = ":w <bar> :bd<cr>";
       }
     ];
   };
