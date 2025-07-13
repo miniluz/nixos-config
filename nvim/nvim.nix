@@ -7,8 +7,8 @@
     ./nvim-extra-languages.nix
     ./nvim-guess-indent.nix
     ./nvim-legendary.nix
-    ./nvim-neotree.nix
     ./nvim-nix.nix
+    ./nvim-nvimtree.nix
     ./nvim-snacks.nix
     ./nvim-toggleterm.nix
   ];
@@ -37,6 +37,8 @@
     autocomplete.blink-cmp.enable = true;
     binds.whichKey.enable = true;
     tabline.nvimBufferline.enable = true;
+    comments.comment-nvim.enable = true;
+    autopairs.nvim-autopairs.enable = true;
 
     keymaps = [
       {
