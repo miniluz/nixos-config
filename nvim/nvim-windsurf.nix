@@ -4,6 +4,8 @@
     lazy.plugins."windsurf.nvim" = {
       package = pkgs.vimPlugins.windsurf-nvim;
 
+      setupModule = "codeium";
+
       lazy = false;
 
       setupOpts = {
@@ -21,7 +23,7 @@
             accept = "<Tab>";
             accept_word = false;
             accept_line = false;
-            clear = <Esc>;
+            clear = "<Esc>";
             next = "<M-]>";
             prev = "<M-[>";
           };
