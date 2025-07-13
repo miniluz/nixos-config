@@ -17,8 +17,9 @@
 
   config.vim = {
     theme = {
-      name = "tokyonight";
-      # style = "macchiato";
+      enable = true;
+      name = "catppuccin";
+      style = "macchiato";
       transparent = true;
     };
 
@@ -93,6 +94,16 @@
         ];
         silent = true;
         action = "<leader>lf :w <bar> :bd<cr>";
+      }
+      {
+        key = "<C-.>";
+        mode = [
+          "n"
+          "v"
+          "i"
+        ];
+        silent = true;
+        action = "<leader>la";
       }
     ];
   };
