@@ -1,8 +1,4 @@
 {
-  pkgs,
-  ...
-}:
-{
   imports = [
     ./nvim-bufferline.nix
     ./nvim-comments.nix
@@ -14,6 +10,7 @@
     ./nvim-snacks.nix
     ./nvim-toggleterm.nix
     ./nvim-ts.nix
+    ./nvim-windsurf.nix
     ./nvim-vscode-mappings.nix
   ];
 

@@ -46,7 +46,7 @@
           "v"
         ];
         silent = true;
-        action = "<cmd>BufferLineMovePick<cr>";
+        action = "<cmd>BufferLinePick<cr>";
       }
     ];
   };

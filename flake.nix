@@ -66,7 +66,10 @@
         homeManager = "${self}/modules/home-manager";
       };
 
-      pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+      pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
 
       miniluz-nvim = nvf.lib.neovimConfiguration {
         pkgs = pkgs-unstable;
