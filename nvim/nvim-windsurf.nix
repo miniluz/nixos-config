@@ -23,7 +23,7 @@
             accept = "<Tab>";
             accept_word = false;
             accept_line = false;
-            clear = "<Esc>";
+            clear = "<leader><Esc>";
             next = "<M-]>";
             prev = "<M-[>";
           };
