@@ -8,6 +8,7 @@
     ./nvim-guess-indent.nix
     ./nvim-legendary.nix
     ./nvim-neotree.nix
+    ./nvim-nix.nix
     ./nvim-snacks.nix
     ./nvim-toggleterm.nix
   ];
