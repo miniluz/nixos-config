@@ -22,7 +22,7 @@ in
     miniluz.firacode.enable = true;
 
     home.packages = with pkgs; [
-      inputs.miniluz-nvim.neovim
+      miniluz-nvim.neovim
       nixd
       nixfmt-rfc-style
       wl-clipboard

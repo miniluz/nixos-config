@@ -62,7 +62,7 @@ fi
 kill $KEEP_SUDO_PID
 
 # Get current generation metadata
-current=$(nixos-rebuild list-generations | grep True)
+current=$(nixos-rebuild list-generations | grep current)
 
 # Commit all changes witih the generation metadata
 git commit -am "$current"

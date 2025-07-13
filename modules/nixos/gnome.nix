@@ -8,14 +8,16 @@ let
   cfg = config.miniluz.gnome;
 in
 {
-  options.miniluz.gnome.enable = lib.mkEnableOption "Enable GNOME and GDE";
+  options.miniluz.gnome.enable = lib.mkEnableOption "Enable GNOME and GDM";
 
   config = lib.mkIf cfg.enable {
-    services.xserver.enable = true;
-    services.displayManager.gdm.enable = true;
-    services.desktopManager.gnome.enable = true;
+    services.xserver = {
+      enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+    };
 
-    services.gnome.gcr-ssh-agent.enable = false;
+    # services.gnome.gcr-ssh-agent.enable = false;
 
     environment.gnome.excludePackages = (
       with pkgs;

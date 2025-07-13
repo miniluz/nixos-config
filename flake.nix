@@ -10,10 +10,12 @@
 
   inputs = {
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -48,10 +50,11 @@
     {
       self,
       nixpkgs,
+      nixpkgs-unstable,
       musnix,
       nvf,
       ...
-    }@old-inputs:
+    }@inputs:
     let
       system = "x86_64-linux";
 
@@ -63,13 +66,20 @@
         homeManager = "${self}/modules/home-manager";
       };
 
+      pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+
       miniluz-nvim = nvf.lib.neovimConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = pkgs-unstable;
         modules = [ ./nvim/nvim.nix ];
       };
 
-      inputs = old-inputs // {
-        inherit miniluz-nvim;
+      overlay-module = {
+        nixpkgs.overlays = [
+          (final: prev: {
+            inherit miniluz-nvim;
+            unstable = pkgs-unstable;
+          })
+        ];
       };
     in
     {
@@ -84,6 +94,7 @@
               ;
           };
           modules = [
+            overlay-module
             ./hosts/moonlight/configuration.nix
           ];
         };
@@ -96,6 +107,7 @@
               ;
           };
           modules = [
+            overlay-module
             ./hosts/sunlight/configuration.nix
           ];
         };
@@ -108,6 +120,7 @@
               ;
           };
           modules = [
+            overlay-module
             ./hosts/starlight/configuration.nix
           ];
         };
@@ -120,8 +133,9 @@
               ;
           };
           modules = [
-            musnix.nixosModules.musnix
+            overlay-module
             ./hosts/pcCasa/configuration.nix
+            musnix.nixosModules.musnix
           ];
         };
 
@@ -133,6 +147,7 @@
               ;
           };
           modules = [
+            overlay-module
             ./hosts/home-server/configuration.nix
           ];
         };
