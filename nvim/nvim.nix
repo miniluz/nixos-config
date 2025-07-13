@@ -4,6 +4,7 @@
 }:
 {
   imports = [
+    ./nvim-bufferline.nix
     ./nvim-comments.nix
     ./nvim-extra-languages.nix
     ./nvim-guess-indent.nix
@@ -13,6 +14,7 @@
     ./nvim-snacks.nix
     ./nvim-toggleterm.nix
     ./nvim-ts.nix
+    ./nvim-vscode-mappings.nix
   ];
 
   config.vim = {
@@ -41,70 +43,5 @@
     binds.whichKey.enable = true;
     autopairs.nvim-autopairs.enable = true;
 
-    keymaps = [
-      {
-        key = "<C-S-c>";
-        mode = [
-          "n"
-        ];
-        silent = true;
-        action = "\"+yy";
-      }
-      {
-        key = "<C-S-c>";
-        mode = [
-          "v"
-        ];
-        silent = true;
-        action = "\"+y";
-      }
-      {
-        key = "<C-S-v>";
-        mode = [
-          "n"
-          "v"
-        ];
-        silent = true;
-        action = "\"+p";
-      }
-      {
-        key = "<C-S-v>";
-        mode = [
-          "i"
-        ];
-        silent = true;
-        action = "<esc>\"+po";
-      }
-      {
-        key = "<C-s>";
-        mode = [
-          "n"
-          "v"
-          "i"
-        ];
-        silent = true;
-        action = "<leader>lf :w <cr>";
-      }
-
-      {
-        key = "<leader>w";
-        mode = [
-          "n"
-          "v"
-        ];
-        silent = true;
-        action = "<leader>lf :w <bar> :bd<cr>";
-      }
-      {
-        key = "<C-.>";
-        mode = [
-          "n"
-          "v"
-          "i"
-        ];
-        silent = true;
-        action = "<leader>la";
-      }
-    ];
   };
 }
