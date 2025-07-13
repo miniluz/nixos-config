@@ -40,9 +40,7 @@
           action = ''<cmd>2ToggleTerm<cr>'';
           desc = "Exit terminal mode.";
         }
-
       ];
-
     };
 
     keymaps = [

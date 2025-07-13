@@ -15,5 +15,24 @@
         require('ts_context_commentstring').setup({});
       '';
     };
+
+    keymaps = [
+      {
+        key = "<C-ç>";
+        mode = [
+          "n"
+        ];
+        silent = true;
+        action = "gcc";
+      }
+      {
+        key = "<C-ç>";
+        mode = [
+          "v"
+        ];
+        silent = true;
+        action = "gc";
+      }
+    ];
   };
 }

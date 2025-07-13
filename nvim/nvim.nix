@@ -12,6 +12,7 @@
     ./nvim-nvimtree.nix
     ./nvim-snacks.nix
     ./nvim-toggleterm.nix
+    ./nvim-ts.nix
   ];
 
   config.vim = {
@@ -37,10 +38,17 @@
     statusline.lualine.enable = true;
     autocomplete.blink-cmp.enable = true;
     binds.whichKey.enable = true;
-    tabline.nvimBufferline.enable = true;
     autopairs.nvim-autopairs.enable = true;
 
     keymaps = [
+      {
+        key = "<C-S-c>";
+        mode = [
+          "n"
+        ];
+        silent = true;
+        action = "\"+yy";
+      }
       {
         key = "<C-S-c>";
         mode = [
@@ -54,11 +62,29 @@
         mode = [
           "n"
           "v"
-          "i"
         ];
         silent = true;
         action = "\"+p";
       }
+      {
+        key = "<C-S-v>";
+        mode = [
+          "i"
+        ];
+        silent = true;
+        action = "<esc>\"+po";
+      }
+      {
+        key = "<C-s>";
+        mode = [
+          "n"
+          "v"
+          "i"
+        ];
+        silent = true;
+        action = "<leader>lf :w <cr>";
+      }
+
       {
         key = "<leader>w";
         mode = [
@@ -66,7 +92,7 @@
           "v"
         ];
         silent = true;
-        action = ":w <bar> :bd<cr>";
+        action = "<leader>lf :w <bar> :bd<cr>";
       }
     ];
   };
