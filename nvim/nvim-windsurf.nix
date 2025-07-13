@@ -4,6 +4,8 @@
     lazy.plugins."windsurf.nvim" = {
       package = pkgs.vimPlugins.windsurf-nvim;
 
+      lazy = false;
+
       setupOpts = {
         enable_cmp_source = false;
 
