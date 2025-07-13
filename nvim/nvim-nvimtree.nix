@@ -9,19 +9,22 @@
             quit_on_open = true;
           };
         };
+        view = {
+          side = "right";
+        };
       };
     };
-    # keymaps = [
-    #   {
-    #     key = "<leader>e";
-    #     mode = [
-    #       "n"
-    #       "v"
-    #     ];
-    #     silent = true;
-    #     action = "<cmd>Neotree toggle right<cr>";
-    #   }
-    # ];
+    keymaps = [
+      {
+        key = "<leader>e";
+        mode = [
+          "n"
+          "v"
+        ];
+        silent = true;
+        action = "<cmd>NvimTreeFindFileToggle<cr>";
+      }
+    ];
   };
 
 }

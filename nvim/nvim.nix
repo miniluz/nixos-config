@@ -14,11 +14,11 @@
   ];
 
   config.vim = {
-    # theme = {
-    # name = "catppuccin";
-    #  style = "macchiato";
-    #  transparent = true;
-    # };
+    theme = {
+      name = "catppuccin";
+      style = "macchiato";
+      transparent = true;
+    };
 
     viAlias = false;
     vimAlias = true;
