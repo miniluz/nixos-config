@@ -28,6 +28,10 @@
     treesitter.enable = true;
     lsp.enable = true;
     lsp.trouble.enable = true;
+    diagnostics = {
+      enable = true;
+      config.virtual_text = true;
+    };
 
     languages = {
       enableTreesitter = true;
