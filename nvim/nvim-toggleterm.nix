@@ -27,14 +27,14 @@
           desc = "Toggle GitUI terminal.";
         }
         {
-          key = "<C-`>";
+          key = "<C-¡>";
           mode = "n";
           silent = true;
           action = ''<cmd>2TermExec cmd="zellij"<cr>'';
           desc = "Exit terminal mode.";
         }
         {
-          key = "<C-`>";
+          key = "<C-¡>";
           mode = "t";
           silent = true;
           action = ''<cmd>2ToggleTerm<cr>'';
@@ -45,7 +45,7 @@
 
     keymaps = [
       {
-        key = "<C-'>";
+        key = "<C-º>";
         mode = "t";
         silent = true;
         action = ''<C-\><C-n>'';
