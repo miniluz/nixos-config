@@ -129,6 +129,17 @@ in
               definedAliases = [ "@hm" ];
             };
 
+            noogle = {
+              name = "noogle";
+              urls = [
+                {
+                  template = "https://noogle.dev/q?term={searchTerms}";
+                }
+              ];
+              icon = "https://noogle.dev/favicon.ico";
+              definedAliases = [ "@ng" ];
+            };
+
             npm-packages = {
               name = "npm-packages";
               urls = [

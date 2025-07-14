@@ -42,7 +42,7 @@
           "i"
         ];
         silent = true;
-        action = "<leader>lf<cmd>w<cr>";
+        action = "<cmd>lua vim.lsp.buf.format()<cr><cmd>w<cr>";
       }
 
       {
@@ -52,7 +52,7 @@
           "v"
         ];
         silent = true;
-        action = "<leader>lf<cmd>w<cr><cmd>bd<cr>";
+        action = "<cmd>lua vim.lsp.buf.format()<cr><cmd>w<cr><cmd>bd<cr>";
       }
       {
         key = "<C-.>";
@@ -62,7 +62,7 @@
           "i"
         ];
         silent = true;
-        action = "<leader>la";
+        action = "<cmd>lua vim.lsp.buf.code_action()<cr>";
       }
       {
         key = "<F2>";
