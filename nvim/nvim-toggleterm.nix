@@ -10,34 +10,42 @@
         direction = "float";
       };
 
+      after = ''
+        local Terminal  = require('toggleterm.terminal').Terminal
+
+        local gitui_terminal = Terminal:new({ cmd = "gitui", hidden = true })
+
+        function _gitui_toggle()
+          gitui_terminal:toggle()
+        end
+
+        local zellij_terminal = Terminal:new({ cmd = "zellij", hidden = true })
+
+        function _zellij_toggle()
+          zellij_terminal:toggle()
+        end
+      '';
+
       keys = [
 
         {
           key = "<C-+>";
-          mode = "n";
+          mode = [
+            "n"
+            "t"
+          ];
           silent = true;
-          action = ''<cmd>1TermExec cmd="gitui"<cr>'';
-          desc = "Toggle GitUI terminal.";
-        }
-        {
-          key = "<C-+>";
-          mode = "t";
-          silent = true;
-          action = ''<cmd>1ToggleTerm<cr>'';
+          action = ''<cmd>lua _gitui_toggle()<cr>'';
           desc = "Toggle GitUI terminal.";
         }
         {
           key = "<C-¡>";
-          mode = "n";
+          mode = [
+            "n"
+            "t"
+          ];
           silent = true;
-          action = ''<cmd>2TermExec cmd="zellij"<cr>'';
-          desc = "Exit terminal mode.";
-        }
-        {
-          key = "<C-¡>";
-          mode = "t";
-          silent = true;
-          action = ''<cmd>2ToggleTerm<cr>'';
+          action = ''<cmd>lua _zellij_toggle()<cr>'';
           desc = "Exit terminal mode.";
         }
       ];
