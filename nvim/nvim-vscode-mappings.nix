@@ -42,7 +42,7 @@
           "i"
         ];
         silent = true;
-        action = "<leader>lf :w <cr>";
+        action = "<leader>lf<cmd>w<cr>";
       }
 
       {
@@ -52,7 +52,7 @@
           "v"
         ];
         silent = true;
-        action = "<leader>lf :w <bar> :bd<cr>";
+        action = "<leader>lf<cmd>w<cr><cmd>bd<cr>";
       }
       {
         key = "<C-.>";
