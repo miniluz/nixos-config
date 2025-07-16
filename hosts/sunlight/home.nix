@@ -58,6 +58,7 @@
   miniluz.nvim = {
     enable = true;
     nix-editor = true;
+    neovide = true;
   };
 
   miniluz.discord.enable = true;
