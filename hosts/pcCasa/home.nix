@@ -14,6 +14,7 @@
 
     # "${paths.homeManager}/vscode/vscode-server.nix"
     "${paths.homeManager}/vscode/vscode.nix"
+    "${paths.homeManager}/nvim/nvim.nix"
 
     "${paths.homeManager}/discord.nix"
 
@@ -52,6 +53,10 @@
     # python = true;
     # rust = true;
     vim = true;
+  };
+  miniluz.nvim = {
+    enable = true;
+    nix-editor = true;
   };
 
   miniluz.discord.enable = true;

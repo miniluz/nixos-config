@@ -51,7 +51,10 @@
     vim = true;
     windsurf = true;
   };
-  miniluz.nvim.enable = true;
+  miniluz.nvim = {
+    enable = true;
+    nix-editor = true;
+  };
 
   miniluz.discord.enable = true;
 

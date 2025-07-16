@@ -15,6 +15,7 @@
     "${paths.homeManager}/obsidian.nix"
 
     "${paths.homeManager}/vscode/vscode.nix"
+    "${paths.homeManager}/nvim/nvim.nix"
 
     "${paths.homeManager}/discord.nix"
 
@@ -53,6 +54,10 @@
     js = true;
     rust = true;
     vim = true;
+  };
+  miniluz.nvim = {
+    enable = true;
+    nix-editor = true;
   };
 
   miniluz.discord.enable = true;

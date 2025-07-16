@@ -20,7 +20,7 @@
           virtual_text_priority = 65535;
           map_keys = true;
           key_bindings = {
-            accept = "<Tab>";
+            accept = "<leader><Tab>";
             accept_word = false;
             accept_line = false;
             clear = "<leader><Esc>";

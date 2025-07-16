@@ -22,7 +22,10 @@ in
     ./windsurf.nix
   ];
 
-  options.miniluz.vscode.enable = lib.mkEnableOption "Enable VSCode.";
+  options.miniluz.vscode = {
+    enable = lib.mkEnableOption "Enable VSCode.";
+    nix-editor = lib.mkEnableOption "Make VSCode the Nix config editor.";
+  };
 
   config = lib.mkIf cfg.enable {
     miniluz.direnv.enable = true;
@@ -89,7 +92,7 @@ in
       };
     };
 
-    home.sessionVariables = {
+    home.sessionVariables = lib.mkIf cfg.nix-editor {
       "NIX_CONFIG_EDITOR" = "code-nw";
     };
 

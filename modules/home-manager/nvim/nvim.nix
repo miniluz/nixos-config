@@ -15,7 +15,10 @@ in
     ../direnv.nix
   ];
 
-  options.miniluz.nvim.enable = lib.mkEnableOption "Enable Neovim.";
+  options.miniluz.nvim = {
+    enable = lib.mkEnableOption "Enable Neovim.";
+    nix-editor = lib.mkEnableOption "Make Neovim the Nix config editor.";
+  };
 
   config = lib.mkIf cfg.enable {
     miniluz.direnv.enable = true;
@@ -31,6 +34,10 @@ in
 
     programs.neovide = {
       enable = true;
+    };
+
+    home.sessionVariables = lib.mkIf cfg.nix-editor {
+      "NIX_CONFIG_EDITOR" = "code-nw";
     };
   };
 }

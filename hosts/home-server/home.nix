@@ -8,7 +8,7 @@
   imports = [
     "${paths.homeManager}/base_configuration.nix"
     "${paths.homeManager}/git.nix"
-    # "${homeManagerModules}/vscode/vscode-server.nix"
+    "${paths.homeManager}/nvim/nvim.nix"
 
     "${paths.homeManager}/shell/utils/shell-utils.nix"
     "${paths.homeManager}/shell/gitui.nix"

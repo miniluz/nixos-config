@@ -43,6 +43,7 @@
     autocomplete.blink-cmp.enable = true;
     binds.whichKey.enable = true;
     autopairs.nvim-autopairs.enable = true;
+    projects.project-nvim.enable = true;
 
   };
 }
