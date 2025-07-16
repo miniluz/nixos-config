@@ -15,6 +15,8 @@
     "${paths.homeManager}/shell/fish.nix"
   ];
 
+  miniluz.base_configuration.visual = false;
+
   miniluz.git.enable = true;
 
   miniluz.fish.enable = true;
@@ -22,6 +24,10 @@
   miniluz.gitui.enable = true;
 
   # miniluz.vscode.server = true;
+  miniluz.nvim = {
+    enable = true;
+    nix-editor = true;
+  };
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
