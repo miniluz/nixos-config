@@ -1,11 +1,3 @@
-# I believe there are a few ways to do this:
-#
-#    1. My current way, using a minimal /etc/nixos/configuration.nix that just imports my config from my home directory (see it in the gist)
-#    2. Symlinking to your own configuration.nix in your home directory (I think I tried and abandoned this and links made relative paths weird)
-#    3. My new favourite way: as @clot27 says, you can provide nixos-rebuild with a path to the config, allowing it to be entirely inside your dotfies, with zero bootstrapping of files required.
-#       `nixos-rebuild switch -I nixos-config=path/to/configuration.nix`
-#    4. If you uses a flake as your primary config, you can specify a path to `configuration.nix` in it and then `nixos-rebuild switch —flake` path/to/directory
-
 # A rebuild script that commits on a successful build
 set -e
 
@@ -61,11 +53,18 @@ fi
 # Kill sudo loop
 kill $KEEP_SUDO_PID
 
-# Get current generation metadata
-current=$(nixos-rebuild list-generations | grep current)
+
+# Get the current generation info and build commit message
+commit_message=$(nixos-rebuild list-generations --json | jq -r '.[] | select(.current == true) | "\(.generation) - \(.date)"')
+
+# Check if we got a valid commit message
+if [ -z "$commit_message" ]; then
+    echo "Error: Could not find current generation" >&2
+    exit 1
+fi
 
 # Commit all changes witih the generation metadata
-git commit -am "$current"
+git commit -am "$commit_message"
 
 git push
 
