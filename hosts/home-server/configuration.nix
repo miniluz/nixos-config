@@ -16,9 +16,11 @@
     "${paths.nixos}/base_configuration.nix"
     inputs.home-manager.nixosModules.default
     "${paths.nixos}/podman.nix"
+    "${paths.nixos}/tailscale.nix"
   ];
 
   # miniluz.podman.enable = true;
+  miniluz.tailscale.enable = true;
 
   environment.systemPackages = with pkgs; [
     neovim
