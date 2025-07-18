@@ -23,6 +23,7 @@
     "${paths.nixos}/probe-rs-rules.nix"
   ];
 
+  miniluz.tailscale.enable = true;
   miniluz.gnome.enable = true;
   miniluz.podman.enable = true;
   miniluz.steam.enable = true;
