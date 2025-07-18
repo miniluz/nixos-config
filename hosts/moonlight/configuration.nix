@@ -15,6 +15,7 @@
     ./hardware-configuration.nix
     "${paths.nixos}/base_configuration.nix"
     inputs.home-manager.nixosModules.default
+    "${paths.nixos}/tailscale.nix"
     "${paths.nixos}/gnome.nix"
     "${paths.nixos}/podman.nix"
     "${paths.nixos}/virt.nix"
