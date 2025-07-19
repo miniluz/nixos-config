@@ -64,6 +64,9 @@ in
   environment.systemPackages = with pkgs; [
     file
     nixfmt-rfc-style
+    uutils-coreutils-noprefix
+    p7zip
+    fd
     evil-helix
     nh
     nil

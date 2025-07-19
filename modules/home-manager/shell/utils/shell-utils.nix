@@ -26,15 +26,27 @@ in
     miniluz.zoxide.enable = lib.mkDefault true;
 
     programs.bat.enable = lib.mkDefault true;
+    programs.fd.enable = lib.mkDefault true;
+    # yazi file manager
 
     programs.zellij = {
       enable = lib.mkDefault true;
       enableFishIntegration = lib.mkDefault true;
+      settings = {
+        on_force_close = "quit";
+      };
     };
 
     home.packages = with pkgs; [
       dust
       ripgrep
+      ripgrep-all
+      wiki-tui
+      kondo
+      p7zip
+      uutils-coreutils-noprefix
+      hyperfine
+      delta
     ];
   };
 }

@@ -4,7 +4,7 @@
       ts = {
         enable = true;
         format.enable = true;
-        format.type = "prettier";
+        format.type = "prettierd";
         extensions.ts-error-translator.enable = true;
       };
       tailwind.enable = true;
