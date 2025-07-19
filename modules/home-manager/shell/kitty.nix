@@ -42,7 +42,7 @@ in
       map ctrl+shift+b previous_window
     '';
 
-    # home.sessionVariables.TERMINAL = "kitty";
+    home.sessionVariables.TERMINAL = "kitty";
 
     xdg.configFile."kitty/theme.conf".source =
       lib.mkForce "${catppuccin-kitty}/themes/${cfg.theme}.conf";
