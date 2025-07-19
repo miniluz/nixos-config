@@ -40,7 +40,7 @@ in
         sleep-inactive-battery-type = "nothing";
       };
 
-      "org/gnome/desktop/default-applications/terminal" = lib.mkIf kitty-cfg.enable {
+      "org/gnome/desktop/default-applications/terminal" = {
         exec = "kitty";
       };
     };
