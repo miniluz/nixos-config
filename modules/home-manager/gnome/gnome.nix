@@ -6,6 +6,7 @@
 }:
 let
   cfg = config.miniluz.gnome;
+  kitty-cfg = config.miniluz.kitty;
 in
 {
   imports = [
@@ -37,6 +38,10 @@ in
         power-button-action = "nothing";
         sleep-inactive-ac-type = "nothing";
         sleep-inactive-battery-type = "nothing";
+      };
+
+      "org/gnome/desktop/default-applications/terminal" = lib.mkIf kitty-cfg.enable {
+        exec = "kitty";
       };
     };
   };
