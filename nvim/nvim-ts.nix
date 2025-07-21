@@ -3,9 +3,7 @@
     languages = {
       ts = {
         enable = true;
-        format.enable = true;
-        format.type = "prettierd";
-        extensions.ts-error-translator.enable = true;
+        format.type = "prettier";
       };
       tailwind.enable = true;
       css.enable = true;

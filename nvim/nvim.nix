@@ -33,11 +33,14 @@
       config.virtual_text = true;
     };
 
+    git.enable = true;
+
     languages = {
       enableTreesitter = true;
       enableFormat = true;
       enableDAP = true;
     };
+    formatter.conform-nvim.enable = true;
 
     statusline.lualine.enable = true;
     autocomplete.blink-cmp.enable = true;
