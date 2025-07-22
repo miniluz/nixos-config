@@ -1,10 +1,7 @@
 {
   config.vim = {
     languages = {
-      ts = {
-        enable = true;
-        format.type = "prettier";
-      };
+      ts.enable = true;
       tailwind.enable = true;
       css.enable = true;
       html.enable = true;

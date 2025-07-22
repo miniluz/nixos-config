@@ -20,10 +20,10 @@
           virtual_text_priority = 65535;
           map_keys = true;
           key_bindings = {
-            accept = "<leader><Tab>";
+            accept = "<C-Enter>";
             accept_word = false;
             accept_line = false;
-            clear = "<leader><Esc>";
+            clear = "<C-Backspace>";
             next = "<M-]>";
             prev = "<M-[>";
           };

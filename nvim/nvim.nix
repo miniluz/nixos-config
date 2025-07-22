@@ -4,7 +4,6 @@
     ./nvim-comments.nix
     ./nvim-extra-languages.nix
     ./nvim-guess-indent.nix
-    ./nvim-legendary.nix
     ./nvim-nix.nix
     ./nvim-nvimtree.nix
     ./nvim-snacks.nix
