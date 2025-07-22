@@ -42,7 +42,7 @@
           "i"
         ];
         silent = true;
-        action = "<cmd>lua vim.lsp.buf.format()<cr><cmd>w<cr>";
+        action = "<cmd>w<cr>";
       }
 
       {
@@ -52,7 +52,7 @@
           "v"
         ];
         silent = true;
-        action = "<cmd>lua vim.lsp.buf.format()<cr><cmd>w<cr><cmd>bd<cr>";
+        action = "<cmd>w<cr><cmd>bd<cr>";
       }
       {
         key = "<C-.>";

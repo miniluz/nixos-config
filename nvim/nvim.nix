@@ -26,8 +26,12 @@
     vimAlias = true;
 
     treesitter.enable = true;
-    lsp.enable = true;
-    lsp.trouble.enable = true;
+    lsp = {
+      enable = true;
+      trouble.enable = true;
+      formatOnSave = true;
+    };
+
     diagnostics = {
       enable = true;
       config.virtual_text = true;
