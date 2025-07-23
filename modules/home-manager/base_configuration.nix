@@ -37,7 +37,7 @@ in
     programs.command-not-found.enable = false;
     programs.nix-index.enable = true;
 
-    age.identityPaths = [ "~/.ssh/id_ed25519" ];
+    age.identityPaths = [ "/home/miniluz/.ssh/id_ed25519" ];
 
     xdg.desktopEntries = lib.mkIf cfg.visual {
       "Rebuild" = {

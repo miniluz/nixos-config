@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   config,
+  paths,
   lib,
   ...
 }:
@@ -22,6 +23,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    age.secrets.google-ai-lab = {
+      file = "${paths.secrets}/google-ai-lab.age";
+    };
+
     miniluz.direnv.enable = true;
     miniluz.firacode.enable = true;
 

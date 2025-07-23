@@ -3,4 +3,5 @@ let
 in
 {
   "playit.age".publicKeys = [ miniluz ];
+  "google-ai-lab.age".publicKeys = [ miniluz ];
 }
