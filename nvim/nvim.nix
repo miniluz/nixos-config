@@ -1,18 +1,20 @@
 {
   imports = [
-    ./nvim-bufferline.nix
-    ./nvim-codecompanion.nix
-    ./nvim-comments.nix
-    ./nvim-extra-languages.nix
-    ./nvim-guess-indent.nix
-    ./nvim-nix.nix
-    ./nvim-nvimtree.nix
-    ./nvim-snacks.nix
-    ./nvim-toggleterm.nix
-    ./nvim-ts.nix
-    ./nvim-window-jumps.nix
-    ./nvim-windsurf.nix
-    ./nvim-vscode-mappings.nix
+    ./ia/nvim-codecompanion.nix
+    ./ia/nvim-windsurf.nix
+    ./ide/nvim-bufferline.nix
+    ./ide/nvim-nvimtree.nix
+    ./ide/nvim-snacks-dashboard.nix
+    ./ide/nvim-snacks-picker.nix
+    ./ide/nvim-toggleterm.nix
+    ./ide/nvim-vscode-mappings.nix
+    ./ide/nvim-window-jumps.nix
+    ./languages/nvim-extra-languages.nix
+    ./languages/nvim-nix.nix
+    ./languages/nvim-ts.nix
+    ./utils/nvim-comments.nix
+    ./utils/nvim-guess-indent.nix
+    ./utils/nvim-snacks-utils.nix
   ];
 
   config.vim = {

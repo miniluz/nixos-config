@@ -4,11 +4,7 @@
 
     utility.snacks-nvim = {
       enable = true;
-      setupOpts = {
-        picker.enabled = true;
-        quickfile.enabled = true;
-        words.enabled = true;
-      };
+      setupOpts.picker.enabled = true;
     };
 
     luaConfigPost = "vim.ui.select = Snacks.picker.select;";
