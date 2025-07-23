@@ -4,7 +4,7 @@
     ./ia/nvim-windsurf.nix
     ./ide/nvim-bufferline.nix
     ./ide/nvim-nvimtree.nix
-    ./ide/nvim-snacks-dashboard.nix
+    # ./ide/nvim-snacks-dashboard.nix
     ./ide/nvim-snacks-picker.nix
     ./ide/nvim-toggleterm.nix
     ./ide/nvim-vscode-mappings.nix
