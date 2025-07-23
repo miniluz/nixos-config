@@ -2,6 +2,9 @@
   lib,
   ...
 }:
+let
+  xdg_runtime_dir_var = "\${XDG_RUNTIME_DIR}";
+in
 {
   config.vim = {
     assistant.codecompanion-nvim = {
@@ -12,7 +15,7 @@
             gemini = function()
               return require("codecompanion.adapters").extend("gemini", {
                 env = {
-                  api_key = "cmd:cat /etc/google-ai-lab"
+                  api_key = "cmd:cat ${xdg_runtime_dir_var}/agenix/google-ai-lab"
                 },
                 -- schema = {
                 --  model = {

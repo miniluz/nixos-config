@@ -23,10 +23,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    age.secrets.google-ai-lab = {
-      file = "${paths.secrets}/google-ai-lab.age";
-      path = "/etc/google-ai-lab";
-    };
+    age.secrets.google-ai-lab.file = "${paths.secrets}/google-ai-lab.age";
 
     miniluz.direnv.enable = true;
     miniluz.firacode.enable = true;
