@@ -4,6 +4,21 @@
 }:
 {
   config.vim = {
+    autocmds = [
+      {
+        event = [ "VimEnter" ];
+        callback = lib.generators.mkLuaInline ''
+          function()
+            if vim.fn.argc() == 0 then
+              Snacks.dashboard();
+            end
+          end
+        '';
+        desc = "Snacks dashboard on VimEnter";
+        group = "OpenSnacksDashboard";
+      }
+    ];
+
     utility.snacks-nvim = {
       enable = true;
       setupOpts.dashboard = {
