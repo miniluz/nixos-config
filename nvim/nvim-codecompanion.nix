@@ -12,7 +12,7 @@
             gemini = function()
               return require("codecompanion.adapters").extend("gemini", {
                 env = {
-                  api_key = "cmd:cat /run/agenix/google-ai-lab"
+                  api_key = "cmd:cat /etc/google-ai-lab"
                 },
                 -- schema = {
                 --  model = {
