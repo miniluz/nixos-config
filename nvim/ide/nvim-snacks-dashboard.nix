@@ -25,7 +25,6 @@
             gap = 1;
             padding = 1;
           }
-          { section = "startup"; }
           {
             icon = " ";
             title = "Recent Files";
