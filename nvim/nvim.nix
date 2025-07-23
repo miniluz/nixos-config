@@ -10,6 +10,7 @@
     ./nvim-snacks.nix
     ./nvim-toggleterm.nix
     ./nvim-ts.nix
+    ./nvim-window-jumps.nix
     ./nvim-windsurf.nix
     ./nvim-vscode-mappings.nix
   ];
