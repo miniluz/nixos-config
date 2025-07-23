@@ -9,7 +9,16 @@
       lua.enable = true;
       markdown = {
         enable = true;
-        extensions.markview-nvim.enable = true;
+        extensions.markview-nvim = {
+          enable = true;
+          setupOpts.preview.filetypes = [
+            "markdown"
+            "quarto"
+            "rmd"
+            "typst"
+            "codecompanion"
+          ];
+        };
       };
     };
   };

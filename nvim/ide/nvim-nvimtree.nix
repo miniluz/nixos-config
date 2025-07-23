@@ -1,4 +1,3 @@
-{ lib, ... }:
 {
   config.vim = {
     filetree.nvimTree = {

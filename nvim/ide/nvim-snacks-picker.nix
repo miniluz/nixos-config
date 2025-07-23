@@ -251,6 +251,14 @@
         desc = "Commands";
       }
       {
+        key = "<C-S-p>";
+        mode = "n";
+        silent = true;
+        lua = true;
+        action = ''function() Snacks.picker.commands() end'';
+        desc = "Commands";
+      }
+      {
         key = "<leader>sd";
         mode = "n";
         silent = true;
