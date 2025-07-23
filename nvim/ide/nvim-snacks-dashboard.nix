@@ -4,6 +4,9 @@
 }:
 {
   config.vim = {
+    augroups = [
+      { name = "OpenSnacksDashboard"; }
+    ];
     autocmds = [
       {
         event = [ "VimEnter" ];
