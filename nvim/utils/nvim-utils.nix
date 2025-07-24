@@ -33,6 +33,8 @@
 
     autopairs.nvim-autopairs.enable = true;
 
+    ui.noice.enable = true;
+
     ui.nvim-ufo = {
       enable = true;
       setupOpts.providerSelector = lib.generators.mkLuaInline ''
@@ -43,9 +45,9 @@
     };
 
     lazy.plugins = {
-      "flit.nvim" = {
-        package = pkgs.vimPlugins.flit-nvim;
-        setupModule = "flit";
+      "specs.nvim" = {
+        package = pkgs.vimPlugins.specs-nvim;
+        setupModule = "specs";
         lazy = false;
       };
       "nvim-spider" = {

@@ -6,9 +6,11 @@
       enable = true;
       formatOnSave = true;
       inlayHints.enable = true;
-      trouble.enable = true;
+      lspSignature.enable = true;
 
+      trouble.enable = true;
       lspsaga.enable = true;
+
     };
 
     diagnostics = {

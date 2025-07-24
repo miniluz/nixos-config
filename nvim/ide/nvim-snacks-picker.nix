@@ -10,7 +10,6 @@
     luaConfigRC.snacks-picker = "vim.ui.select = Snacks.picker.select;";
 
     keymaps = [
-      # top pickers and explorer
       {
         key = "<leader><space>";
         mode = "n";
@@ -36,134 +35,12 @@
         desc = "Grep";
       }
       {
-        key = "<leader>:";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.picker.command_history() end'';
-        desc = "Command History";
-      }
-      {
         key = "<leader>n";
         mode = "n";
         silent = true;
         lua = true;
         action = ''function() Snacks.picker.notifications() end'';
         desc = "Notification History";
-      }
-      # {
-      #   key = "<leader>e";
-      #   mode = "n";
-      #   silent = true;
-      #   lua = true;
-      #   action = ''function() Snacks.explorer() end'';
-      #   desc = "File Explorer";
-      # }
-      # find
-      {
-        key = "<leader>fb";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.picker.buffers() end'';
-        desc = "Buffers";
-      }
-      {
-        key = "<leader>fc";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end'';
-        desc = "Find Config File";
-      }
-      {
-        key = "<leader>ff";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.picker.files() end'';
-        desc = "Find Files";
-      }
-      {
-        key = "<leader>fg";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.picker.git_files() end'';
-        desc = "Find Git Files";
-      }
-      {
-        key = "<leader>fp";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.picker.projects() end'';
-        desc = "Projects";
-      }
-      {
-        key = "<leader>fr";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.picker.recent() end'';
-        desc = "Recent";
-      }
-      # git
-      {
-        key = "<leader>gb";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.picker.git_branches() end'';
-        desc = "Git Branches";
-      }
-      {
-        key = "<leader>gl";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.picker.git_log() end'';
-        desc = "Git Log";
-      }
-      {
-        key = "<leader>gL";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.picker.git_log_line() end'';
-        desc = "Git Log Line";
-      }
-      {
-        key = "<leader>gs";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.picker.git_status() end'';
-        desc = "Git Status";
-      }
-      {
-        key = "<leader>gS";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.picker.git_stash() end'';
-        desc = "Git Stash";
-      }
-      {
-        key = "<leader>gd";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.picker.git_diff() end'';
-        desc = "Git Diff (Hunks)";
-      }
-      {
-        key = "<leader>gf";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.picker.git_log_file() end'';
-        desc = "Git Log File";
       }
       # Grep
       {
@@ -339,14 +216,6 @@
         desc = "Man Pages";
       }
       {
-        key = "<leader>sp";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.picker.lazy() end'';
-        desc = "Search for Plugin Spec";
-      }
-      {
         key = "<leader>sq";
         mode = "n";
         silent = true;
@@ -420,7 +289,7 @@
         desc = "Goto T[y]pe Definition";
       }
       {
-        key = "<leader>ss";
+        key = "<leader>ls";
         mode = "n";
         silent = true;
         lua = true;
@@ -428,7 +297,7 @@
         desc = "LSP Symbols";
       }
       {
-        key = "<leader>sS";
+        key = "<leader>lS";
         mode = "n";
         silent = true;
         lua = true;
