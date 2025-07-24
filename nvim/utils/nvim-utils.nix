@@ -26,10 +26,12 @@
       "flit.nvim" = {
         package = pkgs.vimPlugins.flit-nvim;
         setupModule = "flit";
+        lazy = false;
       };
       "nvim-spider" = {
         package = pkgs.vimPlugins.nvim-spider;
         setupModule = "spider";
+        lazy = false;
       };
     };
   };

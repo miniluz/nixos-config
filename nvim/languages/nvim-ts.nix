@@ -14,6 +14,7 @@
       "tailwind-tools.nvim" = {
         package = pkgs.vimPlugins.tailwind-tools-nvim;
         setupModule = "tailwind-tools";
+        lazy = false;
       };
     };
   };
