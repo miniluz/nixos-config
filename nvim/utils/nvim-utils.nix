@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 {
@@ -17,12 +18,29 @@
     };
 
     visuals.fidget-nvim.enable = true;
-    # ui.nvim-ufo.enable = true;
 
     statusline.lualine.enable = true;
     projects.project-nvim.enable = true;
 
     notes.todo-comments.enable = true;
+
+    options = {
+      foldcolumns = "1";
+      foldlevel = 99;
+      foldlevelstart = 99;
+      foldenable = true;
+    };
+
+    autopairs.nvim-autopairs.enable = true;
+
+    ui.nvim-ufo = {
+      enable = true;
+      setupOpts.providerSelector = lib.generators.mkLuaInline ''
+        function(bufnr, filetype, buftype)
+          return { "treesitter", "indent" }
+        end
+      '';
+    };
 
     lazy.plugins = {
       "flit.nvim" = {

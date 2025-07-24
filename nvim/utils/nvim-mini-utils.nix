@@ -5,7 +5,6 @@
       ai.enable = true;
       move.enable = true;
 
-      pairs.enable = true;
       surround.enable = true;
 
       basics.enable = true;
