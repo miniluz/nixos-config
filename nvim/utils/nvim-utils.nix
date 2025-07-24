@@ -8,6 +8,8 @@
 
     autocomplete.nvim-cmp.enable = true;
 
+    binds.whichKey.enable = true;
+
     utility = {
       # undotree.enable = true;
       direnv.enable = true;
@@ -15,7 +17,7 @@
     };
 
     visuals.fidget-nvim.enable = true;
-    # ui.nvim-ufo.enable = true;
+    ui.nvim-ufo.enable = true;
 
     statusline.lualine.enable = true;
     projects.project-nvim.enable = true;

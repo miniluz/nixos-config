@@ -10,7 +10,6 @@
 
       basics.enable = true;
       bracketed.enable = true;
-      clue.enable = true;
       diff.enable = true;
       extra.enable = true;
       git.enable = true;
