@@ -17,7 +17,7 @@
     };
 
     visuals.fidget-nvim.enable = true;
-    ui.nvim-ufo.enable = true;
+    # ui.nvim-ufo.enable = true;
 
     statusline.lualine.enable = true;
     projects.project-nvim.enable = true;
