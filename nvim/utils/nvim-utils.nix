@@ -24,16 +24,16 @@
 
     notes.todo-comments.enable = true;
 
+    autopairs.nvim-autopairs.enable = true;
+
+    ui.noice.enable = true;
+
     options = {
       foldcolumn = "1";
       foldlevel = 99;
       foldlevelstart = 99;
       foldenable = true;
     };
-
-    autopairs.nvim-autopairs.enable = true;
-
-    ui.noice.enable = true;
 
     ui.nvim-ufo = {
       enable = true;
@@ -45,11 +45,6 @@
     };
 
     lazy.plugins = {
-      "specs.nvim" = {
-        package = pkgs.vimPlugins.specs-nvim;
-        setupModule = "specs";
-        lazy = false;
-      };
       "nvim-spider" = {
         package = pkgs.vimPlugins.nvim-spider;
         setupModule = "spider";
