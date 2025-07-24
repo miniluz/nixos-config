@@ -7,6 +7,7 @@
       python.enable = true;
       yaml.enable = true;
       lua.enable = true;
+      sql.enable = true;
       markdown = {
         enable = true;
         extensions.markview-nvim = {

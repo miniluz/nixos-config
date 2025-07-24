@@ -8,12 +8,13 @@
     ./ide/nvim-snacks-picker.nix
     ./ide/nvim-toggleterm.nix
     ./ide/nvim-vscode-mappings.nix
-    ./ide/nvim-window-jumps.nix
     ./languages/nvim-extra-languages.nix
     ./languages/nvim-nix.nix
+    ./languages/nvim-rust.nix
     ./languages/nvim-ts.nix
     ./utils/nvim-comments.nix
     ./utils/nvim-guess-indent.nix
+    ./utils/nvim-mini-utils.nix
     ./utils/nvim-snacks-utils.nix
   ];
 
@@ -31,12 +32,16 @@
     treesitter.enable = true;
     lsp = {
       enable = true;
-      trouble.enable = true;
       formatOnSave = true;
+      inlayHints.enable = true;
+      trouble.enable = true;
+
+      lspsaga.enable = true;
     };
 
     diagnostics = {
       enable = true;
+      nvim-lint.enable = true;
       config.virtual_text = true;
     };
 
@@ -48,11 +53,26 @@
       enableDAP = true;
     };
     formatter.conform-nvim.enable = true;
+    debugger.nvim-dap = {
+      enable = true;
+      ui.enable = true;
+    };
+
+    snippets.luasnip.enable = true;
+
+    utility = {
+      # undotree.enable = true;
+      direnv.enable = true;
+      images = {
+        image-nvim.enable = true;
+        img-clip.enable = true;
+      };
+    };
+
+    visuals.fidget-nvim.enable = true;
+    ui.nvim-ufo.enable = true;
 
     statusline.lualine.enable = true;
-    autocomplete.blink-cmp.enable = true;
-    binds.whichKey.enable = true;
-    autopairs.nvim-autopairs.enable = true;
     projects.project-nvim.enable = true;
 
   };

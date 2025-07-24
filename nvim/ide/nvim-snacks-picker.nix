@@ -7,7 +7,7 @@
       setupOpts.picker.enabled = true;
     };
 
-    luaConfigPost = "vim.ui.select = Snacks.picker.select;";
+    luaConfigRC.snacks-picker = "vim.ui.select = Snacks.picker.select;";
 
     keymaps = [
       # top pickers and explorer
