@@ -63,10 +63,10 @@
     utility = {
       # undotree.enable = true;
       direnv.enable = true;
-      images = {
-        image-nvim.enable = true;
-        img-clip.enable = true;
-      };
+      # images = {
+      #   image-nvim.enable = true;
+      #   img-clip.enable = true;
+      # };
     };
 
     visuals.fidget-nvim.enable = true;
