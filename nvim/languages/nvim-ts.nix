@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   config.vim = {
     languages = {
@@ -8,6 +9,12 @@
       tailwind.enable = true;
       css.enable = true;
       html.enable = true;
+    };
+    lazy.plugins = {
+      "tailwind-tools.nvim" = {
+        package = pkgs.vimPlugins.tailwind-tools-nvim;
+        setupModule = "tailwind-tools";
+      };
     };
   };
 }

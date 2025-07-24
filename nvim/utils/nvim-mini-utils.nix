@@ -1,8 +1,8 @@
+{ lib, ... }:
 {
   config.vim = {
     mini = {
       ai.enable = true;
-      completion.enable = true;
       move.enable = true;
 
       pairs.enable = true;
@@ -17,7 +17,18 @@
       jump.enable = true;
 
       colors.enable = true;
-      indentscope.enable = true;
+      indentscope = {
+        enable = true;
+        setupOpts = {
+          symbol = "|";
+          draw = {
+            delay = 20;
+            animation = lib.generators.mkLuaInline ''
+              function(s,n) return 10 end
+            '';
+          };
+        };
+      };
     };
   };
 }
