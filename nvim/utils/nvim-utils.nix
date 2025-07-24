@@ -32,6 +32,38 @@
         package = pkgs.vimPlugins.nvim-spider;
         setupModule = "spider";
         lazy = false;
+        keys = [
+          {
+            key = "w";
+            action = "<cmd>lua require('spider').motion('w')<CR>";
+            mode = [
+              "n"
+              "o"
+              "x"
+            ];
+            silent = true;
+          }
+          {
+            key = "e";
+            action = "<cmd>lua require('spider').motion('e')<CR>";
+            mode = [
+              "n"
+              "o"
+              "x"
+            ];
+            silent = true;
+          }
+          {
+            key = "b";
+            action = "<cmd>lua require('spider').motion('b')<CR>";
+            mode = [
+              "n"
+              "o"
+              "x"
+            ];
+            silent = true;
+          }
+        ];
       };
     };
   };

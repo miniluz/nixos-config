@@ -14,7 +14,6 @@
       diff.enable = true;
       extra.enable = true;
       git.enable = true;
-      jump.enable = true;
 
       colors.enable = true;
       indentscope = {
