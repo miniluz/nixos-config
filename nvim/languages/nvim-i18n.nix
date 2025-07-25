@@ -15,7 +15,7 @@ let
     version = "2025-07-24";
     src = js-i18n-source;
 
-    builddInputs = with pkgs.vimPlugins; [
+    dependencies = with pkgs.vimPlugins; [
       nvim-lspconfig
       nvim-treesitter
       plenary-nvim

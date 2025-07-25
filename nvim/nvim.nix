@@ -9,7 +9,7 @@
     ./ide/nvim-toggleterm.nix
     ./ide/nvim-vscode-mappings.nix
     ./languages/nvim-extra-languages.nix
-    # ./languages/nvim-i18n.nix
+    ./languages/nvim-i18n.nix
     ./languages/nvim-nix.nix
     ./languages/nvim-rust.nix
     ./languages/nvim-ts.nix
