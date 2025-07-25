@@ -22,17 +22,30 @@ let
     ];
   };
   keymap = key: desc: action: {
-    inherit key action desc;
+    inherit key desc action;
     mode = [ "n" ];
     silent = true;
   };
-  luaKeymap = key: desc: action: {
-    inherit key action;
+  luaLanguageList = ''{"en", "es"}'';
+  pickLanguageThenKeymap = key: desc: action: {
+    inherit key desc;
     mode = [ "n" ];
     silent = true;
     lua = true;
+    action = ''
+      function()
+        vim.ui.select(
+          ${luaLanguageList},
+          { prompt = "Select i18n language:" },
+          function(choice)
+            if choice then
+              ${action}
+            end
+          end
+        )
+      end
+    '';
   };
-  luaLanguageList = ''{"en", "es"}'';
 in
 {
   config.vim = {
@@ -48,29 +61,11 @@ in
         keys = [
           (keymap "<leader>itv" "Toggle i18n virtual text" "<cmd>I18nVirtualTextToggle<CR>")
           (keymap "<leader>itd" "Toggle i18n diagnostics" "<cmd>I18nDiagnosticToggle<CR>")
-          (luaKeymap "<leader>il" "Select i18n language" ''
-            vim.ui.select(
-              ${luaLanguageList},
-              { prompt = "Select i18n language:" },
-              function(choice)
-                if choice then
-                  vim.cmd("I18nSetLang " .. choice)
-                end
-              end
-            )
-          '')
+          (pickLanguageThenKeymap "<leader>il" "Select i18n language" ''vim.cmd("I18nSetLang " .. choice);'')
           (keymap "<leader>ig" "Go to (or create) translation" "<cmd>I18nEditTranslation<CR>")
-          (luaKeymap "<leader>iG" "Go to (or create) translation in a language" ''
-            vim.ui.select(
-              ${luaLanguageList},
-              { prompt = "Select i18n language:" },
-              function(choice)
-                if choice then
-                  vim.cmd("I18nEditTranslation" .. choice)
-                end
-              end
-            )
-          '')
+          (pickLanguageThenKeymap "<leader>iG" "Go to (or create) translation selecting language"
+            ''vim.cmd("I18nEditTranslation" .. choice);''
+          )
         ];
       };
     };
