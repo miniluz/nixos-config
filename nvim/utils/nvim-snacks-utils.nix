@@ -16,13 +16,19 @@
           end)
         end,
       })
+
+      vim.api.nvim_set_hl(0, "SnacksIndent", { fg = "#45475a" }) -- Surface0 in catppuccin mocha
+      vim.api.nvim_set_hl(0, "SnacksIndentScope", { fg = "#585b70" }) -- Surface1 in catppuccin
     '';
 
     utility.snacks-nvim = {
       enable = true;
       setupOpts = {
         bigfile.enabled = true;
-        indent.enabled = true;
+        indent = {
+          enabled = true;
+          symbol = "┊";
+        };
         input.enabled = true;
         rename.enabled = true;
         notifier.enabled = true;

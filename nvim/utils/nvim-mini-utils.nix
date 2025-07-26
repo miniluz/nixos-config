@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   config.vim = {
     mini = {
@@ -21,7 +22,12 @@
       extra.enable = true;
       git.enable = true;
 
-      colors.enable = true;
+      hipatterns = {
+        enable = true;
+        setupOpts = {
+          hex_color = lib.generators.mkLuaInline ''hipatterns.gen_highlighter.hex_color()'';
+        };
+      };
     };
   };
 }
