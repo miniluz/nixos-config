@@ -24,12 +24,10 @@
     theme = {
       enable = true;
       name = "catppuccin";
-      style = "macchiato";
+      style = "mocha";
       transparent = false;
     };
 
     viAlias = false;
-    vimAlias = true;
-
   };
 }

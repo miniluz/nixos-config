@@ -24,6 +24,7 @@ in
     autocomplete.nvim-cmp.enable = true;
 
     binds.whichKey.enable = true;
+    binds.hardtime-nvim.enable = true;
 
     utility = {
       # undotree.enable = true;
