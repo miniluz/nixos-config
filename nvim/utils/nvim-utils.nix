@@ -23,8 +23,13 @@ in
 
     autocomplete.nvim-cmp.enable = true;
 
-    binds.whichKey.enable = true;
-    binds.hardtime-nvim.enable = true;
+    binds = {
+      whichKey.enable = true;
+      hardtime-nvim = {
+        enable = true;
+        setupOpts.disabledKeys = [ ];
+      };
+    };
 
     utility = {
       # undotree.enable = true;
