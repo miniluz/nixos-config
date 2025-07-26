@@ -14,7 +14,6 @@
     ./languages/nvim-rust.nix
     ./languages/nvim-ts.nix
     ./utils/nvim-comments.nix
-    ./utils/nvim-guess-indent.nix
     ./utils/nvim-mini-utils.nix
     ./utils/nvim-snacks-utils.nix
     ./utils/nvim-utils.nix

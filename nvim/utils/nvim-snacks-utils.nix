@@ -2,6 +2,7 @@
   config.vim = {
     luaConfigRC.snacks-utils = ''
       vim.ui.input = Snacks.input;
+
       local prev = { new_name = "", old_name = "" } -- Prevents duplicate events
       vim.api.nvim_create_autocmd("User", {
         pattern = "NvimTreeSetup",
@@ -21,6 +22,7 @@
       enable = true;
       setupOpts = {
         bigfile.enabled = true;
+        indent.enabled = true;
         input.enabled = true;
         rename.enabled = true;
         notifier.enabled = true;

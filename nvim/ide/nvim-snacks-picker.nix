@@ -304,37 +304,6 @@
         action = ''function() Snacks.picker.lsp_workspace_symbols() end'';
         desc = "LSP Workspace Symbols";
       }
-      # Other
-      {
-        key = "<c-/>";
-        mode = "n";
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.terminal() end'';
-        desc = "Toggle Terminal";
-      }
-      {
-        key = "]]";
-        mode = [
-          "n"
-          "t"
-        ];
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.words.jump(vim.v.count1) end'';
-        desc = "Next Reference";
-      }
-      {
-        key = "[[";
-        mode = [
-          "n"
-          "t"
-        ];
-        silent = true;
-        lua = true;
-        action = ''function() Snacks.words.jump(-vim.v.count1) end'';
-        desc = "Prev Reference";
-      }
     ];
   };
 }

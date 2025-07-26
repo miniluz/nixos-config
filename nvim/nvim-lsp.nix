@@ -8,9 +8,11 @@
       inlayHints.enable = true;
       lspSignature.enable = true;
 
+      lightbulb.enable = true;
+      lspkind.enable = true;
+      nvim-docs-view.enable = true;
+      otter-nvim.enable = true;
       trouble.enable = true;
-      lspsaga.enable = true;
-
     };
 
     diagnostics = {

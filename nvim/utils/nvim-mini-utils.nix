@@ -1,4 +1,3 @@
-{ lib, ... }:
 {
   config.vim = {
     mini = {
@@ -23,18 +22,6 @@
       git.enable = true;
 
       colors.enable = true;
-      indentscope = {
-        enable = true;
-        setupOpts = {
-          symbol = "|";
-          draw = {
-            delay = 20;
-            animation = lib.generators.mkLuaInline ''
-              function(s,n) return 10 end
-            '';
-          };
-        };
-      };
     };
   };
 }

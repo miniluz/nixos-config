@@ -17,7 +17,7 @@
             "quarto"
             "rmd"
             "typst"
-            "codecompanion"
+            "CodeCompanion"
           ];
         };
       };
