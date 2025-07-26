@@ -102,7 +102,7 @@ let
       preferLocalBuild = false;
       text =
         ''
-          #!${pkgs.nushell}
+          #!${pkgs.nushell}/bin/nu
           $env.Path = ${lib.optionalString inheritPath "$env.Path | prepend"} ${makeNushellBinList runtimeInputs}"
         ''
         + ''
