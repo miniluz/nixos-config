@@ -51,7 +51,6 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
-      musnix,
       nvf,
       ...
     }@old-inputs:
@@ -87,84 +86,17 @@
       hm-modules = import ./modules/home-manager/import-all.nix;
 
       inputs = old-inputs // {
-        inherit nixos-modules hm-modules;
+        inherit
+          nixos-modules
+          hm-modules
+          overlay-module
+          paths
+          ;
       };
     in
     {
-      inherit nixos-modules hm-modules;
-
       packages.${system}.miniluz-nvim = miniluz-nvim.neovim;
 
-      nixosConfigurations = {
-        moonlight = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit
-              inputs
-              paths
-              ;
-          };
-          modules = [
-            nixos-modules
-            overlay-module
-            ./hosts/moonlight/configuration.nix
-          ];
-        };
-
-        sunlight = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit
-              inputs
-              paths
-              ;
-          };
-          modules = [
-            nixos-modules
-            overlay-module
-            ./hosts/sunlight/configuration.nix
-          ];
-        };
-
-        starlight = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit
-              inputs
-              paths
-              ;
-          };
-          modules = [
-            nixos-modules
-            overlay-module
-            ./hosts/starlight/configuration.nix
-          ];
-        };
-
-        pccasa = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit
-              inputs
-              paths
-              ;
-          };
-          modules = [
-            nixos-modules
-            overlay-module
-            ./hosts/pcCasa/configuration.nix
-            musnix.nixosModules.musnix
-          ];
-        };
-
-        home-server = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit
-              inputs
-              paths
-              ;
-          };
-          modules = [
-            overlay-module
-            ./hosts/home-server/configuration.nix
-          ];
-        };
-      };
+      nixosConfigurations = import ./hosts/hosts.nix inputs;
     };
 }

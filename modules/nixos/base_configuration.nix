@@ -66,9 +66,11 @@ in
     evil-helix
     nh
     nil
+    nushell
     (import "${paths.derivations}/rebuild.nix" { inherit pkgs; })
     (import "${paths.derivations}/font-cache-update.nix" { inherit pkgs; })
     (import "${paths.derivations}/generate-import-all.nix" { inherit pkgs lib; })
+    (import "${paths.derivations}/generate-hosts.nix" { inherit pkgs lib; })
   ];
 
   environment.sessionVariables = {
