@@ -3,10 +3,10 @@ let
   makeNushellSearchList =
     subDir: paths:
     "[ "
-    + (builtins.concatStringsSep ":" (
-      builtins.map (path: path + "/" + subDir) (builtins.filter (x: x != null) paths)
+    + (builtins.concatStringsSep " " (
+      builtins.map (path: "\"" + path + "/" + subDir + "\"") (builtins.filter (x: x != null) paths)
     ))
-    + "]";
+    + " ]";
   makeNushellSearchListOutput =
     output: subdir: pkgs:
     makeNushellSearchList subdir (map (lib.getOutput output) pkgs);
