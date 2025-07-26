@@ -103,7 +103,7 @@ let
       text =
         ''
           #!${pkgs.nushell}/bin/nu
-          $env.Path = ${lib.optionalString inheritPath "$env.Path | prepend"} ${makeNushellBinList runtimeInputs}"
+          $env.Path = ${lib.optionalString inheritPath "$env.Path | prepend"} ${makeNushellBinList runtimeInputs}
         ''
         + ''
           ${text}
