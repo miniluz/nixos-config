@@ -25,7 +25,7 @@
       hipatterns = {
         enable = true;
         setupOpts = {
-          hex_color = lib.generators.mkLuaInline ''hipatterns.gen_highlighter.hex_color()'';
+          hex_color = lib.generators.mkLuaInline ''require('mini.hipatterns').gen_highlighter.hex_color()'';
         };
       };
     };
