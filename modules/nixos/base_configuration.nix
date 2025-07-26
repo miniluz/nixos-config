@@ -16,8 +16,6 @@ in
 
   age.identityPaths = [ "/home/miniluz/.ssh/id_ed25519" ];
 
-  home-manager.backupFileExtension = "backup";
-
   # Enable flakes
   nix.settings.experimental-features = mkDefault [
     "nix-command"
@@ -56,8 +54,6 @@ in
       "networkmanager"
       "wheel"
       "libvirtd"
-    ];
-    packages = with pkgs; [
     ];
   };
 

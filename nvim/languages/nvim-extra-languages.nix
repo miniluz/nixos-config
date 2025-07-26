@@ -8,6 +8,7 @@
       yaml.enable = true;
       lua.enable = true;
       sql.enable = true;
+      nu.enable = true;
       markdown = {
         enable = true;
         extensions.markview-nvim = {
