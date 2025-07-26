@@ -19,7 +19,7 @@
           full_name = true;
           group_empty = true;
           highlight_modified = "icon";
-          highlight_open_files = "icon";
+          highlight_opened_files = "icon";
         };
 
         update_focused_file = {
@@ -29,6 +29,7 @@
         sync_root_with_cwd = true;
 
         view = {
+          float.enable = true;
           side = "right";
         };
       };

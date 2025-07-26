@@ -17,8 +17,8 @@
         end,
       })
 
-      vim.api.nvim_set_hl(0, "SnacksIndent", { fg = "#45475a" }) -- Surface0 in catppuccin mocha
-      vim.api.nvim_set_hl(0, "SnacksIndentScope", { fg = "#585b70" }) -- Surface1 in catppuccin
+      vim.api.nvim_set_hl(0, "SnacksIndent", { fg = "#363a4f" })
+      vim.api.nvim_set_hl(0, "SnacksIndentScope", { fg = "#494d64" })
     '';
 
     utility.snacks-nvim = {

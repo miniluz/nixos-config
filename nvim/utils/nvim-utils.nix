@@ -65,7 +65,6 @@ in
       "guess-indent.nvim" = {
         package = pkgs.vimPlugins.guess-indent-nvim;
         setupModule = "guess-indent";
-        cmd = "GuessIndent";
       };
       "nvim-copy" = {
         package = nvim-copy;
