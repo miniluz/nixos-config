@@ -68,7 +68,7 @@ in
     nil
     (import "${paths.derivations}/rebuild.nix" { inherit pkgs; })
     (import "${paths.derivations}/font-cache-update.nix" { inherit pkgs; })
-    (import "${paths.derivations}/generate-import-all.nix" { inherit pkgs; })
+    (import "${paths.derivations}/generate-import-all.nix" { inherit pkgs lib; })
   ];
 
   environment.sessionVariables = {

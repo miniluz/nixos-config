@@ -49,7 +49,7 @@ in
 
     ui.noice.enable = true;
 
-    navigation.harpoon.enable = true;
+    # navigation.harpoon.enable = true;
 
     options = {
       foldcolumn = "1";

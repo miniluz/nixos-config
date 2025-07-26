@@ -1,5 +1,3 @@
-#!/usr/bin/env nu
-
 # Nushell script to find all ".nix" files in a given folder and its subdirectories,
 # and create an 'import-all.nix' file in that folder to import them.
 # The generated import uses the format `{ imports = [ <relative-path-1> <relative-path-2> ]; }`.
@@ -16,9 +14,9 @@ def main [target_folder: path] {
     # Recursively find all files ending with ".nix" within the target folder,
     # explicitly excluding 'import-all.nix'.
     let nix_files = (
-        ls -R $absolute_target_folder
+        ls ...(glob $"($absolute_target_folder)/**/*.{nix}")
         | where type == file
-        | where name =~ '\.nix$' and name != 'import-all.nix' # Exclude import-all.nix
+        | where name != 'import-all.nix' # Exclude import-all.nix
         | get path
     )
 
