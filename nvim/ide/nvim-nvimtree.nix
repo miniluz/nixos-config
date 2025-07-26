@@ -34,22 +34,22 @@ in
         sync_root_with_cwd = true;
 
         view = {
-          float = {
-            enable = true;
-            open_win_config =
-              let
-                hmargin = "30";
-                vmargin = "10";
-              in
-              {
-                border = "rounded";
-                relative = "editor";
-                width = mkLuaInline "vim.o.lines - ${hmargin}";
-                height = mkLuaInline "vim.o.columns - ${vmargin}";
-                row = mkLuaInline "${hmargin} / 2";
-                col = mkLuaInline "${vmargin} / 2";
-              };
-          };
+          # float = {
+          #   enable = true;
+          #   open_win_config =
+          #     let
+          #       hmargin = "30";
+          #       vmargin = "10";
+          #     in
+          #     {
+          #       border = "rounded";
+          #       relative = "editor";
+          #       width = mkLuaInline "vim.o.columns- ${hmargin}";
+          #       col = mkLuaInline "${hmargin} / 2";
+          #       height = mkLuaInline "vim.o.lines - ${vmargin}";
+          #       row = mkLuaInline "${vmargin} / 2";
+          #     };
+          # };
           side = "right";
         };
       };

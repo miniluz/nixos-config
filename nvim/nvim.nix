@@ -25,7 +25,7 @@
       enable = true;
       name = "catppuccin";
       style = "macchiato";
-      transparent = true;
+      transparent = false;
     };
 
     viAlias = false;
