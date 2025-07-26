@@ -18,7 +18,7 @@
       })
 
       vim.api.nvim_set_hl(0, "SnacksIndent", { fg = "#363a4f" })
-      vim.api.nvim_set_hl(0, "SnacksIndentScope", { fg = "#494d64" })
+      vim.api.nvim_set_hl(0, "SnacksIndentScope", { fg = "#5b6078" })
     '';
 
     utility.snacks-nvim = {
