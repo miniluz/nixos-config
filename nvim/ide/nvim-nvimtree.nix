@@ -1,7 +1,12 @@
+{ lib, ... }:
+let
+  inherit (lib.generators) mkLuaInline;
+in
 {
   config.vim = {
     filetree.nvimTree = {
       enable = true;
+      openOnSetup = false;
       setupOpts = {
         actions.open_file.quit_on_open = true;
 
@@ -29,7 +34,17 @@
         sync_root_with_cwd = true;
 
         view = {
-          float.enable = true;
+          float = {
+            enable = true;
+            open_win_config = {
+              border = "rounded";
+              relative = "editor";
+              width = 30;
+              height = 30;
+              row = mkLuaInline "(vim.o.lines - 30) / 2";
+              col = mkLuaInline "(vim.o.columns - 30) / 2";
+            };
+          };
           side = "right";
         };
       };
