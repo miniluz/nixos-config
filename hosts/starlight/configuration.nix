@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
-  config,
   pkgs,
   inputs,
   paths,
@@ -13,11 +12,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    "${paths.nixos}/base_configuration.nix"
     inputs.home-manager.nixosModules.default
-    "${paths.nixos}/gnome.nix"
-    "${paths.nixos}/podman.nix"
-    "${paths.nixos}/virt.nix"
   ];
 
   miniluz.gnome.enable = true;

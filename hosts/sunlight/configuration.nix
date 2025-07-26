@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
-  config,
   pkgs,
   inputs,
   paths,
@@ -13,15 +12,8 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    "${paths.nixos}/base_configuration.nix"
     inputs.home-manager.nixosModules.default
     inputs.musnix.nixosModules.musnix
-    "${paths.nixos}/gnome.nix"
-    "${paths.nixos}/obs.nix"
-    "${paths.nixos}/amdgpu.nix"
-    "${paths.nixos}/podman.nix"
-    "${paths.nixos}/steam.nix"
-    "${paths.nixos}/s3fs.nix"
   ];
 
   miniluz.gnome.enable = true;

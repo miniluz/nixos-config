@@ -54,7 +54,7 @@
       musnix,
       nvf,
       ...
-    }@inputs:
+    }@old-inputs:
     let
       system = "x86_64-linux";
 
@@ -62,8 +62,6 @@
         root = "${self}";
         derivations = "${self}/derivations";
         secrets = "${self}/secrets";
-        nixos = "${self}/modules/nixos";
-        homeManager = "${self}/modules/home-manager";
       };
 
       pkgs-unstable = import nixpkgs-unstable {
@@ -84,8 +82,17 @@
           })
         ];
       };
+
+      nixos-modules = import ./modules/nixos/import-all.nix;
+      hm-modules = import ./modules/home-manager/import-all.nix;
+
+      inputs = old-inputs // {
+        inherit nixos-modules hm-modules;
+      };
     in
     {
+      inherit nixos-modules hm-modules;
+
       packages.${system}.miniluz-nvim = miniluz-nvim.neovim;
 
       nixosConfigurations = {
@@ -97,6 +104,7 @@
               ;
           };
           modules = [
+            nixos-modules
             overlay-module
             ./hosts/moonlight/configuration.nix
           ];
@@ -110,6 +118,7 @@
               ;
           };
           modules = [
+            nixos-modules
             overlay-module
             ./hosts/sunlight/configuration.nix
           ];
@@ -123,6 +132,7 @@
               ;
           };
           modules = [
+            nixos-modules
             overlay-module
             ./hosts/starlight/configuration.nix
           ];
@@ -136,6 +146,7 @@
               ;
           };
           modules = [
+            nixos-modules
             overlay-module
             ./hosts/pcCasa/configuration.nix
             musnix.nixosModules.musnix

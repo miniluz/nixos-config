@@ -27,7 +27,7 @@ in
       whichKey.enable = true;
       hardtime-nvim = {
         enable = true;
-        setupOpts.disabledKeys = [ ];
+        setupOpts.disabled_keys = [ ];
       };
     };
 

@@ -1,32 +1,10 @@
 {
-  config,
   pkgs,
-  paths,
+  inputs,
   ...
 }:
 {
-  imports = [
-    "${paths.homeManager}/base_configuration.nix"
-    "${paths.homeManager}/git.nix"
-    "${paths.homeManager}/firacode.nix"
-
-    # "${paths.homeManager}/vscode/vscode-server.nix"
-    "${paths.homeManager}/vscode/vscode.nix"
-    "${paths.homeManager}/nvim/nvim.nix"
-
-    "${paths.homeManager}/discord.nix"
-
-    "${paths.homeManager}/gnome/gnome.nix"
-
-    "${paths.homeManager}/shell/utils/shell-utils.nix"
-    "${paths.homeManager}/shell/gitui.nix"
-    "${paths.homeManager}/shell/kitty.nix"
-    "${paths.homeManager}/shell/fish.nix"
-    /*
-      TODO:
-      * tdrop
-    */
-  ];
+  imports = [ inputs.hm-modules ];
 
   miniluz.git.enable = true;
 

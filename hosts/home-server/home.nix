@@ -1,19 +1,10 @@
 {
-  config,
   pkgs,
-  paths,
+  inputs,
   ...
 }:
 {
-  imports = [
-    "${paths.homeManager}/base_configuration.nix"
-    "${paths.homeManager}/git.nix"
-    "${paths.homeManager}/nvim/nvim.nix"
-
-    "${paths.homeManager}/shell/utils/shell-utils.nix"
-    "${paths.homeManager}/shell/gitui.nix"
-    "${paths.homeManager}/shell/fish.nix"
-  ];
+  imports = [ inputs.hm-modules ];
 
   miniluz.base_configuration.visual = false;
 

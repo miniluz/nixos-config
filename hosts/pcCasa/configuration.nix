@@ -12,11 +12,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    "${paths.nixos}/base_configuration.nix"
     inputs.home-manager.nixosModules.default
-    "${paths.nixos}/gnome.nix"
-    "${paths.nixos}/gaming/playit.nix"
-    "${paths.nixos}/steam.nix"
   ];
 
   miniluz.gnome.enable = true;
