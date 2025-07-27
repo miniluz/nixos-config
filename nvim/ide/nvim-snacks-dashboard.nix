@@ -13,7 +13,7 @@
         callback = lib.generators.mkLuaInline ''
           function()
             if vim.fn.argc() == 0 then
-              Snacks.dashboard();
+              Snacks.dashboard.open();
             end
           end
         '';
