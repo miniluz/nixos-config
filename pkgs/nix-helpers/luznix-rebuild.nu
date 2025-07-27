@@ -1,14 +1,29 @@
 # A rebuild script that commits on a successful build
+def fail [message] {
+    print $"ERROR: ($message)"
+    notify-send "NixOS Rebuilt Failed!" $message --icon=computer-fail-symbolic
+    exit 1
+}
+
+def do_in_submodule [closure] {
+    cd private
+    do $closure
+}
+def do_in_submodule_and_repo [closure] {
+    do_in_submodule $closure
+    do $closure;
+}
 
 def main [] {
     let flake_path: path = $env.NH_FLAKE | path expand
     cd $flake_path
 
     print "Pulling changes..."
-    git pull
-    if ($env.LAST_EXIT_CODE != 0) {
-        print "Failed to pull latest changes, exiting."
-        exit 1
+    do_in_submodule_and_repo {
+        git pull
+        if ($env.LAST_EXIT_CODE != 0) {
+            fail "Failed to pull latest changes"
+        }
     }
 
     print $"Opening config in $NIX_CONFIG_EDITOR \(($env.NIX_CONFIG_EDITOR)\) or $EDITOR \(($env.EDITOR)\)..."
@@ -16,22 +31,29 @@ def main [] {
     let editor: string = ($env | get --ignore-errors NIX_CONFIG_EDITOR | default ($env | get --ignore-errors EDITOR | default 'vi'))
     ^$editor $flake_path
 
+    print "Generating hosts.nix..."
+    luznix-generate-hosts private/hosts
+    print "Generating NixOS modules..."
+    luznix-generate-import-all modules/nixos
+    print "Generating home-manager modules..."
+    luznix-generate-import-all modules/home-manager
+    print "Generating miniluz packages..."
+    luznix-generate-miniluz-pkgs pkgs
+
     if ((git status --porcelain | str trim) | is-empty) {
-        print "No changes detected, exiting."
-        exit 1
+        fail "No changes detected"
     }
 
     let nixfmt_output = nixfmt . | complete
     if ($nixfmt_output.exit_code != 0) {
         print $nixfmt_output.stdout
         print $nixfmt_output.stderr
-        print "Formatting failed!"
-        exit 1
+        fail "Formatting failed"
     }
 
-    git add .
+    do_in_submodule_and_repo { git add . }
 
-    git diff HEAD
+    git diff HEAD --submodule=diff
 
     print "NixOS Rebuilding..."
 
@@ -50,9 +72,7 @@ def main [] {
     job kill $keep_sudo_pid
 
     if ($switch_result != 0) {
-        print "NixOS Rebuild failed!"
-        notify-send -e "NixOS Rebuilt Failed!" --icon=computer-fail-symbolic
-        return 1
+        fail "NixOS Rebuild failed!"
     }
 
     let commit_message = (
@@ -66,13 +86,14 @@ def main [] {
     )
 
     if ($commit_message | is-empty) {
-        print -e "Error: Could not find current generation"
-        exit 1
+        fail "Could not find current generation"
     }
 
+    do_in_submodule { git commit -am $commit_message }
+    git add .
     git commit -am $commit_message
 
-    git push
+    do_in_submodule_and_repo { git push }
 
     notify-send -e "NixOS Rebuilt OK!" --icon=software-update-available
 }

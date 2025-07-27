@@ -1,5 +1,5 @@
 {
-  description = "NixOS config flake file";
+  description = "miniluz's NixOS & HM modules, packages, and configurations";
 
   nixConfig = {
     extra-substituters = [ "https://playit-nixos-module.cachix.org" ];
@@ -9,6 +9,8 @@
   };
 
   inputs = {
+
+    self.submodules = true;
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
@@ -57,8 +59,7 @@
       system = "x86_64-linux";
 
       paths = {
-        root = "${self}";
-        secrets = "${self}/secrets";
+        secrets = "${self}/private/secrets";
       };
 
       nixos-modules = import ./modules/nixos/import-all.nix;
@@ -110,6 +111,6 @@
       miniluz = pkgs.miniluz;
       miniluz-unstable = pkgs.unstable.miniluz;
 
-      nixosConfigurations = import ./hosts/hosts.nix inputs;
+      nixosConfigurations = import ./private/hosts/hosts.nix inputs;
     };
 }
