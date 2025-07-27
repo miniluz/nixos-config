@@ -12,7 +12,7 @@ pkgs.miniluz.writeNuApplication {
     ]
     ++ (with pkgs.miniluz; [
       luznix-generate-hosts
-      luznix-genereate-import-all
+      luznix-generate-import-all
       luznix-generate-miniluz-pkgs
     ]);
 }

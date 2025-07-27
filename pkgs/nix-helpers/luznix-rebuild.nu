@@ -89,10 +89,12 @@ def main [] {
         fail "Could not find current generation"
     }
 
+    print "Commiting changes..."
     do_in_submodule { git commit -am $commit_message }
     git add .
     git commit -am $commit_message
 
+    print "Pushing changes..."
     do_in_submodule_and_repo { git push }
 
     notify-send -e "NixOS Rebuilt OK!" --icon=software-update-available
