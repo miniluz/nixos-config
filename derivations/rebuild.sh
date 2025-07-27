@@ -1,5 +1,4 @@
 # A rebuild script that commits on a successful build
-set -e
 
 # cd to your config dir
 pushd "$NH_FLAKE"
@@ -22,8 +21,11 @@ if [ -z "$(git status --porcelain)" ]; then
 fi
 
 # Autoformat your nix files
-nixfmt . &>/dev/null \
-|| ( nixfmt . ; echo "formatting failed!" && exit 1)
+nixfmt . &>/dev/null ||
+    (
+        nixfmt .
+        echo "formatting failed!" && exit 1
+    )
 
 # Shows your changes
 git diff HEAD
@@ -36,23 +38,22 @@ echo "NixOS Rebuilding..."
 sudo -v
 
 while true; do
-  sudo -v
-  sleep 60
+    sudo -v
+    sleep 60
 done &
 KEEP_SUDO_PID=$!
 
 # Rebuild, output simplified errors, log trackebacks
 set -o pipefail
-if ! (nh os switch 2>&1 | tee "$NH_FLAKE/nixos-switch.log") then
-  echo "NixOS Rebuild failed!"
-  notify-send -e "NixOS Rebuilt Failed!" --icon=computer-fail-symbolic
-  kill $KEEP_SUDO_PID
-  exit 1
+if ! (nh os switch 2>&1 | tee "$NH_FLAKE/nixos-switch.log"); then
+    echo "NixOS Rebuild failed!"
+    notify-send -e "NixOS Rebuilt Failed!" --icon=computer-fail-symbolic
+    kill $KEEP_SUDO_PID
+    exit 1
 fi
 
 # Kill sudo loop
 kill $KEEP_SUDO_PID
-
 
 # Get the current generation info and build commit message
 commit_message=$(nixos-rebuild list-generations --json | jq -r '.[] | select(.current == true) | "\(.generation) - \(.date)"')
