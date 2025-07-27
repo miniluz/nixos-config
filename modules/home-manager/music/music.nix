@@ -1,19 +1,16 @@
 {
   config,
-  pkgs,
   lib,
-  inputs,
   ...
 }:
 let
   cfg = config.miniluz.music;
-  musicModules = "${inputs.self}/modules/home-manager/music";
 in
 {
   imports = [
-    "${musicModules}/reaper.nix"
-    "${musicModules}/helm.nix"
-    "${musicModules}/yabridge.nix"
+    ./reaper.nix
+    ./helm.nix
+    ./yabridge.nix
   ];
 
   options.miniluz.music.enable = lib.mkEnableOption "Enable all of my music production configuration.";

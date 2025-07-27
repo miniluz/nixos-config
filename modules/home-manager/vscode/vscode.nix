@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   config,
   lib,
   ...
@@ -96,8 +95,8 @@ in
       "NIX_CONFIG_EDITOR" = "code-nw";
     };
 
-    home.packages = [
-      (import "${inputs.self}/derivations/code-nw.nix" { inherit pkgs; })
+    home.packages = with pkgs; [
+      miniluz.code-nw
     ];
 
   };

@@ -51,41 +51,51 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
-      nvf,
       ...
-    }@old-inputs:
+    }@pre-inputs:
     let
       system = "x86_64-linux";
 
       paths = {
         root = "${self}";
-        derivations = "${self}/derivations";
         secrets = "${self}/secrets";
       };
+
+      nixos-modules = import ./modules/nixos/import-all.nix;
+      hm-modules = import ./modules/home-manager/import-all.nix;
 
       pkgs-unstable = import nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
       };
 
-      miniluz-nvim = nvf.lib.neovimConfiguration {
-        pkgs = pkgs-unstable;
-        modules = [ ./nvim/nvim.nix ];
-      };
+      overlays = [
+        (final: prev: {
+          miniluz = import ./pkgs/miniluz-pkgs.nix {
+            inherit inputs;
+            lib = nixpkgs.lib;
+            pkgs = final;
+          };
+          unstable = pkgs-unstable // {
+            miniluz = import ./pkgs/miniluz-pkgs.nix {
+              inherit inputs;
+              lib = nixpkgs.lib;
+              pkgs = final.unstable;
+            };
+          };
+        })
+      ];
 
       overlay-module = {
-        nixpkgs.overlays = [
-          (final: prev: {
-            inherit miniluz-nvim;
-            unstable = pkgs-unstable;
-          })
-        ];
+        nixpkgs.overlays = overlays;
       };
 
-      nixos-modules = import ./modules/nixos/import-all.nix;
-      hm-modules = import ./modules/home-manager/import-all.nix;
+      pkgs = import nixpkgs {
+        inherit system overlays;
+        config.allowUnfree = true;
+      };
 
-      inputs = old-inputs // {
+      inputs = pre-inputs // {
         inherit
           nixos-modules
           hm-modules
@@ -93,9 +103,12 @@
           paths
           ;
       };
+
     in
     {
-      packages.${system}.miniluz-nvim = miniluz-nvim.neovim;
+      inherit overlays nixos-modules hm-modules;
+      miniluz = pkgs.miniluz;
+      miniluz-unstable = pkgs.unstable.miniluz;
 
       nixosConfigurations = import ./hosts/hosts.nix inputs;
     };

@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  inputs,
   pkgs,
   ...
 }:
@@ -23,8 +22,8 @@ in
       delta.enable = true;
     };
 
-    home.packages = [
-      (import "${inputs.self}/derivations/git-clean-branches.nix" { inherit pkgs; })
+    home.packages = with pkgs; [
+      miniluz.git-clean-branches
     ];
   };
 }

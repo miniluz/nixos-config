@@ -27,8 +27,8 @@ in
       with pkgs;
       [
         inputs.agenix.packages."x86_64-linux".default
-        (import "${paths.derivations}/nix-shell-setup.nix" { inherit pkgs; })
-        (import "${paths.derivations}/bg-run.nix" { inherit pkgs; })
+        miniluz.luznix-shell-setup
+        miniluz.bg-run
         trashy
         vlc
       ]

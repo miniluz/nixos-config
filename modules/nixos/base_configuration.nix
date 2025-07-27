@@ -67,10 +67,11 @@ in
     nh
     nil
     nushell
-    (import "${paths.derivations}/rebuild.nix" { inherit pkgs; })
-    (import "${paths.derivations}/font-cache-update.nix" { inherit pkgs; })
-    (import "${paths.derivations}/generate-import-all.nix" { inherit pkgs lib; })
-    (import "${paths.derivations}/generate-hosts.nix" { inherit pkgs lib; })
+    miniluz.font-cache-update
+    miniluz.luznix-rebuild
+    miniluz.luznix-generate-import-all
+    miniluz.luznix-generate-hosts
+    miniluz.luznix-generate-miniluz-pkgs
   ];
 
   environment.sessionVariables = {

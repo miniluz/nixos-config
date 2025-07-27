@@ -3,7 +3,7 @@
 # The generated import uses the format `{ imports = [ relative-path-1 relative-path-2 ]; }`.
 def main [target_folder: path] {
     if not (($target_folder | path type) == "dir") {
-        error "Error: '$target_folder' is not a directory."
+        error $"Error: '($target_folder)' is not a directory."
         return
     }
 

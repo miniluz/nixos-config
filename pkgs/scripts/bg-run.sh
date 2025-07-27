@@ -8,4 +8,6 @@ if [ $# -eq 0 ]; then
 fi
 
 # Run the command in background and detach it
-"$@" >/dev/null 2>&1 & disown
+"$@" >/dev/null 2>&1 &
+disown
+

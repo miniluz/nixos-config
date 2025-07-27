@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   config,
   lib,
   ...
@@ -24,8 +23,8 @@ in
       };
     };
 
-    home.packages = [
-      (import "${inputs.self}/derivations/code-windsurf.nix" { inherit pkgs; })
+    home.packages = with pkgs; [
+      miniluz.code-windsurf
     ];
 
   };

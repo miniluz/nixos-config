@@ -44,8 +44,6 @@ def main [] {
         }
     }
 
-    # Rebuild, output simplified errors, log trackebacks
-    # Tee the output to file and stdout, then check the exit code of nh os switch
     nh os switch o+e>| tee { save --force ($flake_path | path join "nixos-switch.log") }
     let switch_result = $env.LAST_EXIT_CODE
 
@@ -57,7 +55,6 @@ def main [] {
         return 1
     }
 
-    # Get the current generation info and build commit message
     let commit_message = (
         nixos-rebuild list-generations --json
         | from json
@@ -68,13 +65,11 @@ def main [] {
         | str join "\n"
     )
 
-    # Check if we got a valid commit message
     if ($commit_message | is-empty) {
         print -e "Error: Could not find current generation"
         exit 1
     }
 
-    # Commit all changes with the generation metadata
     git commit -am $commit_message
 
     git push
