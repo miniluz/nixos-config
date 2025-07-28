@@ -95,5 +95,5 @@ def main [] {
 
     do_in_submodule_and_repo { try { print $"Pushing changes in ($env.PWD)" ; git push } }
 
-    notify-send -e "NixOS Rebuilt OK!" --icon=software-update-available
+    notify-send "NixOS Rebuilt OK!" --icon=software-update-available
 }
