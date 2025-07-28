@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.miniluz.gnome;
-  gnome-extensions = with pkgs.gnomeExtensions; [
+  gnome-extensions = with pkgs; [
     appindicator
     blur-my-shell
     just-perfection

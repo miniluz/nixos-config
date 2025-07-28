@@ -11,7 +11,6 @@
     ./shell/utils/zoxide.nix
     ./gnome/backgrounds.nix
     ./gnome/catppuccin.nix
-    ./gnome/gnome.nix
     ./libreoffice.nix
     ./vscode/windsurf.nix
     ./vscode/vscode-rust.nix

@@ -52,7 +52,7 @@ def main [] {
         fail "Formatting failed"
     }
 
-    do_in_submodule_and_repo { git add . }
+    do_in_submodule_and_repo { print $"Adding changes in ($env.PWD)" ; git add . }
 
     # git diff HEAD --submodule=diff
 
@@ -73,7 +73,7 @@ def main [] {
 
     job kill $keep_sudo_pid
 
-    if ($switch_result.exit_code != 0) {
+    if ($switch_result != 0) {
         fail "NixOS Rebuild failed!"
     }
 
@@ -91,13 +91,9 @@ def main [] {
         fail "Could not find current generation"
     }
 
-    print "Commiting changes..."
-    do_in_submodule { git commit -am $commit_message }
-    git add .
-    git commit -am $commit_message
+    do_in_submodule_and_repo { try { print $"Commiting changes in ($env.PWD)" ; git add . ; git commit -am $commit_message } }
 
-    print "Pushing changes..."
-    do_in_submodule_and_repo { git push }
+    do_in_submodule_and_repo { try { print $"Pushing changes in ($env.PWD)" ; git push } }
 
     notify-send -e "NixOS Rebuilt OK!" --icon=software-update-available
 }
