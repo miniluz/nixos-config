@@ -1,7 +1,7 @@
 # A rebuild script that commits on a successful build
 def fail [message] {
     print $"ERROR: ($message)"
-    notify-send "NixOS Rebuilt Failed!" $message --icon=computer-fail-symbolic
+    notify-send -e "NixOS Rebuilt Failed!" $message --icon=computer-fail-symbolic
     exit 1
 }
 
@@ -31,15 +31,6 @@ def main [] {
     print "Close it to continue"
     let editor: string = ($env | get --ignore-errors NIX_CONFIG_EDITOR | default ($env | get --ignore-errors EDITOR | default 'vi'))
     ^$editor $flake_path
-
-    # print "Generating hosts.nix..."
-    # luznix-generate-hosts private/hosts
-    # print "Generating NixOS modules..."
-    # luznix-generate-import-all modules/nixos
-    # print "Generating home-manager modules..."
-    # luznix-generate-import-all modules/home-manager
-    # print "Generating miniluz packages..."
-    # luznix-generate-miniluz-pkgs pkgs
 
     if ((git status --porcelain | str trim) | is-empty) {
         fail "No changes detected"
@@ -95,5 +86,5 @@ def main [] {
 
     do_in_submodule_and_repo { try { print $"Pushing changes in ($env.PWD)" ; git push } }
 
-    notify-send "NixOS Rebuilt OK!" --icon=software-update-available
+    notify-send -e "NixOS Rebuilt OK!" --icon=software-update-available
 }

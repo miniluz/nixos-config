@@ -63,9 +63,6 @@ in
     nushell
     miniluz.font-cache-update
     miniluz.luznix-rebuild
-    miniluz.luznix-generate-import-all
-    miniluz.luznix-generate-hosts
-    miniluz.luznix-generate-miniluz-pkgs
   ];
 
   environment.sessionVariables = {
