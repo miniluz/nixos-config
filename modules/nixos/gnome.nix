@@ -14,7 +14,10 @@ in
     services.xserver = {
       enable = true;
       displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
+      desktopManager = {
+        gnome.enable = true;
+        xterm.enable = false;
+      };
     };
 
     # services.gnome.gcr-ssh-agent.enable = false;
@@ -36,11 +39,30 @@ in
         iagno # go game
         hitori # sudoku game
         atomix # puzzle game
+        gnome-weather
+        gnome-connections
+        snapshot
+        yelp
+        gnome-maps
       ]
     );
 
-    environment.systemPackages = with pkgs; [
-      xwayland-run
-    ];
+    environment.systemPackages =
+      with pkgs;
+      [
+        xwayland-run
+      ]
+      ++ (with pkgs.gnomeExtensions; [
+        appindicator
+        blur-my-shell
+        just-perfection
+        fuzzy-app-search
+        clipboard-indicator
+        forge
+        user-themes
+      ]);
+
+    services.udev.packages = [ pkgs.gnome-settings-daemon ];
+
   };
 }

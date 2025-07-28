@@ -54,7 +54,7 @@ def main [] {
 
     do_in_submodule_and_repo { git add . }
 
-    git diff HEAD --submodule=diff
+    # git diff HEAD --submodule=diff
 
     print "NixOS Rebuilding..."
 
@@ -67,7 +67,9 @@ def main [] {
         }
     }
 
-    let switch_result = nh os switch | tee { print } | tee { save --force ($flake_path | path join "nixos-switch.log") } | complete
+    nh os switch
+
+    let switch_result = $env.LAST_EXIT_CODE
 
     job kill $keep_sudo_pid
 

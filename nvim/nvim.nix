@@ -3,6 +3,7 @@
     ./ia/nvim-codecompanion.nix
     ./ia/nvim-windsurf.nix
     ./ide/nvim-bufferline.nix
+    ./ide/nvim-neovide.nix
     ./ide/nvim-nvimtree.nix
     ./ide/nvim-snacks-dashboard.nix
     ./ide/nvim-snacks-picker.nix
