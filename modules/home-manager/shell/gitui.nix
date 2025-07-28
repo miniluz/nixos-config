@@ -35,7 +35,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.gitui = {
       enable = true;
-      theme = lib.readFile "${catpuccin-gitui}/themes/catppuccin-${cfg.theme}.ron";
+      theme = "${catpuccin-gitui}/themes/catppuccin-${cfg.theme}.ron";
       keyConfig = ''
         move_left: Some(( code: Char('h'), modifiers: "")),
         move_right: Some(( code: Char('l'), modifiers: "")),
