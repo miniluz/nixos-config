@@ -112,6 +112,13 @@ in
               definedAliases = [ "@nw" ];
             };
 
+            merriam-webster = {
+              name = "Merriam-Webster";
+              urls = [ { template = "https://www.merriam-webster.com/dictionary/{searchTerms}"; } ];
+              iconMapObj."16" = "https://www.merriam-webster.com/favicon.ico";
+              definedAliases = [ "@nw" ];
+            };
+
             home-manager-options = {
               name = "Home Manager Options";
               urls = [
