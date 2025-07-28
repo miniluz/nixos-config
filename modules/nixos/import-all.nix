@@ -2,6 +2,7 @@
 {
   imports = [
     ./probe-rs-rules.nix
+    ./nix_configuration.nix
     ./obs.nix
     ./s3fs.nix
     ./tailscale.nix

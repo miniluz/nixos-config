@@ -3,7 +3,6 @@
   inputs,
   pkgs,
   lib,
-  paths,
   ...
 }:
 let
@@ -12,15 +11,10 @@ in
 {
   imports = [
     inputs.agenix.nixosModules.default
+    (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" "miniluz" ])
   ];
 
   age.identityPaths = [ "/home/miniluz/.ssh/id_ed25519" ];
-
-  # Enable flakes
-  nix.settings.experimental-features = mkDefault [
-    "nix-command"
-    "flakes"
-  ];
 
   # Set timezone
   time.timeZone = mkDefault "Europe/Madrid";
@@ -88,5 +82,9 @@ in
   nixpkgs.overlays = [
     inputs.nix-vscode-extensions.overlays.default
   ];
+
+  documentation.man.generateCaches = false;
+  hm.programs.man.generateCaches = false;
+  documentation.nixos.enable = false;
 
 }

@@ -17,7 +17,6 @@ let
   ];
 in
 {
-  imports = [ (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" "miniluz" ]) ];
 
   options.miniluz.gnome.enable = lib.mkEnableOption "Enable GNOME and GDM";
 
