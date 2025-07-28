@@ -15,4 +15,17 @@ pkgs.miniluz.writeNuApplication {
       luznix-generate-import-all
       luznix-generate-miniluz-pkgs
     ]);
+  derivationArgs = {
+    nativeBuildInputs = [ pkgs.copyDesktopItems ];
+    desktopItems = [
+      (pkgs.makeDesktopItem {
+        name = "Rebuild";
+        desktopName = "Luznix Rebuild";
+        genericName = "Rebuild NixOS";
+        exec = ''${pkgs.nushell}/bin/nu -c luznix-rebuild'';
+        terminal = true;
+        icon = "utilities-terminal";
+      })
+    ];
+  };
 }

@@ -11,7 +11,7 @@ def do_in_submodule [closure] {
 }
 def do_in_submodule_and_repo [closure] {
     do_in_submodule $closure
-    do $closure;
+    do $closure
 }
 
 def main [] {
@@ -20,8 +20,9 @@ def main [] {
 
     print "Pulling changes..."
     do_in_submodule_and_repo {
-        git pull
-        if ($env.LAST_EXIT_CODE != 0) {
+        try {
+            git pull
+        } catch {
             fail "Failed to pull latest changes"
         }
     }
@@ -66,12 +67,11 @@ def main [] {
         }
     }
 
-    nh os switch o+e>| tee { save --force ($flake_path | path join "nixos-switch.log") }
-    let switch_result = $env.LAST_EXIT_CODE
+    let switch_result = nh os switch | tee { print } | tee { save --force ($flake_path | path join "nixos-switch.log") } | complete
 
     job kill $keep_sudo_pid
 
-    if ($switch_result != 0) {
+    if ($switch_result.exit_code != 0) {
         fail "NixOS Rebuild failed!"
     }
 

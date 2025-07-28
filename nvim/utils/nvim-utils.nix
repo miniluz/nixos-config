@@ -27,7 +27,12 @@ in
       whichKey.enable = true;
       hardtime-nvim = {
         enable = true;
-        setupOpts.disabled_keys = [ ];
+        setupOpts.disabled_keys = {
+          "<Up>" = false;
+          "<Down>" = false;
+          "<Left>" = false;
+          "<Right>" = false;
+        };
       };
     };
 

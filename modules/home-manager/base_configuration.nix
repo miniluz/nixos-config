@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  paths,
   lib,
   config,
   ...
@@ -39,14 +38,5 @@ in
 
     age.identityPaths = [ "/home/miniluz/.ssh/id_ed25519" ];
 
-    xdg.desktopEntries = lib.mkIf cfg.visual {
-      "Rebuild" = {
-        name = "Rebuild";
-        genericName = "Rebuild NixOS";
-        exec = ''bash -c "rebuild ; echo \\"Press enter to close this window...\\" ; read ans" '';
-        terminal = true;
-        icon = "utilities-terminal";
-      };
-    };
   };
 }

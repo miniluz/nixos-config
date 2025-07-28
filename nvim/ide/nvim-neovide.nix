@@ -2,7 +2,7 @@
   config.vim = {
     keymaps = [
       {
-        key = "<leader><S-F>";
+        key = "<leader>tf";
         mode = [ "n" ];
         silent = true;
         lua = true;

@@ -1,12 +1,16 @@
-{ lib, ... }:
-let
-  inherit (lib.generators) mkLuaInline;
-in
 {
   config.vim = {
     filetree.nvimTree = {
       enable = true;
       openOnSetup = false;
+
+      mappings = {
+        toggle = null;
+        refresh = null;
+        findFile = null;
+        focus = null;
+      };
+
       setupOpts = {
         actions.open_file.quit_on_open = true;
 
