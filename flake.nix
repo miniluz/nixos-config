@@ -46,6 +46,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    import-tree.url = "github:vic/import-tree";
+
     playit-nixos-module = {
       url = "github:pedorich-n/playit-nixos-module";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,46 +60,52 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
+      import-tree,
       ...
     }@pre-inputs:
     let
       system = "x86_64-linux";
+      lib = nixpkgs.lib;
 
       paths = {
         secrets = "${self}/private/secrets";
       };
 
-      nixos-modules = import ./modules/nixos/import-all.nix;
-      hm-modules = import ./modules/home-manager/import-all.nix;
+      nixos-modules = import-tree ./modules/nixos;
+      hm-modules = import-tree ./modules/home-manager;
 
       pkgs-unstable = import nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
       };
 
-      overlays = [
-        (final: prev: {
-          miniluz = import ./pkgs/miniluz-pkgs.nix {
+      make-miniluz-pkgs = import ./make-miniluz-pkgs.nix { inherit inputs lib; };
+      # make-miniluz-pkgs =
+
+      overlay = (
+        final: prev: {
+          miniluz = make-miniluz-pkgs {
             inherit inputs;
             lib = nixpkgs.lib;
             pkgs = final;
           };
           unstable = pkgs-unstable // {
-            miniluz = import ./pkgs/miniluz-pkgs.nix {
+            miniluz = make-miniluz-pkgs {
               inherit inputs;
               lib = nixpkgs.lib;
               pkgs = final.unstable;
             };
           };
-        })
-      ];
+        }
+      );
 
       overlay-module = {
-        nixpkgs.overlays = overlays;
+        nixpkgs.overlays = [ overlay ];
       };
 
       pkgs = import nixpkgs {
-        inherit system overlays;
+        inherit system;
+        overlays = [ overlay ];
         config.allowUnfree = true;
       };
 
@@ -112,7 +120,12 @@
 
     in
     {
-      inherit overlays nixos-modules hm-modules;
+      inherit
+        overlay
+        nixos-modules
+        hm-modules
+        ;
+
       miniluz = pkgs.miniluz;
       miniluz-unstable = pkgs.unstable.miniluz;
 

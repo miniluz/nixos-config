@@ -11,9 +11,9 @@ pkgs.miniluz.writeNuApplication {
       nixfmt-rfc-style
     ]
     ++ (with pkgs.miniluz; [
-      luznix-generate-hosts
-      luznix-generate-import-all
-      luznix-generate-miniluz-pkgs
+      # luznix-generate-hosts
+      # luznix-generate-import-all
+      # luznix-generate-miniluz-pkgs
     ]);
   derivationArgs = {
     nativeBuildInputs = [ pkgs.copyDesktopItems ];

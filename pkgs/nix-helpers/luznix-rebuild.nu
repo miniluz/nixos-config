@@ -32,14 +32,14 @@ def main [] {
     let editor: string = ($env | get --ignore-errors NIX_CONFIG_EDITOR | default ($env | get --ignore-errors EDITOR | default 'vi'))
     ^$editor $flake_path
 
-    print "Generating hosts.nix..."
-    luznix-generate-hosts private/hosts
-    print "Generating NixOS modules..."
-    luznix-generate-import-all modules/nixos
-    print "Generating home-manager modules..."
-    luznix-generate-import-all modules/home-manager
-    print "Generating miniluz packages..."
-    luznix-generate-miniluz-pkgs pkgs
+    # print "Generating hosts.nix..."
+    # luznix-generate-hosts private/hosts
+    # print "Generating NixOS modules..."
+    # luznix-generate-import-all modules/nixos
+    # print "Generating home-manager modules..."
+    # luznix-generate-import-all modules/home-manager
+    # print "Generating miniluz packages..."
+    # luznix-generate-miniluz-pkgs pkgs
 
     if ((git status --porcelain | str trim) | is-empty) {
         fail "No changes detected"
