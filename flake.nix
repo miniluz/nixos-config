@@ -10,7 +10,7 @@
 
   inputs = {
 
-    self.submodules = true;
+    #    self.submodules = true;
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
