@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   # GitHub is being weird with URLs
-  # imports = [ inputs.lix-module.nixosModules.default ];
+  imports = [ inputs.lix-module.nixosModules.default ];
 
   nix.settings = {
     experimental-features = [
