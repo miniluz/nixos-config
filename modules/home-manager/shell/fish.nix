@@ -1,6 +1,3 @@
-# Don't forget to add
-# environment.pathsToLink = [ "/share/zsh" ];
-# to the system configuration.
 {
   pkgs,
   lib,
@@ -8,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.miniluz.fish;
+  cfg = config.miniluz.shell;
   # Source: https://github.com/catppuccin/fzf, https://vitormv.github.io/fzf-themes/
   fzf-config = ''
     set FZF_DEFAULT_OPTS '
@@ -22,10 +19,6 @@ let
   '';
 in
 {
-  options.miniluz.fish = {
-    enable = lib.mkEnableOption "Enable miniluz's fish.";
-  };
-
   config = lib.mkIf cfg.enable {
 
     programs.fish = {

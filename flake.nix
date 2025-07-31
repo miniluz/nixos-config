@@ -71,8 +71,8 @@
         secrets = "${self}/private/secrets";
       };
 
-      nixos-modules = import-tree ./new-modules/nixos;
-      hm-modules = import-tree ./new-modules/home-manager;
+      nixos-modules = import-tree ./modules/nixos;
+      hm-modules = import-tree ./modules/home-manager;
 
       makeMiniluzPkgs = import ./make-miniluz-pkgs.nix { inherit inputs lib; };
       makeHosts = import ./make-hosts.nix { inherit inputs lib; };

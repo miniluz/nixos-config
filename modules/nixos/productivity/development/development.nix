@@ -8,12 +8,12 @@ let
 in
 {
   options.miniluz.development = {
-    enable = lib.mkEnableOption "Development tools.";
+    enable = lib.mkOption {
+      default = true;
+      description = "Development tools.";
+    };
     vscode = {
-      enable = lib.mkOption {
-        default = true;
-        description = "Enable VSCode";
-      };
+      enable = lib.mkEnableOption "VSCode";
       nix-editor = lib.mkEnableOption "VSCode as a NixOS config editor.";
     };
     nvim = {

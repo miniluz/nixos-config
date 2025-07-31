@@ -76,5 +76,7 @@ in
       );
 
     musnix.enable = cfg.realtime.enable;
+
+    users.users.miniluz = lib.mkIf cfg.realtime.enable { extraGroups = [ "audio" ]; };
   };
 }

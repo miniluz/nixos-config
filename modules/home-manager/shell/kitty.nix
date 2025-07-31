@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.miniluz.kitty;
+  cfg = config;
   catppuccin-kitty = pkgs.fetchFromGitHub {
     name = "kitty";
     owner = "catppuccin";
@@ -15,24 +15,7 @@ let
   };
 in
 {
-  imports = [ ../firacode.nix ];
-
-  options.miniluz.kitty.enable = lib.mkEnableOption "Enable Kitty.";
-  options.miniluz.kitty.theme = lib.mkOption {
-    type = lib.types.enum [
-      "frappe"
-      "latte"
-      "macchiato"
-      "mocha"
-    ];
-    default = "mocha";
-    example = "frappe";
-    description = "Which of the Catppuccin themes to use";
-  };
-
-  config = lib.mkIf cfg.enable {
-    miniluz.firacode.enable = true;
-
+  config = lib.mkIf (cfg.miniluz.shell.enable && cfg.miniluz.visual) {
     programs.kitty.enable = true;
     programs.kitty.extraConfig = ''
       include ./theme.conf
@@ -44,7 +27,6 @@ in
 
     home.sessionVariables.TERMINAL = "kitty";
 
-    xdg.configFile."kitty/theme.conf".source =
-      lib.mkForce "${catppuccin-kitty}/themes/${cfg.theme}.conf";
+    xdg.configFile."kitty/theme.conf".source = lib.mkForce "${catppuccin-kitty}/themes/mocha.conf";
   };
 }
