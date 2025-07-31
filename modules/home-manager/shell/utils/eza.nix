@@ -11,7 +11,6 @@ in
     in
     lib.mkIf cfg.enable {
       programs.eza.enable = true;
-      programs.zsh.initExtra = "alias exal=\"${command}\"";
       programs.fish.shellAliases.exal = command;
     };
 }

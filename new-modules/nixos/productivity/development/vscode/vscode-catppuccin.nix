@@ -5,12 +5,10 @@
   ...
 }:
 let
-  cfg = config.miniluz.development.vscode;
+  cfg = config.miniluz.development;
 in
 {
-  options.miniluz.development.vscode.catppuccin = lib.mkEnableOption "Enable Catppuccin theme.";
-
-  config = lib.mkIf cfg.catppuccin {
+  config.hm = lib.mkIf (cfg.enable && cfg.vscode.enable) {
 
     programs.vscode.profiles.default = {
       extensions = with pkgs.vscode-extensions; [

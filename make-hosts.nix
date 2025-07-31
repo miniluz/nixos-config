@@ -3,17 +3,44 @@ inputs:
 let
   nameValueMap =
     { stem, path, ... }:
+    let
+      specialArgs = {
+        inherit inputs;
+        inherit (inputs) paths;
+      };
+    in
     {
       name = stem;
       value = inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-          inherit (inputs) paths;
-        };
+        inherit specialArgs;
         modules = [
           inputs.nixos-modules
           inputs.overlay-module
+
+          (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" "miniluz" ])
+
           "${path}/configuration.nix"
+          "${path}/hardware-configuration.nix"
+
+          { networking.hostName = stem; }
+
+          inputs.home-manager.nixosModules.default
+          (
+            { config, ... }:
+            {
+              hm = {
+                imports = [ inputs.hm-modules ];
+                home.stateVersion = config.system.stateVersion;
+                programs.home-manager.enable = true;
+              };
+
+              home-manager = {
+                extraSpecialArgs = specialArgs;
+                useGlobalPkgs = true;
+              };
+            }
+          )
+
         ];
       };
 

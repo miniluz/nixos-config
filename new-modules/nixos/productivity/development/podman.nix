@@ -5,17 +5,11 @@
   ...
 }:
 let
-  cfg = config.miniluz.development;
+  cfg = config.miniluz.development.podman;
 in
 {
-  options.miniluz.development.enable = lib.mkEnableOption "Development Tooling";
-
-  config = lib.mkIf cfg.enable {
-
-    # -- ProbeRS
-    services.udev.extraRules = lib.readFile ./probe-rs-rules.rules;
-
-    # -- Podman
+  config = lib.mkIf cfg {
+    # https://wiki.nixos.org/wiki/Podman
     environment.systemPackages = [
       pkgs.podman-compose
     ];
@@ -29,7 +23,7 @@ in
       };
     };
 
-    users.users."${cfg.user}" = {
+    users.users.miniluz = {
       isNormalUser = true;
       extraGroups = [ "podman" ];
     };

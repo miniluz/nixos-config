@@ -5,17 +5,10 @@
   ...
 }:
 let
-  cfg = config.miniluz.development.vscode;
+  cfg = config.miniluz.development;
 in
 {
-  options.miniluz.development.vscode.rust = lib.mkEnableOption "Enable Rust support.";
-
-  config = lib.mkIf cfg.rust {
-
-    home.packages = with pkgs; [
-      # ffmpeg_7
-      lldb
-    ];
+  config.hm = lib.mkIf (cfg.enable && cfg.vscode.enable && cfg.languages.rust) {
 
     programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
       rust-lang.rust-analyzer

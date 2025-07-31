@@ -5,12 +5,10 @@
   ...
 }:
 let
-  cfg = config.miniluz.development.vscode;
+  cfg = config.miniluz.development;
 in
 {
-  options.miniluz.development.vscode.vim = lib.mkEnableOption "Enable Vim emulation.";
-
-  config = lib.mkIf cfg.vim {
+  config.hm = lib.mkIf (cfg.enable && cfg.vscode.enable) {
 
     programs.vscode.profiles.default = {
       extensions = with pkgs.vscode-extensions; [

@@ -17,9 +17,9 @@ in
         dbaeumer.vscode-eslint
         esbenp.prettier-vscode
         bradlc.vscode-tailwindcss
+        lokalise.i18n-ally
       ])
       ++ (with pkgs.vscode-marketplace; [
-        lokalise.i18n-ally
         stivo.tailwind-fold
       ]);
 

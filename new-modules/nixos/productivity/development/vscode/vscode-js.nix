@@ -1,24 +1,22 @@
 {
-  pkgs,
-  config,
   lib,
+  config,
+  pkgs,
   ...
 }:
 let
-  cfg = config.miniluz.development.vscode;
+  cfg = config.miniluz.development;
 in
 {
-  options.miniluz.development.vscode.js = lib.mkEnableOption "Enable JS support.";
-
-  config = lib.mkIf cfg.js {
+  config.hm = lib.mkIf (cfg.enable && cfg.vscode.enable && cfg.languages.js) {
     programs.vscode.profiles.default.extensions =
       (with pkgs.vscode-extensions; [
         dbaeumer.vscode-eslint
         esbenp.prettier-vscode
         bradlc.vscode-tailwindcss
+        lokalise.i18n-ally
       ])
       ++ (with pkgs.vscode-marketplace; [
-        lokalise.i18n-ally
         stivo.tailwind-fold
       ]);
 

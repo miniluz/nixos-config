@@ -5,12 +5,10 @@
   ...
 }:
 let
-  cfg = config.miniluz.development.vscode;
+  cfg = config.miniluz.development;
 in
 {
-  options.miniluz.development.vscode.python = lib.mkEnableOption "Enable Python support.";
-
-  config = lib.mkIf cfg.python {
+  config.hm = lib.mkIf (cfg.enable && cfg.vscode.enable && cfg.languages.python) {
     programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
       ms-python.python
       ms-python.debugpy

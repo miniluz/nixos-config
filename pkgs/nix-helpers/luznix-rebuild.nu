@@ -58,7 +58,7 @@ def main [] {
         }
     }
 
-    nh os switch $"($env.NH_FLAKE)?submodules=1"
+    nh os switch $"($env.NH_FLAKE)?submodules=1" -- --show-trace
 
     let switch_result = $env.LAST_EXIT_CODE
 

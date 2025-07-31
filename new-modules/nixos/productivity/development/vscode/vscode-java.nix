@@ -5,12 +5,10 @@
   ...
 }:
 let
-  cfg = config.miniluz.development.vscode;
+  cfg = config.miniluz.development;
 in
 {
-  options.miniluz.development.vscode.java = lib.mkEnableOption "Enable Java support.";
-
-  config = lib.mkIf cfg.java {
+  config.hm = lib.mkIf (cfg.enable && cfg.vscode.enable && cfg.languages.java) {
 
     programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
       vscjava.vscode-java-pack

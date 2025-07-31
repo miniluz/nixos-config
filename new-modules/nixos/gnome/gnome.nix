@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.miniluz.gnome;
-  gnome-extensions = with pkgs; [
+  gnome-extensions = with pkgs.gnomeExtensions; [
     appindicator
     blur-my-shell
     just-perfection
@@ -17,8 +17,6 @@ let
   ];
 in
 {
-  imports = [ (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" "miniluz" ]) ];
-
   options.miniluz.gnome.enable = lib.mkEnableOption "Enable GNOME and GDM";
 
   config = lib.mkIf cfg.enable {
