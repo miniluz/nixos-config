@@ -29,23 +29,20 @@ in
         enableUpdateCheck = false;
         enableExtensionUpdateCheck = false;
 
-        extensions =
-          (with pkgs.vscode-extensions; [
-            mkhl.direnv
-            jnoortheen.nix-ide
+        extensions = with pkgs.vscode-extensions; [
+          mkhl.direnv
+          jnoortheen.nix-ide
 
-            usernamehw.errorlens
+          usernamehw.errorlens
 
-            redhat.vscode-yaml
-            tamasfe.even-better-toml
+          redhat.vscode-yaml
+          tamasfe.even-better-toml
 
-            ms-vsliveshare.vsliveshare
-            ms-vscode-remote.remote-ssh
-            gruntfuggly.todo-tree
-          ])
-          ++ (with pkgs.vscode-marketplace; [
-            vivaxy.vscode-conventional-commits
-          ]);
+          ms-vsliveshare.vsliveshare
+          ms-vscode-remote.remote-ssh
+          gruntfuggly.todo-tree
+          # vivaxy.vscode-conventional-commits
+        ];
 
         userSettings = {
           "git.autofetch" = "all";

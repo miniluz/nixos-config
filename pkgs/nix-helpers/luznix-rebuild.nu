@@ -58,7 +58,7 @@ def main [] {
         }
     }
 
-    nh os switch $"($env.NH_FLAKE)?submodules=1" -- --show-trace
+    nh os switch --file $"($env.NH_FLAKE)/entry.nix" $"nixosConfigurations.(cat /etc/hostname)" -- --show-trace
 
     let switch_result = $env.LAST_EXIT_CODE
 

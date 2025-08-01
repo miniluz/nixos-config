@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "__flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1751685974,
+        "narHash": "sha256-NKw96t+BgHIYzHUjkTK95FqYRVKB8DHpVhefWSz/kTw=",
+        "ref": "refs/heads/main",
+        "rev": "549f2762aebeff29a2e5ece7a7dc0f955281a1d1",
+        "revCount": 92,
+        "type": "git",
+        "url": "https://git.lix.systems/lix-project/flake-compat.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.lix.systems/lix-project/flake-compat.git"
+      }
+    },
     "agenix": {
       "inputs": {
         "darwin": "darwin",
@@ -435,6 +451,7 @@
     },
     "root": {
       "inputs": {
+        "__flake-compat": "__flake-compat",
         "agenix": "agenix",
         "home-manager": "home-manager_2",
         "import-tree": "import-tree",

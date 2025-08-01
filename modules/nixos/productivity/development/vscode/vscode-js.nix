@@ -9,16 +9,13 @@ let
 in
 {
   config.hm = lib.mkIf (cfg.enable && cfg.vscode.enable && cfg.languages.js) {
-    programs.vscode.profiles.default.extensions =
-      (with pkgs.vscode-extensions; [
-        dbaeumer.vscode-eslint
-        esbenp.prettier-vscode
-        bradlc.vscode-tailwindcss
-        lokalise.i18n-ally
-      ])
-      ++ (with pkgs.vscode-marketplace; [
-        stivo.tailwind-fold
-      ]);
+    programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
+      dbaeumer.vscode-eslint
+      esbenp.prettier-vscode
+      bradlc.vscode-tailwindcss
+      lokalise.i18n-ally
+      # stivo.tailwind-fold
+    ];
 
     programs.vscode.profiles.default.userSettings =
       let
