@@ -26,14 +26,8 @@ in
         description = "Enable NeoVim as the NixOS config editor.";
       };
     };
-    podman = lib.mkOption {
-      default = true;
-      description = "Enable Podman";
-    };
-    virt = lib.mkOption {
-      default = true;
-      description = "Enable Virtualization";
-    };
+    podman = lib.mkEnableOption "Podman";
+    virt = lib.mkEnableOption "Virtualization";
 
     languages = {
       java = lib.mkEnableOption "Java";
