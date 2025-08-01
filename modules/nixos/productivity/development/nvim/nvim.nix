@@ -1,7 +1,7 @@
 {
   pkgs,
   config,
-  paths,
+  global-secrets,
   lib,
   miniluz-pkgs-unstable,
   ...
@@ -12,7 +12,7 @@ let
 in
 {
   config.hm = lib.mkIf (cfg.enable && cfg.nvim.enable) {
-    age.secrets.google-ai-lab.file = "${paths.secrets}/google-ai-lab.age";
+    age.secrets.google-ai-lab.file = "${global-secrets}/google-ai-lab.age";
 
     home.packages = with pkgs; [
       miniluz-pkgs-unstable.neovim

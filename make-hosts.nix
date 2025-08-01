@@ -1,9 +1,10 @@
 { lib, ... }@make-attrs:
 {
   inputs,
-  paths,
-  hm-modules,
   nixos-modules,
+  hm-modules,
+  private-nixos-modules,
+  global-secrets,
   pkgs-unstable,
   miniluz-pkgs,
   miniluz-pkgs-unstable,
@@ -12,10 +13,12 @@ let
   nameValueMap =
     { stem, path, ... }:
     let
+      host-secrets = "${path}/secrets";
       specialArgs = {
         inherit
           inputs
-          paths
+          global-secrets
+          host-secrets
           pkgs-unstable
           miniluz-pkgs
           miniluz-pkgs-unstable
@@ -28,6 +31,7 @@ let
         inherit specialArgs;
         modules = [
           nixos-modules
+          private-nixos-modules
 
           (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" "miniluz" ])
 

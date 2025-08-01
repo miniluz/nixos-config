@@ -1,4 +1,6 @@
 { lib, ... }:
+# nameValueMap is expected to be { stem, path } -> { name, value }
+# pathList is expected to be [ /path/to/file1 /path/to/file2 ]
 nameValueMap: pathList:
 let
   pathToStemAndPath =

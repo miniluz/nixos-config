@@ -5,7 +5,6 @@
   ...
 }:
 let
-  cfg = config;
   catppuccin-kitty = pkgs.fetchFromGitHub {
     name = "kitty";
     owner = "catppuccin";
@@ -15,7 +14,7 @@ let
   };
 in
 {
-  config = lib.mkIf (cfg.miniluz.shell.enable && cfg.miniluz.visual) {
+  config = lib.mkIf (config.miniluz.shell.enable && config.miniluz.visual) {
     programs.kitty.enable = true;
     programs.kitty.extraConfig = ''
       include ./theme.conf

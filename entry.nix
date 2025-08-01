@@ -5,12 +5,12 @@ let
   system = "x86_64-linux";
   lib = nixpkgs.lib;
 
-  paths = {
-    secrets = ./private/secrets;
-  };
+  global-secrets = ./private/secrets;
 
   nixos-modules = import-tree ./modules/nixos;
   hm-modules = import-tree ./modules/home-manager;
+
+  private-nixos-modules = import-tree ./private/modules/nixos;
 
   makeMiniluzPkgs = import ./make-miniluz-pkgs.nix { inherit inputs lib; };
   makeHosts = import ./make-hosts.nix { inherit inputs lib; };
@@ -31,9 +31,10 @@ in
   nixosConfigurations = makeHosts {
     inherit
       inputs
-      paths
       nixos-modules
       hm-modules
+      private-nixos-modules
+      global-secrets
       pkgs-unstable
       miniluz-pkgs
       miniluz-pkgs-unstable

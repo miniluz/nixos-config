@@ -9,7 +9,6 @@
 }:
 let
   inherit (lib) mkDefault;
-  cfg = config;
 in
 {
   imports = [
@@ -22,7 +21,7 @@ in
   };
 
   config = {
-    hm.miniluz.visual = cfg.miniluz.visual;
+    hm.miniluz.visual = config.miniluz.visual;
 
     age.identityPaths = [ "/home/miniluz/.ssh/id_ed25519" ];
 

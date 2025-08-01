@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  paths,
+  global-secrets,
   inputs,
   ...
 }:
@@ -18,7 +18,7 @@ in
 
   config = lib.mkIf cfg {
     age.secrets.playit = {
-      file = "${paths.secrets}/playit.age";
+      file = "${global-secrets}/playit.age";
       owner = "playit";
     };
 

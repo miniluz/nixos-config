@@ -6,9 +6,6 @@
   lib,
   ...
 }:
-let
-  cfg = config;
-in
 {
   imports = [
     inputs.agenix.homeManagerModules.default
@@ -33,7 +30,7 @@ in
         luznix-shell-setup
         bg-run
       ])
-      ++ (if cfg.miniluz.visual then (with pkgs; [ vlc ]) else [ ]);
+      ++ (if config.miniluz.visual then (with pkgs; [ vlc ]) else [ ]);
 
     programs.command-not-found.enable = false;
     programs.nix-index.enable = true;
