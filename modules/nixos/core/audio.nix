@@ -30,7 +30,7 @@ in
   config = lib.mkIf cfg.enable {
     services.pulseaudio.enable = false;
     security.rtkit.enable = true;
-    services.pipewire =
+    services.pipewire = lib.mkMerge [
       {
         enable = true;
         alsa.enable = true;
@@ -38,12 +38,12 @@ in
         pulse.enable = true;
         jack.enable = true;
       }
-      // (
+      (
         let
           inherit (cfg.realtime) bufferSize sampleRate;
           bufferSampleStr = "${builtins.toString bufferSize}/${builtins.toString sampleRate}";
         in
-        lib.mkIf cfg.realtime.enable {
+        lib.mkIf (cfg.realtime.enable) {
           extraConfig.pipewire."92-low-latency" = {
             "context.properties" = {
               default.clock.rate = sampleRate;
@@ -73,7 +73,8 @@ in
             };
           };
         }
-      );
+      )
+    ];
 
     musnix.enable = cfg.realtime.enable;
 
