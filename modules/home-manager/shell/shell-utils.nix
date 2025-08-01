@@ -25,8 +25,9 @@ in
 {
   config = lib.mkIf cfg.enable {
     programs = {
-      bat.enable = lib.mkDefault true;
-      fd.enable = lib.mkDefault true;
+      bat.enable = true;
+      eza.enable = true;
+      fd.enable = true;
       zoxide.enable = true;
 
       btop = {
