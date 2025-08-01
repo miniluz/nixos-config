@@ -1,14 +1,17 @@
 {
-  pkgs,
   writeNuApplication,
+  luznix-os-switch,
+  libnotify,
+  git,
+  nixfmt-rfc-style,
   name ? "luznix-rebuild",
 }:
 writeNuApplication {
   inherit name;
   text = builtins.readFile ./luznix-rebuild.nu;
-  runtimeInputs = with pkgs; [
+  runtimeInputs = [
+    luznix-os-switch
     libnotify
-    nh
     git
     nixfmt-rfc-style
   ];

@@ -65,6 +65,7 @@ in
       ++ (with miniluz-pkgs; [
         font-cache-update
         luznix-rebuild
+        luznix-os-switch
       ]);
 
     environment.sessionVariables = {

@@ -58,7 +58,7 @@ def main [] {
         }
     }
 
-    nh os switch --file $"($env.NH_FLAKE)/entry.nix" $"nixosConfigurations.(cat /etc/hostname)" -- --show-trace
+    luznix-os-switch
 
     let switch_result = $env.LAST_EXIT_CODE
 
