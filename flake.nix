@@ -62,7 +62,7 @@
       nixpkgs-unstable,
       import-tree,
       ...
-    }@pre-inputs:
+    }@inputs:
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -77,58 +77,29 @@
       makeMiniluzPkgs = import ./make-miniluz-pkgs.nix { inherit inputs lib; };
       makeHosts = import ./make-hosts.nix { inherit inputs lib; };
 
-      pkgs-unstable = import nixpkgs-unstable {
+      nixpkgs-config = {
         inherit system;
         config.allowUnfree = true;
       };
 
-      overlay = (
-        final: prev: {
-          miniluz = makeMiniluzPkgs {
-            inherit inputs;
-            lib = nixpkgs.lib;
-            pkgs = final;
-          };
-          unstable = pkgs-unstable // {
-            miniluz = makeMiniluzPkgs {
-              inherit inputs;
-              lib = nixpkgs.lib;
-              pkgs = final.unstable;
-            };
-          };
-        }
-      );
+      pkgs = import nixpkgs nixpkgs-config;
+      pkgs-unstable = import nixpkgs-unstable nixpkgs-config;
 
-      overlay-module = {
-        nixpkgs.overlays = [ overlay ];
-      };
-
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [ overlay ];
-        config.allowUnfree = true;
-      };
-
-      inputs = pre-inputs // {
-        inherit
-          nixos-modules
-          hm-modules
-          overlay-module
-          paths
-          ;
-      };
+      miniluz-pkgs = makeMiniluzPkgs pkgs;
+      miniluz-pkgs-unstable = makeMiniluzPkgs pkgs-unstable;
 
     in
     {
-      inherit
-        overlay
-        nixos-modules
-        hm-modules
-        ;
-
-      miniluz = pkgs.miniluz;
-      miniluz-unstable = pkgs.unstable.miniluz;
-
-      nixosConfigurations = makeHosts inputs;
+      nixosConfigurations = makeHosts {
+        inherit
+          inputs
+          paths
+          nixos-modules
+          hm-modules
+          pkgs-unstable
+          miniluz-pkgs
+          miniluz-pkgs-unstable
+          ;
+      };
     };
 }

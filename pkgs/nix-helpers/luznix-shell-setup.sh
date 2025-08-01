@@ -13,7 +13,7 @@ if [ -f "nix/flake.nix" ]; then
 fi
 
 # Create .direnv file
-cat > .envrc << 'EOF'
+cat >.envrc <<'EOF'
 #!/usr/bin/env bash
 
 if ! has nix_direnv_version || ! nix_direnv_version 3.0.6; then
@@ -26,15 +26,15 @@ EOF
 # Create or append to .gitignore
 if [ -f ".gitignore" ]; then
   if ! grep -Fxq ".direnv" .gitignore; then
-    echo ".direnv" >> .gitignore
+    echo ".direnv" >>.gitignore
   fi
 else
-  echo ".direnv" > .gitignore
+  echo ".direnv" >.gitignore
 fi
 
 # Create nix directory and flake.nix
 mkdir -p nix
-cat > nix/flake.nix << 'EOF'
+cat >nix/flake.nix <<'EOF'
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -60,3 +60,4 @@ cat > nix/flake.nix << 'EOF'
 EOF
 
 echo "Setup completed successfully!"
+

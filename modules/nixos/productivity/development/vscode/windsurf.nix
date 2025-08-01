@@ -1,5 +1,6 @@
 {
   pkgs,
+  miniluz-pkgs,
   config,
   lib,
   ...
@@ -21,8 +22,8 @@ in
       };
     };
 
-    home.packages = with pkgs; [
-      miniluz.code-windsurf
+    home.packages = with miniluz-pkgs; [
+      code-windsurf
     ];
 
   };

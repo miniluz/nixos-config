@@ -1,12 +1,25 @@
 { lib, ... }@make-attrs:
-inputs:
+{
+  inputs,
+  paths,
+  hm-modules,
+  nixos-modules,
+  pkgs-unstable,
+  miniluz-pkgs,
+  miniluz-pkgs-unstable,
+}:
 let
   nameValueMap =
     { stem, path, ... }:
     let
       specialArgs = {
-        inherit inputs;
-        inherit (inputs) paths;
+        inherit
+          inputs
+          paths
+          pkgs-unstable
+          miniluz-pkgs
+          miniluz-pkgs-unstable
+          ;
       };
     in
     {
@@ -14,8 +27,7 @@ let
       value = inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         modules = [
-          inputs.nixos-modules
-          inputs.overlay-module
+          nixos-modules
 
           (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" "miniluz" ])
 
@@ -29,7 +41,7 @@ let
             { config, ... }:
             {
               hm = {
-                imports = [ inputs.hm-modules ];
+                imports = [ hm-modules ];
                 home.stateVersion = config.system.stateVersion;
                 programs.home-manager.enable = true;
               };

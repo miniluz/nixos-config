@@ -1,16 +1,30 @@
 { lib, inputs, ... }@make-attrs:
-attrs:
+pkgs:
 let
+  makeAttrsetFromPathlist = import ./make-attrset-from-pathlist.nix make-attrs;
+
+  callPackage = pkgs.lib.callPackageWith (pkgs // miniluz-pkgs // { inherit miniluz-pkgs; });
+
   nameValueMap =
     { stem, path, ... }:
     {
       name = stem;
-      value = import path attrs;
+      value = callPackage path { };
     };
+
   pathList = lib.pipe (inputs.import-tree.withLib lib) [
     (i: i.addPath ./pkgs)
     (i: i.files)
   ];
-  makeAttrsetFromPathlist = import ./make-attrset-from-pathlist.nix make-attrs;
+
+  neovim =
+    (inputs.nvf.lib.neovimConfiguration {
+      pkgs = pkgs;
+      modules = [ ./nvim/nvim.nix ];
+    }).neovim;
+
+  miniluz-pkgs = (makeAttrsetFromPathlist nameValueMap pathList) // {
+    inherit neovim;
+  };
 in
-makeAttrsetFromPathlist nameValueMap pathList
+miniluz-pkgs

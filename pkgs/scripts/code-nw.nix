@@ -1,1 +1,1 @@
-{ pkgs, ... }: pkgs.writeShellScriptBin "code-nw" "code -nw \"$@\""
+{ writeShellScriptBin }: writeShellScriptBin "code-nw" "code -nw \"$@\""

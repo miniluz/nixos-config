@@ -1,1 +1,1 @@
-{ pkgs, ... }: pkgs.writeShellScriptBin "code" "windsurf \"$@\""
+{ writeShellScriptBin }: writeShellScriptBin "code" "windsurf \"$@\""

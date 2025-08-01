@@ -3,6 +3,7 @@
   config,
   paths,
   lib,
+  miniluz-pkgs-unstable,
   ...
 }:
 let
@@ -14,7 +15,7 @@ in
     age.secrets.google-ai-lab.file = "${paths.secrets}/google-ai-lab.age";
 
     home.packages = with pkgs; [
-      unstable.miniluz.neovim
+      miniluz-pkgs-unstable.neovim
       nixd
       nixfmt-rfc-style
       wl-clipboard

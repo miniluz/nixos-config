@@ -2,6 +2,7 @@
 {
   inputs,
   pkgs,
+  miniluz-pkgs,
   lib,
   config,
   ...
@@ -48,20 +49,24 @@ in
 
     networking.networkmanager.enable = mkDefault true;
 
-    environment.systemPackages = with pkgs; [
-      steam-run
-      file
-      uutils-coreutils-noprefix
-      p7zip
-      fd
-      evil-helix
-      nh
-      nixfmt-rfc-style
-      nil
-      nushell
-      miniluz.font-cache-update
-      miniluz.luznix-rebuild
-    ];
+    environment.systemPackages =
+      with pkgs;
+      [
+        steam-run
+        file
+        uutils-coreutils-noprefix
+        p7zip
+        fd
+        evil-helix
+        nh
+        nixfmt-rfc-style
+        nil
+        nushell
+      ]
+      ++ (with miniluz-pkgs; [
+        font-cache-update
+        luznix-rebuild
+      ]);
 
     environment.sessionVariables = {
       EDITOR = "hx";

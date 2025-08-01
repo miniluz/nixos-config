@@ -1,5 +1,5 @@
 {
-  pkgs,
+  miniluz-pkgs,
   ...
 }:
 {
@@ -14,7 +14,7 @@
     delta.enable = true;
   };
 
-  home.packages = with pkgs; [
-    miniluz.git-clean-branches
+  home.packages = with miniluz-pkgs; [
+    git-clean-branches
   ];
 }

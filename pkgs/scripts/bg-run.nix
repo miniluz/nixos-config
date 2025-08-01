@@ -1,1 +1,1 @@
-{ pkgs, ... }: pkgs.writeShellScriptBin "bg-run" (builtins.readFile ./bg-run.sh)
+{ writeShellScriptBin }: writeShellScriptBin "bg-run" (builtins.readFile ./bg-run.sh)

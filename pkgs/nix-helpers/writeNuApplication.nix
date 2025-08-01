@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib }:
 let
   makeNushellSearchList =
     subDir: paths:

@@ -1,5 +1,6 @@
 {
   pkgs,
+  miniluz-pkgs,
   inputs,
   config,
   lib,
@@ -26,10 +27,12 @@ in
       with pkgs;
       [
         inputs.agenix.packages."x86_64-linux".default
-        miniluz.luznix-shell-setup
-        miniluz.bg-run
         trashy
       ]
+      ++ (with miniluz-pkgs; [
+        luznix-shell-setup
+        bg-run
+      ])
       ++ (if cfg.miniluz.visual then (with pkgs; [ vlc ]) else [ ]);
 
     programs.command-not-found.enable = false;

@@ -1,5 +1,6 @@
 {
   pkgs,
+  miniluz-pkgs,
   config,
   lib,
   ...
@@ -82,8 +83,8 @@ in
       "NIX_CONFIG_EDITOR" = "code-nw";
     };
 
-    home.packages = with pkgs; [
-      miniluz.code-nw
+    home.packages = with miniluz-pkgs; [
+      code-nw
     ];
 
   };
