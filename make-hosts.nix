@@ -57,6 +57,7 @@ let
             }
           )
 
+          inputs.quadlet-nix.nixosModules.quadlet
         ];
       };
 
