@@ -50,6 +50,8 @@
 
     quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
 
+    arbys.url = "git+https://git.atagen.co/atagen/arbys";
+
     __flake-compat = {
       url = "git+https://git.lix.systems/lix-project/flake-compat.git";
       flake = false;

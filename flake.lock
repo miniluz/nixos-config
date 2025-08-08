@@ -39,6 +39,21 @@
         "type": "github"
       }
     },
+    "arbys": {
+      "locked": {
+        "lastModified": 1753316914,
+        "narHash": "sha256-HVT2JNM8op5hfDBSrIarL9GaKxQjkeQr2gf7CB6hQqk=",
+        "ref": "refs/heads/meats",
+        "rev": "ef34e2314b84b732618274c1940423ae19ebdf5e",
+        "revCount": 3,
+        "type": "git",
+        "url": "https://git.atagen.co/atagen/arbys"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.atagen.co/atagen/arbys"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -407,6 +422,7 @@
       "inputs": {
         "__flake-compat": "__flake-compat",
         "agenix": "agenix",
+        "arbys": "arbys",
         "home-manager": "home-manager_2",
         "import-tree": "import-tree",
         "lix-module": "lix-module",

@@ -57,7 +57,12 @@ let
             }
           )
 
+          {
+            nixpkgs.overlays = [ (final: prev: { inherit (pkgs-unstable) smfh; }) ];
+          }
+
           inputs.quadlet-nix.nixosModules.quadlet
+          inputs.arbys.nixosModules.arbys
         ];
       };
 
