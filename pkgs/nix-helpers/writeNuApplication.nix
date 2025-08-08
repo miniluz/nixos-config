@@ -100,11 +100,12 @@ pkgs.writeTextFile {
   destination = "/bin/${name}";
   allowSubstitutes = true;
   preferLocalBuild = false;
-  text = ''
-    #!${pkgs.nushell}/bin/nu
-    $env.Path = ${lib.optionalString inheritPath "$env.Path | prepend"} ${makeNushellBinList runtimeInputs}
-  ''
-  + ''
-    ${text}
-  '';
+  text =
+    ''
+      #!${pkgs.nushell}/bin/nu
+      $env.Path = ${lib.optionalString inheritPath "$env.Path | prepend"} ${makeNushellBinList runtimeInputs}
+    ''
+    + ''
+      ${text}
+    '';
 }
