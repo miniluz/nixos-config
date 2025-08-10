@@ -61,6 +61,11 @@ in
         nixfmt-rfc-style
         nil
         nushell
+        nmap
+        dig.dnsutils
+        bat
+        ripgrep
+        eza
       ]
       ++ (with miniluz-pkgs; [
         font-cache-update
