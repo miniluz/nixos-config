@@ -52,6 +52,8 @@
 
     arbys.url = "git+https://git.atagen.co/atagen/arbys";
 
+    quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
+
     nixarr = {
       url = "github:miniluz/nixarr";
       inputs.nixpkgs.follows = "nixpkgs-unstable";

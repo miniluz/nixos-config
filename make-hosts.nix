@@ -63,6 +63,7 @@ let
 
           inputs.arbys.nixosModules.arbys
           inputs.nixarr.nixosModules.default
+          inputs.quadlet-nix.nixosModules.quadlet
         ];
       };
 

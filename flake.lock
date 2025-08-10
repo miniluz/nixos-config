@@ -442,6 +442,21 @@
         "type": "github"
       }
     },
+    "quadlet-nix": {
+      "locked": {
+        "lastModified": 1754008153,
+        "narHash": "sha256-MYT1mDtSkiVg343agxgBFsnuNU3xS8vRy399JXX1Vw0=",
+        "owner": "SEIAROTg",
+        "repo": "quadlet-nix",
+        "rev": "1b2d27d460d8c7e4da5ba44ede463b427160b5c4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SEIAROTg",
+        "repo": "quadlet-nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "__flake-compat": "__flake-compat",
@@ -456,7 +471,8 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "null": "null",
         "nvf": "nvf",
-        "playit-nixos-module": "playit-nixos-module"
+        "playit-nixos-module": "playit-nixos-module",
+        "quadlet-nix": "quadlet-nix"
       }
     },
     "systems": {
