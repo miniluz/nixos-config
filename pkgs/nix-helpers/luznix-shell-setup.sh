@@ -60,4 +60,3 @@ cat >nix/flake.nix <<'EOF'
 EOF
 
 echo "Setup completed successfully!"
-
