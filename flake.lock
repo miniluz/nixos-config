@@ -304,15 +304,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1752337105,
-        "narHash": "sha256-dxnmm2wIgohIOKAoaa4fneDOsnnKR/BgFZuWhx4B5N8=",
+        "lastModified": 1754868789,
+        "narHash": "sha256-4FECnCcaUVQHnocuuu/KRldPW2yj7hFpd1F7bfWxTxY=",
         "owner": "miniluz",
         "repo": "nixarr",
-        "rev": "fc75ca0e6bc2fc31c0a3567d275b92ee30b9311d",
+        "rev": "e52b38acec78f816440ec14ade45c3fc9061a0ed",
         "type": "github"
       },
       "original": {
         "owner": "miniluz",
+        "ref": "patch-1",
         "repo": "nixarr",
         "type": "github"
       }

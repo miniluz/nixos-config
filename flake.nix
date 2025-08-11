@@ -55,7 +55,7 @@
     quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
 
     nixarr = {
-      url = "github:miniluz/nixarr";
+      url = "github:miniluz/nixarr/patch-1";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.website-builder.follows = "null";
     };
