@@ -60,6 +60,11 @@
       inputs.website-builder.follows = "null";
     };
 
+    actual-backup = {
+      url = "github:miniluz/actual-backup";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     __flake-compat = {
       url = "git+https://git.lix.systems/lix-project/flake-compat.git";
       flake = false;
