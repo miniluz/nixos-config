@@ -62,7 +62,7 @@
 
     actual-backup = {
       url = "github:miniluz/actual-backup";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     __flake-compat = {

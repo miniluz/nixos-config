@@ -20,15 +20,15 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "nixpkgs-unstable"
+          "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1755013318,
-        "narHash": "sha256-mzQc6nKV8jt4+gPQvOPGzxLaJ7AdveMbdT/1T+M7mYM=",
+        "lastModified": 1755021691,
+        "narHash": "sha256-RSUdHBwxKBLJB1DFd6S6ZT9nRnREX7yH1z+cf1SMqL0=",
         "owner": "miniluz",
         "repo": "actual-backup",
-        "rev": "daef7f10e82e577da7588d809997fab1186b4617",
+        "rev": "8c9306fe3814fd9794f3b393b1e7e77742832ecb",
         "type": "github"
       },
       "original": {
