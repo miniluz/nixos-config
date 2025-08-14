@@ -30,6 +30,7 @@
       enableTreesitter = true;
       enableFormat = true;
       enableDAP = true;
+      enableExtraDiagnostics = true;
     };
 
     formatter.conform-nvim.enable = true;

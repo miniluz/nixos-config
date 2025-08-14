@@ -24,11 +24,10 @@ in
     programs.fish = {
       enable = true;
 
-      interactiveShellInit =
-        ''
-          set fish_greeting # Disable greeting
-        ''
-        + fzf-config;
+      interactiveShellInit = ''
+        set fish_greeting # Disable greeting
+      ''
+      + fzf-config;
 
       plugins = [
         {
