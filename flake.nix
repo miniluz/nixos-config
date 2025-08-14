@@ -12,6 +12,8 @@
 
     #    self.submodules = true;
 
+    null.url = "github:nix-values/null";
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -48,9 +50,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    arbys.url = "git+https://git.atagen.co/atagen/arbys";
+
     quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
 
-    arbys.url = "git+https://git.atagen.co/atagen/arbys";
+    nixarr = {
+      url = "github:miniluz/nixarr/patch-1";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.website-builder.follows = "null";
+    };
+
+    actual-backup = {
+      url = "github:miniluz/actual-backup";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     __flake-compat = {
       url = "git+https://git.lix.systems/lix-project/flake-compat.git";

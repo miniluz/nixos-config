@@ -16,6 +16,27 @@
         "url": "https://git.lix.systems/lix-project/flake-compat.git"
       }
     },
+    "actual-backup": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1755021691,
+        "narHash": "sha256-RSUdHBwxKBLJB1DFd6S6ZT9nRnREX7yH1z+cf1SMqL0=",
+        "owner": "miniluz",
+        "repo": "actual-backup",
+        "rev": "8c9306fe3814fd9794f3b393b1e7e77742832ecb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "miniluz",
+        "repo": "actual-backup",
+        "type": "github"
+      }
+    },
     "agenix": {
       "inputs": {
         "darwin": "darwin",
@@ -23,7 +44,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems"
+        "systems": "systems_2"
       },
       "locked": {
         "lastModified": 1754433428,
@@ -133,7 +154,25 @@
     },
     "flake-utils": {
       "inputs": {
-        "systems": "systems_2"
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_2": {
+      "inputs": {
+        "systems": "systems_3"
       },
       "locked": {
         "lastModified": 1731533236,
@@ -237,7 +276,7 @@
     },
     "lix-module": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": "flake-utils_2",
         "flakey-profile": "flakey-profile",
         "lix": "lix",
         "nixpkgs": [
@@ -293,6 +332,31 @@
         "type": "github"
       }
     },
+    "nixarr": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ],
+        "vpnconfinement": "vpnconfinement",
+        "website-builder": [
+          "null"
+        ]
+      },
+      "locked": {
+        "lastModified": 1754868789,
+        "narHash": "sha256-4FECnCcaUVQHnocuuu/KRldPW2yj7hFpd1F7bfWxTxY=",
+        "owner": "miniluz",
+        "repo": "nixarr",
+        "rev": "e52b38acec78f816440ec14ade45c3fc9061a0ed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "miniluz",
+        "ref": "patch-1",
+        "repo": "nixarr",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1754292888,
@@ -340,6 +404,21 @@
         "type": "github"
       }
     },
+    "null": {
+      "locked": {
+        "lastModified": 1753851993,
+        "narHash": "sha256-KTHmUadvErWek0fqEWaK/CHDfR3AFBTlef85qR/dTb4=",
+        "owner": "nix-values",
+        "repo": "null",
+        "rev": "23492f06e12236ce559bb379b32748338154bc0a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-values",
+        "repo": "null",
+        "type": "github"
+      }
+    },
     "nvf": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -348,7 +427,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems_3"
+        "systems": "systems_4"
       },
       "locked": {
         "lastModified": 1754552918,
@@ -387,7 +466,7 @@
           "nixpkgs"
         ],
         "playit-agent-source": "playit-agent-source",
-        "systems": "systems_4"
+        "systems": "systems_5"
       },
       "locked": {
         "lastModified": 1754565422,
@@ -421,14 +500,17 @@
     "root": {
       "inputs": {
         "__flake-compat": "__flake-compat",
+        "actual-backup": "actual-backup",
         "agenix": "agenix",
         "arbys": "arbys",
         "home-manager": "home-manager_2",
         "import-tree": "import-tree",
         "lix-module": "lix-module",
         "musnix": "musnix",
+        "nixarr": "nixarr",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "null": "null",
         "nvf": "nvf",
         "playit-nixos-module": "playit-nixos-module",
         "quadlet-nix": "quadlet-nix"
@@ -491,6 +573,36 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_5": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "vpnconfinement": {
+      "locked": {
+        "lastModified": 1743810720,
+        "narHash": "sha256-kbv/W4gizUSa6qH2rUQdgPj9AJaeN9k2XSWUYqj7IMU=",
+        "owner": "Maroka-chan",
+        "repo": "VPN-Confinement",
+        "rev": "74ae51e6d18b972ecc918ab43e8bde60c21a65d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Maroka-chan",
+        "repo": "VPN-Confinement",
         "type": "github"
       }
     }

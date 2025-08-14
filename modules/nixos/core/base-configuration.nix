@@ -25,6 +25,18 @@ in
 
     age.identityPaths = [ "/home/miniluz/.ssh/id_ed25519" ];
 
+    zramSwap.enable = mkDefault true;
+
+    nix.optimise.automatic = mkDefault true;
+
+    programs.nh = {
+      enable = true;
+      clean = {
+        enable = true;
+        extraArgs = "--keep 5 --keep-since 7d";
+      };
+    };
+
     # Set timezone
     time.timeZone = mkDefault "Europe/Madrid";
 
@@ -61,6 +73,11 @@ in
         nixfmt-rfc-style
         nil
         nushell
+        nmap
+        dig.dnsutils
+        bat
+        ripgrep
+        eza
       ]
       ++ (with miniluz-pkgs; [
         font-cache-update
