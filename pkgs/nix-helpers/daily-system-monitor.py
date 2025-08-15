@@ -170,7 +170,7 @@ def build_report(
     if errors or failed_services > 0:
         status = "CRITICAL"
         color = COLOR_CRITICAL
-    elif float(disk_usage) > 90 or memory_usage > 90:
+    elif memory_usage > 90:
         status = "WARNING"
         color = COLOR_WARNING
 
@@ -180,7 +180,6 @@ def build_report(
     report += f"**Uptime:** {uptime_str}\n"
     report += f"**Load Average:** {', '.join(map(str, load_avg))}\n"
     report += f"**Memory Usage:** {memory_usage}%\n"
-    report += f"**Disk Usage:** {disk_usage}%\n"
     report += f"**Failed Services:** {failed_services}\n\n"
 
     if errors:
