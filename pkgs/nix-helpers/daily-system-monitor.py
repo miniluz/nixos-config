@@ -174,7 +174,7 @@ def build_report(
         status = "WARNING"
         color = COLOR_WARNING
 
-    uptime_str = subprocess.check_output(["uptime", "-p"], text=True).strip()
+    uptime_str = subprocess.check_output(["uptime"], text=True).strip()
 
     report += f"**System Status:** {status}\n"
     report += f"**Uptime:** {uptime_str}\n"
