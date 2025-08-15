@@ -94,8 +94,6 @@ in
     programs.ssh.startAgent = mkDefault true;
     programs.nix-ld.enable = mkDefault true;
 
-    programs.nix-index-database.comma.enable = true;
-
     documentation.man.generateCaches = false;
     hm.programs.man.generateCaches = false;
     documentation.nixos.enable = false;

@@ -45,7 +45,10 @@ let
             { config, ... }:
             {
               hm = {
-                imports = [ hm-modules ];
+                imports = [
+                  hm-modules
+                  inputs.nix-index-database.homeModules.nix-index
+                ];
                 home.stateVersion = config.system.stateVersion;
                 programs.home-manager.enable = true;
               };
@@ -64,7 +67,6 @@ let
           inputs.arbys.nixosModules.arbys
           inputs.nixarr.nixosModules.default
           inputs.quadlet-nix.nixosModules.quadlet
-          inputs.nix-index-database.nixosModules.nix-index
         ];
       };
 
