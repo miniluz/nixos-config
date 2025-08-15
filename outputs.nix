@@ -1,19 +1,24 @@
 inputs:
 let
-  inherit (inputs) nixpkgs nixpkgs-unstable import-tree;
+  inherit (inputs)
+    nixpkgs
+    nixpkgs-unstable
+    import-tree
+    self
+    ;
 
   system = "x86_64-linux";
   inherit (nixpkgs) lib;
 
-  global-secrets = ./private/secrets;
+  global-secrets = "${self}/private/secrets";
 
-  nixos-modules = import-tree ./modules/nixos;
-  hm-modules = import-tree ./modules/home-manager;
+  nixos-modules = import-tree "${self}/modules/nixos";
+  hm-modules = import-tree "${self}/modules/home-manager";
 
-  private-nixos-modules = import-tree ./private/modules/nixos;
+  private-nixos-modules = import-tree "${self}/private/modules/nixos";
 
-  makeMiniluzPkgs = import ./make-miniluz-pkgs.nix { inherit inputs lib; };
-  makeHosts = import ./make-hosts.nix { inherit inputs lib; };
+  makeMiniluzPkgs = import "${self}/make-miniluz-pkgs.nix" { inherit inputs lib; };
+  makeHosts = import "${self}/make-hosts.nix" { inherit inputs lib; };
 
   nixpkgs-config = {
     inherit system;

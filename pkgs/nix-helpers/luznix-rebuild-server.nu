@@ -15,6 +15,7 @@ def do_in_submodule_and_repo [closure] {
 }
 
 def fail_and_revert_commit [message] {
+    print "Reverting changes..."
     do_in_submodule_and_repo {
         git reset HEAD~1
     }
@@ -61,7 +62,11 @@ def main [] {
 
     # git diff HEAD --submodule=diff
 
-    nix flake update --flake server_flake_path miniluz-hosts
+    try {
+        nix flake update --flake $server_flake_path miniluz-hosts
+    } catch {
+        fail_and_revert_commit "Failed to update changes to server"
+    }
 
     print "NixOS Rebuilding..."
 
