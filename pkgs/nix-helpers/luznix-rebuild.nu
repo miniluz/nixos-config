@@ -5,26 +5,15 @@ def fail [message] {
     exit 1
 }
 
-def do_in_submodule [closure] {
-    cd private
-    do $closure
-}
-def do_in_submodule_and_repo [closure] {
-    do_in_submodule $closure
-    do $closure
-}
-
 def main [] {
     let flake_path: path = $env.NH_FLAKE | path expand
     cd $flake_path
 
     print "Pulling changes..."
-    do_in_submodule_and_repo {
-        try {
-            git pull
-        } catch {
-            fail "Failed to pull latest changes"
-        }
+    try {
+    git pull
+    } catch {
+        fail "Failed to pull latest changes"
     }
 
     print $"Opening config in $NIX_CONFIG_EDITOR \(($env.NIX_CONFIG_EDITOR)\) or $EDITOR \(($env.EDITOR)\)..."
@@ -43,7 +32,8 @@ def main [] {
         fail "Formatting failed"
     }
 
-    do_in_submodule_and_repo { print $"Adding changes in ($env.PWD)" ; git add . }
+    print "Adding changes"
+    git add .
 
     # git diff HEAD --submodule=diff
 
@@ -53,7 +43,7 @@ def main [] {
     try {
         luznix-os-switch
     } catch {
-        fail_and_revert_commit "NixOS Rebuild failed!"
+        fail "NixOS Rebuild failed!"
     }
 
     let commit_message = (
@@ -70,9 +60,11 @@ def main [] {
         fail "Could not find current generation"
     }
 
-    do_in_submodule_and_repo { try { print $"Commiting changes in ($env.PWD)" ; git add . ; git commit -am $commit_message } }
+    print "Commiting changes"
+    git commit -am $commit_message 
 
-    do_in_submodule_and_repo { try { print $"Pushing changes in ($env.PWD)" ; git push } }
+    print "Pushing changes"
+    git push
 
     notify-send -e "NixOS Rebuilt OK!" --icon=software-update-available
 }

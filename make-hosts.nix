@@ -3,7 +3,6 @@
   inputs,
   nixos-modules,
   hm-modules,
-  private-nixos-modules,
   global-secrets,
   pkgs-unstable,
   miniluz-pkgs,
@@ -31,7 +30,6 @@ let
         inherit specialArgs;
         modules = [
           nixos-modules
-          private-nixos-modules
 
           (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" "miniluz" ])
 
@@ -71,7 +69,7 @@ let
       };
 
     };
-  hostPath = ./private/hosts;
+  hostPath = ./hosts;
   pathList = lib.pipe hostPath [
     builtins.readDir
     lib.attrsToList

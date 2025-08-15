@@ -1,7 +1,6 @@
 {
   writeNuApplication,
   luznix-os-switch,
-  libnotify,
   git,
   nixfmt-rfc-style,
   name ? "luznix-rebuild-server",
@@ -11,7 +10,6 @@ writeNuApplication {
   text = builtins.readFile ./luznix-rebuild-server.nu;
   runtimeInputs = [
     luznix-os-switch
-    libnotify
     git
     nixfmt-rfc-style
   ];
