@@ -8,4 +8,5 @@ in
   "nebula.local.key.age".publicKeys = [ miniluz ];
   "actual-sync-id.age".publicKeys = [ miniluz ];
   "actual-password.age".publicKeys = [ miniluz ];
+  "monitoring-webhook.age".publicKeys = [ miniluz ];
 }
