@@ -14,8 +14,17 @@ def do_in_submodule_and_repo [closure] {
     do $closure
 }
 
+def fail_and_revert_commit [message] {
+    do_in_submodule_and_repo {
+        git reset HEAD~1
+    }
+    fail $message
+}
+
 def main [] {
-    let flake_path: path = $env.NH_FLAKE | path expand
+    let flake_path: path = "~/nixos-config-base" | path expand
+    let server_flake_path: path = $env.NH_FLAKE | path expand
+
     cd $flake_path
 
     print "Pulling changes..."
@@ -43,9 +52,16 @@ def main [] {
         fail "Formatting failed"
     }
 
+    if ((git status --porcelain | str trim) | is-empty) {
+        fail "No changes detected"
+    }
+
     do_in_submodule_and_repo { print $"Adding changes in ($env.PWD)" ; git add . }
+    do_in_submodule_and_repo { print $"Committing changes in ($env.PWD)" ; git commit --allow-empty -am "Update from server" }
 
     # git diff HEAD --submodule=diff
+
+    nix flake update miniluz-hosts
 
     print "NixOS Rebuilding..."
 
@@ -55,22 +71,6 @@ def main [] {
     } catch {
         fail_and_revert_commit "NixOS Rebuild failed!"
     }
-
-    let commit_message = (
-        nixos-rebuild list-generations --json
-        | from json
-        | where current == true
-        | sort-by date --reverse
-        | first 1
-        | each { |it| $"($it.generation) - ($it.date)" }
-        | str join "\n"
-    )
-
-    if ($commit_message | is-empty) {
-        fail "Could not find current generation"
-    }
-
-    do_in_submodule_and_repo { try { print $"Commiting changes in ($env.PWD)" ; git add . ; git commit -am $commit_message } }
 
     do_in_submodule_and_repo { try { print $"Pushing changes in ($env.PWD)" ; git push } }
 
