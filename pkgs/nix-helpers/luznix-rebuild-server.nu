@@ -61,7 +61,7 @@ def main [] {
 
     # git diff HEAD --submodule=diff
 
-    nix flake update miniluz-hosts
+    nix flake update --flake server_flake_path miniluz-hosts
 
     print "NixOS Rebuilding..."
 
