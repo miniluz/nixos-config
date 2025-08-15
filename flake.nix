@@ -1,13 +1,6 @@
 {
   description = "miniluz's NixOS & HM modules, packages, and configurations";
 
-  nixConfig = {
-    extra-substituters = [ "https://playit-nixos-module.cachix.org" ];
-    extra-trusted-public-keys = [
-      "playit-nixos-module.cachix.org-1:22hBXWXBbd/7o1cOnh+p0hpFUVk9lPdRLX3p5YSfRz4="
-    ];
-  };
-
   inputs = {
 
     #    self.submodules = true;
@@ -65,6 +58,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     __flake-compat = {
       url = "git+https://git.lix.systems/lix-project/flake-compat.git";
       flake = false;
@@ -72,5 +70,5 @@
 
   };
 
-  outputs = _: { };
+  outputs = inputs: import ./outputs.nix inputs;
 }

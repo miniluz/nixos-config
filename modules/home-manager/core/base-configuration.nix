@@ -33,7 +33,6 @@
       ++ (if config.miniluz.visual then (with pkgs; [ vlc ]) else [ ]);
 
     programs.command-not-found.enable = false;
-    programs.nix-index.enable = true;
 
     age.identityPaths = [ "/home/miniluz/.ssh/id_ed25519" ];
 

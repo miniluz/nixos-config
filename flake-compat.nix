@@ -1,5 +1,6 @@
+flake-path:
 let
-  lock = builtins.fromJSON (builtins.readFile ./flake.lock);
+  lock = builtins.fromJSON (builtins.readFile "${flake-path}/flake.lock");
   node = lock.nodes.root.inputs.__flake-compat;
   inherit (lock.nodes.${node}.locked) narHash rev url;
   flake-compat = builtins.fetchTarball {
@@ -7,9 +8,9 @@ let
     sha256 = narHash;
   };
   flake = import flake-compat {
-    src = ./.;
+    src = flake-path;
     copySourceTreeToStore = false;
     useBuiltinsFetchTree = true;
   };
 in
-flake.inputs
+flake

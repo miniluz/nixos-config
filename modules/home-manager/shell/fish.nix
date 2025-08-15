@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   lib,
   config,
@@ -26,6 +27,10 @@ in
 
       interactiveShellInit = ''
         set fish_greeting # Disable greeting
+
+        function fish_command_not_found
+          ${lib.getExe inputs.nix-index-database.packages.${pkgs.system}.comma-with-db} "$argv"
+        end
       ''
       + fzf-config;
 
