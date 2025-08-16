@@ -11,14 +11,13 @@ in
 
     system.autoUpgrade = {
       enable = true;
-      flake = config.environment.sessionVariables.NH_FLAKE;
+      flake = "${config.environment.sessionVariables.NH_FLAKE}#${config.networking.hostName}";
       flags = [
         "--update-input"
         "nixpkgs"
         "--update-input"
         "nixpkgs-unstable"
         "--commit-lock-file"
-        "-A outputs.nixosConfigurations.${config.networking.hostName}"
       ];
       allowReboot = true;
     };
