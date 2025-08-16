@@ -3,6 +3,8 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
+  networking.hostId = "9555365f";
+
   miniluz.visual = false;
 
   miniluz.selfhosting = {
@@ -19,12 +21,11 @@
   };
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   environment.pathsToLink = [ "/share/zsh" ];
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "25.05";
 
 }
