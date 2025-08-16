@@ -27,21 +27,19 @@ in
         // config.networking.proxy.envVars;
 
       path = with pkgs; [
-        coreutils
-        gnutar
-        xz.bin
-        gzip
-        gitMinimal
-        config.nix.package.out
-        config.programs.ssh.package
+        # coreutils
+        # gnutar
+        # xz.bin
+        # gzip
+        # gitMinimal
+        # config.nix.package.out
+        # config.programs.ssh.package
       ];
 
       script = ''
         cd ${config.environment.sessionVariables.NH_FLAKE}
         nix flake update nixpkgs nixpkgs-unstable
-        git add .
         ${lib.getExe miniluz-pkgs.luznix-os-switch}
-        git commit -am "Server auto-update"
       '';
 
       startAt = "9:00";
