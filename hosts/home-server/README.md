@@ -1,5 +1,14 @@
 # Assumptions
 
+## Server package versioning
+
+The NixOS config is expected to be at `~/nixos-config-base`. The server will
+have its own NixOS config at `~/nixos-config` so it can use its own nixpkgs and
+nixpkgs-unstable versions that will autoupdate independently.
+
+The configuration at `~/nixos-config-base` will not be auto-updated. It must be
+pulled manually to stop breakages from the main config.
+
 ## Wireguard
 
 A wireguard config file without a killswitch is provided as a host secret in
