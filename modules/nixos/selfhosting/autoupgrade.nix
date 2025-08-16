@@ -31,7 +31,7 @@ in
         # gnutar
         # xz.bin
         # gzip
-        # gitMinimal
+        gitMinimal
         config.nix.package.out
         # config.programs.ssh.package
       ];
