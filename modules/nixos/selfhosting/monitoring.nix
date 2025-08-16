@@ -5,8 +5,11 @@
   miniluz-pkgs,
   ...
 }:
+let
+  cfg = config.miniluz.selfhosting;
+in
 {
-  config = {
+  config = lib.mkIf (cfg.enable && cfg.server.enable) {
     age.secrets.monitoring-webhook.file = "${host-secrets}/monitoring-webhook.age"; # Create the systemd service
 
     systemd.services.daily-system-monitor = {

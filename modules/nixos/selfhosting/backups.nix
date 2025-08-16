@@ -87,7 +87,10 @@ let
   backupsToConfig = lib.flip lib.pipe [
     (lib.filterAttrs (_: v: v.enable == true))
     (lib.mapAttrsToList backupToConfig)
-    (lib.fold lib.recursiveUpdate { })
+    (lib.fold lib.recursiveUpdate {
+      services = { };
+      systemd = { };
+    })
   ];
 
 in

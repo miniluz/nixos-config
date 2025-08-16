@@ -11,6 +11,10 @@ exec false # not exit 1 just so my LSP doesn't complain
 sudo passwd root
 systemctl restart sshd
 
+# At this point, stop running this locally
+ip addr
+ssh root@192.168.X.Y
+
 # ====================
 #         SSD
 # ====================
@@ -24,8 +28,6 @@ find /dev/disk/by-id/
 # For the SSD
 DISK='/dev/disk/by-id/ata-QEMU_HARDDISK_QM00003'
 MNT=$(mktemp -d)
-SWAPSIZE=8
-RESERVE=1 # We leave 1 GiB at the end free because of wear leveling or whatever
 
 # Clear all existing partition tables and data structures
 wipefs $DISK # check
@@ -34,11 +36,13 @@ wipefs -a $DISK
 # Leave 1MiB, then make a partition 4GiB large (labelled EFI)
 # Make a pool for ZFS from 4GiB to SWAPFILE+RESERVE away from the end
 # Make a pool for swap from SWAPFILE+RESERVE away from the end to RESERVE away from the end
+# 3% of SSD space is given to SWAP,
+# 7% is left empty for wear leveling
 parted --script --align=optimal "${DISK}" -- \
         mklabel gpt \
         mkpart EFI 1MiB 4GiB \
-        mkpart rpool 4GiB -$((SWAPSIZE + RESERVE))GiB \
-        mkpart swap -$((SWAPSIZE + RESERVE))GiB -"${RESERVE}"GiB \
+        mkpart rpool 4GiB 90% \
+        mkpart swap 90% 93% \
         set 1 esp on
 
 # Check
@@ -170,12 +174,17 @@ nixos-generate-config --root "${MNT}"
 cat "$MNT/etc/nixos/hardware-configuration.nix"
 cat "$MNT/etc/nixos/configuration.nix"
 
-# You must set networking.hostId
+# You must:
+# 1. Uncomment the user account AND CHANGE THE NAME TO miniluz
+# 2. Set networking.hostId for ZFS to work
 head -c 8 /etc/machine-id                # Get one from your machine-id or
 head -c4 /dev/urandom | od -A none -t x4 # Generate a random one
+# 3. Enable the SSH server (opens port by default)
 vim "${MNT}/etc/nixos/configuration.nix"
 
 # Install
+# You will need to set the password for root upon installation.
+# BE CAREFUL WITH THE KEYMAP AS THE DEFAULT ONE WILL BE USED
 nixos-install --root "${MNT}"
 
 # Unmount, export and reboot
@@ -184,3 +193,17 @@ umount -Rl "${MNT}"
 zpool export -a # this makes ZFS cleanly close the pool, flush the caches to disk and mark it as unused
 
 reboot
+
+# ====================
+#   After the reboot
+# ====================
+#
+# In the actual server, you will need to:
+# 1. Log in with root, with the password you have set up during the rebuild.
+# 2. passwd miniluz
+#
+# Now you can SSH in again.
+# 1. Clone your nixos-repo
+# 2. Run first-time-setup.sh
+# 3. Follow what's stated in the README
+#

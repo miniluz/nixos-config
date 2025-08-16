@@ -1,6 +1,13 @@
-# Assumptions
+# home-server documentation
 
-## Server package versioning
+## Assumptions and setup
+
+### Tailscale is functioning
+
+Tailscale should be working correctly. To do this, run
+`nix-shell -p tailscale --run "sudo tailscale up"`.
+
+### Server package versioning
 
 The NixOS config is expected to be at `~/nixos-config-base`. The server will
 have its own NixOS config at `~/nixos-config` so it can use its own nixpkgs and
@@ -9,12 +16,14 @@ nixpkgs-unstable versions that will autoupdate independently.
 The configuration at `~/nixos-config-base` will not be auto-updated. It must be
 pulled manually to stop breakages from the main config.
 
-## Wireguard
+The server configuration is at the `server-packages` (private) repo.
+
+### Wireguard
 
 A wireguard config file without a killswitch is provided as a host secret in
 `w0conf.age`.
 
-## Reverse proxy
+### Reverse proxy
 
 An SSL key for the domain names `*.nebula.local` and `nebula.local`. The SSL key
 is expected to be an agenix secret in the host-secrets at
@@ -55,42 +64,40 @@ EOF
 "
 ```
 
-# Setup
+## Setup
 
-## Actual
+### Actual
 
 Make the account and import. Cannot be configured declaratively. You will need
 to update the host `actual-password` and `actual-sync-id` secrets.
 
-## Immich
+### Immich
 
 You will need to open the Immich web interface at http://localhost:2283 to
 complete the setup process. You might need to restart the immich service for it
 to actually open.
 
-## Jellyfin
+### Jellyfin
 
 1. Go into every ARR
-1. Set up their media folder.
-1. Set up Transmission.
-1. Note: Readarr requires more config.
-1. Write down their API key.
-1. Go into Prowlarr and set it up with every ARR with their API keys.
-1. Add into Prowlarr the indexers:
-
-- PirateBay
-- RARBG
-- YTS
-- NYA.SI
-- 1337x
-- EliteTorrent
-- MoviesDVDR
-- Book and audiobook indexes!
-- Lat-Team (Maybe, it's private)
-
-4. Go into Jellyfin, set up the account and add the media folders.
-5. Go into Jellyseer and set up the integration with Jellyfin and the ARRs.
-6. Go into Audiobookshelf, set up the account and add the media folder.
+2. Set up their media folder.
+3. Set up Transmission.
+4. Note: Readarr requires more config.
+5. Write down their API key.
+6. Go into Prowlarr and set it up with every ARR with their API keys.
+7. Add into Prowlarr the indexers:
+   - PirateBay
+   - RARBG
+   - YTS
+   - NYA.SI
+   - 1337x
+   - EliteTorrent
+   - MoviesDVDR
+   - Book and audiobook indexes!
+   - Lat-Team (Maybe, it's private)
+8. Go into Jellyfin, set up the account and add the media folders.
+9. Go into Jellyseer and set up the integration with Jellyfin and the ARRs.
+10. Go into Audiobookshelf, set up the account and add the media folder.
 
 ### Readarr
 
@@ -106,13 +113,13 @@ self-hosting use your own address.
 
 Click Save.
 
-### Spotizerr
+#### Spotizerr
 
 Requires manual setup for your spotify and deezer API keys
 
-# Server data
+## Server data
 
-## Immich
+### Immich
 
 Simple folder structure at /media/server-data/immich. Note that storage template
 is OFF.
@@ -122,7 +129,7 @@ System Postgres database also needs to be backed up for all the metadata. The
 and [postgres](https://www.postgresql.org/docs/current/backup.html)
 documentations should explain how to do it.
 
-# Ports
+## Ports
 
 - Syncthing: `127.0.0.1:8384`, transfer port `0.0.0.0:22000`, discovery port
   `0.0.0.0:21027`.
