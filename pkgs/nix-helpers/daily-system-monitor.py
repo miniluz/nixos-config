@@ -105,7 +105,7 @@ def send_discord_with_files(
         ],
     }
 
-    files: dict[str, tuple[str, BufferedReader]] = {}
+    files: dict[str, BufferedReader] = {}
     temp_files: list[str] = []
 
     try:
@@ -131,7 +131,7 @@ def send_discord_with_files(
             error_file.close()
             temp_files.append(error_file.name)
 
-            files[f"files[{len(files)}]"] = ("errors.txt", open(error_file.name, "rb"))
+            files["errors.txt"] = open(error_file.name, "rb")
             logging.info(f"Created error log file: {error_file.name}")
 
         # Create warning log file if we have warning services
@@ -160,10 +160,7 @@ def send_discord_with_files(
             warning_file.close()
             temp_files.append(warning_file.name)
 
-            files[f"files[{len(files)}]"] = (
-                "warnings.txt",
-                open(warning_file.name, "rb"),
-            )
+            files["warnings.txt"] = open(warning_file.name, "rb")
             logging.info(f"Created warning log file: {warning_file.name}")
 
         # Send the message with files
@@ -181,6 +178,7 @@ def send_discord_with_files(
                 logging.info(
                     f"Discord message sent successfully (status: {response.status_code})"
                 )
+                break
 
             except requests.exceptions.RequestException as e:
                 last_exception = e
@@ -202,7 +200,7 @@ def send_discord_with_files(
 
     finally:
         # Clean up file handles and temporary files
-        for _, file_handle in files.values():
+        for file_handle in files.values():
             if hasattr(file_handle, "close"):
                 file_handle.close()
 
