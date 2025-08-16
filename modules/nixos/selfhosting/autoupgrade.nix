@@ -39,7 +39,7 @@ in
       script = ''
         cd ${config.environment.sessionVariables.NH_FLAKE}
         nix flake update nixpkgs nixpkgs-unstable
-        ${lib.getExe miniluz-pkgs.luznix-os-switch}
+        ${lib.getExe miniluz-pkgs.luznix-update-command}
       '';
 
       startAt = "9:00";
