@@ -41,11 +41,12 @@ in
           flake-location = config.environment.sessionVariables.NH_FLAKE;
         in
         ''
+          cd ${flake-location}
           git config --global --add safe.directory ${flake-location}
           git config --global --add safe.directory /home/miniluz/nixos-config-base
           nix flake update --flake ${flake-location} nixpkgs nixpkgs-unstable
-          git add .
           ${lib.getExe (miniluz-pkgs.luznix-update-command.override { inherit flake-location; })}
+          git add .
           git commit -a -m "Server nixpkgs update - $(date -I seconds)"
         '';
 
