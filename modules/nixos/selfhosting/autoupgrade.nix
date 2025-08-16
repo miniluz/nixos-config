@@ -1,6 +1,8 @@
 {
   config,
   lib,
+  pkgs,
+  miniluz-pkgs,
   ...
 }:
 let
@@ -8,18 +10,50 @@ let
 in
 {
   config = lib.mkIf (cfg.enable && cfg.server.enable) {
+    systemd.services.nixos-upgrade = {
+      description = "NixOS Upgrade";
 
-    system.autoUpgrade = {
-      enable = true;
-      flake = "${config.environment.sessionVariables.NH_FLAKE}#${config.networking.hostName}";
-      flags = [
-        "--update-input"
-        "nixpkgs"
-        "--update-input"
-        "nixpkgs-unstable"
-        "--commit-lock-file"
+      restartIfChanged = false;
+      unitConfig.X-StopOnRemoval = false;
+
+      serviceConfig.Type = "oneshot";
+
+      environment =
+        config.nix.envVars
+        // {
+          inherit (config.environment.sessionVariables) NIX_PATH;
+          HOME = "/root";
+        }
+        // config.networking.proxy.envVars;
+
+      path = with pkgs; [
+        coreutils
+        gnutar
+        xz.bin
+        gzip
+        gitMinimal
+        config.nix.package.out
+        config.programs.ssh.package
       ];
-      allowReboot = true;
+
+      script = ''
+        nix flake update --flake ${config.environment.sessionVariables.NH_FLAKE} nixpkgs nixpkgs-unstable
+        git add .
+        ${lib.getExe miniluz-pkgs.luznix-os-switch}
+        git commit -am "Server auto-update"
+      '';
+
+      startAt = "9:00";
+
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ];
+    };
+
+    systemd.timers.nixos-upgrade = {
+      timerConfig = {
+        RandomizedDelaySec = "45min";
+        Persistent = true;
+      };
     };
 
   };
