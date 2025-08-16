@@ -25,36 +25,44 @@ in
     (lib.mkIf cfg.enable {
       services.tailscale.enable = true;
     })
-    (lib.mkIf (cfg.enable && cfg.server.enable) {
-      environment.arbys.enable = true;
+    (lib.mkIf (cfg.enable && cfg.server.enable) (
+      let
+        pgDataDir = "${cfg.server.serverStorage}/postgres/${config.services.postgresql.package.psqlSchema}";
+      in
+      {
+        environment.arbys.enable = true;
 
-      # Keep postgres within hdd
-      users.users.postgres.createHome = true;
-      services.postgresql.dataDir = "${cfg.server.serverStorage}/postgres/${config.services.postgresql.package.psqlSchema}";
+        # Keep postgres within hdd
+        users.users.postgres.createHome = true;
+        services.postgresql.dataDir = pgDataDir;
 
-      # Ensure podman runs properly
-      systemd.tmpfiles.rules = [ "R! /tmp/storage-run-*" ];
+        # Ensure podman runs properly
+        systemd.tmpfiles.rules = [
+          "R! /tmp/storage-run-*"
+          "d ${pgDataDir} 700 postgres postgres"
+        ];
 
-      virtualisation = {
-        podman = {
-          enable = true;
-          autoPrune.enable = true;
-          dockerCompat = true;
-          defaultNetwork.settings.dns_enabled = true;
+        virtualisation = {
+          podman = {
+            enable = true;
+            autoPrune.enable = true;
+            dockerCompat = true;
+            defaultNetwork.settings.dns_enabled = true;
+          };
+
+          oci-containers.backend = "podman";
+
+          quadlet.enable = true;
         };
 
-        oci-containers.backend = "podman";
+        # Enable container name DNS for non-default Podman networks.
+        # https://github.com/NixOS/nixpkgs/issues/226365
+        networking.firewall.interfaces."podman+".allowedUDPPorts = [ 53 ];
 
-        quadlet.enable = true;
-      };
-
-      # Enable container name DNS for non-default Podman networks.
-      # https://github.com/NixOS/nixpkgs/issues/226365
-      networking.firewall.interfaces."podman+".allowedUDPPorts = [ 53 ];
-
-      environment.systemPackages = with miniluz-pkgs; [
-        luznix-rebuild-server
-      ];
-    })
+        environment.systemPackages = with miniluz-pkgs; [
+          luznix-rebuild-server
+        ];
+      }
+    ))
   ];
 }
