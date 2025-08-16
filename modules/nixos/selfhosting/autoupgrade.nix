@@ -27,7 +27,7 @@ in
         // config.networking.proxy.envVars;
 
       path = with pkgs; [
-        # coreutils
+        coreutils
         # gnutar
         # xz.bin
         # gzip
@@ -41,8 +41,12 @@ in
           flake-location = config.environment.sessionVariables.NH_FLAKE;
         in
         ''
+          git config --global --add safe.directory ${flake-location}
+          git config --global --add safe.directory /home/miniluz/nixos-config-base
           nix flake update --flake ${flake-location} nixpkgs nixpkgs-unstable
+          git add .
           ${lib.getExe (miniluz-pkgs.luznix-update-command.override { inherit flake-location; })}
+          git commit -a -m "Server nixpkgs update - $(date -I seconds)"
         '';
 
       startAt = "9:00";
