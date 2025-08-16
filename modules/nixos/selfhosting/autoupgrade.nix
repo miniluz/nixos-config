@@ -36,11 +36,14 @@ in
         # config.programs.ssh.package
       ];
 
-      script = ''
-        cd ${config.environment.sessionVariables.NH_FLAKE}
-        nix flake update nixpkgs nixpkgs-unstable
-        ${lib.getExe miniluz-pkgs.luznix-update-command}
-      '';
+      script =
+        let
+          flake-location = config.environment.sessionVariables.NH_FLAKE;
+        in
+        ''
+          nix flake update --flake ${flake-location} nixpkgs nixpkgs-unstable
+          ${lib.getExe (miniluz-pkgs.luznix-update-command.override { inherit flake-location; })}
+        '';
 
       startAt = "9:00";
 
