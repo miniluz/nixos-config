@@ -40,6 +40,15 @@ in
           dataDir = pgDataDir;
         };
 
+        # ZFS stuff
+        services.zfs = {
+          autoSnapshot = {
+            enable = true;
+            flags = "-k -p --utc";
+          };
+          autoScrub.enable = true;
+        };
+
         # Ensure podman runs properly
         systemd.tmpfiles.rules = [
           "R! /tmp/storage-run-*"
