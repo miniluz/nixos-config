@@ -138,18 +138,13 @@ def get_system_status():
         0 if not failed_services_output else len(failed_services_output.split("\n"))
     )
 
-    # Improved disk usage parsing
-    df_output = subprocess.check_output(["df", "-h"], text=True)
-
     memory_usage = psutil.virtual_memory().percent
-    load_avg = os.getloadavg()
 
     return (
         errors,
         warnings,
         failed_services_count,
         memory_usage,
-        load_avg,
         failed_services_output,
     )
 
@@ -159,7 +154,6 @@ def build_report(
     warnings,
     failed_services,
     memory_usage,
-    load_avg,
     failed_services_output,
 ):
     """Create a formatted system report with severity status."""
@@ -178,7 +172,6 @@ def build_report(
 
     report += f"**System Status:** {status}\n"
     report += f"**Uptime:** {uptime_str}\n"
-    report += f"**Load Average:** {', '.join(map(str, load_avg))}\n"
     report += f"**Memory Usage:** {memory_usage}%\n"
     report += f"**Failed Services:** {failed_services}\n\n"
 
@@ -202,7 +195,6 @@ def main():
         warnings,
         failed_services,
         memory_usage,
-        load_avg,
         failed_services_output,
     ) = get_system_status()
     report, color = build_report(
@@ -210,7 +202,6 @@ def main():
         warnings,
         failed_services,
         memory_usage,
-        load_avg,
         failed_services_output,
     )
     send_discord(f"{hostname} - Daily System Report", report, color)
