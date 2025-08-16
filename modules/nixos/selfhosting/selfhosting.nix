@@ -2,6 +2,7 @@
   config,
   lib,
   miniluz-pkgs,
+  pkgs,
   ...
 }:
 let
@@ -34,7 +35,10 @@ in
 
         # Keep postgres within hdd
         users.users.postgres.createHome = true;
-        services.postgresql.dataDir = pgDataDir;
+        services.postgresql = {
+          package = pkgs.postgresql_16;
+          dataDir = pgDataDir;
+        };
 
         # Ensure podman runs properly
         systemd.tmpfiles.rules = [
