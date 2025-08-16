@@ -37,7 +37,8 @@ in
       ];
 
       script = ''
-        nix flake update --flake ${config.environment.sessionVariables.NH_FLAKE} nixpkgs nixpkgs-unstable
+        cd ${config.environment.sessionVariables.NH_FLAKE}
+        nix flake update nixpkgs nixpkgs-unstable
         git add .
         ${lib.getExe miniluz-pkgs.luznix-os-switch}
         git commit -am "Server auto-update"
