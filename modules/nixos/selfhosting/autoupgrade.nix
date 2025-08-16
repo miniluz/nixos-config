@@ -46,8 +46,6 @@ in
           git config --global --add safe.directory /home/miniluz/nixos-config-base
           nix flake update --flake ${flake-location} nixpkgs nixpkgs-unstable
           ${lib.getExe (miniluz-pkgs.luznix-update-command.override { inherit flake-location; })}
-          git add .
-          git commit -a -m "Server nixpkgs update - $(date -I seconds)"
         '';
 
       startAt = "9:00";
