@@ -32,7 +32,7 @@ in
         # xz.bin
         # gzip
         # gitMinimal
-        # config.nix.package.out
+        config.nix.package.out
         # config.programs.ssh.package
       ];
 
