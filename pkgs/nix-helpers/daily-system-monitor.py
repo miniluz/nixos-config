@@ -13,6 +13,7 @@ This script:
 - Sends a daily summary report to a Discord channel.
 """
 
+from io import BufferedReader
 import os
 import sys
 import subprocess
@@ -23,7 +24,6 @@ import logging
 from datetime import datetime
 import time
 import tempfile
-from collections import defaultdict
 
 # Configure detailed logging
 logging.basicConfig(
@@ -38,7 +38,7 @@ COLOR_WARNING = 16769024  # Yellow
 COLOR_CRITICAL = 15548997  # Red
 
 
-def read_file_safe(path, description):
+def read_file_safe(path: str, description: str) -> str:
     """Read a file safely, raising an error if it fails."""
     logging.info(f"Reading {description} from {path}")
     try:
@@ -57,7 +57,7 @@ def read_file_safe(path, description):
         sys.exit(f"ERROR: Failed to read {description} at {path}: {e}")
 
 
-def run_journalctl(args):
+def run_journalctl(args: list[str]) -> str:
     """Run journalctl command and return output"""
     cmd = ["journalctl"] + args
     logging.info(f"Running command: {' '.join(cmd)}")
@@ -80,14 +80,14 @@ def run_journalctl(args):
 
 
 def send_discord_with_files(
-    title,
-    description,
-    color,
-    error_services=None,
-    warning_services=None,
-    retries=3,
-    delay=5,
-):
+    title: str,
+    description: str,
+    color: int,
+    error_services: list[str] | None = None,
+    warning_services: list[str] | None = None,
+    retries: int = 3,
+    delay: int = 5,
+) -> None:
     """Send an embedded message to Discord with optional file attachments."""
     logging.info(f"Sending Discord message with files: {title}")
 
@@ -105,8 +105,8 @@ def send_discord_with_files(
         ],
     }
 
-    files = {}
-    temp_files = []
+    files: dict[str, BufferedReader] = {}
+    temp_files: list[str] = []
 
     try:
         # Create error log file if we have error services
@@ -127,7 +127,7 @@ def send_discord_with_files(
             error_file = tempfile.NamedTemporaryFile(
                 mode="w", suffix=".txt", delete=False, prefix="errors_"
             )
-            error_file.write(error_content)
+            _ = error_file.write(error_content)
             error_file.close()
             temp_files.append(error_file.name)
 
@@ -156,7 +156,7 @@ def send_discord_with_files(
             warning_file = tempfile.NamedTemporaryFile(
                 mode="w", suffix=".txt", delete=False, prefix="warnings_"
             )
-            warning_file.write(warning_content)
+            _ = warning_file.write(warning_content)
             warning_file.close()
             temp_files.append(warning_file.name)
 
@@ -178,7 +178,6 @@ def send_discord_with_files(
                 logging.info(
                     f"Discord message sent successfully (status: {response.status_code})"
                 )
-                return response.status_code
 
             except requests.exceptions.RequestException as e:
                 last_exception = e
@@ -214,14 +213,16 @@ def send_discord_with_files(
                 )
 
 
-def send_discord(title, description, color, retries=3, delay=5):
+def send_discord(
+    title: str, description: str, color: int, retries: int = 3, delay: int = 5
+) -> None:
     """Send an embedded message to a Discord channel, retrying on failure (legacy function)."""
     return send_discord_with_files(
         title, description, color, None, None, retries, delay
     )
 
 
-def get_services_with_logs(priority, time_period="yesterday"):
+def get_services_with_logs(priority: str, time_period: str = "yesterday") -> list[str]:
     """Get list of services that had logs at specified priority level"""
     logging.info(f"Getting services with {priority} logs since {time_period}")
 
@@ -239,7 +240,7 @@ def get_services_with_logs(priority, time_period="yesterday"):
         logging.warning(f"No {priority} logs found")
         return []
 
-    services = set()
+    services: set[str] = set()
     lines_processed = 0
     json_parse_errors = 0
 
@@ -247,7 +248,7 @@ def get_services_with_logs(priority, time_period="yesterday"):
         if line.strip():
             lines_processed += 1
             try:
-                log_entry = json.loads(line)
+                log_entry: dict[str, str] = json.loads(line)
                 logging.debug(f"Parsed log entry keys: {list(log_entry.keys())}")
 
                 # Prioritize SYSLOG_IDENTIFIER first, then fall back to others
@@ -285,7 +286,9 @@ def get_services_with_logs(priority, time_period="yesterday"):
     return sorted(services)
 
 
-def get_service_logs(service, priority, count=5, time_period="yesterday"):
+def get_service_logs(
+    service: str, priority: str, count: int = 5, time_period: str = "yesterday"
+) -> str:
     """Get the last N logs for a specific service at specified priority, showing only first line of each entry"""
     logging.info(
         f"Getting {priority} logs for service: '{service}' (last {count} entries)"
@@ -324,7 +327,7 @@ def get_service_logs(service, priority, count=5, time_period="yesterday"):
 
     # Process output to keep only first line of each log entry
     lines = output.strip().split("\n")
-    processed_lines = []
+    processed_lines: list[str] = []
     continuation_lines_filtered = 0
 
     for i, line in enumerate(lines):
@@ -355,7 +358,7 @@ def get_service_logs(service, priority, count=5, time_period="yesterday"):
     return "\n".join(processed_lines)
 
 
-def get_failed_services():
+def get_failed_services() -> tuple[int, str]:
     """Get list of failed systemd services"""
     logging.info("Getting failed systemd services")
     try:
@@ -376,7 +379,7 @@ def get_failed_services():
         return 0, ""
 
 
-def get_system_status():
+def get_system_status() -> tuple[list[str], list[str], int, str, float]:
     """Gather system error/warning logs, failed services, disk/memory usage, and load average."""
     logging.info("Gathering comprehensive system status")
 
@@ -392,7 +395,7 @@ def get_system_status():
     failed_services_count, failed_services_output = get_failed_services()
 
     # Get system metrics
-    memory_usage = psutil.virtual_memory().percent
+    memory_usage: int = psutil.virtual_memory().percent
     logging.info(f"Current memory usage: {memory_usage}%")
 
     return (
@@ -405,12 +408,12 @@ def get_system_status():
 
 
 def build_report(
-    error_services,
-    warning_services,
-    failed_services_count,
-    failed_services_output,
-    memory_usage,
-):
+    error_services: list[str],
+    warning_services: list[str],
+    failed_services_count: int,
+    failed_services_output: str,
+    memory_usage: float,
+) -> tuple[str, int]:
     """Create a formatted system report with severity status."""
     logging.info("Building comprehensive system report")
 
@@ -442,7 +445,7 @@ def build_report(
     if error_services:
         report += f"**🚨 Services with Errors ({len(error_services)}):**\n"
         # Group services in lines of up to 3 for readability
-        service_lines = []
+        service_lines: list[str] = []
         for i in range(0, len(error_services), 3):
             line_services = error_services[i : i + 3]
             service_lines.append(" • ".join(line_services))
