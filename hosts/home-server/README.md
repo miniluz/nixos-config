@@ -50,7 +50,8 @@ EOF
 
 ## Actual
 
-Make the account and import. Cannot be configured declaratively.
+Make the account and import. Cannot be configured declaratively. You will need
+to update the host `actual-password` and `actual-sync-id` secrets.
 
 ## Immich
 
@@ -60,13 +61,13 @@ to actually open.
 
 ## Jellyfin
 
-1. Go into every ARR 
-  1. Set up their media folder.
-  2. Set up Transmission.
-  3. Note: Readarr requires more config.
-  4. Write down their API key.
-2. Go into Prowlarr and set it up with every ARR with their API keys.
-3. Add into Prowlarr the indexers:
+1. Go into every ARR
+1. Set up their media folder.
+1. Set up Transmission.
+1. Note: Readarr requires more config.
+1. Write down their API key.
+1. Go into Prowlarr and set it up with every ARR with their API keys.
+1. Add into Prowlarr the indexers:
 
 - PirateBay
 - RARBG
@@ -104,8 +105,8 @@ Requires manual setup for your spotify and deezer API keys
 
 ## Immich
 
-Simple folder structure at /media/server-data/immich. Note that storage
-template is OFF.
+Simple folder structure at /media/server-data/immich. Note that storage template
+is OFF.
 
 System Postgres database also needs to be backed up for all the metadata. The
 [immich](https://immich.app/docs/administration/backup-and-restore#filesystem)
@@ -140,4 +141,3 @@ documentations should explain how to do it.
 
 - Calibre server: `0.0.0.0:9880`
 - Calibre web: `0.0.0.0:9881`
-
