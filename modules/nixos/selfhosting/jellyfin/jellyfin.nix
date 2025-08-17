@@ -52,11 +52,14 @@ in
       # autobrr.enable = true;
       bazarr.enable = true; # subtitles
       # lidarr.enable = true; # music
-      prowlarr.enable = true; # index manager
       radarr.enable = true; # movies
       sonarr.enable = true; # tv shows
 
-      # recyclarr.enable = true; # media naming for sonarr and radarr
+      prowlarr = {
+        enable = true; # index manager
+        vpn.enable = true;
+      };
+
     };
 
     services.podgrab = {
