@@ -69,6 +69,12 @@ in
     };
 
     services.flaresolverr.enable = true;
+    vpnNamespaces.wg.portMappings = [
+      {
+        from = config.services.flaresolverr.port;
+        to = config.services.flaresolverr.port;
+      }
+    ];
 
   };
 }
