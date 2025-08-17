@@ -69,7 +69,7 @@ in
       # recyclarr.enable = true; # media naming for sonarr and radarr
     };
 
-    services.transmission.settings.rpc-host-whitelist = [ "transmission.nebula.local" ];
+    services.transmission.settings.rpc-host-whitelist = "transmission.nebula.local";
 
     services.podgrab = {
       enable = true;
