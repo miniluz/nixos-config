@@ -28,7 +28,10 @@ in
 
       vpn = {
         enable = true;
-        accessibleFrom = [ "192.168.50.0/24" ];
+        accessibleFrom = [
+          "192.168.50.0/24"
+          "100.64.0.0/10"
+        ];
         vpnTestService.enable = true;
 
         wgConf = config.age.secrets.w0-conf.path;
@@ -42,6 +45,7 @@ in
       transmission = {
         enable = true;
         vpn.enable = true;
+        extraAllowedIps = [ "100.64.0.0/10" ];
         # peerPort = 50000; # Set this to the port forwarded by your VPN
 
         # flood.enable = true;

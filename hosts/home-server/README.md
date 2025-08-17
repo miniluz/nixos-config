@@ -73,7 +73,7 @@ to update the host `actual-password` and `actual-sync-id` secrets.
 
 ### Immich
 
-You will need to open the Immich web interface at http://localhost:2283 to
+You will need to open the Immich web interface at `http://localhost:2283` to
 complete the setup process. You might need to restart the immich service for it
 to actually open.
 
@@ -172,18 +172,6 @@ Click Save.
 #### Spotizerr
 
 Requires manual setup for your spotify and deezer API keys
-
-## Server data
-
-### Immich
-
-Simple folder structure at /media/server-data/immich. Note that storage template
-is OFF.
-
-System Postgres database also needs to be backed up for all the metadata. The
-[immich](https://immich.app/docs/administration/backup-and-restore#filesystem)
-and [postgres](https://www.postgresql.org/docs/current/backup.html)
-documentations should explain how to do it.
 
 ## Ports
 
