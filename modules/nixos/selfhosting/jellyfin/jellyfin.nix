@@ -55,10 +55,7 @@ in
       radarr.enable = true; # movies
       sonarr.enable = true; # tv shows
 
-      prowlarr = {
-        enable = true; # index manager
-        vpn.enable = true;
-      };
+      prowlarr.enable = true; # index manager
 
     };
 
@@ -69,12 +66,6 @@ in
     };
 
     services.flaresolverr.enable = true;
-    vpnNamespaces.wg.portMappings = [
-      {
-        from = config.services.flaresolverr.port;
-        to = config.services.flaresolverr.port;
-      }
-    ];
 
   };
 }
