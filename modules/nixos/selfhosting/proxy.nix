@@ -34,7 +34,7 @@ let
     (makeService "sonarr" 8989 cfg.jellyfin)
     (makeService "bazarr" 6767 cfg.jellyfin)
     (makeService "spotizerr" 7171 cfg.jellyfin)
-    (makeService "podgrab" 7171 cfg.jellyfin)
+    (makeService "podgrab" 4242 cfg.jellyfin)
 
     (makeService "readarr" 8787 cfg.jellyfin)
     (makeService "readarr-audiobook" 9494 cfg.jellyfin)
