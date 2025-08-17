@@ -130,7 +130,10 @@ to actually open.
      the Spotify web client, open the Connections menu and select Spotizerr.
    - Go into Deezer, cookies, copy the `arl` and add the account.
 7. Go into Prowlarr and set it up with every ARR with their API keys.
-   - Set up every ARR with their API keys
+   - Set up every ARR with their API keys. Note that bc Prowlarr is behind the
+     VPN, you need to provide the Prowlarr server address as
+     `http://192.168.15.1:9696` and Radarr's and Sonarr's as
+     `http://192.168.15.5:7878` and `http://192.168.15.5:889`.
    - Set up Transmission
    - Add the indexers:
      - BitSearch
