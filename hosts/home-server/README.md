@@ -80,12 +80,13 @@ to actually open.
 ### Jellyfin
 
 1. Go into every ARR
-2. Set up their media folder.
-3. Set up Transmission.
-4. Note: Readarr requires more config.
-5. Write down their API key.
-6. Go into Prowlarr and set it up with every ARR with their API keys.
-7. Add into Prowlarr the indexers:
+   - Set up their media folder
+   - Set up the quality profile
+   - Set up Transmission as a download client
+   - Copy their API key
+   - Note: Readarr requires more config.
+2. Go into Prowlarr and set it up with every ARR with their API keys.
+3. Add into Prowlarr the indexers:
    - PirateBay
    - RARBG
    - YTS
@@ -95,9 +96,9 @@ to actually open.
    - MoviesDVDR
    - Book and audiobook indexes!
    - Lat-Team (Maybe, it's private)
-8. Go into Jellyfin, set up the account and add the media folders.
-9. Go into Jellyseer and set up the integration with Jellyfin and the ARRs.
-10. Go into Audiobookshelf, set up the account and add the media folder.
+4. Go into Jellyfin, set up the account and add the media folders.
+5. Go into Jellyseer and set up the integration with Jellyfin and the ARRs.
+6. Go into Audiobookshelf, set up the account and add the media folder.
 
 ### Readarr
 
