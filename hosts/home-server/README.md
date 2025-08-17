@@ -21,7 +21,8 @@ The server configuration is at the `server-packages` (private) repo.
 ### Wireguard
 
 A wireguard config file without a killswitch is provided as a host secret in
-`w0conf.age`.
+`w0conf.age`. The forwarded port should be the same on the VPN and the server,
+and needs to be specified to transmission.
 
 ### Reverse proxy
 

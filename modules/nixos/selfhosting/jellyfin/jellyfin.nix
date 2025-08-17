@@ -48,7 +48,7 @@ in
         extraAllowedIps = [
           "100.64.0.0/10"
         ];
-        # peerPort = 50000; # Set this to the port forwarded by your VPN
+        peerPort = 12543; # Set this to the port forwarded by your VPN
 
         # flood.enable = true;
       };
