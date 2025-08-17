@@ -45,7 +45,10 @@ in
       transmission = {
         enable = true;
         vpn.enable = true;
-        extraAllowedIps = [ "100.64.0.0/10" ];
+        extraAllowedIps = [
+          "100.64.0.0/10"
+          "transmission.nebula.local"
+        ];
         # peerPort = 50000; # Set this to the port forwarded by your VPN
 
         # flood.enable = true;
