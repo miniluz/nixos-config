@@ -131,7 +131,7 @@ to actually open.
    - Go into Deezer, cookies, copy the `arl` and add the account.
 7. Go into Prowlarr and set it up with every ARR with their API keys.
    - Set up every ARR with their API keys
-   - Set up flaresolverr: `127.0.0.1:8191`
+   - Set up Transmission
    - Add the indexers:
      - BitSearch
      - PirateBay
@@ -147,7 +147,8 @@ to actually open.
      - Bangumi Moe
      - Lat-Team (Maybe, it's private)
 8. Go into Jellyfin, set up the account and add the media folders.
-9. Go into Jellyseer and set up the integration with Jellyfin and the ARRs.
+9. Go into Jellyseer and set up the integration with Jellyfin, Sonarr and
+   Radarr.
 10. Go into Audiobookshelf, set up the account and add the media folder.
 11. Set up Readarr
 

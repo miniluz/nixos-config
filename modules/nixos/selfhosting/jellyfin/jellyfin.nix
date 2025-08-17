@@ -55,7 +55,10 @@ in
       radarr.enable = true; # movies
       sonarr.enable = true; # tv shows
 
-      prowlarr.enable = true; # index manager
+      prowlarr = {
+        enable = true; # index manager
+        vpn.enable = true;
+      };
 
     };
 
@@ -64,8 +67,6 @@ in
       port = podgrabPort;
       dataDirectory = podgrabDir;
     };
-
-    services.flaresolverr.enable = true;
 
   };
 }
