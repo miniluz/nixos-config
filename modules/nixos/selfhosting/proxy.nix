@@ -7,10 +7,14 @@
 let
   cfg = config.miniluz.selfhosting;
 
-  makeService = name: port: condition: {
-    inherit port condition;
+  makeServiceWithLocationConfig = name: port: condition: locationConfig: {
+    inherit port condition locationConfig;
     name = "${name}.${hostname}";
   };
+
+  makeService =
+    name: port: condition:
+    makeServiceWithLocationConfig name port condition { };
 
   hostname = "nebula.local";
 
@@ -23,7 +27,9 @@ let
     # --- Jellyfin ---
     (makeService "transmission" 9091 cfg.jellyfin)
 
-    (makeService "jellyfin" 8096 cfg.jellyfin)
+    (makeServiceWithLocationConfig "jellyfin" 8096 cfg.jellyfin {
+      extraConfig = ''add_header Content-Security-Policy "default-src https: data: blob:; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/accentlist.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/base.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/bottombarprogress.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/fixes.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/jf_font.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/overlayprogress.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/rounding.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/rounding_circlehover.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/smallercast.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/rounding_circlehover.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/cornerindicator/indicator_floating.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/cornerindicator/indicator_corner.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/effects/glassy.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/effects/pan-animation.css https://ctalvio.github.io/Monochromic/backdrop-hack_style.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/effects/hoverglow.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/effects/scrollfade.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/episodelist/episodes_compactlist.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/episodelist/episodes_grid.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/fields/fields_border.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/fields/fields_noborder.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/header/header_transparent.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/header/header_transparent-dashboard.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/login/login_frame.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/login/login_minimalistic.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/login/login_frame.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/presets/monochromic_preset.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/presets/kaleidochromic_preset.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/presets/novachromic_preset.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/titlepage/title_banner.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/titlepage/title_banner-logo.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/titlepage/title_simple.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/titlepage/title_simple-logo.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/type/light.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/type/dark.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/type/colorful.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/type/dark_withaccent.css https://fonts.googleapis.com/css2; script-src 'self' 'unsafe-inline' https://www.gstatic.com/cv/js/sender/v1/cast_sender.js worker-src 'self' blob:; connect-src 'self'; object-src 'none'; frame-ancestors 'self'";'';
+    })
     (makeService "audiobookshelf" 9292 cfg.jellyfin)
 
     (makeService "jellyseer" 5055 cfg.jellyfin)
@@ -112,7 +118,12 @@ in
           sslCertificateKey = config.age.secrets."nebula.local.key".path;
 
           makeVirtualHost =
-            { name, port, ... }:
+            {
+              name,
+              port,
+              locationConfig,
+              ...
+            }:
             {
               inherit name;
               value = {
@@ -124,11 +135,14 @@ in
                   ssl_stapling_verify off;
                 '';
 
-                locations."/" = {
-                  recommendedProxySettings = true;
-                  proxyWebsockets = true;
-                  proxyPass = "http://127.0.0.1:${builtins.toString port}";
-                };
+                locations."/" = lib.mkMerge [
+                  {
+                    recommendedProxySettings = true;
+                    proxyWebsockets = true;
+                    proxyPass = "http://127.0.0.1:${builtins.toString port}";
+                  }
+                  locationConfig
+                ];
               };
             };
         in

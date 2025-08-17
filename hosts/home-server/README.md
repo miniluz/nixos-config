@@ -150,6 +150,7 @@ to actually open.
      - Anidex
      - Bangumi Moe
      - Lat-Team (Maybe, it's private)
+   - Make them have minimum seeders (maybe 4) and also vibes-prioritize them
 8. Go into Jellyfin, set up the account and add the media folders.
 9. Go into Jellyseer and set up the integration with Jellyfin, Sonarr and
    Radarr.
