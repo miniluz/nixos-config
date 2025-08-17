@@ -68,5 +68,7 @@ in
       dataDirectory = podgrabDir;
     };
 
+    services.flaresolverr.enable = true;
+
   };
 }

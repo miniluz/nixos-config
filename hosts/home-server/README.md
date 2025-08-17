@@ -102,15 +102,7 @@ to actually open.
      Bluray-1080p, HDTV-1080p, WEB 720p, Bluray-720p and HDTV-720p in that
      order, with upgrades disallowed.
 3. Start Recyclarr manually
-4. Set up Spotizerr
-   - On a computer with a browser run
-     `docker run --network=host --rm -it --env REQUESTS_CA_BUNDLE=/nebula.local.crt --volume /home/miniluz/nixos-config/hosts/home-server/secrets/nebula.local.crt:/nebula.local.crt:ro cooldockerizer93/spotizerr-auth`
-     having a client ID and secret from
-     <https://developer.spotify.com/dashboard> with country code ES. Then open
-     the Spotify web client, open the Connections menu and select Spotizerr.
-   - Go into Deezer, cookies, copy the `arl` and add the account.
-
-5. Go into Bazarr
+4. Go into Bazarr
    - Enable Sonarr, put in the API key and ensure the score is 90
    - Enable Radarr, put in the API key and ensure the score is 80
    - Add English, Spanish and Spanish (Latino) to the language filer, set up a
@@ -129,32 +121,35 @@ to actually open.
    - On the subtitles page, disable upgrading substitles, enable automatic
      synchronization, and set the minimum score to 96 for series and 86 for
      movies.
-6. Go into every ARR
-   - Set up their media folder
-   - Set up the quality profile
-   - Set up Transmission as a download client
-   - Copy their API key
-   - Note: Readarr requires more config.
+5. Podgrab requires no setup other than adding your podcasts
+6. Set up Spotizerr
+   - On a computer with a browser run
+     `docker run --network=host --rm -it --env REQUESTS_CA_BUNDLE=/nebula.local.crt --volume /home/miniluz/nixos-config/hosts/home-server/secrets/nebula.local.crt:/nebula.local.crt:ro cooldockerizer93/spotizerr-auth`
+     having a client ID and secret from
+     <https://developer.spotify.com/dashboard> with country code ES. Then open
+     the Spotify web client, open the Connections menu and select Spotizerr.
+   - Go into Deezer, cookies, copy the `arl` and add the account.
 7. Go into Prowlarr and set it up with every ARR with their API keys.
-8. Add into Prowlarr the indexers:
-   - PirateBay
-   - RARBG
-   - YTS
-   - NYA.SI
-   - 1337x
-   - EliteTorrent
-   - MoviesDVDR
-   - Book and audiobook indexes!
-   - Lat-Team (Maybe, it's private)
-9. Go into Jellyfin, set up the account and add the media folders.
-10. Go into Jellyseer and set up the integration with Jellyfin and the ARRs.
-11. Go into Audiobookshelf, set up the account and add the media folder.
-
-### Radarr
-
-Set up a custom quality profile called HD that includes Bluray-1080p, WEB 1080p
-and Bluray-720p in that order. Insert its API key into the host secret
-`recyclarr-keys.age` as `RADARR_API_KEY=`.
+   - Set up every ARR with their API keys
+   - Set up flaresolverr: `127.0.0.1:8191`
+   - Add the indexers:
+     - BitSearch
+     - PirateBay
+     - RARBG
+     - YTS
+     - NYA.SI
+     - 1337x
+     - EliteTorrent
+     - MoviesDVDR
+     - EBookBay
+     - Book and audiobook indexes!
+     - Anidex
+     - Bangumi Moe
+     - Lat-Team (Maybe, it's private)
+8. Go into Jellyfin, set up the account and add the media folders.
+9. Go into Jellyseer and set up the integration with Jellyfin and the ARRs.
+10. Go into Audiobookshelf, set up the account and add the media folder.
+11. Set up Readarr
 
 ### Readarr
 
@@ -202,6 +197,7 @@ documentations should explain how to do it.
 - Jellyseer: `0.0.0.0:5055`.
 
 - Prowlarr: `0.0.0.0:9696`.
+- Flaresolverr: `127.0.0.1:8191`.
 
 - Radarr: `0.0.0.0:7878`.
 - Sonarr: `0.0.0.0:8989`.
