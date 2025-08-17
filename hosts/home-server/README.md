@@ -102,14 +102,37 @@ to actually open.
      Bluray-1080p, HDTV-1080p, WEB 720p, Bluray-720p and HDTV-720p in that
      order, with upgrades disallowed.
 3. Start Recyclarr manually
-4. Go into every ARR
+4. Go into Bazarr
+   - Enable Sonarr, put in the API key and ensure the score is 90
+   - Enable Radarr, put in the API key and ensure the score is 80
+   - Add English, Spanish and Spanish (Latino) to the language filer, set up a
+     language profile containing all three with no further options, then apply
+     it as the default language format for series and movies.
+   - Add to providers:
+     - YIFY Subtitles
+     - Subtitulamos.tv
+     - Gestdown
+     - Argenteam
+     - OpenSubtitles.com (account is in bitwarden)
+     - AnimeTosho (With empty AniDB integration (I'm not sure if this works))
+     - Subdivx
+     - Subf2m (use <https://www.whatsmyua.info/> to get the UserAgent)
+     - TVSubtitles
+   - On the subtitles page, disable upgrading substitles, enable automatic
+     synchronization, and set the minimum score to 96 for series and 86 for
+     movies.
+   - Follow the
+     [setup guide](https://wiki.bazarr.media/Getting-Started/Setup-Guide/)
+   - Then set up the
+     [suggested scoring](https://trash-guides.info/Bazarr/Bazarr-suggested-scoring/)
+5. Go into every ARR
    - Set up their media folder
    - Set up the quality profile
    - Set up Transmission as a download client
    - Copy their API key
    - Note: Readarr requires more config.
-5. Go into Prowlarr and set it up with every ARR with their API keys.
-6. Add into Prowlarr the indexers:
+6. Go into Prowlarr and set it up with every ARR with their API keys.
+7. Add into Prowlarr the indexers:
    - PirateBay
    - RARBG
    - YTS
@@ -119,9 +142,9 @@ to actually open.
    - MoviesDVDR
    - Book and audiobook indexes!
    - Lat-Team (Maybe, it's private)
-7. Go into Jellyfin, set up the account and add the media folders.
-8. Go into Jellyseer and set up the integration with Jellyfin and the ARRs.
-9. Go into Audiobookshelf, set up the account and add the media folder.
+8. Go into Jellyfin, set up the account and add the media folders.
+9. Go into Jellyseer and set up the integration with Jellyfin and the ARRs.
+10. Go into Audiobookshelf, set up the account and add the media folder.
 
 ### Radarr
 
