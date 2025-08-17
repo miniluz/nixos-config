@@ -79,14 +79,37 @@ to actually open.
 
 ### Jellyfin
 
-1. Go into every ARR
+1. Go into Radarr
+   - Set up the media folder
+   - Set up Transmission as a download client
+   - Set up
+     [renaming](https://trash-guides.info/Radarr/Radarr-recommended-naming-scheme/)
+     (remember to show advanced)
+   - Copy its API key to a file and to `recyclarr-keys.age` as `RADARR_API_KEY`.
+   - Delete all existing formats except "All"
+   - Set up a custom quality profile called HD that includes Bluray-1080p, WEB
+     1080p and Bluray-720p in that order, with upgrades disallowed
+   - Manually start recyclarr
+2. Go into Sonarr
+   - Set up the media folder
+   - Set up Transmission as a download client
+   - Set up
+     [renaming](https://trash-guides.info/Sonarr/Sonarr-recommended-naming-scheme/)
+     (remember to show advanced)
+   - Copy its API key to a file and to `recyclarr-keys.age` as `SONARR_API_KEY`.
+   - Delete all existing formats except "All"
+   - Set up a custom quality profile called HD that includes WEB 1080p,
+     Bluray-1080p, HDTV-1080p, WEB 720p, Bluray-720p and HDTV-720p in that
+     order, with upgrades disallowed.
+3. Start Recyclarr manually
+4. Go into every ARR
    - Set up their media folder
    - Set up the quality profile
    - Set up Transmission as a download client
    - Copy their API key
    - Note: Readarr requires more config.
-2. Go into Prowlarr and set it up with every ARR with their API keys.
-3. Add into Prowlarr the indexers:
+5. Go into Prowlarr and set it up with every ARR with their API keys.
+6. Add into Prowlarr the indexers:
    - PirateBay
    - RARBG
    - YTS
@@ -96,9 +119,15 @@ to actually open.
    - MoviesDVDR
    - Book and audiobook indexes!
    - Lat-Team (Maybe, it's private)
-4. Go into Jellyfin, set up the account and add the media folders.
-5. Go into Jellyseer and set up the integration with Jellyfin and the ARRs.
-6. Go into Audiobookshelf, set up the account and add the media folder.
+7. Go into Jellyfin, set up the account and add the media folders.
+8. Go into Jellyseer and set up the integration with Jellyfin and the ARRs.
+9. Go into Audiobookshelf, set up the account and add the media folder.
+
+### Radarr
+
+Set up a custom quality profile called HD that includes Bluray-1080p, WEB 1080p
+and Bluray-720p in that order. Insert its API key into the host secret
+`recyclarr-keys.age` as `RADARR_API_KEY=`.
 
 ### Readarr
 
