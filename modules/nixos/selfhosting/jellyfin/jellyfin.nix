@@ -28,11 +28,8 @@ in
 
       vpn = {
         enable = true;
+        accessibleFrom = [ "192.168.50.0/24" ];
         vpnTestService.enable = true;
-        accessibleFrom = [
-          "192.168.50.0/24"
-          # "127.0.0.1"
-        ];
 
         wgConf = config.age.secrets.w0-conf.path;
       };
@@ -63,6 +60,7 @@ in
         vpn.enable = true;
       };
 
+      # recyclarr.enable = true; # media naming for sonarr and radarr
     };
 
     services.podgrab = {
