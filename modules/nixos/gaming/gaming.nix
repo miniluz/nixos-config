@@ -12,7 +12,7 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      itch
+      # itch
 
       winetricks
       protontricks

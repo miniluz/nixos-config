@@ -3,6 +3,8 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
+  networking.firewall.enable = false;
+
   miniluz.gnome.enable = true;
   miniluz.audio = {
     enable = true;
