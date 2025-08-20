@@ -14,11 +14,11 @@ in
 
     services.netdata = {
       enable = true;
-      config = {
-        global = {
-          "bind to" = "*";
-        };
-      };
+      # config = {
+      #   global = {
+      #     "bind to" = "*";
+      #   };
+      # };
     };
 
     systemd.services.daily-system-monitor = {
