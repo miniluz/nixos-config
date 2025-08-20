@@ -14,8 +14,8 @@ let
   redisPasswordDir = "/var/lib/redis-spotizerr";
   redisPasswordFile = "${redisPasswordDir}/password";
   spotizerrEnvFile = "${spotizerrStateDir}/.env";
-  spotizerrLogDir = "${config.nixarr.stateDir}/logs";
-  spotizerrDataDir = "${config.nixarr.stateDir}/data";
+  spotizerrLogDir = "${spotizerrStateDir}/logs";
+  spotizerrDataDir = "${spotizerrStateDir}/data";
 
   # User/group references
   mediaGroup = config.util-nixarr.globals.libraryOwner.group;

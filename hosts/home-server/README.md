@@ -88,8 +88,10 @@ to actually open.
      (remember to show advanced)
    - Copy its API key to a file and to `recyclarr-keys.age` as `RADARR_API_KEY`.
    - Delete all existing formats except "All"
-   - Set up a custom quality profile called HD that includes Bluray-1080p, WEB
-     1080p and Bluray-720p in that order, with upgrades disallowed
+   - Set up a custom quality profile called HD-Original that includes
+     Bluray-1080p, WEB 1080p and Bluray-720p in that order, with upgrades
+     disallowed, with the original language selected. Then create another one
+     for HD-Spanish, HD-Spanish-Latino and HD-English.
    - Manually start recyclarr
 2. Go into Sonarr
    - Set up the media folder

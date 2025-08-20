@@ -104,4 +104,7 @@ radarr:
         # - 7357cf5161efbf8c4d5d0c30b4815ee2 # Obfuscated
         # - 5c44f52a8714fdd79bb4d98e2673be1f # Retags
         assign_scores_to:
-          - name: HD
+          - name: HD-Original
+          - name: HD-English
+          - name: HD-Spanish
+          - name: HD-Spanish-Latino

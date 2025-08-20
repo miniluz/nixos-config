@@ -50,7 +50,7 @@ in
         ];
         peerPort = 12543; # Set this to the port forwarded by your VPN
 
-        # flood.enable = true;
+        flood.enable = true;
       };
 
       # It is possible for this module to run the *Arrs through a VPN, but it
