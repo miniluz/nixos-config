@@ -1,0 +1,822 @@
+● netdata.service - Real time performance monitoring
+     Loaded: loaded (/etc/systemd/system/netdata.service; enabled; preset: ignored)
+     Active: active (running) since Wed 2025-08-20 13:44:54 CEST; 1min 18s ago
+ Invocation: 6b6401c552d0458f83561368f196d61f
+    Process: 10208 ExecStartPost=/nix/store/pxjx47v7i33gnf6893akp3wj9gcgrk6s-wait-for-netdata-up (code=exited, status=0/SUCCESS)
+   Main PID: 10207 (netdata)
+         IP: 13K in, 8.4K out
+         IO: 3.5M read, 0B written
+      Tasks: 104 (limit: 18717)
+     Memory: 142.1M (peak: 142.9M)
+        CPU: 7.654s
+     CGroup: /system.slice/netdata.service
+             ├─10207 /nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/bin/netdata -P /run/netdata/netdata.pid -D -c /etc/netdata/netdata.conf
+             ├─10220 "spawn-plugins                                                        " "  " "                        " "  " "  " "                         "
+             ├─10544 /nix/store/smkzrg2vvp3lng3hq7v9svfni5mnqjh2-bash-interactive-5.2p37/bin/bash /nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/tc-qos-helper.sh 1
+             ├─10551 /nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/network-viewer.plugin.org 1
+             ├─10559 /nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/go.d.plugin 1
+             ├─10562 /nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/nfacct.plugin 1
+             ├─10571 /nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/apps.plugin.org 1
+             ├─10572 /nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/debugfs.plugin.org 1
+             ├─10573 /nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/systemd-journal.plugin.org 1
+             └─10591 "spawn-setns                                                                                                  " " "
+
+ago 20 13:44:53 home-server systemd[1]: Starting Real time performance monitoring...
+ago 20 13:44:53 home-server pxjx47v7i33gnf6893akp3wj9gcgrk6s-wait-for-netdata-up[10217]: uv_pipe_connect(): no such file or directory
+ago 20 13:44:53 home-server pxjx47v7i33gnf6893akp3wj9gcgrk6s-wait-for-netdata-up[10217]: Cannot connect to '/run/netdata/ipc'.
+ago 20 13:44:53 home-server pxjx47v7i33gnf6893akp3wj9gcgrk6s-wait-for-netdata-up[10217]: Make sure the netdata service is running.
+ago 20 13:44:53 home-server netdata[10207]: OS_MACHINE_ID: machine ID found '3b2c8348-bd3c-433f-8985-dc012e6bc2d1'
+ago 20 13:44:53 home-server netdata[10207]: MACHINE_GUID: GUID read from file '/var/lib/netdata/registry/netdata.public.unique.id'
+ago 20 13:44:53 home-server netdata[10207]: NETDATA STARTUP: next: signals
+ago 20 13:44:53 home-server netdata[10207]: CONFIG: cannot load user config '/etc/netdata/conf.d/stream.conf'. Will try stock config.
+ago 20 13:44:53 home-server netdata[10207]: NETDATA STARTUP: in       2 ms, signals - next: run dir
+ago 20 13:44:53 home-server netdata[10207]: Netdata run directory is '/tmp/netdata'
+ago 20 13:44:53 home-server netdata[10207]: NETDATA STARTUP: in       0 ms, run dir - next: crash reports
+ago 20 13:44:53 home-server netdata[10207]: Netdata Agent version 'v2.5.1' is starting...
+                                            Last exit status: Netdata was last stopped gracefully (exit instructed):
+                                            
+                                            {
+                                                "@timestamp":"2025-08-20T11:44:53.68Z",
+                                                "version":28,
+                                                "agent":{
+                                                    "id":"62fb85a1-f4d1-4544-97f0-ecd3a754f23b",
+                                                    "since":"2025-08-20T11:34:29.21Z",
+                                                    "ephemeral_id":"cfaa9e85a22d449e982be9ebcbf03e5a",
+                                                    "version":"v2.5.1",
+                                                    "uptime":19,
+                                                    "node_id":null,
+                                                    "claim_id":null,
+                                                    "restarts":3,
+                                                    "crashes":0,
+                                                    "pid":9150,
+                                                    "posts":0,
+                                                    "aclk":"available",
+                                                    "profile":["standalone"],
+                                                    "status":"exited",
+                                                    "exit_reason":["signal-terminate"],
+                                                    "install_type":"",
+                                                    "db_mode":"dbengine",
+                                                    "db_tiers":3,
+                                                    "kubernetes":false,
+                                                    "sentry_available":false,
+                                                    "reliability":3,
+                                                    "stack_traces":"backtrace",
+                                                    "timings":{
+                                                        "init":1,
+                                                        "exit":1
+                                                    }
+                                                },
+                                                "metrics":{
+                                                    "nodes":{
+                                                        "total":1,
+                                                        "receiving":0,
+                                                        "sending":0,
+                                                        "archived":0
+                                                    },
+                                                    "metrics":{
+                                                        "collected":4936,
+                                                        "available":5811
+                                                    },
+                                                    "instances":{
+                                                        "collected":190,
+                                                        "available":2410
+                                                    },
+                                                    "contexts":{
+                                                        "collected":240,
+                                                        "available":326
+                                                    }
+                                                },
+                                                "host":{
+                                                    "id":"3b2c8348bd3c433f8985dc012e6bc2d1",
+                                                    "architecture":"x86_64",
+                                                    "virtualization":"none",
+                                                    "container":"none",
+                                                    "uptime":464,
+                                                    "timezone":"CEST",
+                                                    "cloud_provider":"",
+                                                    "cloud_instance":"",
+                                                    "cloud_region":"",
+                                                    "system_cpus":4,
+                                                    "boot":{
+                                                        "id":"0e26aa2b47624611af4f4f4f9ed96b8e"
+                                                    },
+                                                    "memory":{
+                                                        "total":16504287232,
+                                                        "free":4611473408,
+                                                        "netdata":69771264,
+                                                        "oom_protection":1653562409
+                                                    },
+                                                    "disk":{
+                                                        "db":{
+                                                            "total":441153880064,
+                                                            "free":426807787520,
+                                                            "inodes_total":834506216,
+                                                            "inodes_free":833609048,
+                                                            "read_only":false
+                                                        },
+                                                        "netdata":{
+                                                            "dbengine":3522560,
+                                                            "sqlite":2822144,
+                                                            "other":4574,
+                                                            "last_updated":"2025-08-20T11:44:34.04Z"
+                                                        }
+                                                    }
+                                                },
+                                                "os":{
+                                                    "type":"linux",
+                                                    "kernel":"6.12.42",
+                                                    "name":"NixOS",
+                                                    "version":"25.05 (Warbler)",
+                                                    "family":"nixos",
+                                                    "platform":""
+                                                },
+                                                "hw":{
+                                                    "sys":{
+                                                        "vendor":"AMI",
+                                                        "uuid":""
+                                                    },
+                                                    "product":{
+                                                        "name":"Intel",
+                                                        "version":"",
+                                                        "sku":"G3N2",
+                                                        "family":"ADK"
+                                                    },
+                                                    "board":{
+                                                        "name":"Intel",
+                                                        "version":"",
+                                                        "vendor":"AMI"
+                                                    },
+                                                    "chassis":{
+                                                        "type":"3",
+                                                        "vendor":"",
+                                                        "version":""
+                                                    },
+                                                    "bios":{
+                                                        "date":"09/29/2024",
+                                                        "release":"5.27",
+                                                        "version":"V2.1_233",
+                                                        "vendor":"American Megatrends International, LLC."
+                                                    }
+                                                },
+                                                "product":{
+                                                    "vendor":"AMI",
+                                                    "name":"ADK / Intel",
+                                                    "type":"server"
+                                                },
+                                                "fatal":{
+                                                    "line":0,
+                                                    "filename":"",
+                                                    "function":"",
+                                                    "message":"",
+                                                    "errno":"",
+                                                    "thread":"",
+                                                    "thread_id":0,
+                                                    "stack_trace":"info:  shutdown steps timings\n#1 'close webrtc connections': 1ms 793us\n#2 'disable maintenance, new queries, new web requests, new streaming connections and aclk': 1ms 303us\n#3 'stop maintenance thread': 898ms 845us\n#4 'stop exporters, health and web servers threads': 1ms 800us\n#5 'stop collectors and streaming threads': 98ms 967us\n#6 'stop replication threads': 1ms 925us\n#7 'disable ML detection and training threads': 104ms 627us\n#8 'stop context thread': 1ms 513us\n#9 'clear web client cache': 1ms 99us\n#10 'stop ACLK sync thread': 1ms 119us\n#11 'stop ACLK MQTT connection thread': 976us\n#12 'stop all remaining worker threads': 978us\n#13 'cancel main threads': 961us\n#14 'stop collection for all hosts': 6ms 497us\n#15 'wait for dbengine collectors to finish': 100ms 116us\n#16 'stop dbengine tiers': 1ms 268us\n#17 'stop metasync threads': 1ms 148us\n#18 'close SQL databases': 4ms 292us\n#19 'remove pid file': 1ms 115us\n#20 'free openssl structures': 858us",
+                                                    "signal_code":"",
+                                                    "sentry":false,
+                                                    "fault_address":"",
+                                                    "worker_job_id":0
+                                                }
+                                            }
+ago 20 13:44:53 home-server netdata[10207]: NETDATA STARTUP: in       1 ms, crash reports - next: temp spawn server
+ago 20 13:44:53 home-server netdata[10207]: NETDATA STARTUP: in       1 ms, temp spawn server - next: ssl
+ago 20 13:44:53 home-server netdata[10207]: NETDATA STARTUP: in       0 ms, ssl - next: environment for plugins
+ago 20 13:44:53 home-server netdata[10207]: NETDATA STARTUP: in       0 ms, environment for plugins - next: cd to user config dir
+ago 20 13:44:53 home-server netdata[10207]: NETDATA STARTUP: in       0 ms, cd to user config dir - next: analytics
+ago 20 13:44:53 home-server netdata[10207]: TIMEZONE: using strftime(): 'CEST'
+ago 20 13:44:53 home-server netdata[10207]: TIMEZONE: fixed as 'CEST'
+ago 20 13:44:53 home-server netdata[10207]: NETDATA STARTUP: in       0 ms, analytics - next: pulse
+ago 20 13:44:53 home-server netdata[10207]: NETDATA STARTUP: in       0 ms, pulse - next: replication
+ago 20 13:44:53 home-server netdata[10207]: NETDATA STARTUP: in       0 ms, replication - next: inflight functions
+ago 20 13:44:53 home-server netdata[10207]: NETDATA STARTUP: in       0 ms, inflight functions - next: silencers
+ago 20 13:44:53 home-server netdata[10207]: NETDATA STARTUP: in       0 ms, silencers - next: static threads
+ago 20 13:44:53 home-server netdata[10207]: NETDATA STARTUP: in       0 ms, static threads - next: web server api
+ago 20 13:44:53 home-server netdata[10207]: NETDATA STARTUP: in       0 ms, web server api - next: web server sockets
+ago 20 13:44:53 home-server netdata[10207]: NETDATA STARTUP: in       0 ms, web server sockets - next: sqlite
+ago 20 13:44:53 home-server netdata[10207]: SQLITE: heap memory hard limit 256MiB, soft limit 32MiB
+ago 20 13:44:53 home-server netdata[10207]: NETDATA STARTUP: in       0 ms, sqlite - next: ML
+ago 20 13:44:53 home-server netdata[10207]: ml database version is 2 (no migration needed)
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in       6 ms, ML - next: resource limits
+ago 20 13:44:54 home-server netdata[10207]: resources control: allowed file descriptors: soft = 30000, max = 30000
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in       0 ms, resource limits - next: stop temporary spawn server
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in       1 ms, stop temporary spawn server - next: become daemon
+ago 20 13:44:54 home-server netdata[10207]: Out-Of-Memory (OOM) score is already set to the wanted value 0
+ago 20 13:44:54 home-server netdata[10207]: Running with process scheduling policy 'keep'
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in       5 ms, become daemon - next: plugins spawn server
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in       1 ms, plugins spawn server - next: home
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in       1 ms, home - next: dyncfg
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in       0 ms, dyncfg - next: threads after fork
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in       0 ms, threads after fork - next: registry
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in       0 ms, registry - next: system info
+ago 20 13:44:54 home-server netdata[10207]: SYSTEM INFO: Skipping empty name or value from system-info.sh: 'NETDATA_HOST_OS_ID_LIKE='
+ago 20 13:44:54 home-server netdata[10207]: SYSTEM INFO: Skipping empty name or value from system-info.sh: 'NETDATA_HOST_OS_ID_LIKE='
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in     272 ms, system info - next: RRD structures
+ago 20 13:44:54 home-server netdata[10207]: SQLite database /var/cache/netdata/netdata-meta.db initialization
+ago 20 13:44:54 home-server netdata[10207]: metadata database version is 18 (no migration needed)
+ago 20 13:44:54 home-server netdata[10207]: SQLite database initialization completed
+ago 20 13:44:54 home-server netdata[10207]: SQLite database /var/cache/netdata/context-meta.db initialization
+ago 20 13:44:54 home-server netdata[10207]: context database version is 1 (no migration needed)
+ago 20 13:44:54 home-server netdata[10207]: DBENGINE Out of Memory Protection. System Memory Total: 15.37GiB, Currently Available: 4.32GiB, Out of Memory Protection: 1.54GiB, Use All RAM: disabled
+ago 20 13:44:54 home-server netdata[10207]: MRG: Loaded 5996 metrics from database in 11ms 259us
+ago 20 13:44:54 home-server netdata[10207]: DBENGINE: found 2 files in path /var/cache/netdata/dbengine
+ago 20 13:44:54 home-server netdata[10207]: DBENGINE: loading 1 data/journal of tier 0...
+ago 20 13:44:54 home-server netdata[10207]: DBENGINE: found 2 files in path /var/cache/netdata/dbengine-tier2
+ago 20 13:44:54 home-server netdata[10207]: DBENGINE: loading 1 data/journal of tier 2...
+ago 20 13:44:54 home-server netdata[10207]: DBENGINE: populating retention to MRG from 1 journal files of tier 2, using a shared pool of 4 threads...
+ago 20 13:44:54 home-server netdata[10207]: DBENGINE: found 2 files in path /var/cache/netdata/dbengine-tier1
+ago 20 13:44:54 home-server netdata[10207]: DBENGINE: loading 1 data/journal of tier 1...
+ago 20 13:44:54 home-server netdata[10207]: DBENGINE: Tier 2 MRG population completed: 0.00% (0/1)
+ago 20 13:44:54 home-server netdata[10207]: DBENGINE: populating retention to MRG from 1 journal files of tier 1, using a shared pool of 4 threads...
+ago 20 13:44:54 home-server netdata[10207]: DBENGINE: Tier 1 MRG population completed: 0.00% (0/1)
+ago 20 13:44:54 home-server netdata[10207]: DBENGINE: populating retention to MRG from 1 journal files of tier 0, using a shared pool of 4 threads...
+ago 20 13:44:54 home-server netdata[10207]: DBENGINE: Tier 0 MRG population completed: 0.00% (0/1)
+ago 20 13:44:54 home-server netdata[10207]: DBENGINE: tier 0 is ready for data collection and queries
+ago 20 13:44:54 home-server netdata[10207]: DBENGINE: tier 1 is ready for data collection and queries
+ago 20 13:44:54 home-server netdata[10207]: DBENGINE: tier 2 is ready for data collection and queries
+ago 20 13:44:54 home-server netdata[10207]: METADATA: Synchronization thread is up and running
+ago 20 13:44:54 home-server netdata[10207]: Host 'home-server' (at registry as 'home-server') with guid '62fb85a1-f4d1-4544-97f0-ecd3a754f23b' initialized, os 'linux', timezone 'CEST', program_name 'netdata', program_version 'v2.5.1', update every 1, memory mode dbengine, history entries 0, streaming disabled (to '' with api key ''), health enabled, cache_dir '/var/cache/netdata', alarms default handler '', alarms default recipient ''
+ago 20 13:44:54 home-server netdata[10207]: RRDCONTEXT: metadata for node 'home-server': contexts 326 (deleted 0), instances 2408 (deleted 86, ignored 0), and metrics 5806 (ignored 0, zero retention 190)
+ago 20 13:44:54 home-server netdata[10207]: CONFIG cannot open user-config directory '/etc/netdata/conf.d/health.d'.
+ago 20 13:44:54 home-server netdata[10207]: Cannot open the file /var/lib/netdata/health.silencers.json, so Netdata will work with the default health configuration.
+ago 20 13:44:54 home-server netdata[10207]: Creating archived hosts
+ago 20 13:44:54 home-server netdata[10207]: Created 0 archived hosts
+ago 20 13:44:54 home-server netdata[10207]: Contexts for 0 hosts loaded: 0 delegated to 4 threads, 0 handled directly, in 150us.
+ago 20 13:44:54 home-server netdata[10207]: Starting ACLK synchronization thread
+ago 20 13:44:54 home-server netdata[10207]: Starting ACLK synchronization thread with 6 parallel query threads
+ago 20 13:44:54 home-server netdata[10207]: ACLK sync initialization completed
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in     135 ms, RRD structures - next: localhost labels
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in       5 ms, localhost labels - next: saved bearer tokens
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in       1 ms, saved bearer tokens - next: claiming info
+ago 20 13:44:54 home-server netdata[10207]: CLAIM: Unable to find our claimed_id, setting state to AGENT_UNCLAIMED
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in       1 ms, claiming info - next: static threads
+ago 20 13:44:54 home-server netdata[10207]: CONFIG: cannot load user exporting config '/etc/netdata/conf.d/exporting.conf'. Will try the stock version.
+ago 20 13:44:54 home-server netdata[10207]: No connector instances to activate
+ago 20 13:44:54 home-server netdata[10207]: EXPORTING: no exporting connectors configured
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in       2 ms, static threads - next: commands API
+ago 20 13:44:54 home-server netdata[10207]: CONFIG cannot open user-config directory '/etc/netdata/conf.d/statsd.d'.
+ago 20 13:44:54 home-server netdata[10207]: use unified cgroups true
+ago 20 13:44:54 home-server netdata[10207]: To use encryption it is necessary to set "ssl certificate" and "ssl key" in [web] !
+ago 20 13:44:54 home-server netdata[10207]: Initializing command server.
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in       5 ms, commands API - next: agent start timings
+ago 20 13:44:54 home-server netdata[10207]: STATSD collector thread started with taskid 10566
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: completed in 463 ms (median start up time is 517 ms). Enjoy X-Ray Vision for your infrastructure!
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in       2 ms, agent start timings - next: anonymous analytics (disabled)
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in       1 ms, anonymous analytics (disabled) - next: mrg cleanup
+ago 20 13:44:54 home-server netdata[10576]: /bin/sh: line 1: /nix/store/nm1i7xh0p3q6c5cmg5gi8fh61cmi3q0d-wrapped-plugins/libexec/netdata/plugins.d/logs-management.plugin: No such file or directory
+ago 20 13:44:54 home-server netdata[10207]: PARSER: read failed: POLLHUP.
+ago 20 13:44:54 home-server netdata[10207]: PLUGINSD: buffered reader not OK (4294967292)
+ago 20 13:44:54 home-server netdata[10207]: PLUGINSD: 'host:home-server', '/nix/store/nm1i7xh0p3q6c5cmg5gi8fh61cmi3q0d-wrapped-plugins/libexec/netdata/plugins.d/logs-management.plugin' (pid 10576) disconnected after 0 successful data collections.
+ago 20 13:44:54 home-server spawn-plugins[10220]: SPAWN SERVER: child with pid 10543 (request 5) exited with exit code 1: /bin/sh -c "exec /nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/ioping.plugin 1 "
+ago 20 13:44:54 home-server spawn-plugins[10220]: SPAWN SERVER: child with pid 10576 (request 16) exited with exit code 127: /bin/sh -c "exec /nix/store/nm1i7xh0p3q6c5cmg5gi8fh61cmi3q0d-wrapped-plugins/libexec/netdata/plugins.d/logs-management.plugin 1 "
+ago 20 13:44:54 home-server netdata[10207]: PLUGINSD: plugin called DISABLE. Disabling it.
+ago 20 13:44:54 home-server netdata[10207]: PLUGINSD: cannot send command to plugin (fd = 51, sent bytes = -1 out of 4)
+ago 20 13:44:54 home-server netdata[10207]: PLUGINSD: 'host:home-server', '/nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/ioping.plugin' (pid 10543) disconnected after 0 successful data collections.
+ago 20 13:44:54 home-server netdata[10207]: PLUGINSD: 'host:home-server', '/nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/ioping.plugin' (pid 10543) exited with error code 1 and haven't collected any data. Disabling it.
+ago 20 13:44:54 home-server netdata[10207]: PLUGINSD: 'host:home-server', '/nix/store/nm1i7xh0p3q6c5cmg5gi8fh61cmi3q0d-wrapped-plugins/libexec/netdata/plugins.d/logs-management.plugin' (pid 10576) exited with error code 127 and haven't collected any data. Disabling it.
+ago 20 13:44:54 home-server netdata[10207]: MRG DUMP: Prepopulated 17988 metrics, released 11348, deleted 6640
+ago 20 13:44:54 home-server netdata[10207]: NETDATA STARTUP: in      20 ms, mrg cleanup - next: done
+ago 20 13:44:54 home-server freeipmi.plugin[10565]: main(): update frequency 1 seconds is too small for IPMI. Using 5.
+ago 20 13:44:54 home-server tc-qos-helper.sh[10580]: FireQOS is not installed on this system. Use FireQOS to apply traffic QoS and expose the class names to netdata. Check https://github.com/netdata/netdata/tree/master/src/collectors/tc.plugin#tcplugin
+ago 20 13:44:54 home-server perf.plugin[10575]: no charts enabled - nothing to do.
+ago 20 13:44:54 home-server apps.plugin[10571]: PROCFILE: Cannot open file '/etc/netdata/conf.d/apps_groups.conf'
+ago 20 13:44:54 home-server netdata[10207]: PLUGINSD: plugin called DISABLE. Disabling it.
+ago 20 13:44:54 home-server netdata[10207]: PLUGINSD: 'host:home-server', '/nix/store/nm1i7xh0p3q6c5cmg5gi8fh61cmi3q0d-wrapped-plugins/libexec/netdata/plugins.d/perf.plugin' (pid 10575) disconnected after 0 successful data collections.
+ago 20 13:44:54 home-server apps.plugin[10571]: Cannot read process groups configuration file '/etc/netdata/conf.d/apps_groups.conf'. Will try '/nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/share/netdata/conf.d/apps_groups.conf'
+ago 20 13:44:54 home-server apps.plugin[10571]: Loaded config file '/nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/share/netdata/conf.d/apps_groups.conf'
+ago 20 13:44:54 home-server spawn-plugins[10220]: SPAWN SERVER: child with pid 10575 (request 15) exited with exit code 1: /bin/sh -c "exec /nix/store/nm1i7xh0p3q6c5cmg5gi8fh61cmi3q0d-wrapped-plugins/libexec/netdata/plugins.d/perf.plugin 1 "
+ago 20 13:44:54 home-server netdata[10207]: PLUGINSD: 'host:home-server', '/nix/store/nm1i7xh0p3q6c5cmg5gi8fh61cmi3q0d-wrapped-plugins/libexec/netdata/plugins.d/perf.plugin' (pid 10575) exited with error code 1 and haven't collected any data. Disabling it.
+ago 20 13:44:54 home-server apps.plugin[10571]: started on pid 10571
+ago 20 13:44:54 home-server tc-qos-helper.sh[10610]: Cannot find file '/nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/share/netdata/conf.d/tc-qos-helper.conf'.
+ago 20 13:44:54 home-server charts.d.plugin[10629]: main: started from '/nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/charts.d.plugin' with options: 1
+ago 20 13:44:54 home-server netdata[10207]: EOF found in command pipe.
+ago 20 13:44:54 home-server tc-qos-helper.sh[10630]: Cannot find file '/etc/netdata/conf.d/tc-qos-helper.conf'.
+ago 20 13:44:54 home-server systemd[1]: Started Real time performance monitoring.
+ago 20 13:44:54 home-server charts.d.plugin[10658]: main: Configuration file '/etc/netdata/conf.d/charts.d.conf' not found.
+ago 20 13:44:54 home-server charts.d.plugin[10680]: example: is disabled. Add a line with example=force in '/etc/netdata/conf.d/charts.d.plugin.conf' to enable it (or remove the line that disables it).
+ago 20 13:44:54 home-server freeipmi.plugin[10565]: ipmi_monitoring_sel_by_record_id(): internal system error
+ago 20 13:44:54 home-server charts.d.plugin[10717]: libreswan: command 'ipsec' is not found in /nix/store/fgb2r3fy9np4dyd12fqb1qyy35dk3fkl-curl-8.14.1-bin/bin:/nix/store/c1z5j28ndxljf1ihqzag57bwpfpzms0g-gawk-5.3.2/bin:/nix/store/bgsxir9dk77gsbcizpyjjk8mjf5g6cnl-iproute2-6.14.0/bin:/nix/store/s0pv1byj75arx8wfmw659y11dy4a41hy-which-2.23/bin:/nix/store/l2s1gbfya57jabkk6953ryz31ldhxpg9-procps-4.0.4/bin:/nix/store/smkzrg2vvp3lng3hq7v9svfni5mnqjh2-bash-interactive-5.2p37/bin:/nix/store/ry1a18spd0qvn3a85q8s5fdna0zas8rl-nvme-cli-2.11/bin:/nix/store/ys0xwgk0w82qdpfvw7d51jnr3qqhs1vj-iw-6.9/bin:/nix/store/1702w0ysdyzng1lwga6zdcd6bfd50wci-apcupsd-3.14.14/bin:/nix/store/b2hwynivrywwvglla5sff0f2dxarr9wx-util-linux-2.41.1-bin/bin:/nix/store/d1pqrk6gw2vr3qpxpfryqkvybcklpq4b-python3-3.12.11-env/bin:/nix/store/md2z14bhvqk8nvylad6fiifcd19vhlqz-jq-1.7.1-bin/bin:/nix/store/vss0249dg6hycrwiynsm2ydr2m2ps9b5-podman-5.4.1/bin:/nix/store/k42bsmc0cps7xzz50xhi1n84y8k17qqm-zfs-user-2.3.3/bin:/nix/store/rry6qingvsrqmc7ll7jgaqpybcbdgf5v-coreutils-9.7/bin:/nix/store/392hs9nhm6wfw4imjllbvb1wil1n39qx-findutils-4.10.0/bin:/nix/store/l2wvwyg680h0v2la18hz3yiznxy2naqw-gnugrep-3.11/bin:/nix/store/4rpiqv9yr2pw5094v4wc33ijkqjpm9sa-gnused-4.9/bin:/nix/store/ksz6ygnl9f1l6jff3mwmjsmw7qyyxa59-systemd-257.7/bin:/nix/store/fgb2r3fy9np4dyd12fqb1qyy35dk3fkl-curl-8.14.1-bin/sbin:/nix/store/c1z5j28ndxljf1ihqzag57bwpfpzms0g-gawk-5.3.2/sbin:/nix/store/bgsxir9dk77gsbcizpyjjk8mjf5g6cnl-iproute2-6.14.0/sbin:/nix/store/s0pv1byj75arx8wfmw659y11dy4a41hy-which-2.23/sbin:/nix/store/l2s1gbfya57jabkk6953ryz31ldhxpg9-procps-4.0.4/sbin:/nix/store/smkzrg2vvp3lng3hq7v9svfni5mnqjh2-bash-interactive-5.2p37/sbin:/nix/store/ry1a18spd0qvn3a85q8s5fdna0zas8rl-nvme-cli-2.11/sbin:/nix/store/ys0xwgk0w82qdpfvw7d51jnr3qqhs1vj-iw-6.9/sbin:/nix/store/1702w0ysdyzng1lwga6zdcd6bfd50wci-apcupsd-3.14.14/sbin:/nix/store/b2hwynivrywwvglla5sff0f2dxarr9wx-util-linux-2.41.1-bin/sbin:/nix/store/d1pqrk6gw2vr3qpxpfryqkvybcklpq4b-python3-3.12.11-env/sbin:/nix/store/md2z14bhvqk8nvylad6fiifcd19vhlqz-jq-1.7.1-bin/sbin:/nix/store/vss0249dg6hycrwiynsm2ydr2m2ps9b5-podman-5.4.1/sbin:/nix/store/k42bsmc0cps7xzz50xhi1n84y8k17qqm-zfs-user-2.3.3/sbin:/nix/store/rry6qingvsrqmc7ll7jgaqpybcbdgf5v-coreutils-9.7/sbin:/nix/store/392hs9nhm6wfw4imjllbvb1wil1n39qx-findutils-4.10.0/sbin:/nix/store/l2wvwyg680h0v2la18hz3yiznxy2naqw-gnugrep-3.11/sbin:/nix/store/4rpiqv9yr2pw5094v4wc33ijkqjpm9sa-gnused-4.9/sbin:/nix/store/ksz6ygnl9f1l6jff3mwmjsmw7qyyxa59-systemd-257.7/sbin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/bin.
+ago 20 13:44:54 home-server freeipmi.plugin[10565]: ipmi_monitoring_sensor_readings_by_record_id(): internal system error
+ago 20 13:44:54 home-server charts.d.plugin[10718]: libreswan: module's 'libreswan' check() function reports failure.
+ago 20 13:44:54 home-server charts.d.plugin[10721]: opensips: command 'opensipsctl' is not found in /nix/store/fgb2r3fy9np4dyd12fqb1qyy35dk3fkl-curl-8.14.1-bin/bin:/nix/store/c1z5j28ndxljf1ihqzag57bwpfpzms0g-gawk-5.3.2/bin:/nix/store/bgsxir9dk77gsbcizpyjjk8mjf5g6cnl-iproute2-6.14.0/bin:/nix/store/s0pv1byj75arx8wfmw659y11dy4a41hy-which-2.23/bin:/nix/store/l2s1gbfya57jabkk6953ryz31ldhxpg9-procps-4.0.4/bin:/nix/store/smkzrg2vvp3lng3hq7v9svfni5mnqjh2-bash-interactive-5.2p37/bin:/nix/store/ry1a18spd0qvn3a85q8s5fdna0zas8rl-nvme-cli-2.11/bin:/nix/store/ys0xwgk0w82qdpfvw7d51jnr3qqhs1vj-iw-6.9/bin:/nix/store/1702w0ysdyzng1lwga6zdcd6bfd50wci-apcupsd-3.14.14/bin:/nix/store/b2hwynivrywwvglla5sff0f2dxarr9wx-util-linux-2.41.1-bin/bin:/nix/store/d1pqrk6gw2vr3qpxpfryqkvybcklpq4b-python3-3.12.11-env/bin:/nix/store/md2z14bhvqk8nvylad6fiifcd19vhlqz-jq-1.7.1-bin/bin:/nix/store/vss0249dg6hycrwiynsm2ydr2m2ps9b5-podman-5.4.1/bin:/nix/store/k42bsmc0cps7xzz50xhi1n84y8k17qqm-zfs-user-2.3.3/bin:/nix/store/rry6qingvsrqmc7ll7jgaqpybcbdgf5v-coreutils-9.7/bin:/nix/store/392hs9nhm6wfw4imjllbvb1wil1n39qx-findutils-4.10.0/bin:/nix/store/l2wvwyg680h0v2la18hz3yiznxy2naqw-gnugrep-3.11/bin:/nix/store/4rpiqv9yr2pw5094v4wc33ijkqjpm9sa-gnused-4.9/bin:/nix/store/ksz6ygnl9f1l6jff3mwmjsmw7qyyxa59-systemd-257.7/bin:/nix/store/fgb2r3fy9np4dyd12fqb1qyy35dk3fkl-curl-8.14.1-bin/sbin:/nix/store/c1z5j28ndxljf1ihqzag57bwpfpzms0g-gawk-5.3.2/sbin:/nix/store/bgsxir9dk77gsbcizpyjjk8mjf5g6cnl-iproute2-6.14.0/sbin:/nix/store/s0pv1byj75arx8wfmw659y11dy4a41hy-which-2.23/sbin:/nix/store/l2s1gbfya57jabkk6953ryz31ldhxpg9-procps-4.0.4/sbin:/nix/store/smkzrg2vvp3lng3hq7v9svfni5mnqjh2-bash-interactive-5.2p37/sbin:/nix/store/ry1a18spd0qvn3a85q8s5fdna0zas8rl-nvme-cli-2.11/sbin:/nix/store/ys0xwgk0w82qdpfvw7d51jnr3qqhs1vj-iw-6.9/sbin:/nix/store/1702w0ysdyzng1lwga6zdcd6bfd50wci-apcupsd-3.14.14/sbin:/nix/store/b2hwynivrywwvglla5sff0f2dxarr9wx-util-linux-2.41.1-bin/sbin:/nix/store/d1pqrk6gw2vr3qpxpfryqkvybcklpq4b-python3-3.12.11-env/sbin:/nix/store/md2z14bhvqk8nvylad6fiifcd19vhlqz-jq-1.7.1-bin/sbin:/nix/store/vss0249dg6hycrwiynsm2ydr2m2ps9b5-podman-5.4.1/sbin:/nix/store/k42bsmc0cps7xzz50xhi1n84y8k17qqm-zfs-user-2.3.3/sbin:/nix/store/rry6qingvsrqmc7ll7jgaqpybcbdgf5v-coreutils-9.7/sbin:/nix/store/392hs9nhm6wfw4imjllbvb1wil1n39qx-findutils-4.10.0/sbin:/nix/store/l2wvwyg680h0v2la18hz3yiznxy2naqw-gnugrep-3.11/sbin:/nix/store/4rpiqv9yr2pw5094v4wc33ijkqjpm9sa-gnused-4.9/sbin:/nix/store/ksz6ygnl9f1l6jff3mwmjsmw7qyyxa59-systemd-257.7/sbin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/bin.
+ago 20 13:44:54 home-server charts.d.plugin[10722]: opensips: module's 'opensips' check() function reports failure.
+ago 20 13:44:54 home-server charts.d.plugin[10723]: main: No charts to collect data from.
+ago 20 13:44:54 home-server netdata[10207]: PLUGINSD: plugin called DISABLE. Disabling it.
+ago 20 13:44:54 home-server netdata[10207]: PLUGINSD: 'host:home-server', '/nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/charts.d.plugin' (pid 10546) disconnected after 0 successful data collections.
+ago 20 13:44:54 home-server netdata[10546]: /nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/charts.d.plugin: line 133: echo: write error: Broken pipe
+ago 20 13:44:54 home-server netdata[10207]: PLUGINSD: 'host:home-server', '/nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/charts.d.plugin' (pid 10546) does not generate useful output but it reports success (exits with 0). Will not start it again - it is now disabled..
+ago 20 13:44:54 home-server netdata[10527]: python.d INFO: plugin[main] : using python v3
+ago 20 13:44:54 home-server freeipmi.plugin[10565]: ipmi_monitoring_sel_by_record_id(): internal system error
+ago 20 13:44:54 home-server freeipmi.plugin[10565]: ipmi_monitoring_sensor_readings_by_record_id(): internal system error
+ago 20 13:44:54 home-server freeipmi.plugin[10565]: ipmi_monitoring_sel_by_record_id(): internal system error
+ago 20 13:44:54 home-server freeipmi.plugin[10565]: ipmi_monitoring_sensor_readings_by_record_id(): internal system error
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="found 237 profiles in '/nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/share/netdata/conf.d/go.d/snmp.profiles/default'" plugin=go.d component=snmp/ddsnmp
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="env HTTP_PROXY '', HTTPS_PROXY ''" plugin=go.d component=agent
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="instance is started" plugin=go.d component=agent
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="loading config file" plugin=go.d component=agent
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="found '/nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/share/netdata/conf.d/go.d.conf" plugin=go.d component=agent
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="config successfully loaded" plugin=go.d component=agent
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="using config: enabled 'true', default_run 'true', max_procs '0'" plugin=go.d component=agent
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="loading modules" plugin=go.d component=agent
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="'testrandom' module disabled by default, should be explicitly enabled in the config" plugin=go.d component=agent
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="'k8s_state' module disabled by default, should be explicitly enabled in the config" plugin=go.d component=agent
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="'sensors' module disabled by default, should be explicitly enabled in the config" plugin=go.d component=agent
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="enabled/registered modules: 121/124" plugin=go.d component=agent
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="building discovery config" plugin=go.d component=agent
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="dummy/read/watch paths: 0/121/0" plugin=go.d component=agent
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="registered discoverers: [file discovery: [file reader] service discovery]" plugin=go.d component="discovery manager"
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="found '/nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/share/netdata/conf.d/vnodes' (0 vhosts)" plugin=go.d component=agent
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="instance is started" plugin=go.d component="discovery manager"
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="instance is started" plugin=go.d component="functions manager"
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="instance is started" plugin=go.d component="job manager"
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="instance is started" plugin=go.d component=discovery discoverer=file
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="instance is started" plugin=go.d component=discovery discoverer=file
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="instance is started" plugin=go.d component="service discovery"
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="instance is started" plugin=go.d component="file persister" file=/var/lib/netdata/god-jobs-statuses.json
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="instance is stopped" plugin=go.d component=discovery discoverer=file
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="instance is started" plugin=go.d component="service discovery" pipeline=docker
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="instance is started" plugin=go.d component="service discovery" discoverer=docker
+ago 20 13:44:55 home-server netdata[10559]: level=error msg="Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?" plugin=go.d component="service discovery" discoverer=docker
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="instance is stopped" plugin=go.d component="service discovery" discoverer=docker
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="discoverer 'sd:docker' exited before ctx done" plugin=go.d component="service discovery" pipeline=docker
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="all discoverers exited before ctx done" plugin=go.d component="service discovery" pipeline=docker
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="instance is stopped" plugin=go.d component="service discovery" pipeline=docker
+ago 20 13:44:55 home-server freeipmi.plugin[10565]: ipmi_monitoring_sel_by_record_id(): internal system error
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="check success" plugin=go.d collector=logind job=logind
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="started, data collection interval 1s" plugin=go.d collector=logind job=logind
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="instance is started" plugin=go.d component="service discovery" pipeline="network listeners"
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="instance is started" plugin=go.d component="service discovery" discoverer=net_listeners
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="pipeline config is disabled 'snmp' (/nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/share/netdata/conf.d/go.d/sd/snmp.conf)" plugin=go.d component="service discovery"
+ago 20 13:44:55 home-server freeipmi.plugin[10565]: ipmi_monitoring_sensor_readings_by_record_id(): internal system error
+ago 20 13:44:55 home-server netdata[10207]: Using now_boottime_usec() for uptime (dt is 3 ms)
+ago 20 13:44:55 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/wireless'.
+ago 20 13:44:55 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:44:55 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:44:55 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:44:55 home-server netdata[10207]: PROCFILE: Cannot open file '/proc/net/sctp/snmp'
+ago 20 13:44:55 home-server netdata[10207]: PROCFILE: Cannot open file '/proc/net/ip_vs_stats'
+ago 20 13:44:55 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:44:55 home-server netdata[10207]: PROCFILE: Cannot open file '/proc/net/stat/synproxy'
+ago 20 13:44:55 home-server freeipmi.plugin[10565]: ipmi_monitoring_sel_by_record_id(): internal system error
+ago 20 13:44:55 home-server netdata[10207]: PROCFILE: Cannot open file '/proc/mdstat'
+ago 20 13:44:55 home-server netdata[10207]: PROCFILE: Cannot open file '/proc/net/rpc/nfsd'
+ago 20 13:44:55 home-server netdata[10207]: PROCFILE: Cannot open file '/proc/net/rpc/nfs'
+ago 20 13:44:55 home-server netdata[10207]: BTRFS: Cannot open directory '/sys/fs/btrfs'.
+ago 20 13:44:55 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:44:55 home-server freeipmi.plugin[10565]: ipmi_monitoring_sensor_readings_by_record_id(): internal system error
+ago 20 13:44:55 home-server apps.plugin[10571]: Using now_boottime_usec() for uptime (dt is 0 ms)
+ago 20 13:44:55 home-server debugfs.plugin[10572]: Zswap is disabled
+ago 20 13:44:55 home-server debugfs.plugin[10572]: Looking at control type "intel-rapl-mmio"
+ago 20 13:44:55 home-server debugfs.plugin[10572]: Looking at control type "intel-rapl"
+ago 20 13:44:55 home-server debugfs.plugin[10572]: Found zone: "psys"
+ago 20 13:44:55 home-server debugfs.plugin[10572]: Found zone: "package-0"
+ago 20 13:44:55 home-server debugfs.plugin[10572]: Found zone: "core"
+ago 20 13:44:55 home-server debugfs.plugin[10572]: Found zone: "uncore"
+ago 20 13:44:55 home-server debugfs.plugin[10572]: SENSORS max data collection latency is 284us (average 271us), setting update_every to 1s (default is 1s)
+ago 20 13:44:55 home-server netdata[10207]: DISKSPACE: Mount point '/run/netns/wg' (disk '/run/netns/wg', filesystem 'nsfs', root 'net:[4026532499]') is not a directory.
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="check success" plugin=go.d collector=systemdunits job=service-units
+ago 20 13:44:55 home-server netdata[10559]: level=info msg="started, data collection interval 10s" plugin=go.d collector=systemdunits job=service-units
+ago 20 13:44:55 home-server freeipmi.plugin[10565]: main(): sensors failed to initialize. Calling DISABLE.
+ago 20 13:44:55 home-server netdata[10207]: PLUGINSD: plugin called DISABLE. Disabling it.
+ago 20 13:44:55 home-server netdata[10207]: PLUGINSD: 'host:home-server', '/nix/store/nm1i7xh0p3q6c5cmg5gi8fh61cmi3q0d-wrapped-plugins/libexec/netdata/plugins.d/freeipmi.plugin' (pid 10565) disconnected after 0 successful data collections.
+ago 20 13:44:55 home-server netdata[10207]: PLUGINSD: 'host:home-server', '/nix/store/nm1i7xh0p3q6c5cmg5gi8fh61cmi3q0d-wrapped-plugins/libexec/netdata/plugins.d/freeipmi.plugin' (pid 10565) does not generate useful output but it reports success (exits with 0). Will not start it again - it is now disabled..
+ago 20 13:44:56 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:44:56 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:44:56 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:44:56 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:44:56 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:44:56 home-server netdata[10527]: python.d INFO: plugin[main] : '/etc/netdata/conf.d/python.d.conf' was not found
+ago 20 13:44:56 home-server netdata[10527]: python.d WARNING: plugin[main] : 'pythond-jobs-statuses.json' was not found
+ago 20 13:44:56 home-server netdata[10527]: python.d INFO: plugin[main] : [go_expvar] is disabled in the configuration file, skipping it
+ago 20 13:44:56 home-server netdata[10527]: python.d WARNING: plugin[main] : [haproxy] error on loading source : ModuleNotFoundError("No module named 'urllib3.packages.six.moves'"), skipping it
+ago 20 13:44:56 home-server netdata[10527]: python.d WARNING: plugin[main] : [pandas] error on loading source : ModuleNotFoundError("No module named 'pandas'"), skipping it
+ago 20 13:44:56 home-server netdata[10527]: python.d WARNING: plugin[main] : [traefik] error on loading source : ModuleNotFoundError("No module named 'urllib3.packages.six.moves'"), skipping it
+ago 20 13:44:56 home-server netdata[10527]: python.d INFO: plugin[main] : no jobs to serve
+ago 20 13:44:56 home-server netdata[10527]: python.d INFO: plugin[main] : exiting from main...
+ago 20 13:44:56 home-server netdata[10207]: PLUGINSD: plugin called DISABLE. Disabling it.
+ago 20 13:44:56 home-server netdata[10207]: PLUGINSD: 'host:home-server', '/nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/python.d.plugin' (pid 10527) disconnected after 0 successful data collections.
+ago 20 13:44:56 home-server netdata[10207]: PLUGINSD: 'host:home-server', '/nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/python.d.plugin' (pid 10527) does not generate useful output but it reports success (exits with 0). Will not start it again - it is now disabled..
+ago 20 13:44:57 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:44:57 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:44:57 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:44:57 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:44:57 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:44:58 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:44:58 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:44:58 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:44:58 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:44:58 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:44:59 home-server netdata[10559]: level=error msg="check failed: server 'http://127.0.0.1:9292/metrics' returned HTTP status code 404 (404 Not Found)" plugin=go.d collector=prometheus job=netapp_ontap_api_exporter_local
+ago 20 13:44:59 home-server netdata[10559]: level=error msg="check failed: error on pinging the Postgres database [host=/var/run/postgresql dbname=postgres user=postgres]: failed to connect to `host=/var/run/postgresql user=postgres database=postgres`: server error (FATAL: Peer authentication failed for user \"postgres\" (SQLSTATE 28000))" plugin=go.d collector=postgres job=local
+ago 20 13:44:59 home-server netdata[10559]: level=error msg="check failed: error on pinging the Postgres database [host=/var/run/postgresql dbname=postgres user=netdata]: failed to connect to `host=/var/run/postgresql user=netdata database=postgres`: server error (FATAL: role \"netdata\" does not exist (SQLSTATE 28000))" plugin=go.d collector=postgres job=local
+ago 20 13:44:59 home-server netdata[10559]: level=error msg="check failed: error on pinging the Postgres database [postgresql://netdata@127.0.0.1:5432/postgres]: failed to connect to `host=127.0.0.1 user=netdata database=postgres`: failed SASL auth (FATAL: password authentication failed for user \"netdata\" (SQLSTATE 28P01))" plugin=go.d collector=postgres job=local
+ago 20 13:44:59 home-server netdata[10559]: level=error msg="check failed: error on parsing response from 'http://127.0.0.1:8989/maxscale': invalid character '<' looking for beginning of value" plugin=go.d collector=maxscale job=local
+ago 20 13:44:59 home-server netdata[10559]: level=error msg="check failed: failed to parse prometheus metrics: expected a valid start token, got \"<\" (\"INVALID\") while parsing: \"<\"" plugin=go.d collector=prometheus job=kamailio_exporter_local
+ago 20 13:44:59 home-server netdata[10559]: level=error msg="check failed: Get \"https://127.0.0.1/login?returnUrl=%2Fmetrics\": tls: failed to verify certificate: x509: cannot validate certificate for 127.0.0.1 because it doesn't contain any IP SANs" plugin=go.d collector=prometheus job=jitsi_videobridge_exporter_local
+ago 20 13:44:59 home-server netdata[10559]: level=error msg="check failed: failed to parse prometheus metrics: expected a valid start token, got \"<\" (\"INVALID\") while parsing: \"<\"" plugin=go.d collector=prometheus job=pushgateway_local
+ago 20 13:44:59 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:44:59 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:44:59 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:44:59 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:44:59 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:00 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:00 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:00 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:00 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:00 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:00 home-server netdata[10207]: Dimension metadata check has been scheduled to run (max id = 5996)
+ago 20 13:45:00 home-server netdata[10207]: Chart metadata check has been scheduled to run (max id = 2499)
+ago 20 13:45:00 home-server netdata[10207]: Chart label metadata check has been scheduled to run (max id = 7929)
+ago 20 13:45:01 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:01 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:01 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:01 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:01 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:02 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:02 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:02 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:02 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:02 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:03 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:03 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:03 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:03 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:03 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:04 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:04 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:04 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:04 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:04 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:05 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:05 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:05 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:05 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:05 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:06 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:06 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:06 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:06 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:06 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:06 home-server cgroup-name.sh[10847]: cgroup 'user.slice_user-1000.slice_user_1000.service_init.scope' is called 'user.slice_user-1000.slice_user_1000.service_init.scope', labels ''
+ago 20 13:45:06 home-server cgroup-name.sh[10851]: cgroup 'user.slice_user-1000.slice_session-1.scope' is called 'user.slice_user-1000.slice_session-1.scope', labels ''
+ago 20 13:45:06 home-server cgroup-name.sh[10855]: cgroup 'init.scope' is called 'init.scope', labels ''
+ago 20 13:45:06 home-server cgroup-name.sh[10859]: cgroup 'system.slice_systemd-udevd.service_udev' is called 'system.slice_systemd-udevd.service_udev', labels ''
+ago 20 13:45:06 home-server cgroup-name.sh[10863]: cgroup 'system.slice_spotizerr-app.service_libpod-payload-b9cb9f292b1db32c8c3745e0ba40819b01d70572ec14447375fc664752bfbad6' is called 'system.slice_spotizerr-app.service_libpod-payload-b9cb9f292b1db32c8c3745e0ba40819b01d70572ec14447375', labels ''
+ago 20 13:45:06 home-server cgroup-network[10864]: Runtime directory '/tmp/netdata' is not writable, falling back to '/tmp'
+ago 20 13:45:06 home-server .cgroup-network-helper.sh-wrapped[10870]: searching for network interfaces of cgroup '/sys/fs/cgroup/system.slice/spotizerr-app.service/libpod-payload-b9cb9f292b1db32c8c3745e0ba40819b01d70572ec14447375fc664752bfbad6'
+ago 20 13:45:06 home-server spawn-unnamed[10865]: SPAWN SERVER: child with pid 10866 (request 1) exited with exit code 1: /nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/cgroup-network-helper.sh --cgroup /sys/fs/cgroup/system.slice/spotizerr-app.service/libpod-payload-b9cb9f292b1db32c8c3745e0ba40819b01d70572ec14447375fc664752bfbad6
+ago 20 13:45:06 home-server spawn-callback[10897]: PROCFILE: Cannot rewind on file '/proc/10897/net/dev'.
+ago 20 13:45:06 home-server spawn-callback[10897]: Cannot read file '/proc/net/dev'
+ago 20 13:45:06 home-server spawn-callback[10897]: no host interface list.
+ago 20 13:45:06 home-server spawn-plugins[10220]: SPAWN SERVER: child with pid 10864 (request 22) exited with exit code 1: /nix/store/nm1i7xh0p3q6c5cmg5gi8fh61cmi3q0d-wrapped-plugins/libexec/netdata/plugins.d/cgroup-network --cgroup /sys/fs/cgroup/system.slice/spotizerr-app.service/libpod-payload-b9cb9f292b1db32c8c3745e0ba40819b01d70572ec14447375fc664752bfbad6
+ago 20 13:45:06 home-server cgroup-name.sh[10901]: cgroup 'system.slice_spotizerr-app.service_runtime' is called 'system.slice_spotizerr-app.service_runtime', labels ''
+ago 20 13:45:06 home-server cgroup-network[10902]: Runtime directory '/tmp/netdata' is not writable, falling back to '/tmp'
+ago 20 13:45:06 home-server .cgroup-network-helper.sh-wrapped[10908]: searching for network interfaces of cgroup '/sys/fs/cgroup/system.slice/spotizerr-app.service/runtime'
+ago 20 13:45:06 home-server spawn-unnamed[10903]: SPAWN SERVER: child with pid 10904 (request 1) exited with exit code 1: /nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/cgroup-network-helper.sh --cgroup /sys/fs/cgroup/system.slice/spotizerr-app.service/runtime
+ago 20 13:45:06 home-server spawn-callback[10915]: PROCFILE: Cannot rewind on file '/proc/10915/net/dev'.
+ago 20 13:45:06 home-server spawn-callback[10915]: Cannot read file '/proc/net/dev'
+ago 20 13:45:06 home-server spawn-callback[10915]: no host interface list.
+ago 20 13:45:06 home-server spawn-plugins[10220]: SPAWN SERVER: child with pid 10902 (request 24) exited with exit code 1: /nix/store/nm1i7xh0p3q6c5cmg5gi8fh61cmi3q0d-wrapped-plugins/libexec/netdata/plugins.d/cgroup-network --cgroup /sys/fs/cgroup/system.slice/spotizerr-app.service/runtime
+ago 20 13:45:06 home-server cgroup-name.sh[10919]: cgroup 'system.slice_nix-daemon.service_supervisor' is called 'system.slice_nix-daemon.service_supervisor', labels ''
+ago 20 13:45:06 home-server cgroup-network[10920]: Runtime directory '/tmp/netdata' is not writable, falling back to '/tmp'
+ago 20 13:45:06 home-server .cgroup-network-helper.sh-wrapped[10926]: searching for network interfaces of cgroup '/sys/fs/cgroup/system.slice/nix-daemon.service/supervisor'
+ago 20 13:45:06 home-server spawn-unnamed[10921]: SPAWN SERVER: child with pid 10922 (request 1) exited with exit code 1: /nix/store/qk2hhjhlfg5z7cvm510kg34b1lsd8i8f-netdata-2.5.1/libexec/netdata/plugins.d/cgroup-network-helper.sh --cgroup /sys/fs/cgroup/system.slice/nix-daemon.service/supervisor
+ago 20 13:45:06 home-server spawn-callback[10933]: PROCFILE: Cannot rewind on file '/proc/10933/net/dev'.
+ago 20 13:45:06 home-server spawn-callback[10933]: Cannot read file '/proc/net/dev'
+ago 20 13:45:06 home-server spawn-callback[10933]: no host interface list.
+ago 20 13:45:06 home-server spawn-plugins[10220]: SPAWN SERVER: child with pid 10920 (request 26) exited with exit code 1: /nix/store/nm1i7xh0p3q6c5cmg5gi8fh61cmi3q0d-wrapped-plugins/libexec/netdata/plugins.d/cgroup-network --cgroup /sys/fs/cgroup/system.slice/nix-daemon.service/supervisor
+ago 20 13:45:07 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:07 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:07 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:07 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:07 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:07 home-server netdata[10207]: Cannot refresh cgroup /system.slice/nix-daemon.service/supervisor cpu limit by reading '/sys/fs/cgroup/system.slice/nix-daemon.service/supervisor/cpu.max'. Will not update its limit anymore.
+ago 20 13:45:08 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:08 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:08 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:08 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:08 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:09 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:09 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:09 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:09 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:09 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:10 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:10 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:10 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:10 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:10 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:11 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:11 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:11 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:11 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:11 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:12 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:12 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:12 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:12 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:12 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:13 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:13 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:13 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:13 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:13 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:14 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:14 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:14 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:14 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:14 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:15 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:15 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:15 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:15 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:15 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:16 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:16 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:16 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:16 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:16 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:17 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:17 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:17 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:17 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:17 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:18 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:18 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:18 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:18 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:18 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:19 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:19 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:19 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:19 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:19 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:20 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:20 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:20 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:20 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:20 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:21 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:21 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:21 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:21 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:21 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:22 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:22 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:22 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:22 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:22 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:23 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:23 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:23 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:23 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:23 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:24 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:24 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:24 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:24 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:24 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:25 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:25 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:25 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:25 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:25 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:26 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:26 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:26 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:26 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:26 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:27 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:27 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:27 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:27 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:27 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:28 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:28 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:28 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:28 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:28 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:29 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:29 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:29 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:29 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:29 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:30 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:30 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:30 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:30 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:30 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:31 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:31 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:31 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:31 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:31 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:32 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:32 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:32 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:32 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:32 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:33 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:33 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:33 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:33 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:33 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:34 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:34 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:34 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:34 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:34 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:35 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:35 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:35 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:35 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:35 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:36 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:36 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:36 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:36 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:36 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:37 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:37 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:37 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:37 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:37 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:38 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:38 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:38 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:38 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:38 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:39 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:39 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:39 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:39 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:39 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:40 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:40 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:40 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:40 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:40 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:41 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:41 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:41 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:41 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:41 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:42 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:42 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:42 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:42 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:42 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:43 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:43 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:43 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:43 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:43 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:44 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:44 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:44 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:44 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:44 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:45 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:45 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:45 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:45 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:45 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:46 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:46 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:46 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:46 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:46 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:47 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:47 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:47 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:47 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:47 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:48 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:48 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:48 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:48 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:48 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:49 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:49 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:49 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:49 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:49 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:50 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:50 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:50 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:50 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:50 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:51 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:51 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:51 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:51 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:51 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:52 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:52 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:52 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:52 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:52 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:53 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:53 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:53 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:53 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:53 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:54 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:54 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:54 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:54 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:54 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:55 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:55 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:55 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:55 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:55 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:56 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:56 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:56 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:56 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:56 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:57 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:57 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:57 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:57 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:57 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:58 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:58 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:58 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:58 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:58 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:45:59 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:45:59 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:45:59 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:45:59 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:45:59 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:46:00 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:46:00 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:46:00 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:46:00 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:46:00 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:46:01 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:46:01 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:46:01 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:46:01 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:46:01 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:46:02 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:46:02 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:46:02 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:46:02 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:46:02 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:46:03 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:46:03 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:46:03 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:46:03 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:46:03 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:46:04 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:46:04 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:46:04 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:46:04 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:46:04 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:46:05 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:46:05 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:46:05 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:46:05 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:46:05 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:46:06 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:46:06 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:46:06 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:46:06 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:46:06 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:46:07 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:46:07 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:46:07 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:46:07 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:46:07 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:46:08 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:46:08 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:46:08 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:46:08 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:46:08 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:46:09 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:46:09 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:46:09 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:46:09 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:46:09 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:46:10 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:46:10 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:46:10 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:46:10 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:46:10 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:46:11 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:46:11 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:46:11 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:46:11 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:46:11 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:46:12 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:46:12 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:46:12 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:46:12 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:46:12 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
+ago 20 13:46:13 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat'.
+ago 20 13:46:13 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/sockstat6'.
+ago 20 13:46:13 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/netstat'.
+ago 20 13:46:13 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/stat/nf_conntrack'.
+ago 20 13:46:13 home-server netdata[10207]: PROCFILE: Cannot rewind on file '/proc/10207/net/dev'.
