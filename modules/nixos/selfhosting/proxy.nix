@@ -19,6 +19,8 @@ let
   hostname = "nebula.local";
 
   proxies = lib.filter ({ condition, ... }: condition) [
+    (makeService "netdata" 19999 true)
+
     # (makeService "syncthing" 8384 cfg.syncthing) DO NOT PROXY as it doesn't have a password
     (makeService "immich" 2283 cfg.immich)
 

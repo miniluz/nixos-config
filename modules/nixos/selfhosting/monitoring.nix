@@ -12,6 +12,15 @@ in
   config = lib.mkIf (cfg.enable && cfg.server.enable) {
     age.secrets.monitoring-webhook.file = "${host-secrets}/monitoring-webhook.age"; # Create the systemd service
 
+    services.netdata = {
+      enable = true;
+      config = {
+        global = {
+          "bind to" = "*";
+        };
+      };
+    };
+
     systemd.services.daily-system-monitor = {
       description = "Daily System Monitor";
       serviceConfig = {
