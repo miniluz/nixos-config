@@ -11,23 +11,7 @@ let
     deviceName: _deviceConfig: deviceName != hostname
   ) devices;
 
-  allSharedFolders = {
-    "~/Polar" = {
-      id = "miniluz-polar";
-      devices = [
-        "home-server"
-        "moonlight"
-        "sunflare"
-      ];
-      backup = true;
-    };
-
-    "~/Sync" = {
-      id = "miniluz-sync";
-      devices = builtins.attrNames (import ./_devices.nix);
-      backup = true;
-    };
-  };
+  allSharedFolders = import ./_shared_folders.nix;
 
   foldersWithHostname = lib.filterAttrs (
     _folder-name: folder-config: lib.any (device: device == hostname) folder-config.devices

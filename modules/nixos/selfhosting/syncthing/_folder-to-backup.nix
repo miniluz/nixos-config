@@ -13,13 +13,10 @@ let
 
   folderToBackup =
     folder-name: folder-config:
-    if folder-config.backup then
-      lib.nameValuePair "syncthing-${folder-config.id}" {
-        paths = [
-          (folderPathToBackupPath folder-name)
-        ];
-      }
-    else
-      { };
+    lib.nameValuePair "syncthing-${folder-config.id}" {
+      paths = [
+        (folderPathToBackupPath folder-name)
+      ];
+    };
 in
-lib.mapAttrs' folderToBackup
+folders: lib.mapAttrs' folderToBackup (lib.filterAttrs (_n: v: v.backup) folders)
