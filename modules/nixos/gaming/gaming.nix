@@ -15,7 +15,6 @@ in
       # itch
 
       winetricks
-      protontricks
       mangohud
     ];
 
@@ -28,6 +27,7 @@ in
         pkgs.proton-ge-bin
       ];
       gamescopeSession.enable = true;
+      protontricks.enable = true;
     };
 
     programs.gamemode.enable = true;
