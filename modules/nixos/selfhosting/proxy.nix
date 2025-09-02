@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  host-secrets,
   ...
 }:
 let
@@ -12,7 +11,7 @@ let
     name = "${name}.${hostname}";
   };
 
-  hostname = "miniluz.dev";
+  hostname = "snowy-trench.ts.net";
 
   proxies = lib.filter ({ condition, ... }: condition) [
     # (makeService "syncthing" 8384 cfg.syncthing) DO NOT PROXY as it doesn't have a password
@@ -44,72 +43,19 @@ let
 
     # (makeService "lidarr" 8686 cfg.jellyfin)
   ];
-
-  domains = [ hostname ] ++ (map ({ name, ... }: name) proxies);
 in
 {
   config = lib.mkIf (cfg.enable && cfg.server.enable) {
-
-    age.secrets.hetzner-dns-api-key = {
-      file = "${host-secrets}/hetzner-dns-api-key.age";
-      mode = "600";
-      owner = "acme";
-      group = "acme";
-    };
-
-    services.dnsmasq = {
-      enable = true;
-      resolveLocalQueries = false;
-
-      settings = {
-        # Listen on all interfaces (or specify specific ones)
-
-        # Don't read /etc/hosts
-        no-hosts = true;
-        no-poll = true;
-        no-resolv = true;
-
-        # Custom DNS entries
-        address =
-          let
-            makeSubdomain = name: "/${name}/${cfg.server.address}";
-          in
-          lib.map makeSubdomain domains;
-
-        # server = [ "100.100.100.100" ];
-      };
-
-    };
 
     networking.firewall = {
       allowedTCPPorts = [
         80
         443
       ];
-
-      interfaces."tailscale0" = {
-        allowedUDPPorts = [ 53 ];
-        allowedTCPPorts = [ 53 ];
-      };
     };
 
-    security.acme = {
-      acceptTerms = true;
-      defaults.email = "javiermiladossantos@gmail.com";
-      certs.${hostname} = {
-        domain = "*.${hostname}";
-        group = "nginx";
-        dnsProvider = "hetzner";
-        environmentFile = config.age.secrets.hetzner-dns-api-key.path;
-      };
-    };
-
-    services.nginx = {
+    services.caddy = {
       enable = true;
-
-      recommendedTlsSettings = true;
-      recommendedOptimisation = true;
-      recommendedGzipSettings = true;
 
       virtualHosts =
         let
@@ -117,21 +63,7 @@ in
             { name, port, ... }:
             {
               inherit name;
-              value = {
-                useACMEHost = hostname;
-                forceSSL = true;
-
-                # extraConfig = ''
-                #   ssl_stapling off;
-                #   ssl_stapling_verify off;
-                # '';
-
-                locations."/" = {
-                  recommendedProxySettings = true;
-                  proxyWebsockets = true;
-                  proxyPass = "http://127.0.0.1:${builtins.toString port}";
-                };
-              };
+              value = { };
             };
         in
         lib.pipe proxies [
