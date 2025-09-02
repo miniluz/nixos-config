@@ -11,7 +11,7 @@ let
     name = "${name}.${hostname}";
   };
 
-  hostname = "snowy-trench.ts.net";
+  hostname = "home-server.snowy-trench.ts.net";
 
   proxies = lib.filter ({ condition, ... }: condition) [
     # (makeService "syncthing" 8384 cfg.syncthing) DO NOT PROXY as it doesn't have a password
@@ -43,15 +43,46 @@ let
 
     # (makeService "lidarr" 8686 cfg.jellyfin)
   ];
+
+  domains = [ hostname ] ++ (map ({ name, ... }: name) proxies);
 in
 {
   config = lib.mkIf (cfg.enable && cfg.server.enable) {
+
+    services.dnsmasq = {
+      enable = true;
+      resolveLocalQueries = false;
+
+      settings = {
+        # Listen on all interfaces (or specify specific ones)
+
+        # Don't read /etc/hosts
+        no-hosts = true;
+        no-poll = true;
+        no-resolv = true;
+
+        # Custom DNS entries
+        address =
+          let
+            makeSubdomain = name: "/${name}/${cfg.server.address}";
+          in
+          lib.map makeSubdomain domains;
+
+        # server = [ "100.100.100.100" ];
+      };
+
+    };
 
     networking.firewall = {
       allowedTCPPorts = [
         80
         443
       ];
+
+      interfaces."tailscale0" = {
+        allowedUDPPorts = [ 53 ];
+        allowedTCPPorts = [ 53 ];
+      };
     };
 
     services.caddy = {
@@ -63,7 +94,9 @@ in
             { name, port, ... }:
             {
               inherit name;
-              value = { };
+              value = {
+                listenAddresses = [ "127.0.0.1:${builtins.toString port}" ];
+              };
             };
         in
         lib.pipe proxies [
