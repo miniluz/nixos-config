@@ -7,20 +7,14 @@
 let
   cfg = config.miniluz.selfhosting;
 
-  makeServiceWithLocationConfig = name: port: condition: locationConfig: {
-    inherit port condition locationConfig;
+  makeService = name: port: condition: {
+    inherit port condition;
     name = "${name}.${hostname}";
   };
 
-  makeService =
-    name: port: condition:
-    makeServiceWithLocationConfig name port condition { };
-
-  hostname = "nebula.local";
+  hostname = "miniluz.dev";
 
   proxies = lib.filter ({ condition, ... }: condition) [
-    (makeService "netdata" 19999 true)
-
     # (makeService "syncthing" 8384 cfg.syncthing) DO NOT PROXY as it doesn't have a password
     (makeService "immich" 2283 cfg.immich)
 
@@ -29,9 +23,7 @@ let
     # --- Jellyfin ---
     (makeService "transmission" 9091 cfg.jellyfin)
 
-    (makeServiceWithLocationConfig "jellyfin" 8096 cfg.jellyfin {
-      extraConfig = ''add_header Content-Security-Policy "default-src https: data: blob:; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/accentlist.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/base.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/bottombarprogress.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/fixes.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/jf_font.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/overlayprogress.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/rounding.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/rounding_circlehover.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/smallercast.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/rounding_circlehover.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/cornerindicator/indicator_floating.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/cornerindicator/indicator_corner.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/effects/glassy.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/effects/pan-animation.css https://ctalvio.github.io/Monochromic/backdrop-hack_style.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/effects/hoverglow.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/effects/scrollfade.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/episodelist/episodes_compactlist.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/episodelist/episodes_grid.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/fields/fields_border.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/fields/fields_noborder.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/header/header_transparent.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/header/header_transparent-dashboard.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/login/login_frame.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/login/login_minimalistic.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/login/login_frame.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/presets/monochromic_preset.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/presets/kaleidochromic_preset.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/presets/novachromic_preset.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/titlepage/title_banner.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/titlepage/title_banner-logo.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/titlepage/title_simple.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/titlepage/title_simple-logo.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/type/light.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/type/dark.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/type/colorful.css https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/type/dark_withaccent.css https://fonts.googleapis.com/css2; script-src 'self' 'unsafe-inline' https://www.gstatic.com/cv/js/sender/v1/cast_sender.js worker-src 'self' blob:; connect-src 'self'; object-src 'none'; frame-ancestors 'self'";'';
-    })
+    (makeService "jellyfin" 8096 cfg.jellyfin)
     (makeService "audiobookshelf" 9292 cfg.jellyfin)
 
     (makeService "jellyseer" 5055 cfg.jellyfin)
@@ -42,7 +34,7 @@ let
     (makeService "sonarr" 8989 cfg.jellyfin)
     (makeService "bazarr" 6767 cfg.jellyfin)
     (makeService "spotizerr" 7171 cfg.jellyfin)
-    (makeService "podgrab" 4242 cfg.jellyfin)
+    (makeService "podgrab" 7171 cfg.jellyfin)
 
     (makeService "readarr" 8787 cfg.jellyfin)
     (makeService "readarr-audiobook" 9494 cfg.jellyfin)
@@ -58,11 +50,11 @@ in
 {
   config = lib.mkIf (cfg.enable && cfg.server.enable) {
 
-    age.secrets."nebula.local.key" = {
-      file = "${host-secrets}/nebula.local.key.age";
+    age.secrets.hetzner-dns-api-key = {
+      file = "${host-secrets}/hetzner-dns-api-key.age";
       mode = "600";
-      owner = "nginx";
-      group = "nginx";
+      owner = "acme";
+      group = "acme";
     };
 
     services.dnsmasq = {
@@ -71,7 +63,6 @@ in
 
       settings = {
         # Listen on all interfaces (or specify specific ones)
-        interface = "tailscale0";
 
         # Don't read /etc/hosts
         no-hosts = true;
@@ -86,8 +77,8 @@ in
           lib.map makeSubdomain domains;
 
         # server = [ "100.100.100.100" ];
-
       };
+
     };
 
     networking.firewall = {
@@ -102,10 +93,16 @@ in
       };
     };
 
-    # security.acme = {
-    #   acceptTerms = true;
-    #   defaults.email = "javiermiladossantos@gmail.com";
-    # };
+    security.acme = {
+      acceptTerms = true;
+      defaults.email = "javiermiladossantos@gmail.com";
+      certs.${hostname} = {
+        domain = "*.${hostname}";
+        group = "nginx";
+        dnsProvider = "hetzner";
+        environmentFile = config.age.secrets.hetzner-dns-api-key.path;
+      };
+    };
 
     services.nginx = {
       enable = true;
@@ -116,35 +113,24 @@ in
 
       virtualHosts =
         let
-          sslCertificate = "${host-secrets}/nebula.local.crt";
-          sslCertificateKey = config.age.secrets."nebula.local.key".path;
-
           makeVirtualHost =
-            {
-              name,
-              port,
-              locationConfig,
-              ...
-            }:
+            { name, port, ... }:
             {
               inherit name;
               value = {
-                inherit sslCertificate sslCertificateKey;
+                useACMEHost = hostname;
                 forceSSL = true;
 
-                extraConfig = ''
-                  ssl_stapling off;
-                  ssl_stapling_verify off;
-                '';
+                # extraConfig = ''
+                #   ssl_stapling off;
+                #   ssl_stapling_verify off;
+                # '';
 
-                locations."/" = lib.mkMerge [
-                  {
-                    recommendedProxySettings = true;
-                    proxyWebsockets = true;
-                    proxyPass = "http://127.0.0.1:${builtins.toString port}";
-                  }
-                  locationConfig
-                ];
+                locations."/" = {
+                  recommendedProxySettings = true;
+                  proxyWebsockets = true;
+                  proxyPass = "http://127.0.0.1:${builtins.toString port}";
+                };
               };
             };
         in
@@ -153,6 +139,5 @@ in
           lib.listToAttrs
         ];
     };
-
   };
 }
