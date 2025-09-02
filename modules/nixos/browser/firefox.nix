@@ -50,6 +50,7 @@ in
             (extension "sidebery" "{3c078156-979c-498b-8990-85f7987dd929}")
             # (extension "vimium-ff" "{d7742d87-e61d-4b78-b8a1-b469842139fa}")
             (extension "catppuccin-web-file-icons" "{bbb880ce-43c9-47ae-b746-c3e0096c5b76}")
+            (extension "untrap-for-youtube" "{2662ff67-b302-4363-95f3-b050218bd72c}")
           ]
           // {
             "*".installation_mode = "blocked";
