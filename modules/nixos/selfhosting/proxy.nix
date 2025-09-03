@@ -44,8 +44,6 @@ let
 
     # (makeService "lidarr" 8686 cfg.jellyfin)
   ];
-
-  domains = [ baseUrl ] ++ (map ({ name, ... }: name) proxies);
 in
 {
   config = lib.mkIf (cfg.enable && cfg.server.enable) {
@@ -61,10 +59,10 @@ in
         };
         zone = [
           {
-            domain = "nebula.local";
+            domain = baseUrl;
             file =
               let
-                makeCnameRecord = domain: "${domain} IN CNAME ${tailscaleHost}.";
+                makeCnameRecord = { name, ... }: "${name} IN CNAME ${tailscaleHost}.";
                 zoneFileContent = ''
                   $TTL 3600
                   $ORIGIN ${baseUrl}.
@@ -88,7 +86,7 @@ in
                   @ IN A ${cfg.server.address}
 
                   ; CNAME Records for subdomains
-                  ${lib.concatStringsSep "\n" (lib.map makeCnameRecord domains)}
+                  ${lib.concatStringsSep "\n" (lib.map makeCnameRecord proxies)}
                 '';
               in
               pkgs.writeTextFile {
