@@ -113,12 +113,19 @@ in
 
     services.caddy = {
       enable = true;
-
       enableReload = false;
+
+      globalConfig = ''
+        auto_https off
+      '';
 
       virtualHosts.${tailscaleHost} = {
         serverAliases = lib.map (proxy: "${proxy.name}.${baseUrl}") proxies;
         extraConfig = ''
+          tls {
+            get_certificate tailscale
+          }
+
           # Route based on the Host header
           ${lib.concatStringsSep "\n" (
             lib.map (proxy: ''
