@@ -9,4 +9,5 @@ in
   "actual-password.age".publicKeys = [ miniluz ];
   "monitoring-webhook.age".publicKeys = [ miniluz ];
   "recyclarr-keys.age".publicKeys = [ miniluz ];
+  "hetzner-dns-api-key.age".publicKeys = [ miniluz ];
 }
