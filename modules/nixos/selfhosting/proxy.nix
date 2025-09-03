@@ -91,7 +91,14 @@ in
 
     security.acme = {
       acceptTerms = true;
-      defaults.email = "javiermiladossantos@gmail.com";
+      defaults = {
+        email = "javiermiladossantos@gmail.com";
+        extraLegoFlags = [
+          "--dns.resolvers"
+          "8.8.8.8:53"
+        ];
+      };
+
       certs.${baseUrl} = {
         domain = "*.${baseUrl}";
         group = "nginx";
