@@ -62,7 +62,8 @@ in
             domain = baseUrl;
             file =
               let
-                makeCnameRecord = { name, ... }: "${name} IN CNAME ${tailscaleHost}.";
+                makeCnameRecord = { name, ... }: "${name} IN A ${cfg.server.address}.";
+                # makeCnameRecord = { name, ... }: "${name} IN CNAME ${tailscaleHost}.";
                 zoneFileContent = ''
                   $TTL 3600
                   $ORIGIN ${baseUrl}.
@@ -113,6 +114,8 @@ in
     services.caddy = {
       enable = true;
 
+      enableReload = false;
+
       virtualHosts =
         let
           makeVirtualHost =
@@ -120,7 +123,13 @@ in
             {
               name = "${name}.${baseUrl}";
               value = {
-                listenAddresses = [ "127.0.0.1:${builtins.toString port}" ];
+                listenAddresses = [
+                  "0.0.0.0:443"
+                  ":::443"
+                ];
+                extraConfig = ''
+                  reverse_proxy 127.0.0.1:${builtins.toString port}
+                '';
               };
             };
         in
