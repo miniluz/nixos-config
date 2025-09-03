@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   lib,
   ...
@@ -7,11 +8,11 @@ let
   cfg = config.miniluz.selfhosting;
 
   makeService = name: port: condition: {
-    inherit port condition;
-    name = "${name}.${hostname}";
+    inherit name port condition;
   };
 
-  hostname = "home-server.snowy-trench.ts.net";
+  tailscaleHost = "home-server.snowy-trench.ts.net";
+  baseUrl = "nebula.local";
 
   proxies = lib.filter ({ condition, ... }: condition) [
     # (makeService "syncthing" 8384 cfg.syncthing) DO NOT PROXY as it doesn't have a password
@@ -44,33 +45,59 @@ let
     # (makeService "lidarr" 8686 cfg.jellyfin)
   ];
 
-  domains = [ hostname ] ++ (map ({ name, ... }: name) proxies);
+  domains = [ baseUrl ] ++ (map ({ name, ... }: name) proxies);
 in
 {
   config = lib.mkIf (cfg.enable && cfg.server.enable) {
 
-    services.dnsmasq = {
+    services.knot = {
       enable = true;
-      resolveLocalQueries = false;
-
       settings = {
-        # Listen on all interfaces (or specify specific ones)
+        server = {
+          listen = [
+            "0.0.0.0@53"
+            "::@53"
+          ];
+        };
+        zone = [
+          {
+            domain = "nebula.local";
+            file =
+              let
+                makeCnameRecord = domain: "${domain} IN CNAME ${tailscaleHost}.";
+                zoneFileContent = ''
+                  $TTL 3600
+                  $ORIGIN ${baseUrl}.
 
-        # Don't read /etc/hosts
-        no-hosts = true;
-        no-poll = true;
-        no-resolv = true;
+                  ; SOA Record
+                  @ IN SOA ns1.${baseUrl}. admin.${baseUrl}. (
+                      2025080301 ; serial (YYYYMMDDNN)
+                      3600       ; refresh (1 hour)
+                      1800       ; retry (30 minutes)  
+                      1209600    ; expire (2 weeks)
+                      3600       ; minimum TTL (1 hour)
+                  )
 
-        # Custom DNS entries
-        address =
-          let
-            makeSubdomain = name: "/${name}/${cfg.server.address}";
-          in
-          lib.map makeSubdomain domains;
+                  ; Name Server Record
+                  @ IN NS ns1.${baseUrl}.
 
-        # server = [ "100.100.100.100" ];
+                  ; A Record for the name server
+                  ns1 IN A ${cfg.server.address}
+
+                  ; Root domain A record
+                  @ IN A ${cfg.server.address}
+
+                  ; CNAME Records for subdomains
+                  ${lib.concatStringsSep "\n" (lib.map makeCnameRecord domains)}
+                '';
+              in
+              pkgs.writeTextFile {
+                name = "nebula.local.zone";
+                text = zoneFileContent;
+              };
+          }
+        ];
       };
-
     };
 
     networking.firewall = {
@@ -93,7 +120,7 @@ in
           makeVirtualHost =
             { name, port, ... }:
             {
-              inherit name;
+              name = "${name}.${baseUrl}";
               value = {
                 listenAddresses = [ "127.0.0.1:${builtins.toString port}" ];
               };
