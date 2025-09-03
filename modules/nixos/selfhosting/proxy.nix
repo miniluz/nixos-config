@@ -62,7 +62,7 @@ in
             domain = baseUrl;
             file =
               let
-                makeCnameRecord = { name, ... }: "${name} IN A ${cfg.server.address}.";
+                makeCnameRecord = { name, ... }: "${name} IN A 100.64.1.1";
                 # makeCnameRecord = { name, ... }: "${name} IN CNAME ${tailscaleHost}.";
                 zoneFileContent = ''
                   $TTL 3600
