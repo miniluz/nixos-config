@@ -62,8 +62,7 @@ in
             domain = baseUrl;
             file =
               let
-                makeCnameRecord = { name, ... }: "${name} IN A 100.64.1.1";
-                # makeCnameRecord = { name, ... }: "${name} IN CNAME ${tailscaleHost}.";
+                makeCnameRecord = { name, ... }: "${name} IN CNAME ${tailscaleHost}.";
                 zoneFileContent = ''
                   $TTL 3600
                   $ORIGIN ${baseUrl}.
@@ -116,27 +115,27 @@ in
 
       enableReload = false;
 
-      virtualHosts =
-        let
-          makeVirtualHost =
-            { name, port, ... }:
-            {
-              name = "${name}.${baseUrl}";
-              value = {
-                listenAddresses = [
-                  "0.0.0.0:443"
-                  ":::443"
-                ];
-                extraConfig = ''
-                  reverse_proxy 127.0.0.1:${builtins.toString port}
-                '';
-              };
-            };
-        in
-        lib.pipe proxies [
-          (lib.map makeVirtualHost)
-          lib.listToAttrs
-        ];
+      virtualHosts.${tailscaleHost} = {
+        serverAliases = lib.map (proxy: "${proxy.name}.${baseUrl}") proxies;
+        extraConfig = ''
+          # Route based on the Host header
+          ${lib.concatStringsSep "\n" (
+            lib.map (proxy: ''
+              @${proxy.name} host ${proxy.name}.${baseUrl}
+              handle @${proxy.name} {
+                reverse_proxy 127.0.0.1:${builtins.toString proxy.port}
+              }
+            '') proxies
+          )}
+
+          # Default handler for direct access to tailscale hostname
+          handle {
+            respond "Available services: ${
+              lib.concatStringsSep ", " (lib.map (p: "${p.name}.${baseUrl}") proxies)
+            }" 200
+          }
+        '';
+      };
     };
   };
 }
