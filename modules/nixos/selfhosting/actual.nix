@@ -42,12 +42,8 @@ in
         paths = [ extractionPath ];
         # readWritePaths = [ extractionPath ];
         preHook = ''
-          echo "Generating Actual data archive"
-          echo "Setting extra certificate"
-          export NODE_EXTRA_CA_CERTS=${host-secrets}/nebula.local.crt
-
           echo "Setting server URL"
-          export SERVER_URL="https://actual.nebula.local"
+          export SERVER_URL="https://actual.home.miniluz.dev"
 
           echo "Setting server password"
           export SERVER_PASSWORD=$(cat ${secrets.actual-password.path})
