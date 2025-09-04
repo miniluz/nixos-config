@@ -9,9 +9,6 @@ let
   serverStorage = config.miniluz.selfhosting.server.serverStorage;
   mediaDir = "${serverStorage}/jellyfin-media";
   stateDir = "${serverStorage}/jellyfin-state";
-
-  podgrabDir = "${mediaDir}/library/podcasts";
-  podgrabPort = 4242;
 in
 {
   options.miniluz.selfhosting.jellyfin = lib.mkEnableOption "Jellyfin";
@@ -70,12 +67,6 @@ in
     };
 
     services.transmission.settings.rpc-host-whitelist = "transmission.nebula.local";
-
-    services.podgrab = {
-      enable = true;
-      port = podgrabPort;
-      dataDirectory = podgrabDir;
-    };
 
   };
 }

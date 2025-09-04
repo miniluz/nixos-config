@@ -24,7 +24,7 @@ let
 
 in
 {
-  config = lib.mkIf (cfg.enable && cfg.jellyfin && cfg.server.enable) {
+  config = lib.mkIf (cfg.enable && cfg.jellyfin && cfg.server.enable && false) {
     assertions = [
       {
         assertion = config.nixarr.stateDir or null != null;
