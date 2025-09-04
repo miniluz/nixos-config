@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
-  networking.hostId = "9555365f";
 
   miniluz.visual = false;
 
@@ -19,6 +18,33 @@
 
     jellyfin = true;
   };
+
+  networking =
+    let
+      ethernet-interface = "enp2s0";
+    in
+    {
+      hostId = "9555365f";
+
+      networkmanager.unmanaged = [ ethernet-interface ];
+
+      interfaces.${ethernet-interface} = {
+        useDHCP = false;
+        ipv4.addresses = [
+          {
+            address = "192.168.50.17";
+            prefixLength = 24;
+          }
+        ];
+      };
+
+      defaultGateway.address = "192.168.50.1";
+      nameservers = [
+        "8.8.8.8"
+        "8.8.4.4"
+      ];
+
+    };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
