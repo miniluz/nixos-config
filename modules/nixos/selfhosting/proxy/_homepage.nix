@@ -14,22 +14,43 @@ pkgs.writeTextFile {
         <meta charset="UTF-8">
         <title>Home Server</title>
         <script>
-          const faviconVariants = [
-            'favicon.svg',
-            'favicon-128x128.png', 'favicon-64x64.png', 'favicon-32x32.png', 'favicon-16x16.png',
-            'favicon.ico',
-            'logo.svg',
-            'logo-128x128.png', 'logo-64x64.png', 'logo-32x32.png', 'logo-16x16.png',
-            'logo.ico'
-          ];
+          const baseNames = ['favicon', 'logo'];
+          const pngSizes = ['128x128', '64x64', '32x32', '16x16'];
+          const extensions = ['svg', 'png', 'ico'];
+
+          function generateFaviconVariants() {
+            let variants = [];
+
+            for (const name of baseNames) {
+              for (const ext of extensions) {
+                if (ext === 'svg') {
+                  variants.push(name + '.svg');
+                } else if (ext === 'png') {
+                  for (const size of pngSizes) {
+                    variants.push(name + '-' + size + '.png');
+                  }
+                } else if (ext === 'ico') {
+                  variants.push(name + '.ico');
+                }
+              }
+            }
+
+            return variants;
+          }
+
+          const faviconVariants = generateFaviconVariants();
 
           function tryFavicon(img, baseUrl) {
             let index = 0;
-            img.onerror = function next() {
-              index++;
+
+            function next() {
               if (index >= faviconVariants.length) return;
-              img.src = `''${baseUrl}/''${faviconVariants[index]}`;
-            };
+              img.src = baseUrl + '/' + faviconVariants[index];
+              index++;
+            }
+
+            img.onerror = next;
+            next(); // start with the first one
           }
         </script>
         <style>
