@@ -2,6 +2,8 @@ let
   miniluz = builtins.readFile ./miniluz.pub;
 in
 {
+  "borg-ssh-ed25519.age".publicKeys = [ miniluz ];
+  "borg-pass.age".publicKeys = [ miniluz ];
   "syncthing-cert-key.age".publicKeys = [ miniluz ];
   "w0conf.age".publicKeys = [ miniluz ];
   "transmission-env.age".publicKeys = [ miniluz ];

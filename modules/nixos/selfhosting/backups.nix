@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  host-secrets,
   ...
 }:
 let
@@ -35,13 +36,16 @@ let
         preHook
         postHook
         ;
+
       extraCreateArgs = "--verbose --list --stats --checkpoint-interval 600";
-      encryption.mode = "none";
-      # encryption.mode = "repokey-blake2"
-      # encryption.passCommand = "cat /run/secrets/borg-passphrase";
-      # environment.BORG_RSH = "ssh -i /home/danbst/.ssh/id_ed25519";
-      # repo = "ssh://user@example.com:23/nebula-backups/${name}";
-      repo = "/media/backups";
+
+      encryption.mode = "repokey-blake2";
+      encryption.passCommand = "cat ${config.age.secrets.borg-pass.path}";
+
+      environment.BORG_RSH = "ssh -i ${config.age.secrets.borg-ssh-ed25519.path}";
+      repo = "ssh://u489829-sub1@u489829-sub1.your-storagebox.de/home-server-backups/${name}";
+
+      # repo = "/media/backups";
       compression = "auto,zstd";
       startAt = "daily";
 
@@ -85,7 +89,7 @@ let
   };
 
   backupsToConfig = lib.flip lib.pipe [
-    (lib.filterAttrs (_: v: v.enable == true))
+    (lib.filterAttrs (_: v: v.enable))
     (lib.mapAttrsToList backupToConfig)
     (lib.fold lib.recursiveUpdate {
       services = { };
@@ -105,17 +109,13 @@ in
 
   config =
     let
-      mappedBackupConfig = (backupsToConfig cfg.backups.backups);
+      mappedBackupConfig = backupsToConfig cfg.backups.backups;
     in
     lib.mkIf (cfg.enable && cfg.backups.enable && cfg.server.enable) (
       lib.mkMerge [
         {
-          systemd.services."notify-backup-failure" = {
-            enable = true;
-            script = ''
-              # I don't know yet...
-            '';
-          };
+          age.secrets.borg-ssh-ed25519.file = "${host-secrets}/borg-ssh-ed25519.age";
+          age.secrets.borg-pass.file = "${host-secrets}/borg-pass.age";
         }
         {
           inherit (mappedBackupConfig) services systemd;
