@@ -38,14 +38,14 @@ let
         ;
 
       extraArgs = "--verbose";
+      extraInitArgs = "--remote-path=borg-1.4 --make-parent-dirs";
       extraCreateArgs = "--list --stats --checkpoint-interval 600";
-      extraInitArgs = "--remote-path=borg-1.4";
 
       encryption.mode = "repokey-blake2";
       encryption.passCommand = "cat ${config.age.secrets.borg-pass.path}";
 
       environment.BORG_RSH = "ssh -i ${config.age.secrets.borg-ssh-ed25519.path}";
-      repo = "ssh://u489829-sub1@u489829-sub1.your-storagebox.de:23/./home-server-backups/${name}";
+      repo = "ssh://u489829-sub1@u489829-sub1.your-storagebox.de:23/home-server-backups/${name}";
 
       # repo = "/media/backups";
       compression = "auto,zstd";
