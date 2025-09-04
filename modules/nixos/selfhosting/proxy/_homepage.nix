@@ -14,44 +14,51 @@ pkgs.writeTextFile {
         <meta charset="UTF-8">
         <title>Home Server</title>
         <script>
-          const baseNames = ['favicon', 'logo'];
-          const pngSizes = ['128x128', '64x64', '32x32', '16x16'];
-          const extensions = ['svg', 'png', 'ico'];
+          async function findFavicon(url) {
+            try {
+              // Parse hostname and origin
+              const u = new URL(url);
+              const origin = u.origin;
 
-          function generateFaviconVariants() {
-            let variants = [];
+              // 1️⃣ Try the root favicon.ico
+              const icoUrl = origin + '/favicon.ico';
+              let res = await fetch(icoUrl, { method: 'HEAD' });
+              if (res.ok) return icoUrl;
 
-            for (const name of baseNames) {
-              for (const ext of extensions) {
-                if (ext === 'svg') {
-                  variants.push(name + '.svg');
-                } else if (ext === 'png') {
-                  for (const size of pngSizes) {
-                    variants.push(name + '-' + size + '.png');
-                  }
-                } else if (ext === 'ico') {
-                  variants.push(name + '.ico');
-                }
+              // 2️⃣ Fetch the page HTML
+              res = await fetch(url);
+              if (!res.ok) return null;
+
+              const html = await res.text();
+
+              // 3️⃣ Parse <link rel="icon"> and <link rel="shortcut icon">
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(html, 'text/html');
+              const links = doc.querySelectorAll('link[rel~="icon"]');
+
+              for (const link of links) {
+                let href = link.getAttribute('href');
+                if (!href) continue;
+                // Resolve relative URLs
+                if (href.startsWith('/')) href = origin + href;
+                else if (!/^https?:\/\//i.test(href)) href = origin + '/' + href;
+                return href;
               }
-            }
 
-            return variants;
+              return null;
+            } catch (err) {
+              console.warn('Failed to fetch favicon for', url, err);
+              return null;
+            }
           }
 
-          const faviconVariants = generateFaviconVariants();
-
-          function tryFavicon(img, baseUrl) {
-            let index = 0;
-
-            function next() {
-              if (index >= faviconVariants.length) return;
-              img.src = baseUrl + '/' + faviconVariants[index];
-              index++;
-            }
-
-            img.onerror = next;
-            next(); // start with the first one
-          }
+          // Example usage:
+          document.querySelectorAll('img.favicon').forEach(async (img) => {
+            const domain = img.dataset.domain;
+            const url = 'https://' + domain;
+            const favicon = await findFavicon(url);
+            if (favicon) img.src = favicon;
+          });
         </script>
         <style>
           /* Catppuccin Mocha inspired dark theme */
@@ -106,8 +113,7 @@ pkgs.writeTextFile {
           ${lib.concatStringsSep "\n" (
             map (s: ''
               <li>
-                <img class="favicon" src="https://${s.name}.${baseUrl}/favicon.svg" 
-                     onerror="tryFavicon(this, 'https://${s.name}.${baseUrl}')">
+                <img class="favicon" data-domain="${s.name}.${baseUrl}">
                 <a href="https://${s.name}.${baseUrl}" title="https://${s.name}.${baseUrl}">${s.name}</a>
               </li>
             '') proxies
