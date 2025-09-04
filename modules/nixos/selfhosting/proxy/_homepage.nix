@@ -15,10 +15,8 @@ pkgs.writeTextFile {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>home server</title>
         <style>
-          /* Catppuccin Mocha inspired dark theme */
           body {
             font-family: "Fira Code", monospace;
-            background: #0f0f14; /* darker base */
             margin: 0;
             padding: 2rem;
             min-height: 100vh;
@@ -27,10 +25,11 @@ pkgs.writeTextFile {
             align-items: center;
             color: #cdd6f4;
             overflow: hidden;
+            background: #0f0f14;
             position: relative;
           }
 
-          /* Morphing noisy shapes */
+          /* Nebula effect */
           body::before {
             content: "";
             position: absolute;
@@ -38,24 +37,25 @@ pkgs.writeTextFile {
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle at 30% 30%, #302d41 0%, #0f0f14 70%);
-            animation: rotateGradient 20s linear infinite, morphShape 25s ease-in-out infinite alternate;
+            background:
+              radial-gradient(circle at 20% 30%, #ff79c6 0%, transparent 60%),
+              radial-gradient(circle at 70% 20%, #8be9fd 0%, transparent 50%),
+              radial-gradient(circle at 40% 70%, #50fa7b 0%, transparent 60%);
+            background-size: 200% 200%;
+            filter: blur(120px);
+            animation: moveNebula 30s linear infinite, rotateNebula 60s linear infinite;
             z-index: -1;
-            filter: blur(100px);
-            clip-path: polygon(
-              30% 10%, 70% 20%, 80% 50%, 60% 80%, 30% 70%, 10% 40%
-            );
           }
 
-          @keyframes rotateGradient {
+          @keyframes moveNebula {
+            0% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+            50% { background-position: 20% 30%, 30% 20%, 10% 40%; }
+            100% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+          }
+
+          @keyframes rotateNebula {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-          }
-
-          @keyframes morphShape {
-            0% { clip-path: polygon(30% 10%, 70% 20%, 80% 50%, 60% 80%, 30% 70%, 10% 40%); }
-            50% { clip-path: polygon(25% 15%, 75% 25%, 85% 55%, 65% 85%, 35% 65%, 15% 45%); }
-            100% { clip-path: polygon(30% 10%, 70% 20%, 80% 50%, 60% 80%, 30% 70%, 10% 40%); }
           }
 
           h1 {
@@ -92,6 +92,11 @@ pkgs.writeTextFile {
             margin: 0.5rem 0;
             opacity: 0;
             animation: fadeInUp 0.5s forwards;
+            transition: transform 0.2s;
+          }
+
+          li:hover {
+            transform: translateX(8px) scale(1.05);
           }
 
           li a {
@@ -99,11 +104,11 @@ pkgs.writeTextFile {
             color: #89b4fa;
             margin-left: 0.5rem;
             transition: text-shadow 0.3s, color 0.3s;
-            text-shadow: 0 0 2px #4f5b75;
+            text-shadow: 0 0 1px #4f5b75;
           }
 
           li a:hover {
-            text-shadow: 0 0 4px #89b4fa;
+            text-shadow: 0 0 3px #89b4fa;
             color: #a6c1ff;
           }
 
@@ -118,17 +123,15 @@ pkgs.writeTextFile {
             to { opacity: 1; transform: translateY(0); }
           }
 
-          /* Responsive for mobile */
           @media (max-width: 600px) {
             h1 { font-size: 2rem; }
             li { font-size: 1rem; }
           }
-
         </style>
       </head>
       <body>
-        <h1>💻 home server services</h1>
-        <h2>quick access to all your home services</h2>
+        <h1>nebula quick access</h1>
+        <h2>to space and beyond...</h2>
         <ul id="services-list">
           ${lib.concatStringsSep "\n" (
             map (s: ''
@@ -142,13 +145,12 @@ pkgs.writeTextFile {
         </ul>
 
         <script>
-          // Apply staggered fade-in animation dynamically
+          // Staggered fade-in via JS
           const listItems = document.querySelectorAll('#services-list li');
           listItems.forEach((li, index) => {
-            li.style.animationDelay = `''${index * 0.1}s`;
+            li.style.animationDelay = `''${index * 0.02}s`;
           });
-      </script>
-
+        </script>
       </body>
     </html>
   '';
