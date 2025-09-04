@@ -80,11 +80,15 @@ in
         no-resolv = true;
 
         # Custom DNS entries
-        address =
+        address = [
+          "/${baseUrl}/${cfg.server.address}"
+        ]
+        ++ (
           let
             makeSubdomain = { name, ... }: "/${name}.${baseUrl}/${cfg.server.address}";
           in
-          lib.map makeSubdomain proxies;
+          lib.map makeSubdomain proxies
+        );
 
         # server = [ "100.100.100.100" ];
       };
