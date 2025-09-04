@@ -162,12 +162,16 @@ in
         )
         {
           "${baseUrl}" = {
+            serverAliases = [ "www.${baseUrl}" ];
+
             useACMEHost = baseUrl;
             forceSSL = true;
+
             root = homepage;
             locations."/" = {
               index = "index.html";
             };
+
           };
         }
       ];
