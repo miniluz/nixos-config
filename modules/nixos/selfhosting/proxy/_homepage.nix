@@ -13,6 +13,25 @@ pkgs.writeTextFile {
       <head>
         <meta charset="UTF-8">
         <title>Home Server</title>
+        <script>
+          const faviconVariants = [
+            'favicon.svg',
+            'favicon-128x128.png', 'favicon-64x64.png', 'favicon-32x32.png', 'favicon-16x16.png',
+            'favicon.ico',
+            'logo.svg',
+            'logo-128x128.png', 'logo-64x64.png', 'logo-32x32.png', 'logo-16x16.png',
+            'logo.ico'
+          ];
+
+          function tryFavicon(img, baseUrl) {
+            let index = 0;
+            img.onerror = function next() {
+              index++;
+              if (index >= faviconVariants.length) return;
+              img.src = `''${baseUrl}/''${faviconVariants[index]}`;
+            };
+          }
+        </script>
         <style>
           /* Catppuccin Mocha inspired dark theme */
           body {
@@ -66,7 +85,8 @@ pkgs.writeTextFile {
           ${lib.concatStringsSep "\n" (
             map (s: ''
               <li>
-                <img class="favicon" src="https://${s.name}.${baseUrl}/favicon.ico" alt="${s.name} favicon">
+                <img class="favicon" src="https://${s.name}.${baseUrl}/favicon.svg" 
+                     onerror="tryFavicon(this, 'https://${s.name}.${baseUrl}')">
                 <a href="https://${s.name}.${baseUrl}" title="https://${s.name}.${baseUrl}">${s.name}</a>
               </li>
             '') proxies
