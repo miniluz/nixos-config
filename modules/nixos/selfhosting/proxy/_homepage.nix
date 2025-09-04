@@ -18,22 +18,44 @@ pkgs.writeTextFile {
           /* Catppuccin Mocha inspired dark theme */
           body {
             font-family: "Fira Code", monospace;
-            background: linear-gradient(120deg, #1e1e2e, #302d41, #1e1e2e);
-            background-size: 600% 600%;
-            animation: gradientBG 15s ease infinite;
-            color: #cdd6f4;
+            background: #0f0f14; /* darker base */
             margin: 0;
             padding: 2rem;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            color: #cdd6f4;
+            overflow: hidden;
+            position: relative;
           }
 
-          @keyframes gradientBG {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
+          /* Morphing noisy shapes */
+          body::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 30%, #302d41 0%, #0f0f14 70%);
+            animation: rotateGradient 20s linear infinite, morphShape 25s ease-in-out infinite alternate;
+            z-index: -1;
+            filter: blur(100px);
+            clip-path: polygon(
+              30% 10%, 70% 20%, 80% 50%, 60% 80%, 30% 70%, 10% 40%
+            );
+          }
+
+          @keyframes rotateGradient {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+
+          @keyframes morphShape {
+            0% { clip-path: polygon(30% 10%, 70% 20%, 80% 50%, 60% 80%, 30% 70%, 10% 40%); }
+            50% { clip-path: polygon(25% 15%, 75% 25%, 85% 55%, 65% 85%, 35% 65%, 15% 45%); }
+            100% { clip-path: polygon(30% 10%, 70% 20%, 80% 50%, 60% 80%, 30% 70%, 10% 40%); }
           }
 
           h1 {
@@ -43,6 +65,7 @@ pkgs.writeTextFile {
             margin-top: 2rem;
             margin-bottom: 0.5rem;
             text-transform: lowercase;
+            z-index: 1;
           }
 
           h2 {
@@ -50,6 +73,7 @@ pkgs.writeTextFile {
             color: #f5e0dc;
             font-weight: normal;
             margin-bottom: 2rem;
+            z-index: 1;
           }
 
           ul {
@@ -57,62 +81,55 @@ pkgs.writeTextFile {
             padding: 0;
             max-width: 500px;
             width: 90%;
+            z-index: 1;
           }
 
           li {
-            background: #313244;
-            margin: 0.5rem 0;
-            padding: 1rem;
-            border-radius: 0.5rem;
             display: flex;
-            justify-content: center;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
+            justify-content: flex-start;
+            font-size: 1.25rem;
+            margin: 0.5rem 0;
+            opacity: 0;
+            animation: fadeInUp 0.5s forwards;
           }
 
-          li:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.7);
-          }
-
-          a {
+          li a {
             text-decoration: none;
             color: #89b4fa;
-            font-weight: bold;
-            text-align: center;
-            display: inline-block;
-            text-shadow: 0 0 2px #89b4fa;
-            transition: text-shadow 0.2s;
+            margin-left: 0.5rem;
+            transition: text-shadow 0.3s, color 0.3s;
+            text-shadow: 0 0 2px #4f5b75;
           }
 
-          li:hover a {
-            text-shadow: 0 0 8px #89b4fa, 0 0 16px #89b4fa;
+          li a:hover {
+            text-shadow: 0 0 4px #89b4fa;
+            color: #a6c1ff;
           }
 
-          img.favicon {
-            width: 24px;
-            height: 24px;
-            border-radius: 0.25rem;
+          li::before {
+            content: ">";
+            color: #f5c2e7;
             margin-right: 0.5rem;
+          }
+
+          @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
           }
 
           /* Responsive for mobile */
           @media (max-width: 600px) {
-            h1 {
-              font-size: 2rem;
-            }
-            li {
-              padding: 0.75rem;
-            }
+            h1 { font-size: 2rem; }
+            li { font-size: 1rem; }
           }
+
         </style>
       </head>
       <body>
         <h1>💻 home server services</h1>
         <h2>quick access to all your home services</h2>
-        <ul>
+        <ul id="services-list">
           ${lib.concatStringsSep "\n" (
             map (s: ''
               <li>
@@ -123,6 +140,15 @@ pkgs.writeTextFile {
             '') proxies
           )}
         </ul>
+
+        <script>
+          // Apply staggered fade-in animation dynamically
+          const listItems = document.querySelectorAll('#services-list li');
+          listItems.forEach((li, index) => {
+            li.style.animationDelay = `''${index * 0.1}s`;
+          });
+      </script>
+
       </body>
     </html>
   '';
