@@ -45,7 +45,7 @@ let
       encryption.passCommand = "cat ${config.age.secrets.borg-pass.path}";
 
       environment.BORG_RSH = "ssh -i ${config.age.secrets.borg-ssh-ed25519.path}";
-      repo = "ssh://u489829-sub1@u489829-sub1.your-storagebox.de:23/home-server-backups/${name}";
+      repo = "ssh://u489829-sub1@u489829-sub1.your-storagebox.de:23/./home-server-backups/${name}";
 
       # repo = "/media/backups";
       compression = "auto,zstd";
@@ -67,8 +67,6 @@ let
         IOSchedulingClass = lib.mkForce "2";
         IOSchedulingPriority = lib.mkForce "3";
       };
-
-      unitConfig.OnFailure = "notify-backup-failure.service";
 
       preStart = lib.mkBefore ''
         connected=false
