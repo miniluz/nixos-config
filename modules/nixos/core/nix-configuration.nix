@@ -1,37 +1,53 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
-  imports = [ inputs.lix-module.nixosModules.default ];
-
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-      "no-url-literals"
+  nixpkgs = {
+    overlays = [
+      (final: _prev: {
+        inherit (final.lixPackageSets.stable)
+          nixpkgs-review
+          # nix-direnv
+          nix-eval-jobs
+          nix-fast-build
+          colmena
+          ;
+      })
     ];
-
-    substituters = [
-      "https://nix-community.cachix.org"
-    ];
-
-    trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
-
-    trusted-users = [
-      "root"
-      "@wheel" # Lets me use nix flakes that require nixConfig.
-    ];
-
-    connect-timeout = 5; # Offline caches won't just hang
-    warn-dirty = false; # No warnings if git isn't pushed
-    fallback = true; # If binary cache fails, it's okay
-
-    keep-going = true; # If a derivation fails, build the others. We'll fix the failed one later
-    max-jobs = "auto";
-
-    allow-import-from-derivation = false;
+    config.allowUnfree = true;
   };
 
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-  nixpkgs.config.allowUnfree = true;
+  nix = {
+    package = pkgs.lixPackageSets.stable.lix;
+
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "no-url-literals"
+      ];
+
+      substituters = [
+        "https://nix-community.cachix.org"
+      ];
+
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+
+      trusted-users = [
+        "root"
+        "@wheel" # Lets me use nix flakes that require nixConfig.
+      ];
+
+      connect-timeout = 5; # Offline caches won't just hang
+      warn-dirty = false; # No warnings if git isn't pushed
+      fallback = true; # If binary cache fails, it's okay
+
+      keep-going = true; # If a derivation fails, build the others. We'll fix the failed one later
+      max-jobs = "auto";
+
+      allow-import-from-derivation = false;
+    };
+
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+  };
 }

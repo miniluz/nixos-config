@@ -8,7 +8,6 @@
 }:
 let
   cfg = config.miniluz.development;
-  visual = config.miniluz.visual;
 in
 {
   config.hm = lib.mkIf (cfg.enable && cfg.nvim.enable) {
@@ -20,14 +19,12 @@ in
       nixfmt-rfc-style
       wl-clipboard
       wl-clipboard-x11
+      jq
+      yq
     ];
 
-    programs.neovide = lib.mkIf visual {
-      enable = true;
-    };
-
     home.sessionVariables = lib.mkIf cfg.nvim.nix-editor {
-      "NIX_CONFIG_EDITOR" = if visual then "neovide" else "nvim";
+      "NIX_CONFIG_EDITOR" = "nvim";
     };
   };
 }
