@@ -151,21 +151,6 @@ in
                     recommendedProxySettings = true;
                     proxyWebsockets = true;
                     proxyPass = "http://127.0.0.1:${builtins.toString port}";
-
-                    extraConfig = ''
-                      # Allow CORS for all origins
-                      add_header 'Access-Control-Allow-Origin' '*' always;
-                      add_header 'Access-Control-Allow-Methods' 'GET, OPTIONS' always;
-                      add_header 'Access-Control-Allow-Headers' 'Authorization,Content-Type' always;
-
-                      # Handle preflight requests
-                      if ($request_method = 'OPTIONS') {
-                        add_header 'Access-Control-Max-Age' 1728000;
-                        add_header 'Content-Type' 'text/plain charset=UTF-8';
-                        add_header 'Content-Length' 0;
-                        return 204;
-                      }
-                    '';
                   };
                 };
               };

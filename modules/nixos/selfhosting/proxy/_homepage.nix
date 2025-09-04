@@ -29,7 +29,6 @@ pkgs.writeTextFile {
             position: relative;
           }
 
-          /* Nebula effect */
           body::before {
             content: "";
             position: absolute;
@@ -38,19 +37,29 @@ pkgs.writeTextFile {
             width: 200%;
             height: 200%;
             background:
-              radial-gradient(circle at 20% 30%, #ff79c6 0%, transparent 60%),
-              radial-gradient(circle at 70% 20%, #8be9fd 0%, transparent 50%),
-              radial-gradient(circle at 40% 70%, #50fa7b 0%, transparent 60%);
+              radial-gradient(circle at 30% 30%, rgba(245,194,231,0.15) 0%, transparent 60%),
+              radial-gradient(circle at 70% 20%, rgba(137,180,250,0.1) 0%, transparent 50%),
+              radial-gradient(circle at 40% 70%, rgba(80,250,123,0.08) 0%, transparent 60%),
+              radial-gradient(circle at 60% 50%, rgba(245,224,220,0.05) 0%, transparent 70%);
             background-size: 200% 200%;
-            filter: blur(120px);
-            animation: moveNebula 30s linear infinite, rotateNebula 60s linear infinite;
+            filter: blur(140px);
+            animation:
+              moveNebula1 40s linear infinite,
+              moveNebula2 60s linear infinite,
+              rotateNebula 120s linear infinite;
             z-index: -1;
           }
 
-          @keyframes moveNebula {
-            0% { background-position: 0% 0%, 0% 0%, 0% 0%; }
-            50% { background-position: 20% 30%, 30% 20%, 10% 40%; }
-            100% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+          @keyframes moveNebula1 {
+            0% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+            50% { background-position: 15% 25%, 10% 20%, 5% 30%, 20% 10%; }
+            100% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+          }
+
+          @keyframes moveNebula2 {
+            0% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+            50% { background-position: 30% 10%, 20% 25%, 10% 15%, 5% 20%; }
+            100% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
           }
 
           @keyframes rotateNebula {
@@ -92,24 +101,20 @@ pkgs.writeTextFile {
             margin: 0.5rem 0;
             opacity: 0;
             animation: fadeInUp 0.5s forwards;
-            transition: transform 0.2s;
-          }
-
-          li:hover {
-            transform: translateX(8px) scale(1.05);
           }
 
           li a {
             text-decoration: none;
             color: #89b4fa;
             margin-left: 0.5rem;
-            transition: text-shadow 0.3s, color 0.3s;
+            transition: text-shadow 0.3s, color 0.3s, transform 0.3s;
             text-shadow: 0 0 1px #4f5b75;
           }
 
           li a:hover {
             text-shadow: 0 0 3px #89b4fa;
             color: #a6c1ff;
+            transform: translateX(8px) scale(1.05);
           }
 
           li::before {
