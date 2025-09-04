@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   lib,
   host-secrets,
   ...
@@ -43,6 +44,15 @@ let
 
     # (makeService "lidarr" 8686 cfg.jellyfin)
   ];
+
+  homepage = import ./_homepage.nix {
+    inherit
+      pkgs
+      lib
+      baseUrl
+      proxies
+      ;
+  };
 in
 {
   config = lib.mkIf (cfg.enable && cfg.server.enable) {
@@ -117,33 +127,46 @@ in
       recommendedOptimisation = true;
       recommendedGzipSettings = true;
 
-      virtualHosts =
-        let
-          makeVirtualHost =
-            { name, port, ... }:
-            {
-              name = "${name}.${baseUrl}";
-              value = {
-                useACMEHost = baseUrl;
-                forceSSL = true;
+      virtualHosts = lib.mkMerge [
+        (
+          let
+            makeVirtualHost =
+              { name, port, ... }:
+              {
+                name = "${name}.${baseUrl}";
+                value = {
+                  useACMEHost = baseUrl;
+                  forceSSL = true;
 
-                # extraConfig = ''
-                #   ssl_stapling off;
-                #   ssl_stapling_verify off;
-                # '';
+                  # extraConfig = ''
+                  #   ssl_stapling off;
+                  #   ssl_stapling_verify off;
+                  # '';
 
-                locations."/" = {
-                  recommendedProxySettings = true;
-                  proxyWebsockets = true;
-                  proxyPass = "http://127.0.0.1:${builtins.toString port}";
+                  locations."/" = {
+                    recommendedProxySettings = true;
+                    proxyWebsockets = true;
+                    proxyPass = "http://127.0.0.1:${builtins.toString port}";
+                  };
                 };
               };
+          in
+          lib.pipe proxies [
+            (lib.map makeVirtualHost)
+            lib.listToAttrs
+          ]
+        )
+        {
+          "${baseUrl}" = {
+            useACMEHost = baseUrl;
+            forceSSL = true;
+            root = homepage;
+            locations."/" = {
+              index = "index.html";
             };
-        in
-        lib.pipe proxies [
-          (lib.map makeVirtualHost)
-          lib.listToAttrs
-        ];
+          };
+        }
+      ];
     };
   };
 }
