@@ -47,6 +47,9 @@ in
 {
   config = lib.mkIf (cfg.enable && cfg.server.enable) {
 
+    programs.ssh.knownHosts."[u489829-sub1.your-storagebox.de]:23".publicKeyFile =
+      "${host-secrets}/hetzner-public-keys.pub";
+
     age.secrets.hetzner-dns-api-key = {
       file = "${host-secrets}/hetzner-dns-api-key.age";
       mode = "600";
