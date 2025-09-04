@@ -83,6 +83,7 @@ in
         font-cache-update
         luznix-rebuild
         luznix-os-switch
+        git-randomize-commit-times
       ]);
 
     environment.sessionVariables = {
