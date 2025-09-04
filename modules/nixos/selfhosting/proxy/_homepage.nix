@@ -14,50 +14,44 @@ pkgs.writeTextFile {
         <meta charset="UTF-8">
         <title>Home Server</title>
         <script>
-          async function findFavicon(url) {
-            try {
-              // Parse hostname and origin
-              const u = new URL(url);
-              const origin = u.origin;
+          document.addEventListener('DOMContentLoaded', async () => {
+            async function findFavicon(url) {
+              try {
+                const u = new URL(url);
+                const origin = u.origin;
+                const icoUrl = origin + '/favicon.ico';
+                let res = await fetch(icoUrl, { method: 'HEAD' });
+                if (res.ok) return icoUrl;
 
-              // 1️⃣ Try the root favicon.ico
-              const icoUrl = origin + '/favicon.ico';
-              let res = await fetch(icoUrl, { method: 'HEAD' });
-              if (res.ok) return icoUrl;
+                res = await fetch(url);
+                if (!res.ok) return null;
+                const html = await res.text();
 
-              // 2️⃣ Fetch the page HTML
-              res = await fetch(url);
-              if (!res.ok) return null;
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const links = doc.querySelectorAll('link[rel~="icon"]');
 
-              const html = await res.text();
+                for (const link of links) {
+                  let href = link.getAttribute('href');
+                  if (!href) continue;
+                  if (href.startsWith('/')) href = origin + href;
+                  else if (!/^https?:\/\//i.test(href)) href = origin + '/' + href;
+                  return href;
+                }
 
-              // 3️⃣ Parse <link rel="icon"> and <link rel="shortcut icon">
-              const parser = new DOMParser();
-              const doc = parser.parseFromString(html, 'text/html');
-              const links = doc.querySelectorAll('link[rel~="icon"]');
-
-              for (const link of links) {
-                let href = link.getAttribute('href');
-                if (!href) continue;
-                // Resolve relative URLs
-                if (href.startsWith('/')) href = origin + href;
-                else if (!/^https?:\/\//i.test(href)) href = origin + '/' + href;
-                return href;
+                return null;
+              } catch (err) {
+                console.warn('Failed to fetch favicon for', url, err);
+                return null;
               }
-
-              return null;
-            } catch (err) {
-              console.warn('Failed to fetch favicon for', url, err);
-              return null;
             }
-          }
 
-          // Example usage:
-          document.querySelectorAll('img.favicon').forEach(async (img) => {
-            const domain = img.dataset.domain;
-            const url = 'https://' + domain;
-            const favicon = await findFavicon(url);
-            if (favicon) img.src = favicon;
+            document.querySelectorAll('img.favicon').forEach(async (img) => {
+              const domain = img.dataset.domain;
+              const url = 'https://' + domain;
+              const favicon = await findFavicon(url);
+              if (favicon) img.src = favicon;
+            });
           });
         </script>
         <style>
