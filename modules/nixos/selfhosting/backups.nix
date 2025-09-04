@@ -37,7 +37,8 @@ let
         postHook
         ;
 
-      extraCreateArgs = "--verbose --list --stats --checkpoint-interval 600";
+      extraArgs = "--verbose";
+      extraCreateArgs = "--list --stats --checkpoint-interval 600";
       extraInitArgs = "--remote-path=borg-1.4";
 
       encryption.mode = "repokey-blake2";
