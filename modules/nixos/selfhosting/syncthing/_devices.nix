@@ -11,4 +11,8 @@
     name = "sunflare";
     id = "MXIWI3G-SLJR5FY-FXO5P6A-VJP5MGK-R2GXAI6-HYVGLZR-GWU5STB-LON32AW";
   };
+  phone = {
+    name = "phone";
+    id = "LVHRXAF-EDIRHWU-IFUJUDV-HII6VWU-TMIGTKP-MFHJZAE-ZYODX5H-LZQZAAA";
+  };
 }

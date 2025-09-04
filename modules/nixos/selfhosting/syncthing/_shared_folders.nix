@@ -5,6 +5,7 @@
       "home-server"
       "moonlight"
       "sunflare"
+      "phone"
     ];
     backup = true;
   };
