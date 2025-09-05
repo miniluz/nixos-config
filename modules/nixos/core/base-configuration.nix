@@ -23,6 +23,10 @@ in
   config = {
     hm.miniluz.visual = config.miniluz.visual;
 
+    services.flatpak = lib.mkIf config.miniluz.visual {
+      enable = true;
+    };
+
     age.identityPaths = [ "/home/miniluz/.ssh/id_ed25519" ];
 
     zramSwap.enable = mkDefault true;
