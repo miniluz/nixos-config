@@ -125,18 +125,11 @@ to actually open.
      synchronization, and set the minimum score to 96 for series and 86 for
      movies.
 5. Podgrab requires no setup other than adding your podcasts
-6. Set up Spotizerr
-   - On a computer with a browser run
-     `docker run --network=host --rm -it --env REQUESTS_CA_BUNDLE=/nebula.local.crt --volume /home/miniluz/nixos-config/hosts/home-server/secrets/nebula.local.crt:/nebula.local.crt:ro cooldockerizer93/spotizerr-auth`
-     having a client ID and secret from
-     <https://developer.spotify.com/dashboard> with country code ES. Then open
-     the Spotify web client, open the Connections menu and select Spotizerr.
-   - Go into Deezer, cookies, copy the `arl` and add the account.
-7. Go into Prowlarr and set it up with every ARR with their API keys.
+6. Go into Prowlarr and set it up with every ARR with their API keys.
    - Set up every ARR with their API keys. Note that bc Prowlarr is behind the
      VPN, you need to provide the Prowlarr server address as
      `http://192.168.15.1:9696` and Radarr's and Sonarr's as
-     `http://192.168.15.5:7878` and `http://192.168.15.5:889`.
+     `http://192.168.15.5:7878` and `http://192.168.15.5:8989`.
    - Set up Transmission
    - Add the indexers:
      - BitSearch
@@ -153,30 +146,10 @@ to actually open.
      - Bangumi Moe
      - Lat-Team (Maybe, it's private)
    - Make them have minimum seeders (maybe 4) and also vibes-prioritize them
-8. Go into Jellyfin, set up the account and add the media folders.
-9. Go into Jellyseer and set up the integration with Jellyfin, Sonarr and
+7. Go into Jellyfin, set up the account and add the media folders.
+8. Go into Jellyseer and set up the integration with Jellyfin, Sonarr and
    Radarr.
-10. Go into Audiobookshelf, set up the account and add the media folder.
-11. Set up Readarr
-
-### Readarr
-
-Set up the new metadata servers as
-<https://github.com/blampe/rreading-glasses?tab=readme-ov-file#usage> says:
-
-Navigate to `http(s)://<your instance>/settings/development`. This page isn't
-shown in the UI, so you'll need to manually enter the URL.
-
-Update Metadata Provider Source with `https://hardcover.bookinfo.pro` (or
-`https://api.bookinfo.pro`) if you'd like to use the public instance. If you're
-self-hosting use your own address.
-
-Click Save.
-
-### Calibre Web
-
-Log in with the default credentials `admin` and `admin123` and change them.
-Then, create a non-admin account for `miniluz`.
+9. Go into Audiobookshelf, set up the account and add the media folder.
 
 ## Ports
 
@@ -199,11 +172,3 @@ Then, create a non-admin account for `miniluz`.
 - Radarr: `0.0.0.0:7878`.
 - Sonarr: `0.0.0.0:8989`.
 - Bazarr: `0.0.0.0:6767`
-- Spotizerr: `0.0.0.0:7171`
-- Podgrab: `0.0.0.0:4242`
-
-- Readarr: `0.0.0.0:8787`
-- Readarr audiobooks: `0.0.0.0:9494`
-
-- Calibre server: `0.0.0.0:9880`
-- Calibre web: `0.0.0.0:9881`
