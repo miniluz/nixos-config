@@ -5,6 +5,7 @@
   miniluz-pkgs,
   lib,
   config,
+  global-secrets,
   ...
 }:
 let
@@ -23,23 +24,11 @@ in
   config = {
     hm.miniluz.visual = config.miniluz.visual;
 
-    services.flatpak = lib.mkIf config.miniluz.visual {
-      enable = true;
-    };
-
     age.identityPaths = [ "/home/miniluz/.ssh/id_ed25519" ];
 
     zramSwap.enable = mkDefault true;
 
     nix.optimise.automatic = mkDefault true;
-
-    programs.nh = {
-      enable = true;
-      clean = {
-        enable = true;
-        extraArgs = "--keep 5 --keep-since 7d";
-      };
-    };
 
     # Set timezone
     time.timeZone = mkDefault "Europe/Madrid";
@@ -60,6 +49,12 @@ in
         "wheel"
         "libvirtd"
       ];
+      openssh.authorizedKeys.keyFiles = [ "${global-secrets}/miniluz.pub" ];
+    };
+
+    services = {
+      openssh.enable = true;
+      fail2ban.enable = true;
     };
 
     networking.networkmanager.enable = mkDefault true;
@@ -95,9 +90,18 @@ in
       NH_FLAKE = "/home/miniluz/nixos-config";
     };
 
-    programs.command-not-found.enable = mkDefault false;
-    programs.ssh.startAgent = mkDefault true;
-    programs.nix-ld.enable = mkDefault true;
+    programs = {
+      nh = {
+        enable = true;
+        clean = {
+          enable = true;
+          extraArgs = "--keep 5 --keep-since 7d";
+        };
+      };
+      command-not-found.enable = mkDefault false;
+      ssh.startAgent = mkDefault true;
+      nix-ld.enable = mkDefault true;
+    };
 
     documentation.man.generateCaches = false;
     hm.programs.man.generateCaches = false;

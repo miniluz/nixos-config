@@ -173,9 +173,10 @@ self-hosting use your own address.
 
 Click Save.
 
-#### Spotizerr
+### Calibre Web
 
-Requires manual setup for your spotify and deezer API keys
+Log in with the default credentials `admin` and `admin123` and change them.
+Then, create a non-admin account for `miniluz`.
 
 ## Ports
 

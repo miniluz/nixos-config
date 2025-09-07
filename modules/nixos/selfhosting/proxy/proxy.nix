@@ -40,6 +40,7 @@ let
     (makeService "readarr-audiobook" 9494 cfg.jellyfin)
     (makeService "calibre-server" 9880 cfg.jellyfin)
     (makeService "calibre" 9881 cfg.jellyfin)
+    (makeService "kavita" 9884 cfg.jellyfin)
     # ----------------
 
     # (makeService "lidarr" 8686 cfg.jellyfin)

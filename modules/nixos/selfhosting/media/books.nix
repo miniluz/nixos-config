@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  host-secrets,
   ...
 }:
 let
@@ -9,6 +10,7 @@ let
 
   serverStorage = cfg.server.serverStorage;
   bookLibrary = "${serverStorage}/calibre-library";
+  kavitaLibrary = "${serverStorage}/kavita-library";
 
   mediaGroup = config.util-nixarr.globals.libraryOwner.group;
 
@@ -26,11 +28,20 @@ in
 
   config = lib.mkIf (cfg.enable && cfg.jellyfin && cfg.server.enable) {
 
+    age.secrets.kavita-token = {
+      file = "${host-secrets}/kavita-token.age";
+      mode = "700";
+      owner = "kavita";
+      group = "kavita";
+    };
+
+    users.users.kavita.extraGroups = [ mediaGroup ];
     users.users.calibre-server.extraGroups = [ mediaGroup ];
     users.users.calibre-web.extraGroups = [ mediaGroup ];
 
     systemd.tmpfiles.rules = [
       "d ${bookLibrary} 0750 calibre-server ${mediaGroup}"
+      "d ${kavitaLibrary} 0750 kavita ${mediaGroup}"
     ];
 
     systemd.services.calibre-init = {
@@ -91,6 +102,13 @@ in
         ip = "0.0.0.0";
       };
       options.calibreLibrary = bookLibrary;
+    };
+
+    services.kavita = {
+      enable = true;
+      dataDir = bookLibrary;
+      tokenKeyFile = config.age.secrets.kavita-token.path;
+      settings.Port = 9884;
     };
 
     nixarr = {
