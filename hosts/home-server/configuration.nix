@@ -12,6 +12,7 @@
 
     backups.enable = true;
 
+    # samba = true;
     syncthing = true;
     immich = true;
     actual = true;

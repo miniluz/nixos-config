@@ -16,6 +16,7 @@ let
 
   proxies = lib.filter ({ condition, ... }: condition) [
     # (makeService "syncthing" 8384 cfg.syncthing) DO NOT PROXY as it doesn't have a password
+    # (makeService "samba" 8791 cfg.samba)
     (makeService "immich" 2283 cfg.immich)
 
     (makeService "actual" 9991 cfg.actual)

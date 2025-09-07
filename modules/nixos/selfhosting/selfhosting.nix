@@ -9,16 +9,18 @@ let
   cfg = config.miniluz.selfhosting;
 in
 {
-  options.miniluz.selfhosting.enable = lib.mkEnableOption "Selfhosting";
-  options.miniluz.selfhosting.server = {
-    enable = lib.mkOption {
-      default = false;
-      description = "This computer is a server";
-    };
-    address = lib.mkOption { default = "100.64.1.1"; };
-    serverStorage = lib.mkOption {
-      default = "/media/server-storage";
-      description = "Path where the server's application's data should be stored";
+  options.miniluz.selfhosting = {
+    enable = lib.mkEnableOption "Selfhosting";
+    server = {
+      enable = lib.mkOption {
+        default = false;
+        description = "This computer is a server";
+      };
+      address = lib.mkOption { default = "100.64.1.1"; };
+      serverStorage = lib.mkOption {
+        default = "/media/server-storage";
+        description = "Path where the server's application's data should be stored";
+      };
     };
   };
 
