@@ -64,7 +64,7 @@ pkgs.writeTextFile {
           }
           h1 {
           text-align: center;
-          color: #f5c2e7;
+          color: #dbabf0;
           font-size: 2.5rem;
           margin-top: 2rem;
           margin-bottom: 0.5rem;
@@ -96,14 +96,14 @@ pkgs.writeTextFile {
           }
           li a {
           text-decoration: none;
-          color: #89b4fa;
+          color: #d093ec;
           margin-left: 0.5rem;
           transition: text-shadow 0.3s, color 0.3s, transform 0.3s;
           text-shadow: 0 0 1px #4f5b75;
           }
           li a:hover {
-          text-shadow: 0 0 3px #89b4fa;
-          color: #a6c1ff;
+          text-shadow: 0 0 3px #e0c4ec;
+          color: #dbabf0;
           transform: translateX(8px) scale(1.05);
           }
           li::before {
@@ -133,7 +133,7 @@ pkgs.writeTextFile {
         <!-- Demo content to show the background works with page content -->
         <div class="content">
           <h1>nebula quick access</h1>
-          <h2>to space and beyond...</h2>
+          <h2>available services:</h2>
           <ul id="services-list">
             ${lib.concatStringsSep "\n" (
               map (s: ''
