@@ -11,6 +11,10 @@
     name = "sunflare";
     id = "MXIWI3G-SLJR5FY-FXO5P6A-VJP5MGK-R2GXAI6-HYVGLZR-GWU5STB-LON32AW";
   };
+  sunlight = {
+    name = "sunlight";
+    id = "XBATRG5-7WFIRC2-275N26F-TVLQ4GT-4TI5TAJ-QPWX53U-NM7TMA3-FOPTYQE";
+  };
   phone = {
     name = "phone";
     id = "LVHRXAF-EDIRHWU-IFUJUDV-HII6VWU-TMIGTKP-MFHJZAE-ZYODX5H-LZQZAAA";

@@ -2,7 +2,7 @@
 # 1. Generate the certificates with:
 # nix-shell -p syncthing --run "syncthing generate"
 # 2. Copy the certificates to ${host-secrets}/syncthing-cert.pem and ${host-secrets}/syncthing-cert-key.age:
-# cd $NH_FLAKE/private/hosts/$(cat /etc/hostname)/secrets
+# cd $NH_FLAKE/hosts/$(cat /etc/hostname)/secrets
 # cp ~/.local/state/syncthing/cert.pem syncthing-cert.pem
 # cat ~/.local/state/syncthing/key.pem | agenix -e syncthing-cert-key.age
 # 3. Add the device to devices and the relevant folders to folders

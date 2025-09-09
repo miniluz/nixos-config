@@ -5,6 +5,7 @@
       "home-server"
       "moonlight"
       "sunflare"
+      "sunlight"
       "phone"
     ];
     backup = true;
@@ -27,6 +28,7 @@
     devices = [
       "home-server"
       "sunflare"
+      "sunlight"
     ];
     backup = false;
   };

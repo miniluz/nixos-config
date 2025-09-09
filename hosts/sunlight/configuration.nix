@@ -17,7 +17,7 @@
     podman = true;
     virt = true;
     languages = {
-      rust.enable = true;
+      rust = true;
     };
   };
 
@@ -27,6 +27,11 @@
   miniluz.gaming.minecraft = true;
 
   miniluz.social.enable = true;
+
+  miniluz.selfhosting = {
+    enable = true;
+    syncthing = true;
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
