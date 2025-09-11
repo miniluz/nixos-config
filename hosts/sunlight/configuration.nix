@@ -33,6 +33,71 @@
     syncthing = true;
   };
 
+  services.pipewire = {
+    extraConfig.pipewire."90-scarlett-defaults" = {
+      "context.properties" = {
+        # Set Scarlett Line 1-2 as default output
+        "default.audio.sink" = "alsa_output.usb-Focusrite_Scarlett_2i4_USB-00.HiFi__Line1__sink";
+        # Set Scarlett Input 1 as default input
+        "default.audio.source" = "alsa_input.usb-Focusrite_Scarlett_2i4_USB-00.HiFi__Mic1__source";
+      };
+    };
+    wireplumber.extraConfig."51-scarlett-priority" = {
+      "monitor.alsa.rules" = [
+        # Disable HDMI audio
+        {
+          matches = [
+            { "node.name" = "alsa_output.pci-0000_0c_00.1.hdmi-stereo"; }
+          ];
+          actions = {
+            update-props = {
+              "node.disabled" = true;
+            };
+          };
+        }
+
+        # Set high priority for Scarlett outputs
+        {
+          matches = [
+            { "node.name" = "~alsa_output.usb-Focusrite_Scarlett_2i4_USB.*"; }
+          ];
+          actions = {
+            update-props = {
+              "priority.driver" = 1000;
+              "priority.session" = 1000;
+            };
+          };
+        }
+
+        # Set high priority for Scarlett inputs
+        {
+          matches = [
+            { "node.name" = "~alsa_input.usb-Focusrite_Scarlett_2i4_USB.*"; }
+          ];
+          actions = {
+            update-props = {
+              "priority.driver" = 1000;
+              "priority.session" = 1000;
+            };
+          };
+        }
+
+        # Lower priority for onboard audio
+        {
+          matches = [
+            { "node.name" = "~alsa_.*pci-0000_0e_00.4.*"; }
+          ];
+          actions = {
+            update-props = {
+              "priority.driver" = 100;
+              "priority.session" = 100;
+            };
+          };
+        }
+      ];
+    };
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
