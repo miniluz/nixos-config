@@ -46,10 +46,10 @@ in
         lib.mkIf (cfg.realtime.enable) {
           extraConfig.pipewire."92-low-latency" = {
             "context.properties" = {
-              default.clock.rate = sampleRate;
-              default.clock.quantum = bufferSize;
-              default.clock.min-quantum = bufferSize;
-              default.clock.max-quantum = bufferSize;
+              "default.clock.rate" = sampleRate;
+              "default.clock.quantum" = bufferSize;
+              "default.clock.min-quantum" = bufferSize;
+              "default.clock.max-quantum" = bufferSize;
             };
           };
 
