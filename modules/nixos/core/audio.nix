@@ -21,7 +21,7 @@ in
         description = "Sample rate";
       };
       bufferSize = lib.mkOption {
-        default = 256;
+        default = 512;
         description = "Buffer size";
       };
     };
