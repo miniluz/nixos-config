@@ -41,17 +41,21 @@ in
     console.keyMap = mkDefault "es";
 
     # My user
-    users.users.miniluz = {
-      isNormalUser = true;
-      description = "miniluz";
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "libvirtd"
-        "plugdev"
-        "dialout"
-      ];
-      openssh.authorizedKeys.keyFiles = [ "${global-secrets}/miniluz.pub" ];
+    users = {
+      users.miniluz = {
+        isNormalUser = true;
+        description = "miniluz";
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+          "libvirtd"
+          "plugdev"
+          "dialout"
+        ];
+        openssh.authorizedKeys.keyFiles = [ "${global-secrets}/miniluz.pub" ];
+      };
+
+      groups.plugdev = { };
     };
 
     services = {
