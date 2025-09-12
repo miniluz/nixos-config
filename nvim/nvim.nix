@@ -12,6 +12,7 @@
     ./languages/nvim-extra-languages.nix
     ./languages/nvim-i18n.nix
     ./languages/nvim-java.nix
+    ./languages/nvim-languages.nix
     ./languages/nvim-nix.nix
     ./languages/nvim-rust.nix
     ./languages/nvim-ts.nix
