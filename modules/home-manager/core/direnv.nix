@@ -5,5 +5,5 @@
     nix-direnv.enable = true;
   };
 
-  home.packages = [ pkgs.direnv ];
+  home.packages = [ pkgs.devenv ];
 }
