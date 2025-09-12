@@ -48,6 +48,8 @@ in
         "networkmanager"
         "wheel"
         "libvirtd"
+        "plugdev"
+        "dialout"
       ];
       openssh.authorizedKeys.keyFiles = [ "${global-secrets}/miniluz.pub" ];
     };
