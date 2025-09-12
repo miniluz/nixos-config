@@ -10,6 +10,7 @@ import subprocess
 import random
 import os
 import tempfile
+import argparse
 from datetime import datetime, timedelta
 from dataclasses import dataclass
 from typing import cast
@@ -39,25 +40,34 @@ def run_git_command(cmd: list[str]) -> str:
         raise RuntimeError(f"Git command failed: {cast(str, e.stderr).strip()}")
 
 
-def get_unpushed_commits() -> list[str]:
-    """Get list of unpushed commit hashes in chronological order (oldest first)."""
+def get_commits_to_process(num_commits: int | None = None) -> list[str]:
+    """
+    Get list of commit hashes to process.
+    If num_commits is specified, gets the last N commits from HEAD.
+    Otherwise, gets unpushed commits in chronological order (oldest first).
+    """
+    if num_commits is not None:
+        if num_commits <= 0:
+            return []
+        # rev-list returns newest first, so we reverse it for chronological order
+        output = run_git_command(["rev-list", "-n", str(num_commits), "HEAD"])
+        if not output:
+            return []
+        return list(reversed(output.split("\n")))
+
+    # Original logic for unpushed commits
     try:
         # Get commits that are ahead of origin
         output = run_git_command(["rev-list", "@{u}..HEAD"])
         if not output:
             return []
-
-        # Reverse to get chronological order (oldest first)
-        commits = output.split("\n")
-        return list(reversed(commits))
+        return list(reversed(output.split("\n")))
 
     except RuntimeError as e:
         if "no upstream" in str(e).lower():
-            # No upstream set, get all commits
             print("No upstream branch found, processing all commits on current branch")
             output = run_git_command(["rev-list", "HEAD"])
-            commits = output.split("\n")
-            return list(reversed(commits))
+            return list(reversed(output.split("\n")))
         raise
 
 
@@ -99,28 +109,34 @@ def calculate_time_interval(commit_info: CommitInfo) -> float:
     return base_interval * variation
 
 
-def randomize_commit_times() -> None:
+def randomize_commit_times(num_commits: int | None) -> None:
     """Main function to randomize commit times."""
-    print("🔍 Finding unpushed commits...")
+    if num_commits is not None:
+        if num_commits > 0:
+            commits_to_modify = get_commits_to_process(num_commits)
+            print(f"📋 Processing {len(commits_to_modify)} commits")
+        else:
+            print(f"❌ Invalid number of commits to process: {num_commits}")
+            return
+    else:
+        try:
+            print("🔍 Finding unpushed commits...")
+            commits_to_modify = get_commits_to_process()
+            print(f"📋 Processing {len(commits_to_modify)} unpushed commits")
+        except RuntimeError as e:
+            print(f"❌ Error: {e}")
+            return
 
-    try:
-        unpushed_commits = get_unpushed_commits()
-    except RuntimeError as e:
-        print(f"❌ Error: {e}")
-        return
-
-    if not unpushed_commits:
+    if not commits_to_modify:
         print("✅ No unpushed commits found.")
         return
-
-    print(f"📋 Found {len(unpushed_commits)} unpushed commits")
 
     # Get current branch
     current_branch = run_git_command(["branch", "--show-current"])
 
     # Collect commit info
     commits_info: list[CommitInfo] = []
-    for commit_hash in unpushed_commits:
+    for commit_hash in commits_to_modify:
         commit_info = get_commit_stats(commit_hash)
         commits_info.append(commit_info)
         print(
@@ -191,7 +207,7 @@ def randomize_commit_times() -> None:
         _ = os.chmod(filter_script_path, 0o755)
 
         # Get the range for filter-branch
-        oldest_commit = unpushed_commits[0]
+        oldest_commit = commits_to_modify[0]
         parent_commit = run_git_command(["rev-parse", f"{oldest_commit}^"])
         commit_range = f"{parent_commit}..HEAD"
 
@@ -245,7 +261,7 @@ def randomize_commit_times() -> None:
 
     print("\n✅ Process completed!")
     print(
-        f'💡 Verify the timestamps with: git log --format="%ai %s" -{len(unpushed_commits)}'
+        f'💡 Verify the timestamps with: git log --format="%ai %s" -{len(commits_to_modify)}'
     )
 
 
@@ -260,4 +276,16 @@ if __name__ == "__main__":
         print("❌ Not in a git repository!")
         exit(1)
 
-    randomize_commit_times()
+    parser = argparse.ArgumentParser(
+        description="Automatically adjusts commit timestamps for unpushed commits or a specified number of recent commits."
+    )
+    a = parser.add_argument(
+        "-n",
+        "--num-commits",
+        type=int,
+        default=None,
+        help="Number of recent commits to modify (starting from HEAD). If not specified, modifies all unpushed commits.",
+    )
+    args = parser.parse_args()
+
+    randomize_commit_times(cast(int, args.num_commits))
