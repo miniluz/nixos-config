@@ -146,7 +146,19 @@ to actually open.
      - Bangumi Moe
      - Lat-Team (Maybe, it's private)
    - Make them have minimum seeders (maybe 4) and also vibes-prioritize them
-7. Go into Jellyfin, set up the account and add the media folders.
+7. Go into Jellyfin, set up the account and add the media folders. For
+   reference, I used <https://nixos.wiki/wiki/Intel_Graphics> and
+   <https://nixos.wiki/wiki/Accelerated_Video_Playback> and
+   <https://wiki.archlinux.org/title/Hardware_video_acceleration#Verification>
+   for the setup, the last link has the command to see the available formats.
+   With the admin account, go into the dashboard, playback, transcoding and
+   enable Hardware acceleration with Intel QuickSync, no device, and enabling:
+   - H264
+   - HEVC
+   - MPEG2
+   - VP9
+   - HEVC 10bit
+   - VP9 10bit.
 8. Go into Jellyseer and set up the integration with Jellyfin, Sonarr and
    Radarr.
 9. Go into Audiobookshelf, set up the account and add the media folder.
