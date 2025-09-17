@@ -27,21 +27,6 @@ in
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
       services.tailscale.enable = true;
-
-      # TODO: remove this when it's fixed
-      nixpkgs.overlays = [
-        (_: prev: {
-          tailscale = prev.tailscale.overrideAttrs (old: {
-            checkFlags = builtins.map (
-              flag:
-              if prev.lib.hasPrefix "-skip=" flag then
-                flag + "|^TestGetList$|^TestIgnoreLocallyBoundPorts$|^TestPoller$"
-              else
-                flag
-            ) old.checkFlags;
-          });
-        })
-      ];
     })
     (lib.mkIf (cfg.enable && cfg.server.enable) (
       let
