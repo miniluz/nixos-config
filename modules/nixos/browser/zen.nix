@@ -11,7 +11,7 @@ in
 {
   config = lib.mkIf (cfg.firefox.enable && cfg.visual) {
     environment.systemPackages = [
-      (inputs.zen-browser.packages.${pkgs.system}.default.override {
+      (inputs.zen-browser.packages.${pkgs.system}.zen-browser-unwrapped.override {
         config.zen.policies = {
           DisableTelemetry = true;
           ExtensionSettings =
