@@ -49,13 +49,13 @@ in
               {
                 Name = "nixpkgs packages";
                 URLTemplate = "https://search.nixos.org/packages?query={searchTerms}";
-                IconURL = "https://search.nixos.org/favicon-96x96.png";
+                IconURL = "https://wiki.nixos.org/favicon.ico";
                 Alias = "@np";
               }
               {
                 Name = "NixOS options";
                 URLTemplate = "https://search.nixos.org/options?query={searchTerms}";
-                IconURL = "https://search.nixos.org/favicon-96x96.png";
+                IconURL = "https://wiki.nixos.org/favicon.ico";
                 Alias = "@no";
               }
               {
@@ -73,7 +73,7 @@ in
               {
                 Name = "Home Manager Options";
                 URLTemplate = "https://home-manager-options.extranix.com/?query={searchTerms}";
-                IconURL = "https://home-manager-options.extranix.com/favicon.ico";
+                IconURL = "https://wiki.nixos.org/favicon.ico";
                 Alias = "@hm";
               }
               {
