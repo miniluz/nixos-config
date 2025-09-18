@@ -48,56 +48,52 @@ in
             Add = [
               {
                 Name = "nixpkgs packages";
-                UrlTemplate = "https://search.nixos.org/packages?query={searchTerms}";
+                URLTemplate = "https://search.nixos.org/packages?query={searchTerms}";
                 IconURL = "https://search.nixos.org/favicon-96x96.png";
                 Alias = "@np";
               }
               {
                 Name = "NixOS options";
-                UrlTemplate = "https://search.nixos.org/options?query={searchTerms}";
+                URLTemplate = "https://search.nixos.org/options?query={searchTerms}";
                 IconURL = "https://search.nixos.org/favicon-96x96.png";
                 Alias = "@no";
               }
               {
                 Name = "NixOS Wiki";
-                UrlTemplate = "https://wiki.nixos.org/w/index.php?search={searchTerms}";
+                URLTemplate = "https://wiki.nixos.org/w/index.php?search={searchTerms}";
                 IconURL = "https://wiki.nixos.org/favicon.ico";
                 Alias = "@nw";
               }
               {
                 Name = "Merriam-Webster";
-                UrlTemplate = "https://www.merriam-webster.com/dictionary/{searchTerms}";
+                URLTemplate = "https://www.merriam-webster.com/dictionary/{searchTerms}";
                 IconURL = "https://www.merriam-webster.com/favicon.ico";
                 Alias = "@mw";
               }
-
               {
                 Name = "Home Manager Options";
-                UrlTemplate = "https://home-manager-options.extranix.com/?query={searchTerms}";
+                URLTemplate = "https://home-manager-options.extranix.com/?query={searchTerms}";
                 IconURL = "https://home-manager-options.extranix.com/favicon.ico";
                 Alias = "@hm";
               }
-
               {
                 Name = "noogle";
-                UrlTemplate = "https://noogle.dev/q?term={searchTerms}";
+                URLTemplate = "https://noogle.dev/q?term={searchTerms}";
                 IconURL = "https://noogle.dev/favicon.ico";
                 Alias = "@ng";
               }
               {
                 Name = "npm-packages";
-                UrlTemplate = "https://www.npmjs.com/search?q={searchTerms}";
+                URLTemplate = "https://www.npmjs.com/search?q={searchTerms}";
                 IconURL = "https://www.npmjs.com/favicon.ico";
                 Alias = "@npm";
               }
-
               {
                 Name = "cargo-packages";
-                UrlTemplate = "https://lib.rs/search?q={searchTerms}";
+                URLTemplate = "https://lib.rs/search?q={searchTerms}";
                 IconURL = "https://lib.rs/favicon.ico";
                 Alias = "@rs";
               }
-
             ];
           };
 
