@@ -115,7 +115,7 @@ in
             "extensions.activeThemeID" = "firefox-dark@mozilla.org";
           };
         };
-      }) { })
+      }) { pname = "zen-browser"; })
     ];
   };
 
