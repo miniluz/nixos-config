@@ -11,8 +11,8 @@ in
 {
   config = lib.mkIf (cfg.firefox.enable && cfg.visual) {
     environment.systemPackages = [
-      (pkgs.wrapFirefox (inputs.zen-browser.packages.${pkgs.system}.zen-browser-unwrapped.override {
-        config.zen.policies = {
+      (pkgs.wrapFirefox inputs.zen-browser.packages.${pkgs.system}.zen-browser-unwrapped {
+        extraPolicies = {
           DisableTelemetry = true;
           ExtensionSettings =
             with builtins;
@@ -115,7 +115,7 @@ in
             "extensions.activeThemeID" = "firefox-dark@mozilla.org";
           };
         };
-      }) { pname = "zen-browser"; })
+      })
     ];
   };
 
