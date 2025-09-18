@@ -49,13 +49,13 @@ in
               {
                 Name = "nixpkgs packages";
                 UrlTemplate = "https://search.nixos.org/packages?query={searchTerms}";
-                IconURL = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                IconURL = "https://search.nixos.org/favicon-96x96.png";
                 Alias = "@np";
               }
               {
                 Name = "NixOS options";
                 UrlTemplate = "https://search.nixos.org/options?query={searchTerms}";
-                IconURL = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                IconURL = "https://search.nixos.org/favicon-96x96.png";
                 Alias = "@no";
               }
               {
@@ -95,7 +95,7 @@ in
                 Name = "cargo-packages";
                 UrlTemplate = "https://lib.rs/search?q={searchTerms}";
                 IconURL = "https://lib.rs/favicon.ico";
-                Alias = "rs";
+                Alias = "@rs";
               }
 
             ];
