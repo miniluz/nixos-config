@@ -50,45 +50,45 @@ in
                 Name = "nixpkgs packages";
                 UrlTemplate = "https://search.nixos.org/packages?query={searchTerms}";
                 IconURL = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                Alias = "np";
+                Alias = "@np";
               }
               {
                 Name = "NixOS options";
                 UrlTemplate = "https://search.nixos.org/options?query={searchTerms}";
                 IconURL = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                Alias = "no";
+                Alias = "@no";
               }
               {
                 Name = "NixOS Wiki";
                 UrlTemplate = "https://wiki.nixos.org/w/index.php?search={searchTerms}";
                 IconURL = "https://wiki.nixos.org/favicon.ico";
-                Alias = "nw";
+                Alias = "@nw";
               }
               {
                 Name = "Merriam-Webster";
                 UrlTemplate = "https://www.merriam-webster.com/dictionary/{searchTerms}";
                 IconURL = "https://www.merriam-webster.com/favicon.ico";
-                Alias = "mw";
+                Alias = "@mw";
               }
 
               {
                 Name = "Home Manager Options";
                 UrlTemplate = "https://home-manager-options.extranix.com/?query={searchTerms}";
                 IconURL = "https://home-manager-options.extranix.com/favicon.ico";
-                Alias = "hm";
+                Alias = "@hm";
               }
 
               {
                 Name = "noogle";
                 UrlTemplate = "https://noogle.dev/q?term={searchTerms}";
                 IconURL = "https://noogle.dev/favicon.ico";
-                Alias = "ng";
+                Alias = "@ng";
               }
               {
                 Name = "npm-packages";
                 UrlTemplate = "https://www.npmjs.com/search?q={searchTerms}";
                 IconURL = "https://www.npmjs.com/favicon.ico";
-                Alias = "npm";
+                Alias = "@npm";
               }
 
               {
