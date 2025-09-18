@@ -9,7 +9,7 @@ let
   cfg = config.miniluz;
 in
 {
-  config = lib.mkIf (cfg.firefox.enable && cfg.visual && false) {
+  config = lib.mkIf (cfg.firefox.enable && cfg.visual) {
     environment.systemPackages = [
       (inputs.zen-browser.packages.${pkgs.system}.zen-browser.override {
         config.zen.policies = {
