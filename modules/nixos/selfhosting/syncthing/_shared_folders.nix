@@ -7,6 +7,7 @@
       "sunflare"
       "sunlight"
       "phone"
+      "tablet"
     ];
     backup = true;
   };

@@ -19,4 +19,8 @@
     name = "phone";
     id = "LVHRXAF-EDIRHWU-IFUJUDV-HII6VWU-TMIGTKP-MFHJZAE-ZYODX5H-LZQZAAA";
   };
+  tablet = {
+    name = "tablet";
+    id = "FC3QQJ2-IF37JTP-RJJ362I-ZTEMZJM-J7W7PFU-3SLGOBU-RMLGWR5-TJQAGQ5";
+  };
 }
