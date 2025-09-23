@@ -25,7 +25,7 @@ in
                 };
               };
             in
-            (listToAttrs [
+            listToAttrs [
               # To add additional extensions, find it on addons.mozilla.org, find
               # the short ID in the url (like https://addons.mozilla.org/en-US/firefox/addon/!SHORT_ID!/)
               # Then go to https://addons.mozilla.org/api/v5/addons/addon/!SHORT_ID!/ to get the guid
@@ -38,7 +38,8 @@ in
               # (extension "vimium-ff" "{d7742d87-e61d-4b78-b8a1-b469842139fa}")
               (extension "catppuccin-web-file-icons" "{bbb880ce-43c9-47ae-b746-c3e0096c5b76}")
               (extension "untrap-for-youtube" "{2662ff67-b302-4363-95f3-b050218bd72c}")
-            ]);
+              (extension "wayback-machine_new" "wayback_machine@mozilla.org")
+            ];
 
           SearchEngines = {
             Default = "ddg";
