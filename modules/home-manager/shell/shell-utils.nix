@@ -6,14 +6,14 @@
 }:
 let
   cfg = config.miniluz.shell;
-  catpuccin-btop = pkgs.fetchFromGitHub {
+  catppuccin-btop = pkgs.fetchFromGitHub {
     name = "btop";
     owner = "catppuccin";
     repo = "btop";
     rev = "c6469190f2ecf25f017d6120bf4e050e6b1d17af";
     hash = "sha256-jodJl4f2T9ViNqsY9fk8IV62CrpC5hy7WK3aRpu70Cs=";
   };
-  catpuccin-gitui = pkgs.fetchFromGitHub {
+  catppuccin-gitui = pkgs.fetchFromGitHub {
     name = "gitui";
     owner = "catppuccin";
     repo = "gitui";
@@ -47,7 +47,7 @@ in
 
       gitui = {
         enable = true;
-        theme = "${catpuccin-gitui}/themes/${theme}.ron";
+        # theme = lib.readFile "${catppuccin-gitui}/themes/${theme}.ron";
         keyConfig = ''
           move_left: Some(( code: Char('h'), modifiers: "")),
           move_right: Some(( code: Char('l'), modifiers: "")),
@@ -66,7 +66,7 @@ in
     };
 
     xdg.configFile."btop/theme/${theme}.theme".source =
-      lib.mkForce "${catpuccin-btop}/theme/${theme}.theme";
+      lib.mkForce "${catppuccin-btop}/theme/${theme}.theme";
 
     services.tldr-update.enable = true;
 

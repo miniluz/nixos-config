@@ -27,5 +27,11 @@ in
       isNormalUser = true;
       extraGroups = [ "podman" ];
     };
+
+    environment.etc."containers/registries.conf".text = lib.mkForce ''
+      [registries.search]
+      registries = ['docker.io']
+    '';
+
   };
 }
