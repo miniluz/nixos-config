@@ -65,8 +65,10 @@ in
       };
     };
 
-    xdg.configFile."btop/theme/${theme}.theme".source =
-      lib.mkForce "${catppuccin-btop}/theme/${theme}.theme";
+    xdg.configFile = {
+      "gitui/theme.ron".source = lib.mkForce "${catppuccin-gitui}/themes/${theme}.ron";
+      "btop/theme/${theme}.theme".source = lib.mkForce "${catppuccin-btop}/theme/${theme}.theme";
+    };
 
     services.tldr-update.enable = true;
 
