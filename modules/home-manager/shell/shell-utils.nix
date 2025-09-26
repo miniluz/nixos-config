@@ -20,7 +20,7 @@ let
     rev = "df2f59f847e047ff119a105afff49238311b2d36";
     hash = "sha256-DRK/j3899qJW4qP1HKzgEtefz/tTJtwPkKtoIzuoTj0=";
   };
-  theme = "catppuccin_mocha";
+  theme = "catppuccin-mocha";
 in
 {
   config = lib.mkIf cfg.enable {
