@@ -47,6 +47,11 @@ let
 
 in
 {
+  options.miniluz.zen.enable = lib.mkOption {
+    default = true;
+    description = "Enable Zen.";
+  };
+
   config = lib.mkIf (cfg.firefox.enable && cfg.visual) {
     environment.systemPackages = [
       (pkgs.wrapFirefox inputs.zen-browser.packages.${pkgs.system}.zen-browser-unwrapped {

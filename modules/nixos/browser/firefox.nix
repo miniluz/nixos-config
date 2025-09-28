@@ -16,7 +16,7 @@ let
 in
 {
   options.miniluz.firefox.enable = lib.mkOption {
-    default = true;
+    default = false;
     description = "Enable Firefox.";
   };
 

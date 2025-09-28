@@ -12,6 +12,8 @@
     };
   };
 
+  miniluz.firefox.enable = true; # TODO: remove
+
   miniluz.development = {
     vscode.enable = false;
     podman = true;
