@@ -12,6 +12,7 @@ in
     fonts.fontconfig.enable = true;
 
     home.packages = with pkgs; [
+      porsmo
       cabin
       libreoffice-qt
 

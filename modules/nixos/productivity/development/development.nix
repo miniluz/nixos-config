@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -39,5 +40,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    hm.home.packages = with pkgs; [
+      gitkraken
+    ];
   };
 }

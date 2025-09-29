@@ -87,10 +87,28 @@ in
                 Alias = "@nw";
               }
               {
+                Name = "Wikipedia (English)";
+                URLTemplate = "https://en.wikipedia.org/w/index.php?search={searchTerms}";
+                IconURL = "https://en.wikipedia.org/static/favicon/wikipedia.ico";
+                Alias = "@wen";
+              }
+              {
+                Name = "Wikipedia (Español)";
+                URLTemplate = "https://es.wikipedia.org/w/index.php?search={searchTerms}";
+                IconURL = "https://es.wikipedia.org/static/favicon/wikipedia.ico";
+                Alias = "@wes";
+              }
+              {
                 Name = "Merriam-Webster";
                 URLTemplate = "https://www.merriam-webster.com/dictionary/{searchTerms}";
                 IconURL = "https://www.merriam-webster.com/favicon.ico";
                 Alias = "@mw";
+              }
+              {
+                Name = "RAE";
+                URLTemplate = "https://dle.rae.es/{searchTerms}";
+                IconURL = "https://dle.rae.es/favicon-16x16.png";
+                Alias = "@rae";
               }
               {
                 Name = "Home Manager Options";
