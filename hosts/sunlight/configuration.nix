@@ -57,6 +57,16 @@
             };
           };
         }
+        {
+          matches = [
+            { "node.name" = "alsa_input.usb-046d_HD_Pro_Webcam_C920_E4F1F8DF-02.analog-stereo"; }
+          ];
+          actions = {
+            update-props = {
+              "node.disabled" = true;
+            };
+          };
+        }
 
         # Set high priority for Scarlett outputs
         {
