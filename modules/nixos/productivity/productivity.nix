@@ -13,6 +13,8 @@ in
 
     home.packages = with pkgs; [
       porsmo
+
+      pandoc
       cabin
       libreoffice-qt
 
