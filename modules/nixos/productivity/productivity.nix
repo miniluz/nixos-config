@@ -15,6 +15,8 @@ in
       porsmo
 
       pandoc
+      typst
+      texliveBasic
       cabin
       libreoffice-qt
 
