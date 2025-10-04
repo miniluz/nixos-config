@@ -40,8 +40,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    hm.home.packages = with pkgs; [
-      gitkraken
-    ];
+    hm.home = lib.mkIf config.miniluz.visual {
+      packages = with pkgs; [
+        gitkraken
+      ];
+    };
   };
 }
