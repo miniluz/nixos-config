@@ -38,7 +38,7 @@
     ];
   };
 
-  fileSystems."/home/miniluz/second-drive" = {
+  fileSystems."/media/second-drive" = {
     device = "second-drive/root";
     fsType = "zfs";
   };
