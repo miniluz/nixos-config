@@ -69,6 +69,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.zfs.enabled = true;
+
   environment.pathsToLink = [ "/share/zsh" ];
 
   system.stateVersion = "25.05";

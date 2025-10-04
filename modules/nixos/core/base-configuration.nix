@@ -87,7 +87,6 @@ in
         ripgrep
         eza
         parted
-        zfs
       ]
       ++ (with miniluz-pkgs; [
         font-cache-update
