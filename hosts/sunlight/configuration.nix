@@ -112,11 +112,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.supportedFilesystems = {
-    ext4 = true;
-    zfs = true;
-  };
-
   networking.hostName = "sunlight"; # Define your hostname.
   networking.hostId = "0010aec6";
 
