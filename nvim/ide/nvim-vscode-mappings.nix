@@ -55,6 +55,25 @@
         action = "<cmd>w<cr><cmd>bd<cr>";
       }
       {
+        key = "<leader><S+w>";
+        mode = [
+          "n"
+          "v"
+        ];
+        silent = true;
+        action = "<cmd>bd<cr>";
+      }
+      {
+        key = "<leader><C+w>";
+        mode = [
+          "n"
+          "v"
+        ];
+        silent = true;
+        action = "<cmd>%bd|e#<cr>";
+      }
+
+      {
         key = "<C-.>";
         mode = [
           "n"
