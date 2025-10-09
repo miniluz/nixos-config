@@ -24,6 +24,7 @@ let
   ) usedFishPlugins;
 in
 symlinkJoin {
+
   name = "luz-shell";
   paths = [
     fish
@@ -42,4 +43,7 @@ symlinkJoin {
       } \
       --prefix PATH : ${lib.makeBinPath [ luz-shell-utils ]}
   '';
+
+  meta.mainProgram = "fish";
+
 }
