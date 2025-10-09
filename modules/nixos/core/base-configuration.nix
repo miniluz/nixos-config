@@ -22,8 +22,6 @@ in
   };
 
   config = {
-    hm.miniluz.visual = config.miniluz.visual;
-
     age.identityPaths = [ "/home/miniluz/.ssh/id_ed25519" ];
 
     zramSwap.enable = mkDefault true;
@@ -72,27 +70,17 @@ in
       with pkgs;
       [
         steam-run
-        file
-        uutils-coreutils-noprefix
-        p7zip
-        fd
-        evil-helix
-        nh
         nixfmt-rfc-style
         nil
         nushell
-        nmap
-        dig.dnsutils
-        bat
-        ripgrep
-        eza
-        parted
       ]
       ++ (with miniluz-pkgs; [
+        luz-shell-utils
+        luz-shell
+
         font-cache-update
         luznix-rebuild
         luznix-os-switch
-        git-randomize-commit-times
       ]);
 
     environment.sessionVariables = {
@@ -111,6 +99,7 @@ in
       command-not-found.enable = mkDefault false;
       ssh.startAgent = mkDefault true;
       nix-ld.enable = mkDefault true;
+      nix-index-database.comma.enable = mkDefault true;
     };
 
     documentation.man.generateCaches = false;

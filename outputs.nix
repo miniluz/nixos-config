@@ -41,4 +41,6 @@ in
       miniluz-pkgs-unstable
       ;
   };
+
+  packages.${system} = { inherit miniluz-pkgs miniluz-pkgs-unstable; };
 }

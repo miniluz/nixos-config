@@ -2,7 +2,7 @@
   writeNuApplication,
   luznix-os-switch,
   libnotify,
-  git,
+  git-luzwrap,
   nixfmt-rfc-style,
   name ? "luznix-rebuild",
 }:
@@ -12,7 +12,7 @@ writeNuApplication {
   runtimeInputs = [
     luznix-os-switch
     libnotify
-    git
+    git-luzwrap
     nixfmt-rfc-style
   ];
   # derivationArgs = {

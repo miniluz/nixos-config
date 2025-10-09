@@ -2,7 +2,10 @@
   config.vim = {
     languages = {
       bash.enable = true;
-      css.enable = true;
+      css = {
+        enable = true;
+        format.type = "prettierd";
+      };
       html.enable = true;
       python.enable = true;
       yaml.enable = true;

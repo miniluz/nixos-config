@@ -1,0 +1,7 @@
+[ui]
+default-command = ["log"]
+paginate = "never"
+
+[user]
+email = "javiermelon4fu@gmail.con"
+name = "miniluz"

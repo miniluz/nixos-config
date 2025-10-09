@@ -40,6 +40,11 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
     hm.home = lib.mkIf config.miniluz.visual {
       packages = with pkgs; [
         gitkraken
