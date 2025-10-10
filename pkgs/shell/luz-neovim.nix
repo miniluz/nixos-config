@@ -19,4 +19,6 @@ symlinkJoin {
     jq
     yq
   ];
+
+  meta.mainProgram = "nvim";
 }

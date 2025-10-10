@@ -33,8 +33,6 @@ in
         pgDataDir = "${cfg.server.serverStorage}/postgres/${config.services.postgresql.package.psqlSchema}";
       in
       {
-        environment.arbys.enable = true;
-
         # Keep postgres within hdd
         users.users.postgres.createHome = true;
         services.postgresql = {

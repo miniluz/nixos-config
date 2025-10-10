@@ -11,7 +11,7 @@ in
 
   config = lib.mkIf cfg {
 
-    hm.home.packages = with pkgs; [
+    users.users.miniluz.packages = with pkgs; [
       lldb
     ];
 

@@ -11,10 +11,7 @@
 
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    hjem.url = "github:feel-co/hjem";
 
     musnix = {
       url = "github:musnix/musnix";
@@ -42,8 +39,6 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    arbys.url = "git+https://git.atagen.co/atagen/arbys";
 
     quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
 

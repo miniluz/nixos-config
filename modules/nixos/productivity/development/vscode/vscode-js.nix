@@ -8,8 +8,8 @@ let
   cfg = config.miniluz.development;
 in
 {
-  config.hm = lib.mkIf (cfg.enable && cfg.vscode.enable && cfg.languages.js) {
-    programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
+  config.miniluz.development.vscode = lib.mkIf (cfg.enable && cfg.vscode.enable && cfg.languages.js) {
+    extensions = with pkgs.vscode-extensions; [
       dbaeumer.vscode-eslint
       esbenp.prettier-vscode
       bradlc.vscode-tailwindcss
@@ -17,7 +17,7 @@ in
       # stivo.tailwind-fold
     ];
 
-    programs.vscode.profiles.default.userSettings =
+    settings =
       let
         prettier-default = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";

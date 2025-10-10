@@ -8,32 +8,29 @@ let
   cfg = config.miniluz.development;
 in
 {
-  config.hm = lib.mkIf (cfg.enable && cfg.vscode.enable) {
+  config.miniluz.development.vscode = lib.mkIf (cfg.enable && cfg.vscode.enable) {
+    extensions = with pkgs.vscode-extensions; [
+      vscodevim.vim
+    ];
 
-    programs.vscode.profiles.default = {
-      extensions = with pkgs.vscode-extensions; [
-        vscodevim.vim
+    settings = {
+      "vim.useCtrlKeys" = false;
+      "vim.foldfix" = true;
+      "vim.leader" = "<space>";
+      "vim.camelCaseMotion.enable" = true;
+      "vim.highlightedyank.enable" = true;
+      "vim.highlightedyank.color" = "rgba(100, 100, 130, 0.5)";
+      "vim.sneak" = true;
+      "vim.normalModeKeyBindings" = [
+        {
+          "before" = [
+            "u"
+          ];
+          "commands" = [
+            "undo"
+          ];
+        }
       ];
-
-      userSettings = {
-        "vim.useCtrlKeys" = false;
-        "vim.foldfix" = true;
-        "vim.leader" = "<space>";
-        "vim.camelCaseMotion.enable" = true;
-        "vim.highlightedyank.enable" = true;
-        "vim.highlightedyank.color" = "rgba(100, 100, 130, 0.5)";
-        "vim.sneak" = true;
-        "vim.normalModeKeyBindings" = [
-          {
-            "before" = [
-              "u"
-            ];
-            "commands" = [
-              "undo"
-            ];
-          }
-        ];
-      };
     };
   };
 }

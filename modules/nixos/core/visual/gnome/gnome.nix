@@ -81,6 +81,13 @@ in
             sleep-inactive-ac-type = "nothing";
             sleep-inactive-battery-type = "nothing";
           };
+
+          "org/gnome/settings-daemon/plugins/color" = {
+            night-light-enabled = true;
+            night-light-schedule-from = 23.0;
+            night-light-schedule-to = 23.983333333333331;
+          };
+
           "org/gnome/shell".enabled-extensions = map (extension: extension.extensionUuid) gnome-extensions;
         };
       }

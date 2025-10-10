@@ -45,10 +45,11 @@ in
       nix-direnv.enable = true;
     };
 
-    hm.home = lib.mkIf config.miniluz.visual {
+    users.users.miniluz = lib.mkIf config.miniluz.visual {
       packages = with pkgs; [
         gitkraken
       ];
     };
+
   };
 }

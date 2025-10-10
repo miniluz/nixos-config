@@ -25,7 +25,7 @@ in
     };
 
     environment.sessionVariables = lib.mkIf cfg.nvim.nix-editor {
-      "NIX_CONFIG_EDITOR" = "${miniluz-pkgs.luz-neovim}";
+      "NIX_CONFIG_EDITOR" = "${lib.getExe miniluz-pkgs.luz-neovim}";
     };
 
   };

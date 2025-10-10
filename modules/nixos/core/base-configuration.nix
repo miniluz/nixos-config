@@ -81,6 +81,7 @@ in
         font-cache-update
         luznix-rebuild
         luznix-os-switch
+        luznix-update-command
       ]);
 
     environment.sessionVariables = {
@@ -103,7 +104,6 @@ in
     };
 
     documentation.man.generateCaches = false;
-    hm.programs.man.generateCaches = false;
     documentation.nixos.enable = false;
 
   };

@@ -12,7 +12,6 @@ let
   global-secrets = ./secrets;
 
   nixos-modules = import-tree ./modules/nixos;
-  hm-modules = import-tree ./modules/home-manager;
 
   makeMiniluzPkgs = import ./make-miniluz-pkgs.nix { inherit inputs lib; };
   makeHosts = import ./make-hosts.nix { inherit inputs lib; };
@@ -34,7 +33,6 @@ in
     inherit
       inputs
       nixos-modules
-      hm-modules
       global-secrets
       pkgs-unstable
       miniluz-pkgs

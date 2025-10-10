@@ -2,7 +2,6 @@
 {
   inputs,
   nixos-modules,
-  hm-modules,
   global-secrets,
   pkgs-unstable,
   miniluz-pkgs,
@@ -31,37 +30,30 @@ let
         modules = [
           nixos-modules
 
-          (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" "miniluz" ])
-
           "${path}/configuration.nix"
           "${path}/hardware-configuration.nix"
 
           { networking.hostName = stem; }
 
-          inputs.home-manager.nixosModules.default
-          (
-            { config, ... }:
-            {
-              hm = {
-                imports = [
-                  hm-modules
-                ];
-                home.stateVersion = config.system.stateVersion;
-                programs.home-manager.enable = true;
-              };
-
-              home-manager = {
-                extraSpecialArgs = specialArgs;
-                useGlobalPkgs = true;
-              };
-            }
-          )
-
           {
             nixpkgs.overlays = [ (final: prev: { inherit (pkgs-unstable) smfh; }) ];
           }
 
-          inputs.arbys.nixosModules.arbys
+          (
+            { pkgs, ... }:
+            {
+              hjem.linker = pkgs.smfh;
+
+              hj = {
+                user = "miniluz";
+                directory = "/home/miniluz";
+              };
+            }
+          )
+          inputs.hjem.nixosModules.default
+          (lib.mkAliasOptionModule [ "hj" ] [ "hjem" "users" "miniluz" ])
+
+          inputs.agenix.nixosModules.default
           inputs.nixarr.nixosModules.default
           inputs.quadlet-nix.nixosModules.quadlet
           inputs.nix-index-database.nixosModules.nix-index
