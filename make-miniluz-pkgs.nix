@@ -17,14 +17,14 @@ let
     (i: i.files)
   ];
 
-  neovim =
+  luz-neovim-unwrapped =
     (inputs.nvf.lib.neovimConfiguration {
-      pkgs = pkgs;
+      inherit pkgs;
       modules = [ ./nvim/nvim.nix ];
     }).neovim;
 
   miniluz-pkgs = (makeAttrsetFromPathlist nameValueMap pathList) // {
-    inherit neovim;
+    inherit luz-neovim-unwrapped;
   };
 in
 miniluz-pkgs

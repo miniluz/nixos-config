@@ -10,8 +10,8 @@ in
 {
   options.miniluz.work.enable = lib.mkEnableOption "Enable Blender.";
 
-  config.hm = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
+  config = lib.mkIf cfg.enable {
+    users.users.miniluz.packages = with pkgs; [
       slack
     ];
   };

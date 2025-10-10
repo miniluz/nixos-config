@@ -40,6 +40,7 @@ in
     # My user
     users = {
       users.miniluz = {
+        uid = 1000;
         isNormalUser = true;
         description = "miniluz";
         extraGroups = [

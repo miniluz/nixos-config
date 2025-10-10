@@ -27,18 +27,22 @@ in
     };
   };
 
-  config.hm = lib.mkIf (cfg.enable && cfg.background.enable) (
+  config = lib.mkIf (cfg.enable && cfg.background.enable) (
     let
       fileUri = "file://${backgrounds-git}/${cfg.background.path}";
     in
     {
-      dconf.settings = {
-        "org/gnome/desktop/background" = {
-          picture-uri = lib.mkForce fileUri;
-          picture-uri-dark = lib.mkForce fileUri;
-        };
-        "org/gnome/desktop/screensaver".picture-uri = lib.mkForce fileUri;
-      };
+      programs.dconf.profiles.user.databases = [
+        {
+          settings = {
+            "org/gnome/desktop/background" = {
+              picture-uri = fileUri;
+              picture-uri-dark = fileUri;
+            };
+            "org/gnome/desktop/screensaver".picture-uri = fileUri;
+          };
+        }
+      ];
     }
   );
 }

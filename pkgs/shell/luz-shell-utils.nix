@@ -50,7 +50,7 @@ symlinkJoin {
       lazyjj
     ])
     ++ (with miniluz-pkgs; [
-      neovim
+      luz-neovim
 
       git-randomize-commit-times
       git-clean-branches
