@@ -10,8 +10,8 @@ in
 {
   options.miniluz.social.enable = lib.mkEnableOption "Enable Discord.";
 
-  config.hm = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
+  config = lib.mkIf cfg.enable {
+    users.users.miniluz.packages = with pkgs; [
       (discord.override {
         # withOpenASAR = true;
         withVencord = true;

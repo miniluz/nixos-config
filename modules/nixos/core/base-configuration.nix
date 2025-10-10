@@ -4,7 +4,6 @@
   pkgs,
   miniluz-pkgs,
   lib,
-  config,
   global-secrets,
   ...
 }:

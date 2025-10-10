@@ -10,10 +10,10 @@ in
 {
   options.miniluz.blender.enable = lib.mkEnableOption "Enable Blender.";
 
-  config.hm = lib.mkIf cfg.enable {
-    home.packages = [
-      pkgs.blender-hip
-      pkgs.ffmpeg_7
+  config = lib.mkIf cfg.enable {
+    users.users.miniluz.packages = with pkgs; [
+      blender-hip
+      ffmpeg_7
     ];
   };
 }

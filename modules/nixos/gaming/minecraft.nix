@@ -31,13 +31,9 @@ in
 
     systemd.services.playit.wantedBy = lib.mkForce [ ];
 
-    hm = {
-      fonts.fontconfig.enable = true;
-
-      home.packages = with pkgs; [
-        prismlauncher
-        temurin-jre-bin
-      ];
-    };
+    users.users.miniluz.packages = with pkgs; [
+      prismlauncher
+      temurin-jre-bin
+    ];
   };
 }

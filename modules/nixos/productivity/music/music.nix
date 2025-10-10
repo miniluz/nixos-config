@@ -10,8 +10,8 @@ in
 {
   options.miniluz.music.enable = lib.mkEnableOption "Enable all of my music production configuration.";
 
-  config.hm = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
+  config = lib.mkIf cfg.enable {
+    users.users.miniluz.packages = with pkgs; [
       reaper
       reaper-reapack-extension
 
@@ -23,6 +23,6 @@ in
       winetricks
     ];
 
-    home.sessionVariables."W_NO_WIN64_WARNINGS" = "1";
+    environment.sessionVariables."W_NO_WIN64_WARNINGS" = "1";
   };
 }

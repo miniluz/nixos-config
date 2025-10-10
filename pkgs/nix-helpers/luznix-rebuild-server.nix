@@ -1,7 +1,7 @@
 {
   writeNuApplication,
   luznix-os-switch,
-  git,
+  git-luzwrap,
   nixfmt-rfc-style,
   name ? "luznix-rebuild-server",
 }:
@@ -10,7 +10,7 @@ writeNuApplication {
   text = builtins.readFile ./luznix-rebuild-server.nu;
   runtimeInputs = [
     luznix-os-switch
-    git
+    git-luzwrap
     nixfmt-rfc-style
   ];
   # derivationArgs = {

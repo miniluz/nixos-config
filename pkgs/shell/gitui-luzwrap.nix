@@ -2,7 +2,6 @@
   symlinkJoin,
   makeWrapper,
   gitui,
-  runCommand,
   fetchFromGitHub,
 }:
 let
@@ -21,12 +20,14 @@ symlinkJoin {
   ];
   buildInputs = [ makeWrapper ];
   postBuild = ''
-    wrapProgram $out/bin/gitui\
-      --set XDG_CONFIG_HOME ${
-        runCommand "gitui-catppuccin" { } ''
-          mkdir -p $out/gitui
-          ln -sf ${catppuccin-gitui}/themes/catppuccin-mocha.ron $out/gitui/theme.ron
-        ''
-      }
+    mkdir -p $out/git
+    ln -sf ${./git-config.ini} $out/git/config
+
+    mkdir -p $out/gitui
+    ln -sf ${catppuccin-gitui}/themes/catppuccin-mocha.ron $out/gitui/theme.ron
+
+    wrapProgram $out/bin/gitui \
+      --add-flag --watcher \
+      --set XDG_CONFIG_HOME $out
   '';
 }

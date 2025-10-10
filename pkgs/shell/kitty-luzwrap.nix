@@ -2,8 +2,6 @@
   symlinkJoin,
   makeWrapper,
   kitty,
-  writeTextDir,
-  runCommand,
   fetchFromGitHub,
 }:
 let
@@ -22,18 +20,11 @@ symlinkJoin {
   ];
   buildInputs = [ makeWrapper ];
   postBuild = ''
+    mkdir -p $out/kitty
+    ln -sf ${./kitty-config.conf} $out/kitty/kitty.conf
+    ln -sf ${catppuccin-kitty}/themes $out/kitty/themes
+
     wrapProgram $out/bin/kitty \
-      --set KITTY_CONFIG_DIRECTORY ${
-        symlinkJoin {
-          name = "kitty-config";
-          paths = [
-            (writeTextDir "/kitty/kitty.conf" (builtins.readFile ./kitty-config.conf))
-            (runCommand "btop-catppuccin" { } ''
-              mkdir -p $out/kitty
-              ln -sf ${catppuccin-kitty}/themes $out/kitty/themes
-            '')
-          ];
-        }
-      }/kitty
+      --set KITTY_CONFIG_DIRECTORY $out/kitty
   '';
 }

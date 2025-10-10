@@ -27,6 +27,7 @@ let
 
     "browser.theme.dark-private-windows" = true;
     "zen.workspaces.separate-essentials" = false;
+    "zen.view.compact.enable-at-startup" = true;
   };
 
   extensions = [

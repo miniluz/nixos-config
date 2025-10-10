@@ -2,7 +2,6 @@
   symlinkJoin,
   makeWrapper,
   jujutsu,
-  writeTextDir,
 }:
 symlinkJoin {
   name = "jj-luzwrap";
@@ -11,7 +10,10 @@ symlinkJoin {
   ];
   buildInputs = [ makeWrapper ];
   postBuild = ''
+    mkdir -p $out/jj
+    ln -sf ${./jj-config.toml} $out/jj/config.toml
+
     wrapProgram $out/bin/jj \
-      --set XDG_CONFIG_HOME ${writeTextDir "/jj/config.toml" (builtins.readFile ./jj-config.toml)}
+      --set XDG_CONFIG_HOME $out
   '';
 }

@@ -4,7 +4,6 @@
   git,
   delta,
   gnupg,
-  writeTextDir,
 }:
 symlinkJoin {
   name = "git-luzwrap";
@@ -15,7 +14,10 @@ symlinkJoin {
   ];
   buildInputs = [ makeWrapper ];
   postBuild = ''
+    mkdir -p $out/git
+    ln -sf ${./git-config.ini} $out/git/config
+
     wrapProgram $out/bin/git \
-      --set XDG_CONFIG_HOME ${writeTextDir "/git/config" (builtins.readFile ./git-config.ini)}
+      --set XDG_CONFIG_HOME $out
   '';
 }
