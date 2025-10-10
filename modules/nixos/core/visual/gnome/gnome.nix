@@ -31,34 +31,31 @@ in
 
     # services.gnome.gcr-ssh-agent.enable = false;
 
-    environment.gnome.excludePackages = (
-      with pkgs;
-      [
-        cheese # webcam tool
-        epiphany # web browser
-        geary # email reader
-        evince # document viewer
-        totem # video player
-        # gnome-photos
-        gnome-tour
-        gedit # text editor
-        gnome-music
-        gnome-characters
-        tali # poker game
-        iagno # go game
-        hitori # sudoku game
-        atomix # puzzle game
-        gnome-weather
-        gnome-connections
-        snapshot
-        yelp
-        gnome-maps
-      ]
-    );
+    environment.gnome.excludePackages = with pkgs; [
+      cheese # webcam tool
+      epiphany # web browser
+      geary # email reader
+      evince # document viewer
+      totem # video player
+      # gnome-photos
+      gnome-tour
+      gedit # text editor
+      gnome-music
+      gnome-characters
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+      gnome-weather
+      gnome-connections
+      snapshot
+      yelp
+      gnome-maps
+    ];
 
-    hm = {
-      dconf = {
-        enable = true;
+    programs.dconf.profiles.user.databases = [
+      {
+        lockAll = true;
         settings = {
           "org/gnome/desktop/interface" = {
             color-scheme = "prefer-dark";
@@ -86,8 +83,8 @@ in
           };
           "org/gnome/shell".enabled-extensions = map (extension: extension.extensionUuid) gnome-extensions;
         };
-      };
-    };
+      }
+    ];
 
     environment.systemPackages =
       with pkgs;

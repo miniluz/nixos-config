@@ -69,17 +69,23 @@ in
       miniluz.selfhosting.backups.backups = folder-config.backups;
     })
     (lib.mkIf (cfg.enable && cfg.syncthing && !cfg.server.enable) {
-      hm = {
-        age.secrets.syncthing-cert-key.file = "${host-secrets}/syncthing-cert-key.age";
+      age.secrets.syncthing-cert-key = {
+        file = "${host-secrets}/syncthing-cert-key.age";
+        mode = "700";
+        owner = "miniluz";
+        group = "users";
+      };
 
-        services.syncthing = {
-          enable = true;
+      services.syncthing = {
+        enable = true;
 
-          cert = "${host-secrets}/syncthing-cert.pem";
-          key = config.hm.age.secrets.syncthing-cert-key.path;
+        user = "miniluz";
+        group = "users";
 
-          inherit settings;
-        };
+        cert = "${host-secrets}/syncthing-cert.pem";
+        key = config.age.secrets.syncthing-cert-key.path;
+
+        inherit settings;
       };
     })
   ];
