@@ -84,8 +84,9 @@ in
 
           "org/gnome/settings-daemon/plugins/color" = {
             night-light-enabled = true;
-            night-light-schedule-from = 23.0;
+            night-light-schedule-from = 22.0;
             night-light-schedule-to = 23.983333333333331;
+            night-light-temperature = lib.gvariant.mkUint32 1700;
           };
 
           "org/gnome/shell".enabled-extensions = map (extension: extension.extensionUuid) gnome-extensions;
