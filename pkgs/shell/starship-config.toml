@@ -9,11 +9,12 @@ $directory\
 $vcsh\
 $fossil_branch\
 $fossil_metrics\
-$git_branch\
-$git_commit\
-$git_state\
-$git_metrics\
-$git_status\
+${custom.jj}\
+${custom.git_branch}\
+${custom.git_commit}\
+${custom.git_state}\
+${custom.git_metrics}\
+${custom.git_status}\
 $hg_branch\
 $pijul_channel\
 $docker_context\
@@ -96,6 +97,86 @@ $character
 
 right_format = """$allk"""
 
+# custom module for jj status
+[custom.jj]
+description = "The current jj status"
+when = "jj --ignore-working-copy root"
+symbol = "🥋 "
+command = '''
+jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
+  separate(" ",
+    change_id.shortest(4),
+    bookmarks,
+    "|",
+    concat(
+      if(conflict, "💥"),
+      if(divergent, "🚧"),
+      if(hidden, "👻"),
+      if(immutable, "🔒"),
+    ),
+    raw_escape_sequence("\x1b[1;32m") ++ if(empty, "(empty)"),
+    raw_escape_sequence("\x1b[1;32m") ++ coalesce(
+      truncate_end(29, description.first_line(), "…"),
+      "(no description set)",
+    ) ++ raw_escape_sequence("\x1b[0m"),
+  )
+'
+'''
+
+# optionally disable git modules when JJ is found.
+# note that you'll need to add ${custom.git_branch}, ${custom.git_commit} etc
+# into format: https://starship.rs/config/#default-prompt-format
+[git_status]
+disabled = true
+format = '[$all_status$ahead_behind]($style)'
+style = 'bright-yellow'
+conflicted = '( =$count)'
+ahead = '( ⇡$count)'
+behind = '( ⇣$count)'
+diverged = '( ⇡$ahead_count ⇣$behind_count)'
+untracked = '( ?$count)'
+stashed = '( *$count)'
+modified = '( !$count)'
+staged = '( +$count)'
+renamed = '( »$count)'
+deleted = '( ✘$count)'
+
+[custom.git_status]
+when = "! jj --ignore-working-copy root"
+command = "starship module git_status"
+style = "" # This disables the default "(bold green)" style
+description = "Only show git_status if we're not in a jj repo"
+
+[git_commit]
+disabled = true
+tag_symbol = '  '
+
+[custom.git_commit]
+when = "! jj --ignore-working-copy root"
+command = "starship module git_commit"
+style = ""
+description = "Only show git_commit if we're not in a jj repo"
+
+[git_metrics]
+disabled = true
+
+[custom.git_metrics]
+when = "! jj --ignore-working-copy root"
+command = "starship module git_metrics"
+description = "Only show git_metrics if we're not in a jj repo"
+style = ""
+
+[git_branch]
+disabled = true
+style = "bright-green"
+symbol = " "
+
+[custom.git_branch]
+when = "! jj --ignore-working-copy root"
+command = "starship module git_branch"
+description = "Only show git_branch if we're not in a jj repo"
+style = ""
+
 [aws]
 disabled = true
 symbol = "  "
@@ -131,6 +212,8 @@ symbol = " "
 style = "bold bright-blue"
 read_only = " 󰌾"
 fish_style_pwd_dir_length = 1
+truncate_to_repo = false
+truncation_symbol = ".../"
 
 [docker_context]
 symbol = " "
@@ -153,26 +236,6 @@ symbol = " "
 [gcloud]
 symbol = "  "
 
-[git_branch]
-style = "bright-green"
-symbol = " "
-
-[git_status]
-format = '[$all_status$ahead_behind]($style)'
-style = 'bright-yellow'
-conflicted = '( =$count)'
-ahead = '( ⇡$count)'
-behind = '( ⇣$count)'
-diverged = '( ⇡$ahead_count ⇣$behind_count)'
-untracked = '( ?$count)'
-stashed = '( *$count)'
-modified = '( !$count)'
-staged = '( +$count)'
-renamed = '( »$count)'
-deleted = '( ✘$count)'
-
-[git_commit]
-tag_symbol = '  '
 
 [golang]
 symbol = " "
