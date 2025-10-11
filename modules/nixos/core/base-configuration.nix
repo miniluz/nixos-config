@@ -56,6 +56,14 @@ in
       groups.plugdev = { };
     };
 
+    hj.files.".bashrc".text = ''
+      if [[ $(${lib.getExe' pkgs.procps "ps"} --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+      then
+        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+        exec ${lib.getExe miniluz-pkgs.luz-shell} $LOGIN_OPTION
+      fi
+    '';
+
     services = {
       openssh = {
         enable = true;
