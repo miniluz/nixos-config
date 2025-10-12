@@ -48,13 +48,14 @@ let
 
 in
 {
-  options.miniluz.zen.enable = lib.mkOption {
+  options.miniluz.browser.enable = lib.mkOption {
     default = true;
     description = "Enable Zen.";
   };
 
-  config = lib.mkIf (cfg.zen.enable && cfg.visual) {
+  config = lib.mkIf (cfg.browser.enable && cfg.visual) {
     environment.systemPackages = [
+      pkgs.tor-browser
       (pkgs.wrapFirefox inputs.zen-browser.packages.${pkgs.system}.zen-browser-unwrapped {
         extraPrefs = lib.concatLines (
           lib.mapAttrsToList (
