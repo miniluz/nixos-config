@@ -16,8 +16,6 @@ nixpkgs-unstable versions that will autoupdate independently.
 The configuration at `~/nixos-config-base` will not be auto-updated. It must be
 pulled manually to stop breakages from the main config.
 
-The server configuration is at the `server-packages` (private) repo.
-
 ### Wireguard
 
 A wireguard config file without a killswitch is provided as a host secret in
