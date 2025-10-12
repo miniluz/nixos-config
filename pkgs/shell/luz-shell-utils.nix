@@ -31,7 +31,6 @@ symlinkJoin {
       eza
       zoxide
       delta
-      broot
       yazi
 
       fzf
