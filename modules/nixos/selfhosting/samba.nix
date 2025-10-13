@@ -19,6 +19,9 @@
           services = {
             samba = {
               enable = true;
+              nmbd.enable = false;
+              winbindd.enable = false;
+
               securityType = "user";
 
               settings = {
@@ -30,8 +33,9 @@
                   #"use sendfile" = "yes";
                   #"max protocol" = "smb2";
                   # note: localhost is the ipv6 localhost ::1
-                  "interfaces" = "tailscale0";
-                  "bind interfaces only" = "yes";
+                  "interfaces" = "0.0.0.0/0";
+                  # "interfaces" = "tailscale0";
+                  # "bind interfaces only" = "yes";
                   "guest account" = "nobody";
                   "map to guest" = "bad user";
 
@@ -58,6 +62,7 @@
               # ^^ Needed to allow samba to automatically register mDNS records (without the need for an `extraServiceFile`
               nssmdns4 = true;
               # ^^ Not one hundred percent sure if this is needed- if it aint broke, don't fix it
+              allowInterfaces = [ "tailscale0" ];
               enable = true;
             };
           };
@@ -70,10 +75,14 @@
           };
           users.groups.samba = { };
 
-          systemd.tmpfiles.rules = [
-            "d ${dataDir} 0750 samba samba"
-            "d ${publicFolder} 0750 samba samba"
-          ];
+          systemd = {
+            targets.samba.after = [ "tailsaled.service" ];
+            services.samba-smbd.after = [ "tailsaled.service" ];
+            tmpfiles.rules = [
+              "d ${dataDir} 0750 samba samba"
+              "d ${publicFolder} 0750 samba samba"
+            ];
+          };
 
           networking.firewall = {
             interfaces."tailscale0" = {
