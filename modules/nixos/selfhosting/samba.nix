@@ -33,8 +33,8 @@
                   #"use sendfile" = "yes";
                   #"max protocol" = "smb2";
                   # note: localhost is the ipv6 localhost ::1
-                  # "interfaces" = "0.0.0.0/0";
-                  "interfaces" = "lo tailscale0";
+                  "interfaces" = "100.64.1.1/0";
+                  # "interfaces" = "lo tailscale0";
                   "bind interfaces only" = "yes";
                   "guest account" = "nobody";
                   "map to guest" = "bad user";
