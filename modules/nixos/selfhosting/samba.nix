@@ -33,9 +33,9 @@
                   #"use sendfile" = "yes";
                   #"max protocol" = "smb2";
                   # note: localhost is the ipv6 localhost ::1
-                  "interfaces" = "0.0.0.0/0";
-                  # "interfaces" = "tailscale0";
-                  # "bind interfaces only" = "yes";
+                  # "interfaces" = "0.0.0.0/0";
+                  "interfaces" = "lo tailscale0";
+                  "bind interfaces only" = "yes";
                   "guest account" = "nobody";
                   "map to guest" = "bad user";
 
@@ -55,7 +55,11 @@
               };
             };
 
-            samba-wsdd.enable = true;
+            samba-wsdd = {
+              enable = true;
+              interface = "tailscale0";
+            };
+
             avahi = {
               publish.enable = true;
               publish.userServices = true;
@@ -78,6 +82,8 @@
           systemd = {
             targets.samba.after = [ "tailsaled.service" ];
             services.samba-smbd.after = [ "tailsaled.service" ];
+            services.samba-wsdd.after = [ "tailsaled.service" ];
+
             tmpfiles.rules = [
               "d ${dataDir} 0750 samba samba"
               "d ${publicFolder} 0750 samba samba"
