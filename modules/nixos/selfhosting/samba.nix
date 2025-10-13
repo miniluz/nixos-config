@@ -16,6 +16,7 @@
       serverStorage = config.miniluz.selfhosting.server.serverStorage;
       dataDir = "${serverStorage}/samba";
       publicFolder = "${dataDir}/public";
+      backedUpFolder = "${dataDir}/backed-up";
     in
     lib.mkIf (cfg.enable && cfg.samba) (
       lib.mkMerge [
@@ -46,6 +47,16 @@
                 };
                 public = {
                   path = publicFolder;
+                  browseable = "yes";
+                  "read only" = "no";
+                  "guest ok" = "yes";
+                  "create mask" = "0644";
+                  "directory mask" = "0755";
+                  "force user" = "samba";
+                  "force group" = "samba";
+                };
+                backed-up = {
+                  path = backedUpFolder;
                   browseable = "yes";
                   "read only" = "no";
                   "guest ok" = "yes";
@@ -89,6 +100,7 @@
             tmpfiles.rules = [
               "d ${dataDir} 0750 samba samba"
               "d ${publicFolder} 0750 samba samba"
+              "d ${backedUpFolder} 0750 samba samba"
             ];
           };
 
@@ -107,20 +119,36 @@
               ];
             };
           };
+
+          miniluz.selfhosting.backups.backups.samba-backed-up.paths = [ backedUpFolder ];
+
         })
         (lib.mkIf (!cfg.server.enable) {
           environment.systemPackages = [ pkgs.cifs-utils ];
 
-          fileSystems."/mnt/samba-public" = {
-            device = "//home-server/public";
-            fsType = "cifs";
-            options =
-              let
-                automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-              in
-              [
-                "${automount_opts},guest,uid=${builtins.toString config.users.users.miniluz.uid},gid=${builtins.toString config.users.groups.users.gid},file_mode=0700,dir_mode=0700"
-              ];
+          fileSystems = {
+            "/mnt/samba-public" = {
+              device = "//home-server/public";
+              fsType = "cifs";
+              options =
+                let
+                  automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+                in
+                [
+                  "${automount_opts},guest,uid=${builtins.toString config.users.users.miniluz.uid},gid=${builtins.toString config.users.groups.users.gid},file_mode=0700,dir_mode=0700"
+                ];
+            };
+            "/mnt/samba-backed-up" = {
+              device = "//home-server/backed-up";
+              fsType = "cifs";
+              options =
+                let
+                  automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+                in
+                [
+                  "${automount_opts},guest,uid=${builtins.toString config.users.users.miniluz.uid},gid=${builtins.toString config.users.groups.users.gid},file_mode=0700,dir_mode=0700"
+                ];
+            };
           };
         })
       ]
