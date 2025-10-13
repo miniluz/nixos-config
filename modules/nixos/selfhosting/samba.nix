@@ -119,7 +119,7 @@
                 automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
               in
               [
-                "${automount_opts},guest,uid=${config.users.users.miniluz.uid},gid=${config.users.groups.users.gid},file_mode=0700,dir_mode=0700"
+                "${automount_opts},guest,uid=${builtins.toString config.users.users.miniluz.uid},gid=${builtins.toString config.users.groups.users.gid},file_mode=0700,dir_mode=0700"
               ];
           };
         })
