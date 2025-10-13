@@ -53,7 +53,10 @@ in
         openssh.authorizedKeys.keyFiles = [ "${global-secrets}/miniluz.pub" ];
       };
 
-      groups.plugdev = { };
+      groups = {
+        users.gid = 100;
+        plugdev = { };
+      };
     };
 
     hj.files.".bashrc".text = ''
