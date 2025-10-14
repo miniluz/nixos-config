@@ -22,9 +22,8 @@ fi
 cat >.envrc <<'EOF'
 #!/usr/bin/env bash
 
-if ! has nix_direnv_version ; then
-  source_url "https://raw.githubusercontent.com/nix-community/nix-direnv/3.0.6/direnvrc" "sha256-RYcUJaRMf8oF5LznDrlCXbkOQrywm0HDv1VjYGaJGdM="
-fi
+watch_file flake.nix
+watch_file flake.lock
 
 use nix
 EOF
