@@ -14,7 +14,7 @@
 
   miniluz.development = {
     vscode.enable = false;
-    podman = true;
+    containers = true;
     virt = true;
     languages = {
       # java = true;

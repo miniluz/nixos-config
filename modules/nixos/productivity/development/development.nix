@@ -27,7 +27,7 @@ in
         description = "Enable NeoVim as the NixOS config editor.";
       };
     };
-    podman = lib.mkEnableOption "Podman";
+    containers = lib.mkEnableOption "Containers";
     virt = lib.mkEnableOption "Virtualization";
 
     languages = {
