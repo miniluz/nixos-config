@@ -11,21 +11,41 @@
 
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    hjem.url = "github:feel-co/hjem";
+    hjem = {
+      url = "github:feel-co/hjem";
+      inputs.nixpkgs.follows = "nixpkgs";
+
+      # Nested follows, relies on lix
+      inputs.ndg.inputs.flake-parts.follows = "flake-parts";
+      inputs.ndg.inputs.flake-compat.follows = "";
+      inputs.smfh.inputs.systems.follows = "systems";
+    };
 
     musnix = {
       url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Only for lockfile deduplication
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+    };
+    systems = {
+      url = "github:nix-systems/default";
+    };
+
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.systems.follows = "systems";
     };
 
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+      inputs.darwin.follows = "";
     };
 
     import-tree.url = "github:vic/import-tree";
@@ -33,6 +53,8 @@
     playit-nixos-module = {
       url = "github:pedorich-n/playit-nixos-module";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.systems.follows = "systems";
     };
 
     zen-browser = {
@@ -51,6 +73,7 @@
     actual-backup = {
       url = "github:miniluz/actual-backup";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.inputs.systems.follows = "systems";
     };
 
     nix-index-database = {
