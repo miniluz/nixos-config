@@ -12,8 +12,14 @@ if [ -f ".envrc" ]; then
   exit 1
 fi
 
-# Check if nix/flake.nix exists
+# Check if flake.nix exists
 if [ -f "flake.nix" ]; then
+  echo "Error: flake.nix file already exists"
+  exit 1
+fi
+
+# Check if shell.nix exists
+if [ -f "shell.nix" ]; then
   echo "Error: flake.nix file already exists"
   exit 1
 fi
@@ -24,6 +30,7 @@ cat >.envrc <<'EOF'
 
 watch_file flake.nix
 watch_file flake.lock
+watch_file rust-toolchain.toml
 
 use nix
 EOF
@@ -46,11 +53,15 @@ cat >flake.nix <<'EOF'
       url = "https://git.lix.systems/lix-project/flake-compat/archive/main.tar.gz";
       flake = false;
     };
-
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
       nixpkgs,
+      rust-overlay,
       ...
     }:
     let
@@ -61,12 +72,13 @@ cat >flake.nix <<'EOF'
         (
           system:
           let
-            pkgs = import nixpkgs { inherit system; };
+            overlays = [ (import rust-overlay) ];
+            pkgs = import nixpkgs { inherit system overlays; };
           in
-          with pkgs;
           {
-            devShells.${system}.default = mkShell {
-              nativeBuildInputs = [
+            devShells.${system}.default = pkgs.mkShell {
+              nativeBuildInputs = with pkgs; [
+                (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
               ];
               buildInputs = [
               ];
