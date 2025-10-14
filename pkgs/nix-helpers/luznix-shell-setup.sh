@@ -95,6 +95,7 @@ cat >flake.nix <<'EOF'
 }
 EOF
 
+git add .
 nix flake update
 
 cat >shell.nix <<'EOF'
