@@ -27,7 +27,6 @@ symlinkJoin {
     ln -sf ${catppuccin-gitui}/themes/catppuccin-mocha.ron $out/gitui/theme.ron
 
     wrapProgram $out/bin/gitui \
-      --add-flag --watcher \
       --set XDG_CONFIG_HOME $out
   '';
 }
