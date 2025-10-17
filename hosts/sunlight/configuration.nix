@@ -111,6 +111,13 @@
   };
 
   environment.systemPackages = [
+    # Info found with `nix-shell -p pulseaudio --run "pactl list cards"`
+    # Important sections:
+    # Name: alsa_card.pci-0000_0c_00.1
+    # Profiles:
+    #     output:hdmi-stereo-extra3: Digital Stereo (HDMI 4) Output (..., available: yes)
+    #              WATCH FOR THE HDMI NUMBER --------^^^^^^ also for this ^^^^^^^^^^^^^^
+    #     output:hdmi-surround-extra3: Digital Surround 5.1 (HDMI 4) Output (..., available: yes)
     (pkgs.writeShellScriptBin "switch-to-surround" "${lib.getExe' pkgs.pulseaudio "pactl"} set-card-profile alsa_card.pci-0000_0c_00.1 output:hdmi-surround-extra3")
     (pkgs.writeShellScriptBin "switch-to-stereo" "${lib.getExe' pkgs.pulseaudio "pactl"} set-card-profile alsa_card.pci-0000_0c_00.1 output:hdmi-stereo-extra3")
   ];
