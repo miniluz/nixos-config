@@ -50,7 +50,7 @@ in
         extraSettings = {
           "speed-limit-down" = 3000;
           "speed-limit-down-enabled" = true;
-          "speed-limit-up" = 1000;
+          "speed-limit-up" = 200;
           "speed-limit-up-enabled" = true;
         };
 
