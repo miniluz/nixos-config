@@ -15,6 +15,7 @@ in
       (pkgs.kodi.withPackages (
         kodiPkgs: with kodiPkgs; [
           jellyfin
+          jellycon
         ]
       ))
     ];
