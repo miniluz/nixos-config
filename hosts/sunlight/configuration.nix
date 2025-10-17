@@ -31,6 +31,7 @@
   miniluz.selfhosting = {
     enable = true;
     syncthing = true;
+    kodi = true;
   };
 
   services.pipewire = {
