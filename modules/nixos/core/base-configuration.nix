@@ -5,6 +5,7 @@
   miniluz-pkgs,
   lib,
   global-secrets,
+  config,
   ...
 }:
 let
@@ -93,7 +94,17 @@ in
         luznix-rebuild
         luznix-os-switch
         luznix-update-command
-      ]);
+      ])
+      ++ (
+        if config.miniluz.visual then
+          with pkgs;
+          [
+            helvum
+            raysession
+          ]
+        else
+          [ ]
+      );
 
     environment.sessionVariables = {
       EDITOR = "hx";
