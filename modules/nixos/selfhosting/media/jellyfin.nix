@@ -48,10 +48,10 @@ in
         peerPort = 12543; # Set this to the port forwarded by your VPN
 
         extraSettings = {
-          "speed-limit-down" = 1000;
+          "speed-limit-down" = 3000;
           "speed-limit-down-enabled" = true;
           "speed-limit-up" = 1000;
-          "speed-limit-up-enabled" = false;
+          "speed-limit-up-enabled" = true;
         };
 
         # flood.enable = true;
