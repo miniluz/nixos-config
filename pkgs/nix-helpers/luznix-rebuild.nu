@@ -9,6 +9,8 @@ def main [] {
     let flake_path: path = $env.NH_FLAKE | path expand
     cd $flake_path
 
+    rm -f ./result
+
     print "Pulling changes..."
     try {
     git pull
