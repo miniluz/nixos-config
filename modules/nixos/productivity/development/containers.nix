@@ -14,7 +14,12 @@ in
       pkgs.podman-compose
     ];
 
-    virtualisation.docker.enable = true;
+    virtualisation.docker = {
+      enable = true;
+      # daemon.settings = {
+      #   "default-ulimits".
+      # };
+    };
 
     users.users.miniluz.extraGroups = [ "docker" ];
 
