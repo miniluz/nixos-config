@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   lib,
   inputs,
@@ -121,7 +122,7 @@ in
           inherit (cfg.realtime) bufferSize sampleRate;
           bufferSampleStr = "${builtins.toString bufferSize}/${builtins.toString sampleRate}";
         in
-        lib.mkIf (cfg.realtime.enable) {
+        lib.mkIf cfg.realtime.enable {
           extraConfig.pipewire."92-low-latency" = {
             "context.properties" = {
               "default.clock.rate" = sampleRate;
@@ -155,6 +156,8 @@ in
     ];
 
     musnix.enable = cfg.realtime.enable;
+
+    environment.systemPackages = lib.mkIf config.miniluz.visual [ pkgs.pavucontrol ];
 
     users.users.miniluz = lib.mkIf cfg.realtime.enable { extraGroups = [ "audio" ]; };
   };
