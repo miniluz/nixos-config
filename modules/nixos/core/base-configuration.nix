@@ -85,7 +85,7 @@ in
         nixfmt-rfc-style
         nil
         nushell
-        agenix-cli
+        inputs.agenix.packages.x86_64-linux.default
       ]
       ++ (with miniluz-pkgs; [
         luz-shell-utils
