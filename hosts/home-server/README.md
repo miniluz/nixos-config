@@ -161,6 +161,21 @@ to actually open.
    Radarr.
 9. Go into Audiobookshelf, set up the account and add the media folder.
 
+## Restoring from a backup
+
+```sh
+cat /var/run/agenix/borg-pass # use agenix otherwise to read
+cat /var/run/agenix/borg-ssh-ed25519 # but you must decrypt this to a file
+# Remember you also have these on BitWarden
+
+BORG_RSH="ssh -i /var/run/agenix/borg-ssh-ed25519" borg list ssh://u489829-sub1@u489829-sub1.your-storagebox.de:23/./home-server-backups/syncthing-miniluz-polar
+# Outputs:
+# home-server-syncthing-miniluz-polar-2025-09-21T00:00:00 Sun, 2025-09-21 00:00:20 [...]
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ you want this bit
+
+BORG_RSH="ssh -i /var/run/agenix/borg-ssh-ed25519" borg extract ssh://u489829-sub1@u489829-sub1.your-storagebox.de:23/./home-server-backups/syncthing-miniluz-polar::home-server-syncthing-miniluz-polar-2025-09-21T00:00:00
+```
+
 ## Ports
 
 - Syncthing: `127.0.0.1:8384`, transfer port `0.0.0.0:22000`, discovery port
