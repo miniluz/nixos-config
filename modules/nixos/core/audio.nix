@@ -157,7 +157,14 @@ in
 
     musnix.enable = cfg.realtime.enable;
 
-    environment.systemPackages = lib.mkIf config.miniluz.visual [ pkgs.pavucontrol ];
+    environment.systemPackages = lib.mkIf config.miniluz.visual (
+      with pkgs;
+      [
+        pavucontrol
+        helvum
+        raysession
+      ]
+    );
 
     users.users.miniluz = lib.mkIf cfg.realtime.enable { extraGroups = [ "audio" ]; };
   };

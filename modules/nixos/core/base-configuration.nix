@@ -85,6 +85,7 @@ in
         nixfmt-rfc-style
         nil
         nushell
+        agenix-cli
       ]
       ++ (with miniluz-pkgs; [
         luz-shell-utils
@@ -94,17 +95,7 @@ in
         luznix-rebuild
         luznix-os-switch
         luznix-update-command
-      ])
-      ++ (
-        if config.miniluz.visual then
-          with pkgs;
-          [
-            helvum
-            raysession
-          ]
-        else
-          [ ]
-      );
+      ]);
 
     environment.sessionVariables = {
       EDITOR = "hx";
