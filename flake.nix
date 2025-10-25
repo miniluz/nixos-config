@@ -14,8 +14,8 @@
     hjem = {
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
-
       inputs.smfh.inputs.systems.follows = "systems";
+      inputs.ndg.follows = "";
     };
 
     musnix = {
