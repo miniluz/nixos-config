@@ -66,32 +66,32 @@ cat >flake.nix <<'EOF'
     }:
     let
       inherit (nixpkgs) lib;
+
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
+      forAllSystems =
+        lib.genAttrs supportedSystems;
     in
-    lib.foldl lib.recursiveUpdate { } (
-      lib.map
-        (
-          system:
-          let
-            overlays = [ (import rust-overlay) ];
-            pkgs = import nixpkgs { inherit system overlays; };
-          in
-          {
-            devShells.${system}.default = pkgs.mkShell {
-              nativeBuildInputs = with pkgs; [
-                (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
-              ];
-              buildInputs = [
-              ];
-            };
-          }
-        )
-        [
-          "aarch64-darwin"
-          "aarch64-linux"
-          "x86_64-darwin"
-          "x86_64-linux"
-        ]
-    );
+    {
+      devShells = forAllSystems (system:
+        let
+          overlays = [ (import rust-overlay) ];
+          pkgs = import nixpkgs { inherit system overlays; };
+        in
+        {
+          default = pkgs.mkShell {
+            nativeBuildInputs = with pkgs; [
+              (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
+            ];
+            buildInputs = [
+            ];
+          };
+        }
+      );
+    };
 }
 EOF
 

@@ -15,9 +15,6 @@
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
 
-      # Nested follows, relies on lix
-      inputs.ndg.inputs.flake-parts.follows = "flake-parts";
-      inputs.ndg.inputs.flake-compat.follows = "";
       inputs.smfh.inputs.systems.follows = "systems";
     };
 
@@ -34,11 +31,9 @@
       url = "github:nix-systems/default";
     };
 
-    nvf = {
-      url = "github:notashelf/nvf";
+    luz-nvim = {
+      url = "github:miniluz/luz-nvim";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.systems.follows = "systems";
     };
 
     agenix = {
