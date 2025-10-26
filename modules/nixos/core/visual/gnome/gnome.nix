@@ -43,6 +43,8 @@ in
               enable-hot-corners = false;
             };
 
+            "org/gnome/desktop/wm/preferences".focus-new-windows = "smart";
+
             "org/gnome/desktop/wm/keybindings" = {
               switch-windows = [ "<Alt>Tab" ];
               switch-windows-backward = [ "<Shift><Alt>Tab" ];
