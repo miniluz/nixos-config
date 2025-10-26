@@ -98,7 +98,7 @@ in
       ]);
 
     environment.sessionVariables = {
-      EDITOR = "hx";
+      EDITOR = "nvim";
       NH_FLAKE = "/home/miniluz/nixos-config";
     };
 
