@@ -44,7 +44,7 @@ in
           cd ${flake-location}
           git config --global --add safe.directory ${flake-location}
           git config --global --add safe.directory /home/miniluz/nixos-config-base
-          nix flake update --flake ${flake-location} nixpkgs nixpkgs-unstable
+          nix flake update --flake ${flake-location} nixpkgs actual-backup
           ${lib.getExe (miniluz-pkgs.luznix-update-command.override { inherit flake-location; })}
         '';
 

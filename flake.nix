@@ -1,19 +1,17 @@
 {
-  description = "miniluz's NixOS & HM modules, packages, and configurations";
+  description = "miniluz's NixOS modules and packages";
 
   inputs = {
 
-    #    self.submodules = true;
-
-    null.url = "github:nix-values/null";
-
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     hjem = {
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
+      # Can't do this yet because the fix hasn't been upstreamed
+      # Also fix on make-hosts
+      # inputs.smfh.follows = "";
+      inputs.smfh.inputs.nixpkgs.follows = "nixpkgs";
       inputs.smfh.inputs.systems.follows = "systems";
       inputs.ndg.follows = "";
     };
@@ -41,6 +39,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
       inputs.darwin.follows = "";
+      inputs.home-manager.follows = "";
     };
 
     import-tree.url = "github:vic/import-tree";
@@ -61,14 +60,13 @@
 
     nixarr = {
       url = "github:miniluz/nixarr/patch-1";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.website-builder.follows = "null";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.website-builder.follows = "";
     };
 
     actual-backup = {
-      url = "github:miniluz/actual-backup";
+      url = "github:miniluz/actual-backup/remove-flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.inputs.systems.follows = "systems";
     };
 
     nix-index-database = {

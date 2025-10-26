@@ -12,12 +12,19 @@ let
   serverStorage = config.miniluz.selfhosting.server.serverStorage;
   dataDir = "${serverStorage}/actual";
 
-  actual-backup = inputs.actual-backup.packages.${pkgs.system}.actual-backup.forNixpkgsActualServer;
+  actual-backup = inputs.actual-backup.packages.${pkgs.system}.default;
 in
 {
   options.miniluz.selfhosting.actual = lib.mkEnableOption "Actual";
 
   config = lib.mkIf (cfg.enable && cfg.actual && cfg.server.enable) {
+
+    assertions = [
+      {
+        assertion = pkgs.actual-server.version == actual-backup.version;
+        message = "Mismatched versions for actual-server and actual-backup";
+      }
+    ];
 
     age.secrets.actual-sync-id.file = "${host-secrets}/actual-sync-id.age";
     age.secrets.actual-password.file = "${host-secrets}/actual-password.age";

@@ -3,9 +3,7 @@
   inputs,
   nixos-modules,
   global-secrets,
-  pkgs-unstable,
   miniluz-pkgs,
-  miniluz-pkgs-unstable,
 }:
 let
   nameValueMap =
@@ -17,9 +15,7 @@ let
           inputs
           global-secrets
           host-secrets
-          pkgs-unstable
           miniluz-pkgs
-          miniluz-pkgs-unstable
           ;
       };
     in
@@ -35,21 +31,14 @@ let
 
           { networking.hostName = stem; }
 
-          {
-            nixpkgs.overlays = [ (final: prev: { inherit (pkgs-unstable) smfh; }) ];
-          }
+          ({
+            hjem.linker = inputs.hjem.packages."x86_64-linux".smfh;
 
-          (
-            { pkgs, ... }:
-            {
-              hjem.linker = pkgs.smfh;
-
-              hj = {
-                user = "miniluz";
-                directory = "/home/miniluz";
-              };
-            }
-          )
+            hj = {
+              user = "miniluz";
+              directory = "/home/miniluz";
+            };
+          })
           inputs.hjem.nixosModules.default
           (lib.mkAliasOptionModule [ "hj" ] [ "hjem" "users" "miniluz" ])
 

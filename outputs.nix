@@ -2,7 +2,6 @@ inputs:
 let
   inherit (inputs)
     nixpkgs
-    nixpkgs-unstable
     import-tree
     ;
 
@@ -16,16 +15,12 @@ let
   makeMiniluzPkgs = import ./make-miniluz-pkgs.nix { inherit inputs lib; };
   makeHosts = import ./make-hosts.nix { inherit inputs lib; };
 
-  nixpkgs-config = {
-    inherit system;
-    config.allowUnfree = true;
-  };
-
-  pkgs = import nixpkgs nixpkgs-config;
-  pkgs-unstable = import nixpkgs-unstable nixpkgs-config;
-
-  miniluz-pkgs = makeMiniluzPkgs pkgs;
-  miniluz-pkgs-unstable = makeMiniluzPkgs pkgs-unstable;
+  miniluz-pkgs = makeMiniluzPkgs (
+    import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    }
+  );
 
 in
 {
@@ -34,11 +29,9 @@ in
       inputs
       nixos-modules
       global-secrets
-      pkgs-unstable
       miniluz-pkgs
-      miniluz-pkgs-unstable
       ;
   };
 
-  packages.${system} = { inherit miniluz-pkgs miniluz-pkgs-unstable; };
+  packages.${system} = { inherit miniluz-pkgs; };
 }
