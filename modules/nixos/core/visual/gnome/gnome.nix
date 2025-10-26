@@ -70,6 +70,12 @@ in
               night-light-temperature = lib.gvariant.mkUint32 1700;
             };
 
+            "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+              binding = "<Super>k";
+              command = "kitty";
+              name = "Open terminal";
+            };
+
             "org/gnome/shell".enabled-extensions = map (extension: extension.extensionUuid) gnome-extensions;
           };
         }
