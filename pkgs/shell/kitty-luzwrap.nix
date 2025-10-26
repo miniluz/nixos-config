@@ -27,4 +27,6 @@ symlinkJoin {
     wrapProgram $out/bin/kitty \
       --set KITTY_CONFIG_DIRECTORY $out/kitty
   '';
+
+  meta.mainProgram = "kitty";
 }
