@@ -8,7 +8,7 @@
   plugins ? with tmuxPlugins; [
     vim-tmux-navigator
     catppuccin
-    tmux-which-key
+    better-mouse-mode
     (tmuxPlugins.mkTmuxPlugin {
       pluginName = "tmux-yank";
       rtpFilePath = "yank.tmux";
@@ -33,7 +33,7 @@ symlinkJoin {
   buildInputs = [ makeWrapper ];
   postBuild = ''
     mkdir $out/tmux
-    cat > $out/tmux/tmux.conf <<EOF
+    cat >> $out/tmux/tmux.conf <<EOF
     ${lib.concatMapStringsSep "\n" (plugin: "run-shell ${plugin.rtp}") plugins}
     EOF
     cat ${./tmux-config.conf} >> $out/tmux/tmux.conf

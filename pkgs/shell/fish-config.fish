@@ -16,7 +16,7 @@ status is-interactive; and begin
     # eval (zellij setup --generate-auto-start fish | string collect)
 
     if not set -q TMUX
-        exec tmux
+        tmux
     end
 
     starship init fish | source
