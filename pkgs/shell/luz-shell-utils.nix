@@ -62,5 +62,6 @@ symlinkJoin {
       btop-luzwrap
       gitui-luzwrap
       zellij-luzwrap
+      tmux-luzwrap
     ]);
 }
