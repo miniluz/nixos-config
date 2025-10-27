@@ -5,7 +5,6 @@
   miniluz-pkgs,
   lib,
   global-secrets,
-  config,
   ...
 }:
 let
@@ -31,12 +30,24 @@ in
     # Set timezone
     time.timeZone = mkDefault "Europe/Madrid";
 
-    # Set keyboard layout for console and xserver
-    services.xserver.xkb = mkDefault {
-      layout = "es";
-      variant = "";
-    };
     console.keyMap = mkDefault "es";
+
+    # Set keyboard layout for console and xserver
+    services = {
+      xserver.xkb = mkDefault {
+        layout = "es";
+        variant = "";
+      };
+
+      earlyoom.enable = mkDefault true;
+
+      openssh = {
+        enable = mkDefault true;
+        settings.PasswordAuthentication = mkDefault false;
+      };
+
+      fail2ban.enable = mkDefault true;
+    };
 
     # My user
     users = {
@@ -68,14 +79,6 @@ in
       fi
     '';
 
-    services = {
-      openssh = {
-        enable = true;
-        settings.PasswordAuthentication = false;
-      };
-      fail2ban.enable = true;
-    };
-
     networking.networkmanager.enable = mkDefault true;
 
     environment.systemPackages =
@@ -104,10 +107,10 @@ in
 
     programs = {
       nh = {
-        enable = true;
+        enable = mkDefault true;
         clean = {
-          enable = true;
-          extraArgs = "--keep 5 --keep-since 7d";
+          enable = mkDefault true;
+          extraArgs = mkDefault "--keep 5 --keep-since 7d";
         };
       };
       command-not-found.enable = mkDefault false;
