@@ -7,7 +7,10 @@
 }:
 {
   config = lib.mkIf config.miniluz.visual {
-    users.users.miniluz.packages = with miniluz-pkgs; [ kitty-luzwrap ];
+    users.users.miniluz.packages = with miniluz-pkgs; [
+      kitty-luzwrap
+      ghostty-luzwrap
+    ];
 
     environment.systemPackages = with pkgs; [
       vlc
