@@ -81,6 +81,8 @@ in
 
     networking.networkmanager.enable = mkDefault true;
 
+    environment.localBinInPath = mkDefault true;
+
     environment.systemPackages =
       with pkgs;
       [
