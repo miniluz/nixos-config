@@ -81,7 +81,7 @@ in
 
             "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
               binding = "<Super>q";
-              command = "kitty";
+              command = "ghostty";
               name = "Open terminal";
             };
 
