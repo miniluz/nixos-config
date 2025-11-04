@@ -125,11 +125,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762200326,
-        "narHash": "sha256-TFAwtV04Y6Et+TtG+llmgqhRByYwB9/Pz402Z36vR8s=",
+        "lastModified": 1762246372,
+        "narHash": "sha256-6L2ZIqA7JABzPBd3nezZ5cGoRNO1pqvt8lMfzqYLVoY=",
         "owner": "miniluz",
         "repo": "luz-nvim",
-        "rev": "63d5ef37e5098c540ca4963cb876a534a40371e6",
+        "rev": "6c704a9a10ddf9b97aa37626b180f65e51adfe37",
         "type": "github"
       },
       "original": {
