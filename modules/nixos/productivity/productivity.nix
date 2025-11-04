@@ -20,8 +20,6 @@ in
 
       obsidian
       zotero
-
-      claude-code
     ];
   };
 }

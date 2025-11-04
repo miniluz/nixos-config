@@ -47,6 +47,8 @@ symlinkJoin {
       comma
       gh
       lazyjj
+
+      claude-code
     ])
     ++ (with miniluz-pkgs; [
       luz-neovim
