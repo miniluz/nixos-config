@@ -6,7 +6,7 @@
   tmuxPlugins,
   fetchFromGitHub,
   plugins ? with tmuxPlugins; [
-    vim-tmux-navigator
+    # vim-tmux-navigator
     catppuccin
     better-mouse-mode
     (tmuxPlugins.mkTmuxPlugin {
