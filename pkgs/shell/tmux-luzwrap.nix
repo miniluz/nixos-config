@@ -27,7 +27,15 @@ symlinkJoin {
   name = "tmux-luzwrap";
 
   paths = [
-    tmux
+    (tmux.overrideAttrs {
+      src = fetchFromGitHub {
+        name = "tmux";
+        owner = "tmux";
+        repo = "tmux";
+        rev = "815f7ecffbf5e7f6daecb3ce6e550bdb32b0d887";
+        hash = "sha256-Ze/CXFGvf3H25gCqlPsVCm+0WNwj1A9qqNSwzICFewQ=";
+      };
+    })
   ];
 
   buildInputs = [ makeWrapper ];
