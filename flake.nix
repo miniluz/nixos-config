@@ -65,7 +65,7 @@
     };
 
     actual-backup = {
-      url = "github:miniluz/actual-backup/remove-flake-utils";
+      url = "github:miniluz/actual-backup/allow-specifying-filename";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
