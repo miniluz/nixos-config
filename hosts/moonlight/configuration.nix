@@ -22,7 +22,7 @@
       rust = true;
     };
   };
-  miniluz.work.enable = true;
+  # miniluz.work.enable = true;
 
   miniluz.social.enable = true;
 
