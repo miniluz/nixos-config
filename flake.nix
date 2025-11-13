@@ -65,7 +65,7 @@
     };
 
     actual-backup = {
-      url = "github:miniluz/actual-backup/allow-specifying-filename";
+      url = "github:Jonas-Sander/actual-backup";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

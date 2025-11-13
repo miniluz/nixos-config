@@ -23,16 +23,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1762523753,
+        "lastModified": 1762539678,
         "narHash": "sha256-cqFZaTToPFQ9xxZPfQ0xOmU6IxnEnqpgNnYjSCSS2Ag=",
-        "owner": "miniluz",
+        "owner": "Jonas-Sander",
         "repo": "actual-backup",
-        "rev": "f3a7745c7165af4843fbd19c9fe75d27dbea0766",
+        "rev": "ee845d8de5a9d73f43f48fcb5b88b8effb170362",
         "type": "github"
       },
       "original": {
-        "owner": "miniluz",
-        "ref": "allow-specifying-filename",
+        "owner": "Jonas-Sander",
         "repo": "actual-backup",
         "type": "github"
       }
