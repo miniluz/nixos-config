@@ -112,7 +112,7 @@ in
         enable = mkDefault true;
         clean = {
           enable = mkDefault true;
-          extraArgs = mkDefault "--keep 5 --keep-since 7d";
+          extraArgs = mkDefault "--keep 5 --keep-since 7d --no-gcroots";
         };
       };
       command-not-found.enable = mkDefault false;
