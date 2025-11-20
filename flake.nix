@@ -13,7 +13,6 @@
       # inputs.smfh.follows = "";
       inputs.smfh.inputs.nixpkgs.follows = "nixpkgs";
       inputs.smfh.inputs.systems.follows = "systems";
-      inputs.ndg.follows = "";
     };
 
     musnix = {
