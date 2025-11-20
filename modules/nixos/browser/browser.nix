@@ -43,6 +43,7 @@ let
     (extension "vimium-ff" "{d7742d87-e61d-4b78-b8a1-b469842139fa}")
     (extension "catppuccin-web-file-icons" "{bbb880ce-43c9-47ae-b746-c3e0096c5b76}")
     (extension "untrap-for-youtube" "{2662ff67-b302-4363-95f3-b050218bd72c}")
+    (extension "sponsorblock" "sponsorBlocker@ajay.app")
     (extension "wayback-machine_new" "wayback_machine@mozilla.org")
   ];
 
