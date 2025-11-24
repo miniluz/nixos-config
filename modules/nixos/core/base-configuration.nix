@@ -49,6 +49,12 @@ in
       fail2ban.enable = mkDefault true;
     };
 
+    i18n.inputMethod = {
+      enable = mkDefault true;
+      type = mkDefault "ibus";
+      # ibus.engines = with pkgs.ibus-engines; [  ];
+    };
+
     # My user
     users = {
       users.miniluz = {
