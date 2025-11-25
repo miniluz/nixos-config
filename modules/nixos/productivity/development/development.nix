@@ -44,12 +44,5 @@ in
       enable = true;
       nix-direnv.enable = true;
     };
-
-    users.users.miniluz = lib.mkIf config.miniluz.visual {
-      packages = with pkgs; [
-        gitkraken
-      ];
-    };
-
   };
 }
