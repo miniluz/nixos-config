@@ -52,8 +52,64 @@ in
     i18n.inputMethod = {
       enable = mkDefault true;
       type = mkDefault "fcitx5";
-      fcitx5.addons = with pkgs; [ fcitx5-gtk ];
-      fcitx5.waylandFrontend = mkDefault true;
+      fcitx5 = {
+        addons = mkDefault (with pkgs; [ fcitx5-gtk ]);
+        waylandFrontend = mkDefault true;
+        ignoreUserConfig = mkDefault true;
+        settings = {
+          inputMethod = mkDefault {
+            GroupOrder."0" = "Default";
+            "Groups/0" = {
+              Name = "Default";
+              "Default Layout" = "es";
+              DefaultIM = "keyboard-es";
+            };
+            "Groups/0/Items/0" = {
+              Name = "keyboard-es";
+              Layout = "";
+            };
+          };
+          globalOptions = mkDefault {
+            Hotkey = {
+              TriggerKeys = "";
+              EnumerateWithTriggerKeys = "False";
+              ActivateKeys = "";
+              DeactivateKeys = "";
+              AltTriggerKeys = "";
+              EnumerateForwardKeys = "";
+              EnumerateBackwardKeys = "";
+              EnumerateSkipFirst = "False";
+              EnumerateGroupForwardKeys = "";
+              EnumerateGroupBackwardKeys = "";
+              PrevPage = "";
+              NextPage = "";
+              PrevCandidate = "";
+              NextCandidate = "";
+              TogglePreedit = "";
+              ModifierOnlyKeyTimeout = "250";
+            };
+            Behavior = {
+              ActiveByDefault = "False";
+              resetStateWhenFocusIn = "No";
+              ShareInputState = "No";
+              PreeditEnabledByDefault = "True";
+              ShowInputMethodInformation = "True";
+              showInputMethodInformationWhenFocusIn = "False";
+              CompactInputMethodInformation = "True";
+              ShowFirstInputMethodInformation = "True";
+              DefaultPageSize = "5";
+              OverrideXkbOption = "False";
+              CustomXkbOption = "";
+              EnabledAddons = "";
+              DisabledAddons = "";
+              PreloadInputMethod = "True";
+              AllowInputMethodForPassword = "False";
+              ShowPreeditForPassword = "False";
+              AutoSavePeriod = "30";
+            };
+          };
+        };
+      };
     };
 
     # My user
