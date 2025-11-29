@@ -54,7 +54,7 @@ in
       type = mkDefault "fcitx5";
       fcitx5 = {
         addons = mkDefault (with pkgs; [ fcitx5-gtk ]);
-        waylandFrontend = mkDefault true;
+        waylandFrontend = mkDefault false;
         ignoreUserConfig = mkDefault true;
         settings = {
           inputMethod = mkDefault {
