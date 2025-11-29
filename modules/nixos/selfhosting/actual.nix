@@ -12,7 +12,7 @@ let
   serverStorage = config.miniluz.selfhosting.server.serverStorage;
   dataDir = "${serverStorage}/actual";
 
-  actual-backup = inputs.actual-backup.packages.${pkgs.system}.default;
+  actual-backup = inputs.actual-backup.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   options.miniluz.selfhosting.actual = lib.mkEnableOption "Actual";

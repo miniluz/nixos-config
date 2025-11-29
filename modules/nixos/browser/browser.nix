@@ -57,90 +57,93 @@ in
   config = lib.mkIf (cfg.browser.enable && cfg.visual) {
     environment.systemPackages = [
       pkgs.tor-browser
-      (pkgs.wrapFirefox inputs.zen-browser.packages.${pkgs.system}.zen-browser-unwrapped {
-        extraPrefs = lib.concatLines (
-          lib.mapAttrsToList (
-            name: value: ''lockPref(${lib.strings.toJSON name}, ${lib.strings.toJSON value});''
-          ) prefs
-        );
+      (pkgs.wrapFirefox
+        inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.zen-browser-unwrapped
+        {
+          extraPrefs = lib.concatLines (
+            lib.mapAttrsToList (
+              name: value: ''lockPref(${lib.strings.toJSON name}, ${lib.strings.toJSON value});''
+            ) prefs
+          );
 
-        extraPolicies = {
-          DisableTelemetry = true;
-          ExtensionSettings = builtins.listToAttrs extensions;
+          extraPolicies = {
+            DisableTelemetry = true;
+            ExtensionSettings = builtins.listToAttrs extensions;
 
-          SearchEngines = {
-            Default = "ddg";
-            Add = [
-              {
-                Name = "nixpkgs packages";
-                URLTemplate = "https://search.nixos.org/packages?query={searchTerms}";
-                IconURL = "https://wiki.nixos.org/favicon.ico";
-                Alias = "@np";
-              }
-              {
-                Name = "NixOS options";
-                URLTemplate = "https://search.nixos.org/options?query={searchTerms}";
-                IconURL = "https://wiki.nixos.org/favicon.ico";
-                Alias = "@no";
-              }
-              {
-                Name = "NixOS Wiki";
-                URLTemplate = "https://wiki.nixos.org/w/index.php?search={searchTerms}";
-                IconURL = "https://wiki.nixos.org/favicon.ico";
-                Alias = "@nw";
-              }
-              {
-                Name = "Wikipedia (English)";
-                URLTemplate = "https://en.wikipedia.org/w/index.php?search={searchTerms}";
-                IconURL = "https://en.wikipedia.org/static/favicon/wikipedia.ico";
-                Alias = "@wen";
-              }
-              {
-                Name = "Wikipedia (Español)";
-                URLTemplate = "https://es.wikipedia.org/w/index.php?search={searchTerms}";
-                IconURL = "https://es.wikipedia.org/static/favicon/wikipedia.ico";
-                Alias = "@wes";
-              }
-              {
-                Name = "Merriam-Webster";
-                URLTemplate = "https://www.merriam-webster.com/dictionary/{searchTerms}";
-                IconURL = "https://www.merriam-webster.com/favicon.ico";
-                Alias = "@mw";
-              }
-              {
-                Name = "RAE";
-                URLTemplate = "https://dle.rae.es/{searchTerms}";
-                IconURL = "https://dle.rae.es/favicon-16x16.png";
-                Alias = "@rae";
-              }
-              {
-                Name = "Home Manager Options";
-                URLTemplate = "https://home-manager-options.extranix.com/?query={searchTerms}";
-                IconURL = "https://wiki.nixos.org/favicon.ico";
-                Alias = "@hm";
-              }
-              {
-                Name = "noogle";
-                URLTemplate = "https://noogle.dev/q?term={searchTerms}";
-                IconURL = "https://noogle.dev/favicon.ico";
-                Alias = "@ng";
-              }
-              {
-                Name = "npm-packages";
-                URLTemplate = "https://www.npmjs.com/search?q={searchTerms}";
-                IconURL = "https://www.npmjs.com/favicon.ico";
-                Alias = "@npm";
-              }
-              {
-                Name = "cargo-packages";
-                URLTemplate = "https://lib.rs/search?q={searchTerms}";
-                IconURL = "https://lib.rs/favicon.ico";
-                Alias = "@rs";
-              }
-            ];
+            SearchEngines = {
+              Default = "ddg";
+              Add = [
+                {
+                  Name = "nixpkgs packages";
+                  URLTemplate = "https://search.nixos.org/packages?query={searchTerms}";
+                  IconURL = "https://wiki.nixos.org/favicon.ico";
+                  Alias = "@np";
+                }
+                {
+                  Name = "NixOS options";
+                  URLTemplate = "https://search.nixos.org/options?query={searchTerms}";
+                  IconURL = "https://wiki.nixos.org/favicon.ico";
+                  Alias = "@no";
+                }
+                {
+                  Name = "NixOS Wiki";
+                  URLTemplate = "https://wiki.nixos.org/w/index.php?search={searchTerms}";
+                  IconURL = "https://wiki.nixos.org/favicon.ico";
+                  Alias = "@nw";
+                }
+                {
+                  Name = "Wikipedia (English)";
+                  URLTemplate = "https://en.wikipedia.org/w/index.php?search={searchTerms}";
+                  IconURL = "https://en.wikipedia.org/static/favicon/wikipedia.ico";
+                  Alias = "@wen";
+                }
+                {
+                  Name = "Wikipedia (Español)";
+                  URLTemplate = "https://es.wikipedia.org/w/index.php?search={searchTerms}";
+                  IconURL = "https://es.wikipedia.org/static/favicon/wikipedia.ico";
+                  Alias = "@wes";
+                }
+                {
+                  Name = "Merriam-Webster";
+                  URLTemplate = "https://www.merriam-webster.com/dictionary/{searchTerms}";
+                  IconURL = "https://www.merriam-webster.com/favicon.ico";
+                  Alias = "@mw";
+                }
+                {
+                  Name = "RAE";
+                  URLTemplate = "https://dle.rae.es/{searchTerms}";
+                  IconURL = "https://dle.rae.es/favicon-16x16.png";
+                  Alias = "@rae";
+                }
+                {
+                  Name = "Home Manager Options";
+                  URLTemplate = "https://home-manager-options.extranix.com/?query={searchTerms}";
+                  IconURL = "https://wiki.nixos.org/favicon.ico";
+                  Alias = "@hm";
+                }
+                {
+                  Name = "noogle";
+                  URLTemplate = "https://noogle.dev/q?term={searchTerms}";
+                  IconURL = "https://noogle.dev/favicon.ico";
+                  Alias = "@ng";
+                }
+                {
+                  Name = "npm-packages";
+                  URLTemplate = "https://www.npmjs.com/search?q={searchTerms}";
+                  IconURL = "https://www.npmjs.com/favicon.ico";
+                  Alias = "@npm";
+                }
+                {
+                  Name = "cargo-packages";
+                  URLTemplate = "https://lib.rs/search?q={searchTerms}";
+                  IconURL = "https://lib.rs/favicon.ico";
+                  Alias = "@rs";
+                }
+              ];
+            };
           };
-        };
-      })
+        }
+      )
     ];
   };
 

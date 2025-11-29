@@ -134,11 +134,20 @@ in
       };
     };
 
-    hj.files.".bashrc".text = ''
+    hj.files.".bashrc".text = mkDefault ''
       if [[ $(${lib.getExe' pkgs.procps "ps"} --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
       then
         shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
         exec ${lib.getExe miniluz-pkgs.luz-shell} $LOGIN_OPTION
+      fi
+    '';
+
+    hj.files.".bash_profile".text = mkDefault ''
+      if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+      fi
+      if [ -f ~/.profile ]; then
+        . ~/.profile
       fi
     '';
 
