@@ -51,8 +51,9 @@ in
 
     i18n.inputMethod = {
       enable = mkDefault true;
-      type = mkDefault "ibus";
-      # ibus.engines = with pkgs.ibus-engines; [  ];
+      type = mkDefault "fcitx5";
+      fcitx5.addons = with pkgs; [ fcitx5-gtk ];
+      fcitx5.waylandFrontend = mkDefault true;
     };
 
     # My user
