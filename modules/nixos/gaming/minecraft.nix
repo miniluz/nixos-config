@@ -31,6 +31,11 @@ in
 
     systemd.services.playit.wantedBy = lib.mkForce [ ];
 
+    networking.firewall = {
+      allowedTCPPorts = [ 25565 ];
+      allowedUDPPorts = [ 25565 ];
+    };
+
     users.users.miniluz.packages = with pkgs; [
       prismlauncher
       temurin-jre-bin
