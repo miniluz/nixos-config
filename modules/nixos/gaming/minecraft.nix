@@ -19,13 +19,11 @@ in
   config = lib.mkIf cfg {
     age.secrets.playit = {
       file = "${global-secrets}/playit.age";
-      owner = "playit";
+      mode = "444";
     };
 
     services.playit = {
       enable = true;
-      user = "playit";
-      group = "playit";
       secretPath = config.age.secrets.playit.path;
     };
 

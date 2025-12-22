@@ -33,7 +33,7 @@
 
   miniluz.selfhosting = {
     enable = true;
-    syncthing = true;
+    syncthing = false;
   };
 
   # Bootloader.
