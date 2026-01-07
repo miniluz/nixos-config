@@ -11,7 +11,7 @@ symlinkJoin {
       file
       nmap
       dig.dnsutils
-      dogdns
+      doggo
       parted
       curl
       wget

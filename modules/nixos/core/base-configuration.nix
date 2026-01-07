@@ -25,6 +25,8 @@ in
 
     zramSwap.enable = mkDefault true;
 
+    boot.kernel.sysctl."kernel.sysrq" = mkDefault 1;
+
     nix.optimise.automatic = mkDefault true;
 
     # Set timezone
@@ -51,7 +53,7 @@ in
 
     i18n.inputMethod = {
       enable = mkDefault true;
-      type = mkDefault "fcitx5";
+      type = "fcitx5";
       fcitx5 = {
         addons = mkDefault (with pkgs; [ fcitx5-gtk ]);
         waylandFrontend = mkDefault false;
