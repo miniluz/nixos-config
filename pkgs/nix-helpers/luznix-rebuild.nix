@@ -3,7 +3,7 @@
   luznix-os-switch,
   libnotify,
   git-luzwrap,
-  nixfmt-rfc-style,
+  nixfmt,
   name ? "luznix-rebuild",
 }:
 writeNuApplication {
@@ -13,7 +13,7 @@ writeNuApplication {
     luznix-os-switch
     libnotify
     git-luzwrap
-    nixfmt-rfc-style
+    nixfmt
   ];
   # derivationArgs = {
   #   nativeBuildInputs = [ pkgs.copyDesktopItems ];

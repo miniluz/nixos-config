@@ -2,7 +2,7 @@
   writeNuApplication,
   luznix-os-switch,
   git-luzwrap,
-  nixfmt-rfc-style,
+  nixfmt,
   name ? "luznix-rebuild-server",
 }:
 writeNuApplication {
@@ -11,7 +11,7 @@ writeNuApplication {
   runtimeInputs = [
     luznix-os-switch
     git-luzwrap
-    nixfmt-rfc-style
+    nixfmt
   ];
   # derivationArgs = {
   #   nativeBuildInputs = [ pkgs.copyDesktopItems ];
