@@ -85,7 +85,10 @@ in
               name = "Open terminal";
             };
 
-            "org/gnome/shell".enabled-extensions = map (extension: extension.extensionUuid) gnome-extensions;
+            "org/gnome/shell" = {
+              enabled-extensions = map (extension: extension.extensionUuid) gnome-extensions;
+              disable-user-extensions = false;
+            };
           };
         }
       ];
