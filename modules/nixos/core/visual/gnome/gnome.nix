@@ -14,6 +14,7 @@ let
     clipboard-indicator
     forge
     user-themes
+    hide-top-bar
   ];
 in
 {
