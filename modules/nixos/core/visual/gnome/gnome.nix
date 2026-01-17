@@ -90,6 +90,12 @@ in
               enabled-extensions = map (extension: extension.extensionUuid) gnome-extensions;
               disable-user-extensions = false;
             };
+
+            # Extension settings
+
+            "org/gnome/shell/extensions/blur-my-shell/panel" = {
+              blur = false;
+            };
           };
         }
       ];
