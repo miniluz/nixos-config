@@ -161,7 +161,7 @@ in
       with pkgs;
       [
         steam-run
-        nixfmt-rfc-style
+        nixfmt
         nil
         nushell
         inputs.agenix.packages.x86_64-linux.default
