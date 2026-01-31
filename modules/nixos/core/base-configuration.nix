@@ -126,6 +126,8 @@ in
           "libvirtd"
           "plugdev"
           "dialout"
+          "render"
+          "video"
         ];
         openssh.authorizedKeys.keyFiles = [ "${global-secrets}/miniluz.pub" ];
       };
