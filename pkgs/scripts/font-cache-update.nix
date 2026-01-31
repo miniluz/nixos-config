@@ -1,2 +1,2 @@
 { writeShellScriptBin }:
-writeShellScriptBin "font-cache-update" ''rm -rf ~/.cache/fontconfig && fc-cache -rv''
+writeShellScriptBin "font-cache-update" "rm -rf ~/.cache/fontconfig && fc-cache -rv"

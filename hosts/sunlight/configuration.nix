@@ -3,6 +3,8 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 { pkgs, lib, ... }:
 {
+  miniluz.amdgpu.enable = true;
+
   miniluz.gnome.enable = true;
   miniluz.audio = {
     enable = true;

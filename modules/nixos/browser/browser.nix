@@ -62,7 +62,7 @@ in
         {
           extraPrefs = lib.concatLines (
             lib.mapAttrsToList (
-              name: value: ''lockPref(${lib.strings.toJSON name}, ${lib.strings.toJSON value});''
+              name: value: "lockPref(${lib.strings.toJSON name}, ${lib.strings.toJSON value});"
             ) prefs
           );
 
