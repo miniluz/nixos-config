@@ -73,6 +73,13 @@ status is-interactive; and begin
         rm -f -- "$tmp"
     end
 
+    # stolen from llakala
+    set FZF_DEFAULT_OPTS  "--with-shell='sh -c' --bind 'i:show-input+trigger(start),esc:hide-input+trigger(start)' --bind 'j:down,k:up,f:jump-accept' --bind 'start:toggle-bind(i,j,k,f)' --bi
+nd 'ctrl-l:accept'"
+
+    set FZF_ALT_C_COMMAND zoxide query --list --score
+    set FZF_ALT_C_OPTS --height 40% --layout reverse --border rounded --nth 2.. --accept-nth 2.. --scheme=path --exact --tiebreak="pathname,index"
+
     direnv hook fish | source
 
 end

@@ -49,7 +49,7 @@ cat >flake.nix <<'EOF'
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-compat = {
+    __flake-compat = {
       url = "https://git.lix.systems/lix-project/flake-compat/archive/main.tar.gz";
       flake = false;
     };
@@ -96,12 +96,12 @@ cat >flake.nix <<'EOF'
 EOF
 
 git add .
-nix flake update
+cp ~/nixos-config/flake.lock .
 
 cat >shell.nix <<'EOF'
 let
   lockFile = builtins.fromJSON (builtins.readFile ./flake.lock);
-  flake-compat-node = lockFile.nodes.${lockFile.nodes.root.inputs.flake-compat};
+  flake-compat-node = lockFile.nodes.${lockFile.nodes.root.inputs.__flake-compat};
   flake-compat = builtins.fetchTarball {
     inherit (flake-compat-node.locked) url;
     sha256 = flake-compat-node.locked.narHash;
