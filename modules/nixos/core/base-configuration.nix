@@ -57,7 +57,7 @@ in
       fcitx5 = {
         addons = mkDefault (with pkgs; [ fcitx5-gtk ]);
         waylandFrontend = mkDefault false;
-        ignoreUserConfig = mkDefault false;
+        ignoreUserConfig = mkDefault true;
         settings = {
           inputMethod = mkDefault {
             GroupOrder."0" = "Default";
