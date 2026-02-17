@@ -31,6 +31,21 @@ status is-interactive; and begin
     alias ls eza
     alias lt 'eza --tree'
 
+    # Git aliases
+    alias g 'git'
+    alias gs 'git status'
+    alias ga 'git add'
+    alias gc 'git commit'
+    alias gp 'git push'
+    alias gl 'git log'
+    alias gd 'git diff'
+    alias gco 'git checkout'
+    alias gb 'git branch'
+    alias gpl 'git pull'
+    alias gca 'git commit --amend'
+    alias gcn 'git commit --amend --no-edit'
+    alias gcp 'git commit -m "Progress"'
+
     # Interactive shell initialisation
     fzf --fish | source
 
