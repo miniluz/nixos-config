@@ -64,7 +64,7 @@
     };
 
     actual-backup = {
-      url = "github:Jonas-Sander/actual-backup";
+      url = "github:miniluz/actual-backup";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
