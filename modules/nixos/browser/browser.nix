@@ -57,6 +57,7 @@ in
   config = lib.mkIf (cfg.browser.enable && cfg.visual) {
     environment.systemPackages = [
       pkgs.tor-browser
+      pkgs.chromium
       (pkgs.wrapFirefox
         inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.zen-browser-unwrapped
         {
