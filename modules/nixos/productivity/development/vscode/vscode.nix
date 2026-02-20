@@ -40,9 +40,9 @@ in
       ];
 
       settings = {
-        "windsurf.marketplaceExtensionGalleryServiceURL" =
-          "https://marketplace.visualstudio.com/_apis/public/gallery";
-        "windsurf.marketplaceGalleryItemURL" = "https://marketplace.visualstudio.com/items";
+        # "windsurf.marketplaceExtensionGalleryServiceURL" =
+        #  "https://marketplace.visualstudio.com/_apis/public/gallery";
+        # "windsurf.marketplaceGalleryItemURL" = "https://marketplace.visualstudio.com/items";
         "git.autofetch" = "all";
         "git.allowNoVerifyCommit" = true;
         "conventionalCommits.promptScopes" = false;
@@ -81,13 +81,13 @@ in
 
     users.users.miniluz.packages = [
       (pkgs.vscode-with-extensions.override {
-        vscode = pkgs.windsurf;
+        # vscode = pkgs.windsurf;
         vscodeExtensions = config.miniluz.development.vscode.extensions;
       })
     ]
     ++ (with miniluz-pkgs; [
       code-nw
-      code-windsurf
+      # code-windsurf
     ]);
 
     environment.sessionVariables = lib.mkIf cfg.vscode.nix-editor {

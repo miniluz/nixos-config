@@ -35,6 +35,7 @@ status is-interactive; and begin
     alias g 'git'
     alias gs 'git status'
     alias ga 'git add'
+    alias gaa 'git add -A'
     alias gc 'git commit'
     alias gp 'git push'
     alias gl 'git log'
