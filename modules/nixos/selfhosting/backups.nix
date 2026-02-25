@@ -110,6 +110,13 @@ in
   config =
     let
       mappedBackupConfig = backupsToConfig cfg.backups.backups;
+      secrets = config.age.secrets;
+      backup-borg = pkgs.runCommand "backup-borg" { buildInputs = [ pkgs.makeWrapper ]; } ''
+        makeWrapper ${pkgs.borgbackup}/bin/borg $out/bin/backup-borg \
+          --set BORG_RSH "ssh -i ${secrets.borg-ssh-ed25519.path}" \
+          --set BORG_PASSCOMMAND "cat ${secrets.borg-pass.path}" \
+          --set BORG_REMOTE_PATH "borg-1.4"
+      '';
     in
     lib.mkIf (cfg.enable && cfg.backups.enable && cfg.server.enable) (
       lib.mkMerge [
@@ -119,6 +126,9 @@ in
         }
         {
           inherit (mappedBackupConfig) services systemd;
+        }
+        {
+          environment.systemPackages = [ backup-borg ];
         }
       ]
     );

@@ -29,6 +29,10 @@ in
     age.secrets.actual-sync-id.file = "${host-secrets}/actual-sync-id.age";
     age.secrets.actual-password.file = "${host-secrets}/actual-password.age";
 
+    systemd.tmpfiles.rules = [
+      "d ${dataDir} 0755 root root"
+    ];
+
     services.actual = {
       enable = true;
       # openFirewall = true;
