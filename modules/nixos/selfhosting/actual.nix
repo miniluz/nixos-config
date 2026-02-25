@@ -29,8 +29,14 @@ in
     age.secrets.actual-sync-id.file = "${host-secrets}/actual-sync-id.age";
     age.secrets.actual-password.file = "${host-secrets}/actual-password.age";
 
+    users.users.actual = {
+      isSystemUser = true;
+      group = "actual";
+    };
+    users.groups.actual = { };
+
     systemd.tmpfiles.rules = [
-      "d ${dataDir} 0755 root root"
+      "d ${dataDir} 0750 actual actual"
     ];
 
     services.actual = {
