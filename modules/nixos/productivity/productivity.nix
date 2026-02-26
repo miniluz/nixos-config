@@ -18,7 +18,7 @@ in
       cabin
       libreoffice-qt
 
-      krita
+      # krita
 
       obsidian
       zotero

@@ -61,6 +61,27 @@
         "type": "github"
       }
     },
+    "fastspell-nvim": {
+      "inputs": {
+        "nixpkgs": [
+          "luz-nvim",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772125333,
+        "narHash": "sha256-jkTuaUUeUqe1ta26qUsGBuMdyBHkbarQXZQhTnjtt3o=",
+        "owner": "miniluz",
+        "repo": "fastspell.nvim",
+        "rev": "0fe387abdad1f91ad33465181ecaec1ec7a642d2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "miniluz",
+        "repo": "fastspell.nvim",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -118,17 +139,18 @@
     },
     "luz-nvim": {
       "inputs": {
+        "fastspell-nvim": "fastspell-nvim",
         "mnw": "mnw",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1772100033,
-        "narHash": "sha256-qXbvZ/RelsWWtFQ6+sH/4rXJ4ED2lNs5Lmuxn4crAVw=",
+        "lastModified": 1772126428,
+        "narHash": "sha256-PEJhXBFuGBZfvxfZVmjU4Yl4ZhiArXmNERC+9xIwOQk=",
         "owner": "miniluz",
         "repo": "luz-nvim",
-        "rev": "5f14c825d082b8e55aa6498acc4360e06d894ab4",
+        "rev": "7cd13cf6d6ed2aaf7ddef7f8e9923d5f2a3a6bca",
         "type": "github"
       },
       "original": {
