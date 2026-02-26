@@ -197,8 +197,10 @@ in
       nix-index-database.comma.enable = mkDefault true;
     };
 
-    documentation.man.generateCaches = false;
-    documentation.nixos.enable = false;
+    documentation = {
+      man.cache.enable = false;
+      nixos.enable = false;
+    };
 
   };
 }
