@@ -45,6 +45,7 @@ in
         ExecStart = "${pkgs.n8n}/bin/n8n";
         Restart = "on-failure";
         StateDirectory = n8nState;
+        ReadWritePaths = [ n8nState ];
 
         # Basic Hardening
         NoNewPrivileges = "yes";
