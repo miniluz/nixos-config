@@ -18,8 +18,14 @@ in
       n8nState
     ];
 
+    users.users.n8n = {
+      isSystemUser = true;
+      group = "n8n";
+    };
+    users.groups.n8n = { };
+
     systemd.tmpfiles.rules = [
-      "d ${n8nState} 0750 root root"
+      "d ${n8nState} 0750 n8n n8n"
     ];
 
     systemd.services.n8n = {
@@ -44,7 +50,8 @@ in
         Type = "simple";
         ExecStart = "${pkgs.n8n}/bin/n8n";
         Restart = "on-failure";
-        StateDirectory = n8nState;
+        User = "n8n";
+        Group = "n8n";
         ReadWritePaths = [ n8nState ];
 
         # Basic Hardening
@@ -52,7 +59,6 @@ in
         PrivateTmp = "yes";
         PrivateDevices = "yes";
         DevicePolicy = "closed";
-        DynamicUser = "true";
         ProtectSystem = "strict";
         ProtectHome = "read-only";
         ProtectControlGroups = "yes";
