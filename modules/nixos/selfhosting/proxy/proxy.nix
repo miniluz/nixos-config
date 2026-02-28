@@ -21,12 +21,12 @@ let
 
     (makeService "actual" 9991 cfg.actual)
 
+    (makeService "n8n" 5678 cfg.n8n)
+
     # --- Jellyfin ---
     (makeService "transmission" 9091 cfg.jellyfin)
 
     (makeService "jellyfin" 8096 cfg.jellyfin)
-    (makeService "audiobookshelf" 9292 cfg.jellyfin)
-
     (makeService "jellyseer" 5055 cfg.jellyfin)
 
     (makeService "prowlarr" 9696 cfg.jellyfin)
