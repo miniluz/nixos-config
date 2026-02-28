@@ -23,6 +23,8 @@ in
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
       environment = {
+        GENERIC_TIMEZONE = config.time.timeZone;
+        N8N_PORT = "5678";
         N8N_USER_FOLDER = n8nState;
         HOME = lib.mkForce n8nState;
         N8N_DIAGNOSTICS_ENABLED = "true";

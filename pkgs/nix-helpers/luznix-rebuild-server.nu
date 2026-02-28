@@ -24,7 +24,7 @@ def main [] {
 
     print $"Opening config in $NIX_CONFIG_EDITOR \(($env.NIX_CONFIG_EDITOR)\) or $EDITOR \(($env.EDITOR)\)..."
     print "Close it to continue"
-    let editor: string = ($env | get -o NIX_CONFIG_EDITOR | default ($env | get --ignore-errors EDITOR | default 'vi'))
+    let editor: string = ($env | get -o NIX_CONFIG_EDITOR | default ($env | get -o EDITOR | default 'vi'))
     ^$editor $flake_path
 
     if ((git status --porcelain | str trim) | is-empty) {
