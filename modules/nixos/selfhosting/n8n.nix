@@ -18,6 +18,10 @@ in
       n8nState
     ];
 
+    systemd.tmpfiles.rules = [
+      "d ${n8nState} 0750 root root"
+    ];
+
     systemd.services.n8n = {
       description = "n8n service";
       after = [ "network.target" ];
@@ -40,7 +44,7 @@ in
         Type = "simple";
         ExecStart = "${pkgs.n8n}/bin/n8n";
         Restart = "on-failure";
-        StateDirectory = "n8n";
+        StateDirectory = n8nState;
 
         # Basic Hardening
         NoNewPrivileges = "yes";
