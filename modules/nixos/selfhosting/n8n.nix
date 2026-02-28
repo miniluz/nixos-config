@@ -24,7 +24,10 @@ in
       wantedBy = [ "multi-user.target" ];
       environment = {
         GENERIC_TIMEZONE = config.time.timeZone;
+        N8N_EDITOR_BASE_URL = "https://n8n.home.miniluz.dev";
+        N8N_HOST = "localhost";
         N8N_PORT = "5678";
+        N8N_LOG_LEVEL = "debug";
         N8N_USER_FOLDER = n8nState;
         HOME = lib.mkForce n8nState;
         N8N_DIAGNOSTICS_ENABLED = "true";
