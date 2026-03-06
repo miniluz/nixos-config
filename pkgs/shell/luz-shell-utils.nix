@@ -31,8 +31,9 @@ symlinkJoin {
       wiki-tui
       porsmo
 
-      procs
+      procs # processes
       bat
+      glow # pretty markdown
       eza
       zoxide
       delta
@@ -49,9 +50,10 @@ symlinkJoin {
 
       direnv
       hyperfine
-      kondo
+      kondo # clean project dirs
       gh
       lazydocker
+      entr # run something on reload
 
       claude-code
     ])
