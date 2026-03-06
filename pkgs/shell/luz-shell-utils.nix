@@ -33,6 +33,7 @@ symlinkJoin {
       delta
       yazi
 
+      serpl
       fzf
       ripgrep
       ripgrep-all
