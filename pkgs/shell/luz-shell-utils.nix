@@ -9,45 +9,49 @@ symlinkJoin {
     (with pkgs; [
       uutils-coreutils-noprefix
       file
-      nmap
-      dig.dnsutils
-      doggo
       parted
-      curl
-      wget
-      termshark
+      trashy
+      p7zip
       pciutils
       usbutils
+
+      tealdeer # tldr
+      navi # command templates
+
+      nmap # port map
+      dig.dnsutils # dns
+      dogedns
+      termshark # wireshark
+      mtr # real time tracing
+      curl
+      wget
 
       evil-helix
 
       wiki-tui
-      tealdeer
       porsmo
-      p7zip
-      trashy
 
+      procs
       bat
       eza
       zoxide
       delta
       yazi
 
-      serpl
+      serpl # find replace
       fzf
       ripgrep
       ripgrep-all
       fd
+
       dust
       dua
 
       direnv
-      devenv
       hyperfine
       kondo
-      comma
       gh
-      lazyjj
+      lazydocker
 
       claude-code
     ])
