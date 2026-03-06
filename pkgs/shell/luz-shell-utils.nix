@@ -15,18 +15,21 @@ symlinkJoin {
       pciutils
       usbutils
 
+      # These do not cost anything because Yazi includes them
+      poppler-utils
+      imagemagick
+      resvg
+      chafa
+
       tealdeer # tldr
       navi # command templates
 
       nmap # port map
       dig.dnsutils # dns
       dogedns
-      termshark # wireshark
       mtr # real time tracing
       curl
       wget
-
-      evil-helix
 
       wiki-tui
       porsmo
@@ -37,12 +40,10 @@ symlinkJoin {
       eza
       zoxide
       delta
-      yazi
 
       serpl # find replace
       fzf
       ripgrep
-      ripgrep-all
       fd
 
       dust
@@ -70,7 +71,7 @@ symlinkJoin {
       jj-luzwrap
       btop-luzwrap
       gitui-luzwrap
-      zellij-luzwrap
       tmux-luzwrap
+      yazi-luzwrap
     ]);
 }
