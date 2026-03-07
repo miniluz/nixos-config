@@ -58,6 +58,7 @@ symlinkJoin {
       gitlogue
 
       claude-code
+      opencode
     ])
     ++ (with miniluz-pkgs; [
       luz-neovim
