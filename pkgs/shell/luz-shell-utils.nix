@@ -55,6 +55,7 @@ symlinkJoin {
       gh
       lazydocker
       entr # run something on reload
+      gitlogue
 
       claude-code
     ])
