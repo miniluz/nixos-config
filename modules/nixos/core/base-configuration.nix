@@ -194,7 +194,6 @@ in
       command-not-found.enable = mkDefault false;
       ssh.startAgent = mkDefault true;
       nix-ld.enable = mkDefault true;
-      nix-index-database.comma.enable = mkDefault true;
     };
 
     documentation = {

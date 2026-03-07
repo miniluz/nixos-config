@@ -52,10 +52,6 @@ status is-interactive; and begin
 
     set fish_greeting # Disable greeting
 
-    function fish_command_not_found
-        comma "$argv"
-    end
-
     # Source: https://github.com/catppuccin/fzf, https://vitormv.github.io/fzf-themes/
     set FZF_DEFAULT_OPTS '
         --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8
@@ -67,11 +63,6 @@ status is-interactive; and begin
         --marker=">" --pointer="◆" --separator="─" --scrollbar="│"'
 
     zoxide init fish | source
-
-
-    function __fish_command_not_found_handler --on-event fish_command_not_found
-        command-not-found $argv
-    end
 
     if set -q KITTY_INSTALLATION_DIR
         set --global KITTY_SHELL_INTEGRATION no-rc
