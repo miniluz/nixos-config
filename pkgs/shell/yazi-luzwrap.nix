@@ -21,7 +21,7 @@ yazi.override {
 
   settings = {
     yazi = lib.importTOML ./yazi.toml;
-    keymaps = lib.importTOML ./yazi-keymaps.toml;
+    keymap = lib.importTOML ./yazi-keymaps.toml;
   };
 
   initLua = ./yazi-init.lua;
