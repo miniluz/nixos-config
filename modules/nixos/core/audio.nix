@@ -161,7 +161,7 @@ in
       with pkgs;
       [
         pavucontrol
-        helvum
+        crosspipe
         raysession
       ]
     );
