@@ -12,4 +12,5 @@ in
   "monitoring-webhook.age".publicKeys = [ miniluz ];
   "recyclarr-keys.age".publicKeys = [ miniluz ];
   "hetzner-dns-api-key.age".publicKeys = [ miniluz ];
+  "searxng-key.age".publicKeys = [ miniluz ];
 }

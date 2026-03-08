@@ -12,6 +12,8 @@
 
     backups.enable = true;
 
+    searxng = true;
+
     syncthing = true;
     immich = true;
     actual = true;
@@ -40,6 +42,10 @@
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "iHD";
   };
+
+  # Install Ghostty terminfo so that SSH sessions from Ghostty can run tmux
+  # without "missing or unsuitable terminal: xterm-ghostty" errors.
+  environment.systemPackages = [ pkgs.ghostty ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
