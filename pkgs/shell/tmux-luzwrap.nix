@@ -5,6 +5,8 @@
   tmux,
   tmuxPlugins,
   fetchFromGitHub,
+  sesh,
+  fzf,
   plugins ? with tmuxPlugins; [
     # vim-tmux-navigator
     catppuccin
@@ -26,7 +28,11 @@
 symlinkJoin {
   name = "tmux-luzwrap";
 
-  paths = [ tmux ];
+  paths = [
+    tmux
+    sesh
+    fzf
+  ];
 
   buildInputs = [ makeWrapper ];
   postBuild = ''
