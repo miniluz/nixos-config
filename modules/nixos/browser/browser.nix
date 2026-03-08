@@ -72,8 +72,14 @@ in
             ExtensionSettings = builtins.listToAttrs extensions;
 
             SearchEngines = {
-              Default = "ddg";
+              Default = "sx";
               Add = [
+                {
+                  Name = "SearXNG";
+                  URLTemplate = "https://searxng.home.miniluz.dev/search?q={searchTerms}";
+                  IconURL = "https://searxng.home.miniluz.dev/static/themes/simple/img/favicon.png";
+                  Alias = "@sx";
+                }
                 {
                   Name = "nixpkgs packages";
                   URLTemplate = "https://search.nixos.org/packages?query={searchTerms}";

@@ -15,6 +15,8 @@ let
   baseUrl = "home.miniluz.dev";
 
   proxies = lib.filter ({ condition, ... }: condition) [
+    (makeService "btop" 7861 true)
+    (makeService "searxng" 7861 true)
     # (makeService "syncthing" 8384 cfg.syncthing) DO NOT PROXY as it doesn't have a password
     # (makeService "samba" 8791 cfg.samba)
     (makeService "immich" 2283 cfg.immich)
