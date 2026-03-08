@@ -20,7 +20,7 @@ in
       interface = "lo";
       clientOptions = {
         fontSize = "16";
-        fontFamily = "Fira Code";
+        fontFamily = "FiraCode Nerd Font";
       };
 
     };
