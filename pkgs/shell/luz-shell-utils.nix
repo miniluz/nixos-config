@@ -56,6 +56,7 @@ symlinkJoin {
       lazydocker
       entr # run something on reload
       gitlogue
+      lazygit
 
       claude-code
       opencode

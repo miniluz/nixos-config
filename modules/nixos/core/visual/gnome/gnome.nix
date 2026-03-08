@@ -12,9 +12,9 @@ let
     just-perfection
     fuzzy-app-search
     clipboard-indicator
-    forge
     user-themes
     hide-top-bar
+    emoji-copy
   ];
 in
 {
