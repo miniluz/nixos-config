@@ -36,4 +36,6 @@ symlinkJoin {
         }
       }
   '';
+
+  meta.mainProgram = "btop";
 }
