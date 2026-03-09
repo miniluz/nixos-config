@@ -83,6 +83,7 @@ cat >flake.nix <<'EOF'
         in
         {
           default = pkgs.mkShell {
+            allowSubstitutes = false;
             nativeBuildInputs = with pkgs; [
               (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
             ];
