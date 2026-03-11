@@ -13,4 +13,5 @@ in
   "recyclarr-keys.age".publicKeys = [ miniluz ];
   "hetzner-dns-api-key.age".publicKeys = [ miniluz ];
   "searxng-key.age".publicKeys = [ miniluz ];
+  "miniflux-admin.age".publicKeys = [ miniluz ];
 }
