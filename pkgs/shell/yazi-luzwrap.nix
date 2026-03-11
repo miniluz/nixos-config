@@ -8,6 +8,7 @@
   _7zz,
   fd,
   ripgrep,
+  ripdrag,
   fzf,
   zoxide,
   imagemagick,
@@ -49,5 +50,6 @@ yazi.override {
     imagemagick
     chafa
     resvg
+    ripdrag
   ];
 }

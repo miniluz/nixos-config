@@ -9,7 +9,7 @@
   config = lib.mkIf config.miniluz.visual {
     users.users.miniluz.packages = with miniluz-pkgs; [
       kitty-luzwrap
-      # ghostty-luzwrap
+      ghostty-luzwrap
     ];
 
     environment.systemPackages = with pkgs; [
