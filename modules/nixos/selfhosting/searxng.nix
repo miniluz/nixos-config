@@ -11,7 +11,7 @@ in
   options.miniluz.selfhosting.searxng = lib.mkEnableOption "SearXNG";
 
   config = lib.mkIf (cfg.enable && cfg.searxng && cfg.server.enable) {
-    age.secrets.searxng-key.file = "${host-secrets}/searxng-key.age"; # Create the systemd service
+    age.secrets.searxng-key.file = "${host-secrets}/searxng-key.age";
 
     services.searx = {
       enable = true;

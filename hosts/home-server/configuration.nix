@@ -13,6 +13,7 @@
     backups.enable = true;
 
     searxng = true;
+    rss = true;
 
     syncthing = true;
     immich = true;

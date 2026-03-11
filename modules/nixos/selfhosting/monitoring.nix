@@ -25,7 +25,7 @@ in
 
     };
 
-    age.secrets.monitoring-webhook.file = "${host-secrets}/monitoring-webhook.age"; # Create the systemd service
+    age.secrets.monitoring-webhook.file = "${host-secrets}/monitoring-webhook.age";
 
     systemd.services.daily-system-monitor = {
       description = "Daily System Monitor";
