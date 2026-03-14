@@ -47,6 +47,8 @@ status is-interactive; and begin
     alias gcn 'git commit --amend --no-edit'
     alias gcp 'git commit -m "Progress"'
 
+    bind ctrl-e edit_command_buffer
+
     # Interactive shell initialisation
     fzf --fish | source
 
