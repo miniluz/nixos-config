@@ -46,6 +46,7 @@ status is-interactive; and begin
     alias gca 'git commit --amend'
     alias gcn 'git commit --amend --no-edit'
     alias gcp 'git commit -m "Progress"'
+    alias gsu 'git branch --set-upstream-to=origin/$(git branch --show-current) $(git branch --show-current)'
 
     bind ctrl-e edit_command_buffer
 
