@@ -40,7 +40,7 @@ symlinkJoin {
     cat >> $out/tmux/tmux.conf <<EOF
     ${lib.concatMapStringsSep "\n" (plugin: "run-shell ${plugin.rtp}") plugins}
     EOF
-    cat ${./tmux-config.conf} >> $out/tmux/tmux.conf
+    ln -sf ${builtins.toString ./tmux-config.conf} $out/tmux/tmux.conf
 
     wrapProgram $out/bin/tmux \
       --add-flags "-f $out/tmux/tmux.conf" \

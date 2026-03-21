@@ -21,7 +21,7 @@ symlinkJoin {
   buildInputs = [ makeWrapper ];
   postBuild = ''
     mkdir -p $out/ghostty
-    ln -sf ${./ghostty-config.conf} $out/ghostty/config
+    ln -sf ${builtins.toString ./ghostty-config.conf} $out/ghostty/config
     ln -sf ${catppuccin-ghostty}/themes $out/ghostty/themes
 
     rm $out/share/applications/com.mitchellh.ghostty.desktop

@@ -44,7 +44,6 @@ let
 
           inputs.agenix.nixosModules.default
           inputs.nixarr.nixosModules.default
-          inputs.quadlet-nix.nixosModules.quadlet
           inputs.nix-index-database.nixosModules.nix-index
         ];
       };

@@ -21,7 +21,7 @@ symlinkJoin {
   buildInputs = [ makeWrapper ];
   postBuild = ''
     mkdir -p $out/git
-    ln -sf ${./git-config.ini} $out/git/config
+    ln -sf ${builtins.toString ./git-config.ini} $out/git/config
 
     mkdir -p $out/gitui
     ln -sf ${catppuccin-gitui}/themes/catppuccin-mocha.ron $out/gitui/theme.ron

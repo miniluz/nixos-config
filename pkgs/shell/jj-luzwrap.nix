@@ -11,7 +11,7 @@ symlinkJoin {
   buildInputs = [ makeWrapper ];
   postBuild = ''
     mkdir -p $out/jj
-    ln -sf ${./jj-config.toml} $out/jj/config.toml
+    ln -sf ${builtins.toString ./jj-config.toml} $out/jj/config.toml
 
     wrapProgram $out/bin/jj \
       --set XDG_CONFIG_HOME $out

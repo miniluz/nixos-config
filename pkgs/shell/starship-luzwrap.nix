@@ -11,6 +11,6 @@ symlinkJoin {
   buildInputs = [ makeWrapper ];
   postBuild = ''
     wrapProgram $out/bin/starship\
-      --set STARSHIP_CONFIG ${./starship-config.toml}
+      --set STARSHIP_CONFIG ${builtins.toString ./starship-config.toml}
   '';
 }
