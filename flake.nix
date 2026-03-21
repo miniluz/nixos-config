@@ -55,8 +55,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
-
     nixarr = {
       url = "github:miniluz/nixarr/patch-1";
       inputs.nixpkgs.follows = "nixpkgs";

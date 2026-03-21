@@ -63,11 +63,6 @@ in
           };
 
           oci-containers.backend = "podman";
-
-          quadlet = {
-            enable = true;
-            autoUpdate.enable = true;
-          };
         };
 
         # Enable container name DNS for non-default Podman networks.

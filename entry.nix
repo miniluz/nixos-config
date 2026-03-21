@@ -1,1 +1,3 @@
-import ./flake-compat.nix ./.
+{
+  outputs = import ./outputs.nix (import ./flake-compat.nix ./.).inputs;
+}
