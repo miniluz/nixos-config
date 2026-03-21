@@ -22,6 +22,7 @@ in
 
       obsidian
       zotero
+      zathura
     ];
   };
 }
