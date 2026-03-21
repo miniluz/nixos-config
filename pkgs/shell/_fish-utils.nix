@@ -1,9 +1,18 @@
 {
   writeTextDir,
+  runCommand,
 }:
 {
   # from https://github.com/nix-community/home-manager/blob/release-25.05/modules/programs/fish.nix
-  makePluginFile = name: text: writeTextDir "/fish/vendor_conf.d/${name}.fish" text;
+  makePluginFileFromText = name: text: writeTextDir "/fish/vendor_conf.d/${name}.fish" text;
+
+  makePluginFile =
+    name: file:
+    runCommand name { } ''
+      mkdir -p $out/fish/vendor_conf.d
+
+      ln -sf ${file} "$out/fish/vendor_conf.d/${name}.fish"
+    '';
 
   pluginTextFromPlugins = plugin: ''
     # Plugin ${plugin.name}

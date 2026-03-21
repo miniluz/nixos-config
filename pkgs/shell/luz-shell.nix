@@ -3,6 +3,7 @@
   symlinkJoin,
   makeWrapper,
   writeTextDir,
+  runCommand,
   pkgs,
   fish,
   starship-luzwrap,
@@ -18,9 +19,10 @@
   }) usedFishPluginNames,
 }:
 let
-  fish-utils = import ./_fish-utils.nix { inherit writeTextDir; };
+  fish-utils = import ./_fish-utils.nix { inherit writeTextDir runCommand; };
   fishPluginFiles = builtins.map (
-    plugin: fish-utils.makePluginFile "1-${plugin.name}" (fish-utils.pluginTextFromPlugins plugin)
+    plugin:
+    fish-utils.makePluginFileFromText "1-${plugin.name}" (fish-utils.pluginTextFromPlugins plugin)
   ) usedFishPlugins;
 in
 symlinkJoin {
@@ -37,7 +39,7 @@ symlinkJoin {
         symlinkJoin {
           name = "fish-config";
           paths = fishPluginFiles ++ [
-            (fish-utils.makePluginFile "99-config" (builtins.readFile ./fish-config.fish))
+            (fish-utils.makePluginFile "99-config" (builtins.toString ./fish-config.fish))
           ];
         }
       } \
