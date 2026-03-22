@@ -82,24 +82,6 @@
         "type": "github"
       }
     },
-    "flake-parts": {
-      "inputs": {
-        "nixpkgs-lib": "nixpkgs-lib"
-      },
-      "locked": {
-        "lastModified": 1772408722,
-        "narHash": "sha256-rHuJtdcOjK7rAHpHphUb1iCvgkU3GpfvicLMwwnfMT0=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "f20dc5d9b8027381c474144ecabc9034d6a839a3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
     "hjem": {
       "inputs": {
         "nix-darwin": "nix-darwin",
@@ -274,70 +256,11 @@
         "type": "github"
       }
     },
-    "nixpkgs-lib": {
-      "locked": {
-        "lastModified": 1772328832,
-        "narHash": "sha256-e+/T/pmEkLP6BHhYjx6GmwP5ivonQQn0bJdH9YrRB+Q=",
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "rev": "c185c7a5e5dd8f9add5b2f8ebeff00888b070742",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "type": "github"
-      }
-    },
-    "playit-agent-source": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1768357514,
-        "narHash": "sha256-kT7NLUcgGM/hxwK4PUDZ71PtYJqjR8i4yj/LhbXX1i0=",
-        "owner": "playit-cloud",
-        "repo": "playit-agent",
-        "rev": "3adf0fd4fb72c866511890eabb766732734f3cda",
-        "type": "github"
-      },
-      "original": {
-        "owner": "playit-cloud",
-        "repo": "playit-agent",
-        "type": "github"
-      }
-    },
-    "playit-nixos-module": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "playit-agent-source": "playit-agent-source",
-        "systems": [
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1772367206,
-        "narHash": "sha256-MCToMZLvPVPTF4hi22GMT/GG8MtgBmHQBYGQfSnlDvA=",
-        "owner": "pedorich-n",
-        "repo": "playit-nixos-module",
-        "rev": "d0e06603956f1e86c971c7413db60a92a3798f06",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pedorich-n",
-        "repo": "playit-nixos-module",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "__flake-compat": "__flake-compat",
         "actual-backup": "actual-backup",
         "agenix": "agenix",
-        "flake-parts": "flake-parts",
         "hjem": "hjem",
         "import-tree": "import-tree",
         "luz-nvim": "luz-nvim",
@@ -345,7 +268,6 @@
         "nix-index-database": "nix-index-database",
         "nixarr": "nixarr",
         "nixpkgs": "nixpkgs",
-        "playit-nixos-module": "playit-nixos-module",
         "systems": "systems",
         "zen-browser": "zen-browser"
       }

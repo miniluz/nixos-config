@@ -21,9 +21,6 @@
     };
 
     # Only for lockfile deduplication
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-    };
     systems = {
       url = "github:nix-systems/default";
     };
@@ -42,13 +39,6 @@
     };
 
     import-tree.url = "github:vic/import-tree";
-
-    playit-nixos-module = {
-      url = "github:pedorich-n/playit-nixos-module";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.systems.follows = "systems";
-    };
 
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";

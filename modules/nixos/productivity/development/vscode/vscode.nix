@@ -40,9 +40,6 @@ in
       ];
 
       settings = {
-        # "windsurf.marketplaceExtensionGalleryServiceURL" =
-        #  "https://marketplace.visualstudio.com/_apis/public/gallery";
-        # "windsurf.marketplaceGalleryItemURL" = "https://marketplace.visualstudio.com/items";
         "git.autofetch" = "all";
         "git.allowNoVerifyCommit" = true;
         "conventionalCommits.promptScopes" = false;
@@ -74,7 +71,7 @@ in
     };
 
     hj.xdg.config.files = {
-      "Windsurf/User/settings.json".source = lib.mkIf (cfg.vscode.settings != { }) (
+      "VSCode/User/settings.json".source = lib.mkIf (cfg.vscode.settings != { }) (
         json.generate "settings.json" cfg.vscode.settings
       );
     };
@@ -87,7 +84,6 @@ in
     ]
     ++ (with miniluz-pkgs; [
       code-nw
-      # code-windsurf
     ]);
 
     environment.sessionVariables = lib.mkIf cfg.vscode.nix-editor {
