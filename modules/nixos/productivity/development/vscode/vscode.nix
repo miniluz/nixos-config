@@ -71,14 +71,14 @@ in
     };
 
     hj.xdg.config.files = {
-      "VSCode/User/settings.json".source = lib.mkIf (cfg.vscode.settings != { }) (
+      "Code/User/settings.json".source = lib.mkIf (cfg.vscode.settings != { }) (
         json.generate "settings.json" cfg.vscode.settings
       );
     };
 
     users.users.miniluz.packages = [
       (pkgs.vscode-with-extensions.override {
-        # vscode = pkgs.windsurf;
+        vscode = pkgs.vscodium-fhs;
         vscodeExtensions = config.miniluz.development.vscode.extensions;
       })
     ]
