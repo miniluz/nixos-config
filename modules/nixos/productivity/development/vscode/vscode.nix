@@ -71,7 +71,7 @@ in
     };
 
     hj.xdg.config.files = {
-      "Code/User/settings.json".source = lib.mkIf (cfg.vscode.settings != { }) (
+      "VSCodium/User/settings.json".source = lib.mkIf (cfg.vscode.settings != { }) (
         json.generate "settings.json" cfg.vscode.settings
       );
     };
