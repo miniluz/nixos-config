@@ -91,6 +91,10 @@ in
               disable-user-extensions = false;
             };
 
+            "org/gnome/mutter" = {
+              workspaces-only-on-primary = false;
+            };
+
             # Extension settings
 
             "org/gnome/shell/extensions/blur-my-shell/panel" = {
