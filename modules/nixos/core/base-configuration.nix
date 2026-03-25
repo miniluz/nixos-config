@@ -37,8 +37,19 @@ in
     # Set keyboard layout for console and xserver
     services = {
       xserver.xkb = mkDefault {
-        layout = "es";
+        layout = "es-nodead";
         variant = "";
+        extraLayouts.es-nodead = {
+          description = "Spanish layout without dead grave";
+          languages = [ "esp" ];
+          symbolsFile = pkgs.writeText "es-nodead" ''
+            partial alphanumeric_keys
+            xkb_symbols "es-nodead" {
+              include "es"
+              key <TLDE> { [ grave, asciitilde ] };
+            };
+          '';
+        };
       };
 
       earlyoom.enable = mkDefault true;
@@ -63,11 +74,11 @@ in
             GroupOrder."0" = "Default";
             "Groups/0" = {
               Name = "Default";
-              "Default Layout" = "es";
-              DefaultIM = "keyboard-es";
+              "Default Layout" = "es-nodead";
+              DefaultIM = "keyboard-es-nodead";
             };
             "Groups/0/Items/0" = {
-              Name = "keyboard-es";
+              Name = "keyboard-es-nodead";
               Layout = "";
             };
           };
