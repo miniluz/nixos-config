@@ -37,14 +37,14 @@ in
     # Set keyboard layout for console and xserver
     services = {
       xserver.xkb = mkDefault {
-        layout = "es-nodead";
+        layout = "esnodead";
         variant = "";
-        extraLayouts.es-nodead = {
+        extraLayouts.esnodead = {
           description = "Spanish layout without dead grave";
           languages = [ "esp" ];
-          symbolsFile = pkgs.writeText "es-nodead" ''
+          symbolsFile = pkgs.writeText "esnodead" ''
             partial alphanumeric_keys
-            xkb_symbols "es-nodead" {
+            xkb_symbols "esnodead" {
               include "es"
               key <TLDE> { [ grave, asciitilde ] };
             };
@@ -74,11 +74,11 @@ in
             GroupOrder."0" = "Default";
             "Groups/0" = {
               Name = "Default";
-              "Default Layout" = "es-nodead";
-              DefaultIM = "keyboard-es-nodead";
+              "Default Layout" = "esnodead";
+              DefaultIM = "keyboard-esnodead";
             };
             "Groups/0/Items/0" = {
-              Name = "keyboard-es-nodead";
+              Name = "keyboard-esnodead";
               Layout = "";
             };
           };
