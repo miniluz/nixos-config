@@ -6,9 +6,9 @@ endpoints:
       apiKey: "${REQUESTLY_KEY}"
       baseURL: "https://router.requesty.ai/v1"
       models:
-        # default: ["meta-llama/llama-3-70b-instruct"]
+        default: ["meta-llama/llama-3-70b-instruct"]
         fetch: true
-      # titleConvo: true
-      # titleModel: "meta-llama/llama-3-70b-instruct"
+      titleConvo: true
+      titleModel: "meta-llama/llama-3-70b-instruct"
       dropParams: ["stop"]
       modelDisplayLabel: "Requestly"
