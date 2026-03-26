@@ -24,6 +24,7 @@ let
 
     (makeService "actual" 9991 cfg.actual)
 
+    (makeService "librechat" 3080 cfg.librechat)
     (makeService "n8n" 5678 cfg.n8n)
 
     # --- Jellyfin ---
@@ -74,7 +75,8 @@ in
       resolveLocalQueries = false;
 
       settings = {
-        # Listen on all interfaces (or specify specific ones)
+        interface = "tailscale0";
+        bind-interfaces = true;
 
         # Don't read /etc/hosts
         no-hosts = true;

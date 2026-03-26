@@ -3,6 +3,7 @@ let
 in
 {
   "borg-ssh-ed25519.age".publicKeys = [ miniluz ];
+  "librechat-env.age".publicKeys = [ miniluz ];
   "borg-pass.age".publicKeys = [ miniluz ];
   "syncthing-cert-key.age".publicKeys = [ miniluz ];
   "w0conf.age".publicKeys = [ miniluz ];

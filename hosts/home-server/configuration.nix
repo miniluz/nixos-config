@@ -14,6 +14,7 @@
 
     searxng = true;
     rss = true;
+    librechat = true;
 
     syncthing = true;
     immich = true;
