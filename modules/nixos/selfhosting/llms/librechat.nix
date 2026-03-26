@@ -101,7 +101,7 @@ in
         "chat-mongodb"
         "rag_api"
       ];
-      # user = ":";
+      user = "0:0";
       log-driver = "journald";
       extraOptions = [
         "--add-host=host.docker.internal:host-gateway"
