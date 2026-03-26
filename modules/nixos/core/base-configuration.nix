@@ -46,7 +46,7 @@ in
             partial alphanumeric_keys
             xkb_symbols "esnodead" {
               include "es"
-              key <TLDE> { [ grave, asciitilde ] };
+              key <AD11> { [ grave, dead_circumflex, bracketleft, dead_abovering ] };
             };
           '';
         };
