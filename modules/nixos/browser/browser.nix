@@ -35,16 +35,21 @@ let
     # the short ID in the url (like https://addons.mozilla.org/en-US/firefox/addon/!SHORT_ID!/)
     # Then go to https://addons.mozilla.org/api/v5/addons/addon/!SHORT_ID!/ to get the guid
     (extension "ublock-origin" "uBlock0@raymondhill.net")
-    (extension "bitwarden-password-manager" "{446900e4-71c2-419f-a6a7-df9c091e268b}")
-    (extension "search_by_image" "{2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c}")
     (extension "youtube-shorts-block" "{34daeb50-c2d2-4f14-886a-7160b24d66a4}")
     (extension "istilldontcareaboutcookies" "idcac-pub@guus.ninja")
-    # (extension "sidebery" "{3c078156-979c-498b-8990-85f7987dd929}")
-    (extension "vimium-ff" "{d7742d87-e61d-4b78-b8a1-b469842139fa}")
+    (extension "decentraleyes" "jid1-BoFifL9Vbdl2zQ@jetpack")
+    (extension "clearurls" "{74145f27-f039-47ce-a470-a662b129930a}")
+    (extension "cookie-autodelete" "CookieAutoDelete@kennydo.com")
+
+    (extension "search_by_image" "{2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c}")
     (extension "catppuccin-web-file-icons" "{bbb880ce-43c9-47ae-b746-c3e0096c5b76}")
     (extension "untrap-for-youtube" "{2662ff67-b302-4363-95f3-b050218bd72c}")
     (extension "sponsorblock" "sponsorBlocker@ajay.app")
+
+    (extension "bitwarden-password-manager" "{446900e4-71c2-419f-a6a7-df9c091e268b}")
     (extension "wayback-machine_new" "wayback_machine@mozilla.org")
+
+    (extension "vimium-ff" "{d7742d87-e61d-4b78-b8a1-b469842139fa}")
   ];
 
 in
