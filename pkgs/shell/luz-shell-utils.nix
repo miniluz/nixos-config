@@ -45,6 +45,7 @@ symlinkJoin {
       fzf
       ripgrep
       fd
+      yq
 
       dust
       dua
