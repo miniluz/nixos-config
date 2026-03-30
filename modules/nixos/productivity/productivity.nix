@@ -18,6 +18,8 @@ in
       cabin
       libreoffice-qt
 
+      thunderbird
+
       # krita
 
       obsidian
