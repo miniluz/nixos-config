@@ -55,7 +55,6 @@ let
     (extension "consent-o-matic" "gdpr@cavi.au.dk")
     (extension "popupoff" "{154cddeb-4c8b-4627-a478-c7e5b427ffdf}")
     (extension "canvasblocker" "CanvasBlocker@kkapsner.de")
-    (extension "noscript" "{73a6fe31-595d-460b-a920-fcc0f8843232}")
     (extension "facebook-container" "@contain-facebook")
     (extension "privacy-badger17" "jid1-MnnxcxisBPnSXQ@jetpack")
 
