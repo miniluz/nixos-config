@@ -37,7 +37,7 @@ let
     (extension "ublock-origin" "uBlock0@raymondhill.net")
     (extension "youtube-shorts-block" "{34daeb50-c2d2-4f14-886a-7160b24d66a4}")
     (extension "istilldontcareaboutcookies" "idcac-pub@guus.ninja")
-    (extension "decentraleyes" "jid1-BoFifL9Vbdl2zQ@jetpack")
+    (extension "localcdn-fork-of-decentraleyes" "{b86e4813-687a-43e6-ab65-0bde4ab75758}")
     (extension "clearurls" "{74145f27-f039-47ce-a470-a662b129930a}")
     (extension "cookie-autodelete" "CookieAutoDelete@kennydo.com")
 
