@@ -28,7 +28,7 @@ in
       (lib.mkIf cfg.nvim.nix-editor {
         "NIX_CONFIG_EDITOR" = "${lib.getExe miniluz-pkgs.luz-neovim}";
       })
-      ({ "OPENCODE_DIR" = config.age.secrets.opencode-env.path; })
+      ({ "OPENCODE_ENV" = config.age.secrets.opencode-env.path; })
     ];
 
   };
