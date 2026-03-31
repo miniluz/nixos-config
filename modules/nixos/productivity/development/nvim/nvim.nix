@@ -16,17 +16,20 @@ in
       "d ${secretDir} 700 miniluz users"
     ];
 
-    age.secrets.google-ai-lab = {
-      file = "${global-secrets}/google-ai-lab.age";
-      path = "${secretDir}/google-ai-lab";
+    age.secrets.opencode-env = {
+      file = "${global-secrets}/opencode-env.age";
+      path = "${secretDir}/opencode-env";
       mode = "700";
       owner = "miniluz";
       group = "users";
     };
 
-    environment.sessionVariables = lib.mkIf cfg.nvim.nix-editor {
-      "NIX_CONFIG_EDITOR" = "${lib.getExe miniluz-pkgs.luz-neovim}";
-    };
+    environment.sessionVariables = lib.mkMerge [
+      (lib.mkIf cfg.nvim.nix-editor {
+        "NIX_CONFIG_EDITOR" = "${lib.getExe miniluz-pkgs.luz-neovim}";
+      })
+      ({ "OPENCODE_DIR" = config.age.secrets.opencode-env.path; })
+    ];
 
   };
 }

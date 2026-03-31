@@ -58,9 +58,6 @@ symlinkJoin {
       entr # run something on reload
       gitlogue
       lazygit
-
-      claude-code
-      opencode
     ])
     ++ (with miniluz-pkgs; [
       luz-neovim
@@ -70,6 +67,8 @@ symlinkJoin {
 
       luznix-shell-setup
       bg-run
+
+      opencode-luzwrap
 
       git-luzwrap
       jj-luzwrap

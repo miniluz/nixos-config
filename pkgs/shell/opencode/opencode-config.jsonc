@@ -1,0 +1,38 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "novita/minimax/minimax-m2.7",
+  "small_model": "deepinfra/Qwen/Qwen3-32B", // 0.3$
+  "provider": {
+    "requesty": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Requesty",
+      "options": {
+        "baseURL": "https://router.requesty.ai/v1",
+        "apiKey": "{env:REQUESTY_API_KEY}"
+      },
+      "models": {
+        "bedrock/claude-opus-4-6": {
+          "name": "Custom Opus 4.6 (25$)"
+        },
+        "bedrock/claude-sonnet-4-6": {
+          "name": "Custom Sonnet 4.6 (15$)"
+        },
+        "vertex/gemini-3.1-pro-preview": {
+          "name": "Custom Gemini 3.1 Pro (12$)"
+        },
+        "novita/minimax/minimax-m2.7": {
+          "name": "Custom Minimax M2.7 (1.2$)"
+        },
+        "nebius/zai-org/GLM-4.7": {
+          "name": "Custom GLM 4.7 (2$)"
+        },
+        "novita/deepseek/deepseek-v3.2": {
+          "name": "Custom Deepseek v3.2 (0.4$)"
+        },
+        "deepinfra/Qwen/Qwen3-Coder-480B-A35B-Instruct": {
+          "name": "Custom Qwen3 Coder 480B A35B Instruct (1.6$)"
+        },
+      }
+    }
+  }
+}

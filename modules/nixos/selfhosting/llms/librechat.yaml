@@ -5,10 +5,11 @@ endpoints:
     - name: "Requestly"
       apiKey: "${REQUESTLY_KEY}"
       baseURL: "https://router.requesty.ai/v1"
+      iconURL: "https://app.requesty.ai/icons/icon-512x512.png"
       models:
-        default: ["meta-llama/llama-3-70b-instruct"]
+        default: ["nebius/moonshotai/kimi-k2.5"]
         fetch: true
       titleConvo: true
-      titleModel: "meta-llama/llama-3-70b-instruct"
+      titleModel: "deepinfra/Qwen/Qwen3-32B"
       dropParams: ["stop"]
       modelDisplayLabel: "Requestly"
