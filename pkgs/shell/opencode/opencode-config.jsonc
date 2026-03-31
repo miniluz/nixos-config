@@ -2,6 +2,11 @@
   "$schema": "https://opencode.ai/config.json",
   "model": "novita/minimax/minimax-m2.7",
   "small_model": "deepinfra/Qwen/Qwen3-32B", // 0.3$
+  "permission": {
+    "bash": {
+      "*": "ask"
+    }
+  },
   "provider": {
     "requesty": {
       "npm": "@ai-sdk/openai-compatible",

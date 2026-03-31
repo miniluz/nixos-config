@@ -2,7 +2,6 @@
 description: Reviews code for quality and best practices (from Nico)
 mode: primary
 tools:
-  write: false
   edit: false
 ---
 
