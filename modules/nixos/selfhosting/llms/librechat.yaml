@@ -13,3 +13,16 @@ endpoints:
       titleModel: "deepinfra/Qwen/Qwen3-32B"
       dropParams: ["stop"]
       modelDisplayLabel: "Requestly"
+
+webSearch:
+  searxngInstanceUrl: "http://localhost:7881"
+  searchProvider: "searxng"
+
+  firecrawlApiKey: "${FIRECRAWL_API_KEY}"
+  firecrawlApiUrl: "${FIRECRAWL_API_URL}"
+
+  jinaApiKey: "${JINA_API_KEY}"
+  jinaApiUrl: "${JINA_API_URL}"
+
+  scraperTimeout: 7500
+  safeSearch: 1 # Options: 0 (OFF), 1 (MODERATE - default), 2 (STRICT)
