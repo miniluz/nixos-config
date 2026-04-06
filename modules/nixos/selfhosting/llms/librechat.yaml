@@ -18,12 +18,10 @@ webSearch:
   searxngInstanceUrl: "http://localhost:7881"
   searchProvider: "searxng"
 
-  firecrawlApiKey: "${FIRECRAWL_API_KEY}"
-  firecrawlApiUrl: "${FIRECRAWL_API_URL}"
+  firecrawlApiKey: "placeholder"
   scraperProvider: "firecrawl"
 
-  jinaApiKey: "${JINA_API_KEY}"
-  jinaApiUrl: "${JINA_API_URL}"
+  jinaApiKey: "placeholder"
   rerankerType: "jina"
 
   scraperTimeout: 40000
