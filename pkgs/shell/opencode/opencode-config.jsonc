@@ -4,7 +4,13 @@
   "small_model": "deepinfra/Qwen/Qwen3-32B", // 0.3$
   "permission": {
     "bash": {
-      "*": "ask"
+      "*": "ask",
+      "ls": "allow",
+      "wc": "allow",
+      "head": "allow",
+      "echo": "allow",
+      "mkdir": "allow",
+      "grep": "allow"
     }
   },
   "provider": {
