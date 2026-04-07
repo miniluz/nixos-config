@@ -84,15 +84,18 @@ in
         no-resolv = true;
 
         # Custom DNS entries
-        address = [
-          "/${baseUrl}/${cfg.server.address}"
-        ]
-        ++ (
+        address =
           let
             makeSubdomain = { name, ... }: "/${name}.${baseUrl}/${cfg.server.address}";
           in
-          lib.map makeSubdomain proxies
-        );
+          (
+            [
+              "/${baseUrl}/${cfg.server.address}"
+              "/nextcloud.${baseUrl}/${cfg.server.address}"
+            ]
+            ++ (lib.map makeSubdomain proxies)
+
+          );
       };
     };
 
