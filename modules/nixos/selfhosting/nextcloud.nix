@@ -33,12 +33,17 @@ in
           "d ${home} 0750 nextcloud nextcloud"
         ];
 
-        services.nginx.virtualHosts."${config.services.nextcloud.hostName}".listen = [
-          {
-            addr = "127.0.0.1";
-            port = 9912;
-          }
-        ];
+        services.nginx.virtualHosts."${config.services.nextcloud.hostName}" = {
+          useACMEHost = "home.miniluz.dev";
+          forceSSL = true;
+
+          listen = [
+            {
+              addr = "0.0.0.0";
+              port = 80;
+            }
+          ];
+        };
 
         services.nextcloud = {
           enable = true;
