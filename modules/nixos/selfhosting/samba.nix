@@ -115,7 +115,7 @@
                 137 # samba
                 138 # samba
                 3702 # samba-wsdd
-                5353 # avahi
+                # 5353 # avahi
               ];
             };
           };

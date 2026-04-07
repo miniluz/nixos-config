@@ -61,9 +61,6 @@ in
 {
   config = lib.mkIf (cfg.enable && cfg.server.enable) {
 
-    programs.ssh.knownHosts."[u489829-sub1.your-storagebox.de]:23".publicKeyFile =
-      "${host-secrets}/hetzner-public-keys.pub";
-
     age.secrets.hetzner-dns-api-key = {
       file = "${host-secrets}/hetzner-dns-api-key.age";
       mode = "600";
@@ -71,6 +68,8 @@ in
       group = "acme";
     };
 
+    # This DNS exclusively resolves the domains.
+    # It's not meant to be a DNS replacement, just to resolve my subdomains
     services.dnsmasq = {
       enable = true;
       resolveLocalQueries = false;
@@ -94,10 +93,10 @@ in
           in
           lib.map makeSubdomain proxies
         );
-
-        # server = [ "100.100.100.100" ];
       };
     };
+
+    systemd.services.dnsmasq.after = [ "tailscaled.service" ];
 
     networking.firewall = {
       allowedTCPPorts = [
@@ -117,7 +116,7 @@ in
         email = "javiermiladossantos@gmail.com";
         extraLegoFlags = [
           "--dns.resolvers"
-          "8.8.8.8:53"
+          "9.9.9.9:53"
         ];
       };
 

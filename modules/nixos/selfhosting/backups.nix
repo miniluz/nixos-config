@@ -121,6 +121,9 @@ in
     lib.mkIf (cfg.enable && cfg.backups.enable && cfg.server.enable) (
       lib.mkMerge [
         {
+          programs.ssh.knownHosts."[u489829-sub1.your-storagebox.de]:23".publicKeyFile =
+            "${host-secrets}/hetzner-public-keys.pub";
+
           age.secrets.borg-ssh-ed25519.file = "${host-secrets}/borg-ssh-ed25519.age";
           age.secrets.borg-pass.file = "${host-secrets}/borg-pass.age";
         }
