@@ -5,12 +5,15 @@
   "permission": {
     "bash": {
       "*": "ask",
-      "ls": "allow",
-      "wc": "allow",
-      "head": "allow",
-      "echo": "allow",
-      "mkdir": "allow",
-      "grep": "allow"
+      "ls *": "allow",
+      "wc *": "allow",
+      "head *": "allow",
+      "echo *": "allow",
+      "mkdir *": "allow",
+      "grep *": "allow",
+      "find *": "allow",
+      "head *": "allow",
+      "tail *": "allow"
     }
   },
   "provider": {
