@@ -36,13 +36,6 @@ in
         services.nginx.virtualHosts."${config.services.nextcloud.hostName}" = {
           useACMEHost = "home.miniluz.dev";
           forceSSL = true;
-
-          listen = [
-            {
-              addr = "0.0.0.0";
-              port = 80;
-            }
-          ];
         };
 
         services.nextcloud = {
