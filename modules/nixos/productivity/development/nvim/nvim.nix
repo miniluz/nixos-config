@@ -1,12 +1,11 @@
 {
-  miniluz-pkgs,
   config,
-  global-secrets,
   lib,
   ...
 }:
 let
   cfg = config.miniluz.development;
+  inherit (config.miniluz.constants) miniluz-pkgs global-secrets;
 in
 {
   config = lib.mkIf (cfg.enable && cfg.nvim.enable) {

@@ -1,20 +1,15 @@
 # Configuration common to all computers
 {
-  inputs,
   pkgs,
-  miniluz-pkgs,
+  config,
   lib,
-  global-secrets,
   ...
 }:
 let
   inherit (lib) mkDefault;
+  inherit (config.miniluz.constants) inputs miniluz-pkgs global-secrets;
 in
 {
-  imports = [
-    inputs.agenix.nixosModules.default
-  ];
-
   options.miniluz.visual = lib.mkOption {
     default = true;
     description = "Enable options for visual systems";

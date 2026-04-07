@@ -2,11 +2,13 @@
   config,
   lib,
   pkgs,
-  miniluz-pkgs,
   ...
 }:
 let
   cfg = config.miniluz.selfhosting;
+
+  inherit (config.miniluz.constants) miniluz-pkgs;
+
 in
 {
   config = lib.mkIf (cfg.enable && cfg.server.enable) {

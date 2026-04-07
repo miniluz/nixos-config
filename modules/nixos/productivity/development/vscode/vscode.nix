@@ -1,12 +1,13 @@
 {
   pkgs,
-  miniluz-pkgs,
   config,
   lib,
   ...
 }:
 let
   cfg = config.miniluz.development;
+  inherit (config.miniluz.constants) miniluz-pkgs;
+
   json = pkgs.formats.json { };
 in
 {

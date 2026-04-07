@@ -1,4 +1,7 @@
-{ inputs, pkgs, ... }:
+{ config, pkgs, ... }:
+let
+  inherit (config.miniluz.constants) inputs;
+in
 {
   nixpkgs = {
     overlays = [

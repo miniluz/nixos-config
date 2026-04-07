@@ -2,11 +2,11 @@
   config,
   lib,
   pkgs,
-  miniluz-pkgs,
   ...
 }:
 let
   cfg = config.miniluz.gaming.minecraft;
+  inherit (config.miniluz.constants) miniluz-pkgs;
 in
 {
   options.miniluz.gaming.minecraft = lib.mkEnableOption "Enable Minecraft.";

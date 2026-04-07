@@ -9,10 +9,11 @@
 {
   config,
   lib,
-  host-secrets,
   ...
 }:
 let
+  inherit (config.miniluz.constants) host-secrets;
+
   hostname = config.networking.hostName;
 
   versioning = {

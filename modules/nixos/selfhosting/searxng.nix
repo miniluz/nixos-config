@@ -1,11 +1,11 @@
 {
   config,
   lib,
-  host-secrets,
   ...
 }:
 let
   cfg = config.miniluz.selfhosting;
+  inherit (config.miniluz.constants) host-secrets;
 in
 {
   options.miniluz.selfhosting.searxng = lib.mkEnableOption "SearXNG";

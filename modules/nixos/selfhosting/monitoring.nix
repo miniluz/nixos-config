@@ -1,12 +1,11 @@
 {
   config,
   lib,
-  host-secrets,
-  miniluz-pkgs,
   ...
 }:
 let
   cfg = config.miniluz.selfhosting;
+  inherit (config.miniluz.constants) miniluz-pkgs host-secrets;
 in
 {
   config = lib.mkIf (cfg.enable && cfg.server.enable) {

@@ -1,13 +1,13 @@
 {
   pkgs,
-  inputs,
   config,
   lib,
-  host-secrets,
   ...
 }:
 let
   cfg = config.miniluz.selfhosting;
+
+  inherit (config.miniluz.constants) inputs host-secrets;
 
   serverStorage = config.miniluz.selfhosting.server.serverStorage;
   dataDir = "${serverStorage}/actual";

@@ -1,11 +1,12 @@
 {
   config,
   lib,
-  host-secrets,
   ...
 }:
 let
   cfg = config.miniluz.selfhosting;
+  inherit (config.miniluz.constants) host-secrets;
+
   serverStorage = config.miniluz.selfhosting.server.serverStorage;
   mediaDir = "${serverStorage}/jellyfin-media";
   stateDir = "${serverStorage}/jellyfin-state";

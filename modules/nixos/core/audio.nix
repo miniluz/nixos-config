@@ -2,7 +2,6 @@
   pkgs,
   config,
   lib,
-  inputs,
   ...
 }:
 let
@@ -87,10 +86,6 @@ in
 #     };
 #   };
 {
-  imports = [
-    inputs.musnix.nixosModules.musnix
-  ];
-
   options.miniluz.audio = {
     enable = lib.mkEnableOption "audio";
     realtime = {

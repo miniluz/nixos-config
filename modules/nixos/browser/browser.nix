@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   pkgs,
   lib,
@@ -7,6 +6,7 @@
 }:
 let
   cfg = config.miniluz;
+  inherit (config.miniluz.constants) inputs;
 
   prefs = import ./_prefs.nix;
   extensions = import ./_extensions.nix;

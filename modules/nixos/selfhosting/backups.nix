@@ -2,12 +2,13 @@
   pkgs,
   lib,
   config,
-  host-secrets,
   ...
 }:
 let
   inherit (lib) mkOption mkEnableOption types;
   cfg = config.miniluz.selfhosting;
+
+  inherit (config.miniluz.constants) host-secrets;
 
   backupOpts = {
     options = {

@@ -2,11 +2,11 @@
   config,
   pkgs,
   lib,
-  host-secrets,
   ...
 }:
 let
   cfg = config.miniluz.selfhosting;
+  inherit (config.miniluz.constants) host-secrets;
 
   makeService = name: port: condition: {
     inherit name port condition;

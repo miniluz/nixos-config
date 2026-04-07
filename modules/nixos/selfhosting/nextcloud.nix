@@ -2,11 +2,12 @@
   config,
   lib,
   pkgs,
-  host-secrets,
   ...
 }:
 let
   cfg = config.miniluz.selfhosting;
+  inherit (config.miniluz.constants) host-secrets;
+
   serverStorage = config.miniluz.selfhosting.server.serverStorage;
   home = "${serverStorage}/nextcloud";
 in

@@ -2,11 +2,11 @@
   pkgs,
   config,
   lib,
-  host-secrets,
   ...
 }:
 let
   cfg = config.miniluz.selfhosting;
+  inherit (config.miniluz.constants) host-secrets;
 in
 {
   options.miniluz.selfhosting.rss = lib.mkEnableOption "RSS";

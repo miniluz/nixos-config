@@ -10,38 +10,54 @@ let
     { stem, path, ... }:
     let
       host-secrets = "${path}/secrets";
-      specialArgs = {
-        inherit
-          inputs
-          global-secrets
-          host-secrets
-          miniluz-pkgs
-          ;
-      };
     in
     {
       name = stem;
       value = inputs.nixpkgs.lib.nixosSystem {
-        inherit specialArgs;
         modules = [
           nixos-modules
 
           "${path}/configuration.nix"
           "${path}/hardware-configuration.nix"
 
+          {
+            options.miniluz.constants = {
+              inputs = lib.mkOption {
+                default = inputs;
+                description = "Inputs";
+              };
+              global-secrets = lib.mkOption {
+                default = global-secrets;
+                description = "Global secrets";
+              };
+              host-secrets = lib.mkOption {
+                default = host-secrets;
+                description = "Host secrets";
+              };
+              miniluz-pkgs = lib.mkOption {
+                default = miniluz-pkgs;
+                description = "miniluz packages";
+              };
+            };
+          }
+
           { networking.hostName = stem; }
 
-          ({
-            hjem.linker = inputs.hjem.packages."x86_64-linux".smfh;
+          (
+            { pkgs, ... }:
+            {
+              hjem.linker = pkgs.smfh;
 
-            hj = {
-              user = "miniluz";
-              directory = "/home/miniluz";
-            };
-          })
+              hj = {
+                user = "miniluz";
+                directory = "/home/miniluz";
+              };
+            }
+          )
           inputs.hjem.nixosModules.default
           (lib.mkAliasOptionModule [ "hj" ] [ "hjem" "users" "miniluz" ])
 
+          inputs.musnix.nixosModules.musnix
           inputs.agenix.nixosModules.default
           inputs.nixarr.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index

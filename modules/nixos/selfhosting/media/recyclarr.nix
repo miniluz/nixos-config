@@ -1,11 +1,11 @@
 {
   config,
   lib,
-  host-secrets,
   ...
 }:
 let
   cfg = config.miniluz.selfhosting;
+  inherit (config.miniluz.constants) host-secrets;
 in
 {
   config = lib.mkIf (cfg.enable && cfg.jellyfin && cfg.server.enable) {

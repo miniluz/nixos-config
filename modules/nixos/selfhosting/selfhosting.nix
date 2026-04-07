@@ -1,12 +1,12 @@
 {
   config,
   lib,
-  miniluz-pkgs,
   pkgs,
   ...
 }:
 let
   cfg = config.miniluz.selfhosting;
+  inherit (config.miniluz.constants) miniluz-pkgs;
 in
 {
   options.miniluz.selfhosting = {
