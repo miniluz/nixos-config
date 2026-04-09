@@ -16,7 +16,7 @@
     containers = true;
     virt = true;
     languages = {
-      # java = true;
+      java = true;
       js = true;
       python = true;
       rust = true;
