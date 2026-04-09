@@ -14,6 +14,7 @@ in
     ];
 
     settings = {
+      "vim.smartRelativeLine" = true;
       "vim.useCtrlKeys" = false;
       "vim.foldfix" = true;
       "vim.leader" = "<space>";
