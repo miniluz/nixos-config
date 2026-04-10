@@ -39,7 +39,7 @@ def main [] {
     }
 
     print "Adding changes"
-    git add .
+    git add -A
 
     # git diff HEAD --submodule=diff
 
@@ -60,4 +60,9 @@ def main [] {
 
     print "Pushing changes"
     git push
+
+    print "Committing changes on server"
+    cd $server_flake_path
+    git add -A
+    git commit
 }
