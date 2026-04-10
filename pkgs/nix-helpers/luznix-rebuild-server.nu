@@ -64,5 +64,5 @@ def main [] {
     print "Committing changes on server"
     cd $server_flake_path
     git add -A
-    git commit
+    git commit -m "Updated base nixos-config"
 }
