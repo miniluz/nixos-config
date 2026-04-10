@@ -46,7 +46,6 @@ in
             enable = true;
             flags = "-k -p --utc";
           };
-          autoScrub.enable = true;
         };
 
         # Ensure podman runs properly
