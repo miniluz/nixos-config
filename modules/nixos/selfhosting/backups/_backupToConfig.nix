@@ -72,10 +72,10 @@ name: backupConfig: {
 
       Environment = [
         "SCAN_TITLE=actual"
-        "BORG_REPO=ssh://u489829-sub1@u489829-sub1.your-storagebox.de:23/./home-server-backups/actual"
-        "BORG_RSH=ssh -i ${config.age.secrets.borg-ssh-ed25519.path}"
-        "BORG_PASSCOMMAND=cat ${config.age.secrets.borg-pass.path}"
-        "WEBHOOK_FILE=${config.age.secrets.monitoring-webhook.path}"
+        "BORG_REPO=ssh://u489829-sub1@u489829-sub1.your-storagebox.de:23/./home-server-backups/${name}"
+        "BORG_RSH=\"ssh -i ${config.age.secrets.borg-ssh-ed25519.path}\""
+        "BORG_PASSCOMMAND=\"cat ${config.age.secrets.borg-pass.path}\""
+        "WEBHOOK_FILE=\"${config.age.secrets.monitoring-webhook.path}\""
       ];
 
       ExecStart = lib.getExe (
