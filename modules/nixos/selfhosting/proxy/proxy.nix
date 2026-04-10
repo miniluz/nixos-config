@@ -76,7 +76,7 @@ in
 
       settings = {
         interface = "tailscale0";
-        bind-interfaces = true;
+        bind-dynamic = true;
 
         # Don't read /etc/hosts
         no-hosts = true;
