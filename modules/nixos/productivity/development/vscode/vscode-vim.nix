@@ -14,6 +14,9 @@ in
     ];
 
     settings = {
+      "vim.vimrc.enable" = true;
+      "vim.vimrc.path" = builtins.toString ./vscode-vimrc;
+
       "vim.smartRelativeLine" = true;
       "vim.useCtrlKeys" = false;
       "vim.foldfix" = true;
