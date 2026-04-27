@@ -79,7 +79,7 @@ in
 
     users.users.miniluz.packages = [
       (pkgs.vscode-with-extensions.override {
-        vscode = pkgs.vscode-fhs;
+        vscode = pkgs.vscodium-fhs;
         vscodeExtensions = config.miniluz.development.vscode.extensions;
       })
     ]
