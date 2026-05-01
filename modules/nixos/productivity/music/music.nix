@@ -18,7 +18,7 @@ in
       helm
 
       yabridge
-      wineWowPackages.yabridge
+      wineWow64Packages.yabridge
       yabridgectl
       winetricks
     ];
