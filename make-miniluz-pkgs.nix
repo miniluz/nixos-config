@@ -17,7 +17,7 @@ let
     (i: i.files)
   ];
 
-  luz-neovim = inputs.luz-nvim.packages."x86_64-linux".default;
+  luz-neovim = inputs.luz-nvim.packages."x86_64-linux".forPkgs pkgs;
 
   miniluz-pkgs = (makeAttrsetFromPathlist nameValueMap pathList) // {
     inherit luz-neovim;

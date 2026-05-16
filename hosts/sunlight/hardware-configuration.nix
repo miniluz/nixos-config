@@ -43,6 +43,8 @@
     fsType = "zfs";
   };
 
+  boot.zfs.forceImportRoot = false;
+
   swapDevices = [ { device = "/dev/disk/by-uuid/f95258dc-724c-47eb-a853-89f821386505"; } ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
