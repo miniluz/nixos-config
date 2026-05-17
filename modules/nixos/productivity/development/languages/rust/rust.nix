@@ -15,7 +15,10 @@ in
       lldb
     ];
 
-    services.udev.extraRules = lib.readFile ./probe-rs-rules.rules;
+    services.udev.extraRules = lib.concatStringsSep "\n" [
+      (lib.readFile ./probe-rs-rules.rules)
+      (lib.readFile ./dfu-stm32f401rc.rules)
+    ];
 
   };
 }
