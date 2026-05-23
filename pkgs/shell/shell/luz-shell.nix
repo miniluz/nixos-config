@@ -6,6 +6,7 @@
   runCommand,
   pkgs,
   fish,
+  any-nix-shell,
   starship-luzwrap,
   luz-shell-utils,
   usedFishPluginNames ? [
@@ -30,7 +31,6 @@ symlinkJoin {
   name = "luz-shell";
   paths = [
     fish
-    starship-luzwrap
   ];
   buildInputs = [ makeWrapper ];
   postBuild = ''
@@ -43,7 +43,13 @@ symlinkJoin {
           ];
         }
       } \
-      --prefix PATH : ${lib.makeBinPath [ luz-shell-utils ]}
+      --prefix PATH : ${
+        lib.makeBinPath [
+          luz-shell-utils
+          any-nix-shell
+          starship-luzwrap
+        ]
+      }
   '';
 
   meta.mainProgram = "fish";

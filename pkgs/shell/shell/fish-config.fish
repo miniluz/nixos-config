@@ -1,9 +1,6 @@
-# ~/.config/fish/config.fish: DO NOT EDIT -- this file has been generated
-# automatically by home-manager.
-
 # Only execute this file once per shell.
-set -q __fish_home_manager_config_sourced; and exit
-set -g __fish_home_manager_config_sourced 1
+set -q __fish_config_sourced; and exit
+set -g __fish_config_sourced 1
 
 status is-login; and begin
 
@@ -12,8 +9,6 @@ status is-login; and begin
 end
 
 status is-interactive; and begin
-
-    # eval (zellij setup --generate-auto-start fish | string collect)
 
     if not set -q TMUX
         tmux
@@ -87,6 +82,8 @@ status is-interactive; and begin
     set FZF_DEFAULT_OPTS  "--with-shell='sh -c' --bind 'i:show-input+trigger(start),esc:hide-input+trigger(start)' --bind 'j:down,k:up,f:jump-accept' --bind 'start:toggle-bind(i,j,k,f)' --bind 'ctrl-l:accept'"
     set FZF_ALT_C_COMMAND zoxide query --list --score
     set FZF_ALT_C_OPTS --height 40% --layout reverse --border rounded --nth 2.. --accept-nth 2.. --scheme=path --exact --tiebreak="pathname,index"
+
+    any-nix-shell fish --info-right | source
 
     direnv hook fish | source
 
