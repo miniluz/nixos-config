@@ -83,7 +83,7 @@ status is-interactive; and begin
     set FZF_ALT_C_COMMAND zoxide query --list --score
     set FZF_ALT_C_OPTS --height 40% --layout reverse --border rounded --nth 2.. --accept-nth 2.. --scheme=path --exact --tiebreak="pathname,index"
 
-    any-nix-shell fish --info-right | source
+    any-nix-shell fish | source
 
     direnv hook fish | source
 
