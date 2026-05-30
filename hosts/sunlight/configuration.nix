@@ -28,8 +28,11 @@
 
   miniluz.music.enable = true;
 
-  miniluz.gaming.enable = true;
-  miniluz.gaming.minecraft = true;
+  miniluz.gaming = {
+    enable = true;
+    minecraft = true;
+    ps4 = true;
+  };
 
   miniluz.social.enable = true;
 
