@@ -23,11 +23,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774168506,
-        "narHash": "sha256-x8ndrsXCRusRHKHIPDw2jdrG3GnbWJI/ZmbfnZjwJ/o=",
+        "lastModified": 1781008873,
+        "narHash": "sha256-hOOte5mZyC+TJ107n+sA22zGe8yCu99+r2N4X3SZRx8=",
         "owner": "miniluz",
         "repo": "actual-backup",
-        "rev": "aeff6e96805ce101f2769e1e5a5c844b8b80ab3e",
+        "rev": "93a0a58182ab1cd7c2944fb8d59b7f473e00996e",
         "type": "github"
       },
       "original": {
