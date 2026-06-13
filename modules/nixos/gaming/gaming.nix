@@ -14,6 +14,13 @@ in
     environment.systemPackages = with pkgs; [
       qbittorrent
 
+      (retroarch.withCores (
+        cores: with cores; [
+          citra
+          snes9x
+        ]
+      ))
+
       # itch
 
       winetricks
