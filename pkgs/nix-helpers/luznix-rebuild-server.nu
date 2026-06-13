@@ -10,7 +10,7 @@ def fail-and-revert-commit [message] {
     fail $message
 }
 
-def main [] {
+def main [mode: string] {
     let flake_path: path = "/home/miniluz/nixos-config-base" | path expand
     let server_flake_path: path = $env.NH_FLAKE | path expand
     cd $flake_path
@@ -53,7 +53,7 @@ def main [] {
 
     sudo -v
     try {
-        luznix-os-switch
+        luznixos $mode
     } catch {
         fail-and-revert-commit "NixOS Rebuild failed!"
     }

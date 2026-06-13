@@ -1,6 +1,6 @@
 {
   writeNuApplication,
-  luznix-os-switch,
+  luznixos,
   git-luzwrap,
   nixfmt,
   name ? "luznix-rebuild-server",
@@ -9,7 +9,7 @@ writeNuApplication {
   inherit name;
   text = builtins.readFile ./luznix-rebuild-server.nu;
   runtimeInputs = [
-    luznix-os-switch
+    luznixos
     git-luzwrap
     nixfmt
   ];

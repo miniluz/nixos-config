@@ -1,6 +1,6 @@
 {
   writeNuApplication,
-  luznix-os-switch,
+  luznixos,
   libnotify,
   git-luzwrap,
   nixfmt,
@@ -10,7 +10,7 @@ writeNuApplication {
   inherit name;
   text = builtins.readFile ./luznix-rebuild.nu;
   runtimeInputs = [
-    luznix-os-switch
+    luznixos
     libnotify
     git-luzwrap
     nixfmt

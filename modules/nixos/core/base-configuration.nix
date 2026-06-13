@@ -180,8 +180,8 @@ in
 
         font-cache-update
         luznix-rebuild
-        luznix-os-switch
-        luznix-update-command
+        luznixos
+        luznixos-raw
       ]);
 
     environment.sessionVariables = {

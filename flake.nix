@@ -62,7 +62,7 @@
     };
 
     __flake-compat = {
-      url = "git+https://git.lix.systems/lix-project/flake-compat.git";
+      url = "git+https://git.lix.systems/lix-project/flake-compat?rev=382052b74656a369c5408822af3f2501e9b1af81";
       flake = false;
     };
 

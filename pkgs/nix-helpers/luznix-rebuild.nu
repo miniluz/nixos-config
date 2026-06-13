@@ -5,7 +5,7 @@ def fail [message] {
     exit 1
 }
 
-def main [] {
+def main [mode: string] {
     let flake_path: path = $env.NH_FLAKE | path expand
     cd $flake_path
 
@@ -43,7 +43,7 @@ def main [] {
 
     sudo -v
     try {
-        luznix-os-switch
+        luznixos $mode
     } catch {
         fail "NixOS Rebuild failed!"
     }
