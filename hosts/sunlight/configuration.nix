@@ -31,6 +31,7 @@
   miniluz.gaming = {
     enable = true;
     minecraft = true;
+    emulation = true;
   };
 
   miniluz.social.enable = true;
