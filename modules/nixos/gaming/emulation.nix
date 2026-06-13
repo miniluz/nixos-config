@@ -12,7 +12,11 @@ in
   options.miniluz.gaming.emulation = lib.mkEnableOption "Enable emulation.";
 
   config = lib.mkIf cfg {
-    age.secrets.aes_keys.file = "${global-secrets}/aes_keys.age";
+    age.secrets.aes_keys = {
+      file = "${global-secrets}/aes_keys.age";
+      owner = "miniluz";
+      group = "users";
+    };
 
     hj.files.".config/retroarch/saves/Citra/sysdata/aes_keys.txt".source =
       config.age.secrets.aes_keys.path;
