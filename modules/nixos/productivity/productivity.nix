@@ -20,7 +20,7 @@ in
 
       thunderbird
 
-      # krita
+      krita
 
       obsidian
       zotero
