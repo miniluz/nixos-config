@@ -47,7 +47,7 @@ in
           git config --global --add safe.directory ${flake-location}
           git config --global --add safe.directory /home/miniluz/nixos-config-base
           nix flake update --flake ${flake-location} nixpkgs actual-backup
-          ${lib.getExe (miniluz-pkgs.luznix-update-command.override { inherit flake-location; })} \
+          ${lib.getExe (miniluz-pkgs.luznixos-raw.override { inherit flake-location; })} switch && \
             git add -A && git commit -m "Server upgrade"
         '';
 

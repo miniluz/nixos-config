@@ -10,19 +10,19 @@ let
 in
 {
   config = lib.mkIf (cfg.enable && cfg.server.enable) {
-    services.ttyd = {
-      enable = true;
-      writeable = false;
-      entrypoint = [
-        (lib.getExe miniluz-pkgs.btop-luzwrap)
-      ];
-      port = 7861;
-      interface = "lo";
-      clientOptions = {
-        fontSize = "16";
-        fontFamily = "FiraCode Nerd Font";
-      };
-    };
+    # services.ttyd = {
+    #   enable = true;
+    #   writeable = false;
+    #   entrypoint = [
+    #     (lib.getExe miniluz-pkgs.btop-luzwrap)
+    #   ];
+    #   port = 7861;
+    #   interface = "lo";
+    #   clientOptions = {
+    #     fontSize = "16";
+    #     fontFamily = "FiraCode Nerd Font";
+    #   };
+    # };
 
     age.secrets.monitoring-webhook.file = "${host-secrets}/monitoring-webhook.age";
 
