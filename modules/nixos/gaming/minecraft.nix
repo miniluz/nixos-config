@@ -19,7 +19,7 @@ in
 
     users.users.miniluz.packages = with pkgs; [
       (prismlauncher.override {
-        additionalPrograms = with pkgs; [
+        additionalLibs = with pkgs; [
           libglvnd
         ];
 
