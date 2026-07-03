@@ -46,6 +46,8 @@ in
           cd ${flake-location}
           git config --global --add safe.directory ${flake-location}
           git config --global --add safe.directory /home/miniluz/nixos-config-base
+          git config --global user.email "miniluz@miniluz.dev"
+          git config --global user.name "miniluz"
           nix flake update --flake ${flake-location} nixpkgs actual-backup
           ${lib.getExe (miniluz-pkgs.luznixos-raw.override { inherit flake-location; })} switch && \
             git add -A && git commit -m "Server upgrade"
