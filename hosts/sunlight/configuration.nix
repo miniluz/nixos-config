@@ -24,7 +24,7 @@
     };
   };
 
-  miniluz.unity.enable = true;
+  miniluz.unity.enable = false;
 
   miniluz.music.enable = true;
 

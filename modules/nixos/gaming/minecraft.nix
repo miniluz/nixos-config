@@ -18,8 +18,19 @@ in
     };
 
     users.users.miniluz.packages = with pkgs; [
-      prismlauncher
-      temurin-jre-bin
+      (prismlauncher.override {
+        additionalPrograms = with pkgs; [
+          libglvnd
+        ];
+
+        jdks = with pkgs; [
+          graalvmPackages.graalvm-ce
+          zulu8
+          zulu17
+          zulu
+        ];
+
+      })
       miniluz-pkgs.playit-agent
     ];
   };
