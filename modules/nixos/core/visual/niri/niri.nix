@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.miniluz.gnome;
+  cfg = config.miniluz.niri;
 
   niri-config =
     pkgs.runCommand "niri-config-checked"

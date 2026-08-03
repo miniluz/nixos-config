@@ -7,6 +7,7 @@
 }:
 {
   miniluz.gnome.enable = true;
+  miniluz.niri.enable = true;
   miniluz.audio.enable = true;
 
   miniluz.intel.enable = true;
