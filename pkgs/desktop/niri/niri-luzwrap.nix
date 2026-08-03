@@ -37,8 +37,7 @@ symlinkJoin {
   buildInputs = [ makeWrapper ];
   postBuild = ''
     wrapProgram $out/bin/niri \
-      --add-flag "--config" \
-      --add-flag "${builtins.toString ./niri-config.kdl}"
+      --set NIRI_CONFIG "${builtins.toString ./niri-config.kdl}"
   '';
 
   meta.mainProgram = "niri";
