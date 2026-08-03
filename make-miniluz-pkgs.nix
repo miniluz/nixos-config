@@ -3,7 +3,15 @@ pkgs:
 let
   makeAttrsetFromPathlist = import ./make-attrset-from-pathlist.nix make-attrs;
 
-  callPackage = pkgs.lib.callPackageWith (pkgs // miniluz-pkgs // { inherit miniluz-pkgs; });
+  callPackage = pkgs.lib.callPackageWith (
+    pkgs
+    // miniluz-pkgs
+    // {
+      inherit miniluz-pkgs;
+
+      inherit (inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}) zen-browser-unwrapped;
+    }
+  );
 
   nameValueMap =
     { stem, path, ... }:
