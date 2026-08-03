@@ -1,37 +1,11 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 let
   cfg = config.miniluz.niri;
-
-  niri-config =
-    pkgs.runCommand "niri-config-checked"
-      {
-        nativeBuildInputs = [ pkgs.niri ];
-      }
-      ''
-        niri validate --config ${./niri-config.kdl}
-        cp ${./niri-config.kdl} $out
-      '';
-
-  niri = pkgs.symlinkJoin {
-    name = "niri";
-    paths = [
-      pkgs.niri
-    ];
-
-    passthru = pkgs.niri.passthru;
-
-    buildInputs = [ pkgs.makeWrapper ];
-    postBuild = ''
-      wrapProgram $out/bin/niri \
-        --add-flag "--config" \
-        --add-flag "${niri-config}"
-    '';
-  };
+  inherit (config.miniluz.constants) miniluz-pkgs;
 in
 {
   options.miniluz.niri.enable = lib.mkEnableOption "Enable Niri";
@@ -41,30 +15,17 @@ in
       displayManager.gdm.enable = true;
     };
 
-    programs = {
-      niri = {
-        enable = true;
-        package = niri;
-      };
-
-      waybar.enable = true;
-
-      ssh.startAgent = false;
+    programs.niri = {
+      enable = true;
+      package = miniluz-pkgs.niri-luzwrap;
     };
 
     security.polkit.enable = true; # polkit
     services.gnome.gnome-keyring.enable = true; # secret service
     security.pam.services.swaylock = { };
 
-    environment.systemPackages = with pkgs; [
-      alacritty
-      fuzzel
-      swaylock
-      mako
-      swayidle
-      xwayland-run
-      xwayland-satellite
-      nautilus
+    environment.systemPackages = [
+      miniluz-pkgs.niri-luzwrap
     ];
 
   };

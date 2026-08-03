@@ -24,5 +24,6 @@ pkgs.mkShell {
     ++ (with outputs.packages.${builtins.currentSystem}.miniluz-pkgs; [
       luz-shell
       luz-shell-utils
+      niri-luzwrap
     ]);
 }
