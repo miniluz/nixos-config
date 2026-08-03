@@ -18,7 +18,7 @@ in
     environment.systemPackages = [
       pkgs.tor-browser
       pkgs.chromium
-      miniluz-pkgs.zen
+      miniluz-pkgs.zen-luzwrap
     ];
   };
 
