@@ -2,13 +2,16 @@
 id  = "git"
 url = "*"
 run = "git"
+group = "git"
 
 [[plugin.prepend_fetchers]]
 id  = "git"
 url = "*/"
 run = "git"
+group = "git-dir"
 
-[plugin]
-prepend_previewers = [
-  { name = "*.md", run = "glow" },
-]
+[[plugin.prepend_previewers]]
+id = "md"
+url = "*.md"
+run = "glow"
+group = "md"
