@@ -38,6 +38,9 @@ symlinkJoin {
   postBuild = ''
     wrapProgram $out/bin/niri \
       --set NIRI_CONFIG "${builtins.toString ./niri-config.kdl}"
+
+    wrapProgram $out/bin/niri-session \
+      --set NIRI_CONFIG "${builtins.toString ./niri-config.kdl}"
   '';
 
   meta.mainProgram = "niri";
