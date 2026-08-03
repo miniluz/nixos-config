@@ -8,6 +8,7 @@
   swaylock,
   mako,
   swayidle,
+  swaybg,
   waybar,
   xwayland-run,
   xwayland-satellite,
@@ -24,6 +25,7 @@ symlinkJoin {
     swaylock
     mako
     swayidle
+    swaybg
     waybar
     xwayland-run
     xwayland-satellite
