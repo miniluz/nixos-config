@@ -2,17 +2,7 @@
   symlinkJoin,
   makeWrapper,
   ghostty,
-  fetchFromGitHub,
 }:
-let
-  catppuccin-ghostty = fetchFromGitHub {
-    name = "catppuccin-ghostty";
-    owner = "catppuccin";
-    repo = "ghostty";
-    rev = "0eeefa637affe0b5f29d7005cfe4e143c244a781";
-    hash = "sha256-j0HCakM9R/xxEjWd5A0j8VVlg0vQivjlAYHRW/4OpGU=";
-  };
-in
 symlinkJoin {
   name = "ghostty-luzwrap";
   paths = [
@@ -22,7 +12,6 @@ symlinkJoin {
   postBuild = ''
     mkdir -p $out/ghostty
     ln -sf ${builtins.toString ./ghostty-config.conf} $out/ghostty/config
-    ln -sf ${catppuccin-ghostty}/themes $out/ghostty/themes
 
     rm $out/share/applications/com.mitchellh.ghostty.desktop
 
@@ -56,8 +45,7 @@ symlinkJoin {
     INI
 
     wrapProgram $out/bin/ghostty \
-      --add-flag "--config-file=$out/ghostty/config" \
-      --add-flag "--theme=$out/ghostty/themes/catppuccin-mocha.conf"
+      --add-flag "--config-file=$out/ghostty/config"
   '';
 
   meta.mainProgram = "ghostty";

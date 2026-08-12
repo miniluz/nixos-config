@@ -4,12 +4,12 @@
   niri,
 
   alacritty,
+  ashell,
   fuzzel,
   swaylock,
   mako,
   swayidle,
   swaybg,
-  waybar,
   xwayland-run,
   xwayland-satellite,
   nautilus,
@@ -21,12 +21,12 @@ symlinkJoin {
     niri
 
     alacritty
+    ashell
     fuzzel
     swaylock
     mako
     swayidle
     swaybg
-    waybar
     xwayland-run
     xwayland-satellite
     nautilus

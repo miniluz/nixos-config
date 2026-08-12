@@ -1,7 +1,0 @@
-[ui]
-default-command = ["log"]
-paginate = "never"
-
-[user]
-email = "javiermelon4fu@gmail.com"
-name = "miniluz"

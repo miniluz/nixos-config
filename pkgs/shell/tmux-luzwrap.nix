@@ -9,7 +9,7 @@
   fzf,
   plugins ? with tmuxPlugins; [
     # vim-tmux-navigator
-    catppuccin
+    # catppuccin
     better-mouse-mode
     (tmuxPlugins.mkTmuxPlugin {
       pluginName = "tmux-yank";
@@ -21,6 +21,18 @@
         repo = "tmux-yank";
         rev = "fd8000238b324005389076486a2e6e03dba1c64f";
         hash = "sha256-DQQCsBHxOo/BepclkICCtVUAL4pozS/RTJBcVLzICns=";
+      };
+    })
+    (tmuxPlugins.mkTmuxPlugin {
+      pluginName = "tmux-ayu-theme";
+      rtpFilePath = "tmux-ayu-theme.tmux";
+      version = "0.1.0";
+      src = fetchFromGitHub {
+        name = "tmux-ayu-theme";
+        owner = "TechnicalDC";
+        repo = "tmux-ayu-theme";
+        rev = "2ddd8537e2f98cc760c1e2ded4bcbc62a20b8f42";
+        hash = "sha256-/MLP0tE5wSQ/Vcnruy34bQ5kes6AoT0zH2urBcetiq0=";
       };
     })
   ],

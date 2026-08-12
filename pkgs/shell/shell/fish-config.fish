@@ -50,23 +50,23 @@ status is-interactive; and begin
 
     set fish_greeting # Disable greeting
 
-    # Source: https://github.com/catppuccin/fzf, https://vitormv.github.io/fzf-themes/
+
+   # Source: https://github.com/catppuccin/fzf, https://vitormv.github.io/fzf-themes/
+    # set FZF_DEFAULT_OPTS '
+    #     --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8
+    #     --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
+    #     --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8
+    #     --color=selected-bg:#45475a
+    #     --multi
+    #     --border="rounded" --border-label="" --preview-window="border-rounded" --prompt="> "
+    #     --marker=">" --pointer="◆" --separator="─" --scrollbar="│"'
+
     set FZF_DEFAULT_OPTS '
-        --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8
-        --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
-        --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8
-        --color=selected-bg:#45475a
         --multi
         --border="rounded" --border-label="" --preview-window="border-rounded" --prompt="> "
         --marker=">" --pointer="◆" --separator="─" --scrollbar="│"'
 
     zoxide init fish | source
-
-    if set -q KITTY_INSTALLATION_DIR
-        set --global KITTY_SHELL_INTEGRATION no-rc
-        source "$KITTY_INSTALLATION_DIR/shell-integration/fish/vendor_conf.d/kitty-shell-integration.fish"
-        set --prepend fish_complete_path "$KITTY_INSTALLATION_DIR/shell-integration/fish/vendor_completions.d"
-    end
 
     # for yazi
     function y

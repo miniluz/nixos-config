@@ -71,9 +71,7 @@ symlinkJoin {
       opencode-luzwrap
 
       git-luzwrap
-      jj-luzwrap
       btop-luzwrap
-      gitui-luzwrap
       tmux-luzwrap
       yazi-luzwrap
     ]);
