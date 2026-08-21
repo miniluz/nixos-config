@@ -12,7 +12,7 @@ in
 
   config = lib.mkIf cfg.enable {
     users.users.miniluz.packages = with pkgs; [
-      reaper
+      (reaper.overrideAttrs { jackLibrary = pipewire.jack; })
       reaper-reapack-extension
 
       helm
