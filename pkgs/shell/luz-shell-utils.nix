@@ -58,6 +58,7 @@ symlinkJoin {
       entr # run something on reload
       gitlogue
       lazygit
+      gitui
     ])
     ++ (with miniluz-pkgs; [
       luz-neovim
