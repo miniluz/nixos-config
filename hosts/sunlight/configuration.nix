@@ -6,6 +6,7 @@
   miniluz.amdgpu.enable = true;
 
   miniluz.gnome.enable = true;
+  miniluz.niri.enable = true;
   miniluz.audio = {
     enable = true;
     realtime = {
