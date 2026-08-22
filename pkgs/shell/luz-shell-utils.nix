@@ -59,6 +59,9 @@ symlinkJoin {
       gitlogue
       lazygit
       gitui
+
+      nix-tree
+      hydra-check
     ])
     ++ (with miniluz-pkgs; [
       luz-neovim
