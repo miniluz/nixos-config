@@ -17,10 +17,14 @@ let
   proxies = lib.filter ({ condition, ... }: condition) [
     # (makeService "btop" 7861 true)
 
+    # --- Jellyfin ---
+    (makeService "not-backed-up" 3924 cfg.searxng)
+    (makeService "backed-up" 3925 cfg.searxng)
+    # ----------------
+
     (makeService "searxng" 7881 cfg.searxng)
     (makeService "rss" 7882 cfg.rss)
     # (makeService "syncthing" 8384 cfg.syncthing) DO NOT PROXY as it doesn't have a password
-    # (makeService "samba" 8791 cfg.samba)
     (makeService "immich" 2283 cfg.immich)
 
     (makeService "actual" 9991 cfg.actual)
