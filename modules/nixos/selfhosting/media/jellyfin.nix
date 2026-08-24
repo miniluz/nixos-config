@@ -38,7 +38,7 @@ in
       jellyfin.enable = true;
       audiobookshelf.enable = true;
 
-      jellyseerr.enable = true;
+      seerr.enable = true;
 
       transmission = {
         enable = true;

@@ -46,9 +46,10 @@
     };
 
     nixarr = {
-      url = "github:miniluz/nixarr/patch-1";
+      url = "github:nix-media-server/nixarr";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.website-builder.follows = "";
+      inputs.treefmt-nix.follows = "";
     };
 
     actual-backup = {
