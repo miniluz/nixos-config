@@ -87,41 +87,43 @@
         (lib.mkIf (!cfg.server.enable) {
           environment.systemPackages = [ pkgs.davfs2 ];
 
-          services.davfs2.enable = true;
-
-          fileSystems."/mnt/fileserver-not-backed-up" = {
-            device = "https://not-backed-up.home.miniluz.dev";
-            fsType = "davfs";
-            options = [
-              "uid=${toString config.users.users.miniluz.uid}"
-              "gid=${toString config.users.groups.users.gid}"
-              "file_mode=0700"
-              "dir_mode=0700"
-
-              "nofail"
-              "x-systemd.automount"
-              "x-systemd.idle-timeout=60"
-              "x-systemd.device-timeout=5s"
-              "x-systemd.mount-timeout=5s"
-            ];
+          services.davfs2 = {
+            enable = true;
+            settings = {
+              globalSection = {
+                askauth = false;
+              };
+            };
           };
 
-          fileSystems."/mnt/fileserver-backed-up" = {
-            device = "https://backed-up.home.miniluz.dev";
-            fsType = "davfs";
-            options = [
-              "uid=${toString config.users.users.miniluz.uid}"
-              "gid=${toString config.users.groups.users.gid}"
-              "file_mode=0700"
-              "dir_mode=0700"
+          fileSystems =
+            let
+              options = [
+                "uid=${toString config.users.users.miniluz.uid}"
+                "gid=${toString config.users.groups.users.gid}"
+                "file_mode=0700"
+                "dir_mode=0700"
 
-              "nofail"
-              "x-systemd.automount"
-              "x-systemd.idle-timeout=60"
-              "x-systemd.device-timeout=5s"
-              "x-systemd.mount-timeout=5s"
-            ];
-          };
+                "nofail"
+                "x-systemd.automount"
+                "x-systemd.idle-timeout=60"
+                "x-systemd.device-timeout=5s"
+                "x-systemd.mount-timeout=5s"
+              ];
+            in
+            {
+              "/mnt/fileserver-not-backed-up" = {
+                device = "https://not-backed-up.home.miniluz.dev";
+                fsType = "davfs";
+                inherit options;
+              };
+
+              "/mnt/fileserver-backed-up" = {
+                device = "https://backed-up.home.miniluz.dev";
+                fsType = "davfs";
+                inherit options;
+              };
+            };
 
         })
       ]
