@@ -29,10 +29,13 @@ status is-interactive; and begin
     # Git aliases
     alias g 'git'
     alias gs 'git status'
+    alias gst 'git stash'
+    alias gss 'git stash --staged'
     alias ga 'git add'
     alias gaa 'git add -A'
     alias gc 'git commit'
     alias gp 'git push'
+    alias gpf 'git push --force-with-lease'
     alias gl 'git log'
     alias gd 'git diff'
     alias gco 'git checkout'
