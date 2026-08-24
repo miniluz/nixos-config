@@ -87,6 +87,8 @@
         (lib.mkIf (!cfg.server.enable) {
           environment.systemPackages = [ pkgs.davfs2 ];
 
+          services.davfs2.enable = true;
+
           fileSystems."/mnt/fileserver-not-backed-up" = {
             device = "https://not-backed-up.home.miniluz.dev";
             fsType = "davfs";
