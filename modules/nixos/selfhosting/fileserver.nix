@@ -87,13 +87,14 @@
         (lib.mkIf (!cfg.server.enable) {
           environment.systemPackages = [ pkgs.davfs2 ];
 
-          services.davfs2.enable = true;
+          services.davfs2 = {
+            enable = true;
+            settings.globalSection.ask_auth = false;
+          };
 
           fileSystems =
             let
               options = [
-                "askauth=0"
-
                 "uid=${toString config.users.users.miniluz.uid}"
                 "gid=${toString config.users.groups.users.gid}"
                 "file_mode=0700"
