@@ -13,7 +13,7 @@ let
 in
 {
   options.miniluz.selfhosting.nextcloud = lib.mkOption {
-    default = true;
+    default = false;
     description = "Enable NextCloud";
   };
 
