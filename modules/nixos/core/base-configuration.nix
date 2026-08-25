@@ -169,6 +169,7 @@ in
       with pkgs;
       [
         steam-run
+        appimage-run
         nixfmt
         nil
         nushell
