@@ -34,6 +34,8 @@ in
       xserver.xkb = mkDefault {
         layout = "esnodead";
         variant = "";
+        options = "compose:rctrl";
+
         extraLayouts.esnodead = {
           description = "Spanish layout without dead grave";
           languages = [ "esp" ];
