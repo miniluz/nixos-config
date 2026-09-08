@@ -13,10 +13,20 @@ in
   config = lib.mkIf cfg.enable {
     users.users.miniluz.packages = with pkgs; [
       reaper
-      # (reaper.overrideAttrs { jackLibrary = pipewire.jack; })
       reaper-reapack-extension
 
+      carla
       helm
+      guitarix
+      neural-amp-modeler-lv2
+      proteus
+      lsp-plugins
+      calf
+      dragonfly-reverb
+      gxplugins-lv2
+      kapitonov-plugins-pack
+      chow-centaur
+      chow-phaser
 
       yabridge
       wineWow64Packages.yabridge

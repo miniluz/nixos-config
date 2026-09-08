@@ -10,81 +10,6 @@ in
 # To find device configs, run:
 # nix-shell -p pulseaudio --run "pactl list sources" | rg Name
 # nix-shell -p pulseaudio --run "pactl list sinks" | rg Name
-# Example configs:
-# services.pipewire = {
-#     extraConfig.pipewire."90-scarlett-defaults" = {
-#       "context.properties" = {
-#         # Set Scarlett Line 1-2 as default output
-#         "default.audio.sink" = "alsa_output.usb-Focusrite_Scarlett_2i4_USB-00.HiFi__Line1__sink";
-#         # Set Scarlett Input 1 as default input
-#         "default.audio.source" = "alsa_input.usb-Focusrite_Scarlett_2i4_USB-00.HiFi__Mic1__source";
-#       };
-#     };
-#     wireplumber.extraConfig."51-scarlett-priority" = {
-#       "monitor.alsa.rules" = [
-#         # Disable HDMI audio
-#         {
-#           matches = [
-#             { "node.name" = "alsa_output.pci-0000_0c_00.1.hdmi-stereo"; }
-#           ];
-#           actions = {
-#             update-props = {
-#               "node.disabled" = true;
-#             };
-#           };
-#         }
-#         {
-#           matches = [
-#             { "node.name" = "alsa_input.usb-046d_HD_Pro_Webcam_C920_E4F1F8DF-02.analog-stereo"; }
-#           ];
-#           actions = {
-#             update-props = {
-#               "node.disabled" = true;
-#             };
-#           };
-#         }
-#
-#         # Set high priority for Scarlett outputs
-#         {
-#           matches = [
-#             { "node.name" = "~alsa_output.usb-Focusrite_Scarlett_2i4_USB.*"; }
-#           ];
-#           actions = {
-#             update-props = {
-#               "priority.driver" = 1000;
-#               "priority.session" = 1000;
-#             };
-#           };
-#         }
-#
-#         # Set high priority for Scarlett inputs
-#         {
-#           matches = [
-#             { "node.name" = "~alsa_input.usb-Focusrite_Scarlett_2i4_USB.*"; }
-#           ];
-#           actions = {
-#             update-props = {
-#               "priority.driver" = 1000;
-#               "priority.session" = 1000;
-#             };
-#           };
-#         }
-#
-#         # Lower priority for onboard audio
-#         {
-#           matches = [
-#             { "node.name" = "~alsa_.*pci-0000_0e_00.4.*"; }
-#           ];
-#           actions = {
-#             update-props = {
-#               "priority.driver" = 100;
-#               "priority.session" = 100;
-#             };
-#           };
-#         }
-#       ];
-#     };
-#   };
 {
   options.miniluz.audio = {
     enable = lib.mkEnableOption "audio";
@@ -98,69 +23,143 @@ in
         default = 512;
         description = "Buffer size";
       };
+
+      minBufferSize = lib.mkOption {
+        default = 32;
+        description = "Minimum buffer size";
+      };
+
+      maxBufferSize = lib.mkOption {
+        default = 512;
+        description = "Maximum buffer size";
+      };
     };
   };
 
-  config = lib.mkIf cfg.enable {
-    services.pulseaudio.enable = false;
-    security.rtkit.enable = true;
-    services.pipewire = lib.mkMerge [
-      {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-        jack.enable = true;
-      }
-      (
+  config = lib.mkMerge [
+    (lib.mkIf cfg.enable {
+      services.pulseaudio.enable = false;
+      security.rtkit.enable = true;
+      services.pipewire = lib.mkMerge [
+        {
+          enable = true;
+          alsa.enable = true;
+          alsa.support32Bit = true;
+          pulse.enable = true;
+          jack.enable = true;
+        }
+        (
+          let
+            inherit (cfg.realtime)
+              minBufferSize
+              maxBufferSize
+              bufferSize
+              sampleRate
+              ;
+          in
+          lib.mkIf cfg.realtime.enable {
+            extraConfig.pipewire."92-low-latency" = {
+              "context.properties" = {
+                "default.clock.rate" = sampleRate;
+                "default.clock.quantum" = bufferSize;
+                "default.clock.min-quantum" = minBufferSize;
+                "default.clock.max-quantum" = maxBufferSize;
+              };
+            };
+
+            wireplumber.extraConfig."99-disable-suspend" = {
+              "monitor.alsa.rules" = [
+                {
+                  matches = [
+                    { "node.name" = "~alsa_input.*"; }
+                    { "node.name" = "~alsa_output.*"; }
+                  ];
+                  actions = {
+                    update-props = {
+                      "session.suspend-timeout-seconds" = 0;
+                      # Optional: Tweak by trial-and-error if crackling occurs on specific USB interfaces.
+                      # Do not apply globally without testing, as it may break built-in audio.
+                      # "api.alsa.period-size" = 2;
+                      # "api.alsa.headroom" = 8192;
+                    };
+                  };
+                }
+              ];
+            };
+
+          }
+        )
+      ];
+
+      musnix.enable = cfg.realtime.enable;
+
+      environment.systemPackages = lib.mkIf config.miniluz.visual (
+        with pkgs;
+        [
+          pwvucontrol
+          pavucontrol
+          qpwgraph
+          easyeffects
+
+          crosspipe
+          raysession
+        ]
+      );
+
+      users.users.miniluz = lib.mkIf cfg.realtime.enable { extraGroups = [ "audio" ]; };
+    })
+    (lib.mkIf (cfg.enable && cfg.realtime.enable) {
+      boot.kernelPackages = pkgs.linuxPackages_latest;
+      boot.kernelParams = [
+        "threadirqs"
+        "preempt=full"
+        "amd_pstate=active" # Zen 4/5: active mode provides best EPP and responsiveness
+        "usbcore.autosuspend=-1" # Prevent USB audio interface sleep
+      ];
+
+      services.power-profiles-daemon.enable = false;
+      powerManagement.cpuFreqGovernor = "performance";
+      programs.gamemode.enable = true; # Can elevate priorities for real-time audio applications
+
+      services.pipewire =
         let
-          inherit (cfg.realtime) bufferSize sampleRate;
-          bufferSampleStr = "${builtins.toString bufferSize}/${builtins.toString sampleRate}";
+          inherit (cfg.realtime)
+            minBufferSize
+            maxBufferSize
+            bufferSize
+            sampleRate
+            ;
         in
-        lib.mkIf cfg.realtime.enable {
+        {
           extraConfig.pipewire."92-low-latency" = {
             "context.properties" = {
               "default.clock.rate" = sampleRate;
               "default.clock.quantum" = bufferSize;
-              "default.clock.min-quantum" = bufferSize;
-              "default.clock.max-quantum" = bufferSize;
+              "default.clock.min-quantum" = minBufferSize;
+              "default.clock.max-quantum" = maxBufferSize;
             };
           };
 
-          extraConfig.pipewire-pulse."92-low-latency" = {
-            "context.properties" = [
+          wireplumber.extraConfig."99-disable-suspend" = {
+            "monitor.alsa.rules" = [
               {
-                name = "libpipewire-module-protocol-pulse";
-                args = { };
+                matches = [
+                  { "node.name" = "~alsa_input.*"; }
+                  { "node.name" = "~alsa_output.*"; }
+                ];
+                actions = {
+                  update-props = {
+                    "session.suspend-timeout-seconds" = 0;
+                    # Optional: Tweak by trial-and-error if crackling occurs on specific USB interfaces.
+                    # Do not apply globally without testing, as it may break built-in audio.
+                    # "api.alsa.period-size" = 2;
+                    # "api.alsa.headroom" = 8192;
+                  };
+                };
               }
             ];
-            "pulse.properties" = {
-              "pulse.min.req" = bufferSampleStr;
-              "pulse.default.req" = bufferSampleStr;
-              "pulse.max.req" = bufferSampleStr;
-              "pulse.min.quantum" = bufferSampleStr;
-              "pulse.max.quantum" = bufferSampleStr;
-            };
-            "stream.properties" = {
-              "node.latency" = bufferSampleStr;
-              "resample.quality" = 1;
-            };
           };
-        }
-      )
-    ];
-
-    musnix.enable = cfg.realtime.enable;
-
-    environment.systemPackages = lib.mkIf config.miniluz.visual (
-      with pkgs;
-      [
-        pavucontrol
-        crosspipe
-        raysession
-      ]
-    );
-
-    users.users.miniluz = lib.mkIf cfg.realtime.enable { extraGroups = [ "audio" ]; };
-  };
+        };
+    })
+  ];
 }
