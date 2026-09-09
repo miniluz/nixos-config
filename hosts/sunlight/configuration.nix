@@ -10,7 +10,7 @@
     enable = true;
     realtime = {
       enable = true;
-      sampleRate = 48000;
+      sampleRate = 96000;
       bufferSize = 128;
     };
   };
