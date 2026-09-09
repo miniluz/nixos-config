@@ -152,7 +152,7 @@ in
                     "session.suspend-timeout-seconds" = 0;
                     # Optional: Tweak by trial-and-error if crackling occurs on specific USB interfaces.
                     # Do not apply globally without testing, as it may break built-in audio.
-                    "api.alsa.period-size" = 128;
+                    "api.alsa.period-size" = 96;
                     "api.alsa.period-num" = 3;
                     # "api.alsa.headroom" = 8192;
                   };
