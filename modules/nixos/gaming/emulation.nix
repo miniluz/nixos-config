@@ -22,12 +22,17 @@ in
       config.age.secrets.aes_keys.path;
 
     environment.systemPackages = with pkgs; [
-      (retroarch.withCores (
-        cores: with cores; [
+      (retroarch-bare.wrapper {
+        settings = {
+          "rgui_browser_directory" = "/media/second-drive/Games/ROMs";
+        };
+
+        cores = with libretro; [
+          melonds
           citra
           snes9x
-        ]
-      ))
+        ];
+      })
     ];
 
   };
