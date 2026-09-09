@@ -11,7 +11,7 @@
     realtime = {
       enable = true;
       sampleRate = 96000;
-      bufferSize = 96;
+      bufferSize = 192;
     };
   };
 
