@@ -153,7 +153,7 @@ in
                     # Optional: Tweak by trial-and-error if crackling occurs on specific USB interfaces.
                     # Do not apply globally without testing, as it may break built-in audio.
                     "api.alsa.period-size" = 16;
-                    "api.alsa.period-num" = 4;
+                    "api.alsa.period-num" = 8;
                     # "api.alsa.headroom" = 8192;
                   };
                 };
