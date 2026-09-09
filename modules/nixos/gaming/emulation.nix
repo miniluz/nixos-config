@@ -28,7 +28,7 @@ in
         };
 
         cores = with libretro; [
-          melonds
+          desmume
           citra
           snes9x
         ];
