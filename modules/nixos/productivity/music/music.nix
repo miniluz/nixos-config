@@ -18,6 +18,7 @@ in
       carla
       helm
       guitarix
+      guitarix-vst
       neural-amp-modeler-lv2
       proteus
       lsp-plugins
