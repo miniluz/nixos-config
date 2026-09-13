@@ -179,6 +179,7 @@ in
         nil
         nushell
         inputs.agenix.packages.x86_64-linux.default
+        wireguard-tools
       ]
       ++ (with miniluz-pkgs; [
         luz-shell-utils
