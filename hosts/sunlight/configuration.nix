@@ -24,8 +24,6 @@
     };
   };
 
-  miniluz.unity.enable = false;
-
   miniluz.music.enable = true;
 
   miniluz.gaming = {

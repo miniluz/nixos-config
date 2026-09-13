@@ -14,17 +14,22 @@ in
     users.users.miniluz.packages = with pkgs; [
       pandoc
       typst
+      zotero
       texliveBasic
       cabin
       libreoffice-qt
 
+      obsidian
+      zathura
+
       thunderbird
 
       krita
+      pinta
 
-      obsidian
-      zotero
-      zathura
+      blanket
+
+      localsend
     ];
   };
 }
