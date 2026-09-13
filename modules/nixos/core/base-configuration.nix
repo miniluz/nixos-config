@@ -163,7 +163,10 @@ in
       fi
     '';
 
-    networking.networkmanager.enable = mkDefault true;
+    networking = {
+      networkmanager.enable = mkDefault true;
+      wireguard.enable = mkDefault true;
+    };
 
     environment.localBinInPath = mkDefault true;
 
