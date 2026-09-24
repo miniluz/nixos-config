@@ -7,7 +7,6 @@
 }:
 {
   miniluz.gnome.enable = true;
-  miniluz.niri.enable = true;
   miniluz.audio.enable = true;
 
   miniluz.intel.enable = true;
@@ -38,11 +37,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.extraModprobeConfig = ''
-    blacklist rtw88_8821ce
-  '';
-
-  boot.extraModulePackages = [ config.boot.kernelPackages.rtl8821ce ];
+  # Sadly the rtl8821ce module has been removed. Hopefully kernel has better support.
+  #
+  # boot.extraModprobeConfig = ''
+  #   blacklist rtw88_8821ce
+  # '';
+  #
+  # boot.extraModulePackages = [ config.boot.kernelPackages.rtl8821ce ];
 
   environment.pathsToLink = [ "/share/zsh" ];
 

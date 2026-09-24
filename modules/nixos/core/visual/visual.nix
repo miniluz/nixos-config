@@ -15,6 +15,7 @@ in
 
     environment.systemPackages = with pkgs; [
       vlc
+      wl-clipboard
       nerd-fonts.fira-code
     ];
   };
