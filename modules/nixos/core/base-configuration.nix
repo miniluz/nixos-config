@@ -25,7 +25,7 @@ in
     nix.optimise.automatic = mkDefault true;
 
     # Set timezone
-    time.timeZone = mkDefault "Europe/Madrid";
+    time.timeZone = mkDefault "Iceland";
 
     console.keyMap = mkDefault "es";
 
