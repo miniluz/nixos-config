@@ -67,7 +67,8 @@ symlinkJoin {
 
   paths = [
     tmux
-    sesh
+    # TODO: Uncomment when fixed
+    # sesh
     fzf
   ];
 

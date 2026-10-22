@@ -33,9 +33,6 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-      inputs.darwin.follows = "";
-      inputs.home-manager.follows = "";
     };
 
     import-tree.url = "github:vic/import-tree";

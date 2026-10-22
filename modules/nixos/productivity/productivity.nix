@@ -14,7 +14,7 @@ in
     users.users.miniluz.packages = with pkgs; [
       pandoc
       typst
-      zotero
+      # zotero
       texliveBasic
       cabin
       libreoffice-qt
