@@ -31,6 +31,11 @@ in
           desmume
           citra
           snes9x
+          fceumm
+          dolphin
+          pcsx2
+          mgba
+          ppsspp
         ];
       })
     ];
