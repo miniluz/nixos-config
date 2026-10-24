@@ -27,6 +27,7 @@
   miniluz.social.enable = true;
 
   miniluz.gaming.enable = true;
+  miniluz.gaming.emulation = true;
 
   miniluz.selfhosting = {
     enable = true;
