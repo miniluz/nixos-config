@@ -21,8 +21,6 @@
     actual = true;
 
     jellyfin = true;
-
-    n8n = true;
   };
 
   networking.hostId = "9555365f";

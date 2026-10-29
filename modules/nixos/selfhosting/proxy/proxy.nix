@@ -30,7 +30,6 @@ let
     (makeService "actual" 9991 cfg.actual)
 
     (makeService "librechat" 3080 cfg.librechat)
-    (makeService "n8n" 5678 cfg.n8n)
 
     # --- Jellyfin ---
     (makeService "transmission" 9091 cfg.jellyfin)

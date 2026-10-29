@@ -22,7 +22,7 @@ in
     assertions = [
       {
         assertion = pkgs.actual-server.version == actual-backup.version;
-        message = "Mismatched versions for actual-server and actual-backup";
+        message = "Mismatched versions for actual-server (${pkgs.actual-server.version}) and actual-backup (${actual-backup.version})";
       }
     ];
 

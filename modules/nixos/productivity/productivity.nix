@@ -11,6 +11,8 @@ in
   config = lib.mkIf cfg {
     fonts.fontconfig.enable = true;
 
+    programs.hamster.enable = true;
+
     users.users.miniluz.packages = with pkgs; [
       pandoc
       typst
