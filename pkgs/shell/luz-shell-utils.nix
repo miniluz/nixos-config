@@ -72,8 +72,6 @@ symlinkJoin {
       luznix-shell-setup
       bg-run
 
-      opencode-luzwrap
-
       git-luzwrap
       btop-luzwrap
       tmux-luzwrap
