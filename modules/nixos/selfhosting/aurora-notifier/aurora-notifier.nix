@@ -6,6 +6,7 @@
 }:
 let
   cfg = config.miniluz.selfhosting;
+  inherit (config.miniluz.constants) miniluz-pkgs;
 in
 {
   config = lib.mkIf (cfg.enable && cfg.server.enable) {
@@ -22,6 +23,13 @@ in
           pkgs.writers.writePython3Bin "aurora-notifier" {
             libraries = [ ];
             flakeIgnore = [ "E501" ];
+
+            makeWrapperArgs = [
+              "--prefix"
+              "PATH"
+              ":"
+              "${lib.makeBinPath [ miniluz-pkgs.webhook-notifier ]}"
+            ];
           } (lib.replaceString "#!/usr/bin/env python3" "" (builtins.readFile ./aurora-notifier.py))
         );
       };
