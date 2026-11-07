@@ -22,7 +22,8 @@ in
         ExecStart = lib.getExe (
           pkgs.writers.writePython3Bin "aurora-notifier" {
             libraries = [ ];
-          } (builtins.readFile ./aurora-notifier.py)
+            flakeIgnore = [ "E501" ];
+          } (lib.replaceString "#!/usr/bin/env python3" "" (builtins.readFile ./aurora-notifier.py))
         );
       };
 

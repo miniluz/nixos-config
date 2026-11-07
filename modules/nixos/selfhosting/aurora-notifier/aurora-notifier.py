@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import json
+import os
 import subprocess
 import urllib.request
 import xml.etree.ElementTree as ET
