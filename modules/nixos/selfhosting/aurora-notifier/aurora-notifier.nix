@@ -13,7 +13,6 @@ in
       description = "Aurora notifier";
       serviceConfig = {
         Type = "oneshot";
-        DynamicUser = "yes";
 
         Environment = [
           "WEBHOOK_FILE=${config.age.secrets.monitoring-webhook.path}"
