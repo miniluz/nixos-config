@@ -14,7 +14,7 @@ in
     users.users.miniluz.packages = with pkgs; [
       (discord.override {
         withOpenASAR = true;
-        withVencord = true;
+        # withVencord = true;
       })
 
       element-desktop
