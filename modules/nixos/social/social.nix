@@ -13,8 +13,8 @@ in
   config = lib.mkIf cfg.enable {
     users.users.miniluz.packages = with pkgs; [
       (discord.override {
-        # withOpenASAR = true;
-        withVencord = true;
+        withOpenASAR = true;
+        # withVencord = true;
       })
 
       element-desktop
