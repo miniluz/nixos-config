@@ -27,8 +27,6 @@ in
   (extension "wayback-machine_new" "wayback_machine@mozilla.org")
   (extension "youtube-recommended-videos" "myallychou@gmail.com")
 
-  (extension "catppuccin-web-file-icons" "{bbb880ce-43c9-47ae-b746-c3e0096c5b76}")
-
   (extension "ublock-origin" "uBlock0@raymondhill.net")
   (extension "youtube-shorts-block" "{34daeb50-c2d2-4f14-886a-7160b24d66a4}")
   (extension "sponsorblock" "sponsorBlocker@ajay.app")
