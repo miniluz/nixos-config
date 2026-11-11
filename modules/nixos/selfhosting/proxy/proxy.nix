@@ -17,9 +17,9 @@ let
   proxies = lib.filter ({ condition, ... }: condition) [
     # (makeService "btop" 7861 true)
 
-    # --- Jellyfin ---
-    (makeService "not-backed-up" 3924 cfg.searxng)
-    (makeService "backed-up" 3925 cfg.searxng)
+    # Fileserver
+    (makeService "not-backed-up" 3924 cfg.fileserver)
+    (makeService "backed-up" 3925 cfg.fileserver)
     # ----------------
 
     (makeService "searxng" 7881 cfg.searxng)
